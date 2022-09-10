@@ -24,4 +24,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: master
-          files: build/output/apk/release/*
+          files: build/app/outputs/flutter-apk/*
