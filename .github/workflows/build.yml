@@ -1,0 +1,27 @@
+name: Build and Release
+
+on: [push]
+
+
+jobs:
+  build:
+    name: Build APK
+    runs-on: ubuntu-latest
+    steps:
+      - name: clone repo
+        uses: actions/checkout@v1
+      - name: setup flutter
+        run: sudo snap install flutter --classic
+      - name: flutter version
+        run: flutter doctor
+      - name: accecpt licences
+        run: flutter doctor --android-licenses
+      - name: build APK
+        run: flutter build apk --split-per-abi
+      - name: tree view
+        run: tree build/
+      - name: upload to release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: master
+          files: build/output/apk/release/*
