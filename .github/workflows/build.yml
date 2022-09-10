@@ -15,7 +15,7 @@ jobs:
       - name: flutter version
         run: flutter doctor
       - name: accecpt licences
-        run: flutter doctor --android-licenses
+        run:  yes | flutter doctor --android-licenses
       - name: build APK
         run: flutter build apk --split-per-abi
       - name: tree view
