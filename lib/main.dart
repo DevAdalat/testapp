@@ -86,7 +86,7 @@ class Home extends StatelessWidget {
                   return ListTile(
                       title: Text(controller.allFiles[index].path
                           .replaceAll("${controller.currnetPath}/", "")),
-                      leading: const Icon(Icons.folder_outlined),
+                      leading: controller.allFiles[index] is Directory ? const Icon(Icons.folder_outlined): const Icon(Icons.file_present),
                       onTap: (() {
                         if (controller.allFiles[index] is Directory) {
                           controller.getFiles(controller.allFiles[index].path);
