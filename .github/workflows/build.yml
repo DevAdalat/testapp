@@ -17,7 +17,7 @@ jobs:
       - name: accecpt licences
         run:  yes | flutter doctor --android-licenses
       - name: build APK
-        run: flutter build apk --split-per-abi
+        run: flutter build apk --split-per-abi --enable-impeller
       - name: tree view
         run: tree build/
       - name: upload to release
