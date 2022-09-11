@@ -34,37 +34,54 @@ class Home extends StatelessWidget {
       return Scaffold(
           body: CustomScrollView(slivers: [
         SliverAppBar.large(
-            leading: const IconButton(onPressed: null, icon: Icon(Icons.menu)),
+            leading: IconButton(
+                onPressed: (() {
+                  if (controller.currnetPath == "/storage/emulated/0") {
+                    exit(0);
+                  } else {
+                    final aaa = Directory(controller.currnetPath);
+                    controller.getFiles(aaa.parent.path);
+                    controller.update();
+                  }
+                }),
+                icon: const Icon(Icons.arrow_back)),
             title: const Text("Simple File Manager"),
             actions: [
               IconButton(
-                onPressed: (() {}),
+                onPressed: (() async {
+                  final list1 = Directory("/storage/emulated/0").listSync();
+                  final list2 = Directory("/storage/emulated/0").list();
+                  Get.snackbar("listSync", list1.toString());
+                  final data = await list2.toList();
+                  Get.snackbar("list", data.toString());
+                }),
                 icon: const Icon(Icons.more_vert),
               ),
             ]),
         SliverList(
             delegate: SliverChildListDelegate([
           ListView.separated(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemBuilder: ((context, index) {
-                return ListTile(
-                    title: Text(controller.allFiles[index].path
-                        .replaceAll("${controller.currnetPath}/", "")),
-                    leading: const Icon(Icons.folder_outlined),
-                    onTap: (() {
-                      if (controller.allFiles[index] is Directory) {
-                        controller.getFiles(controller.allFiles[index].path);
-                        controller.update();
-                      } else {
-                        Get.snackbar("Info", "This is a File");
-                      }
-                    }));
-              }),
-              itemCount: 15,
-              separatorBuilder: ((context, index) {
-                return const CustomDivider();
-              }))
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemBuilder: ((context, index) {
+              return ListTile(
+                  title: Text(controller.allFiles[index].path
+                      .replaceAll("${controller.currnetPath}/", "")),
+                  leading: const Icon(Icons.folder_outlined),
+                  onTap: (() {
+                    if (controller.allFiles[index] is Directory) {
+                      controller.getFiles(controller.allFiles[index].path);
+                      controller.update();
+                    } else {
+                      Get.snackbar("Info", "This is a File");
+                    }
+                  }));
+            }),
+            itemCount: 15,
+            separatorBuilder: ((context, index) {
+              return const CustomDivider();
+            }),
+          )
         ]))
       ]));
     });
