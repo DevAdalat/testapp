@@ -6,7 +6,7 @@ on: [push]
 jobs:
   build:
     name: Build APK
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: clone repo
         uses: actions/checkout@v1
@@ -17,7 +17,7 @@ jobs:
       - name: accecpt licences
         run:  yes | flutter doctor --android-licenses
       - name: build APK
-        run: flutter build apk --split-per-abi --enable-impeller
+        run: flutter build apk --split-per-abi
       - name: tree view
         run: tree build/
       - name: upload to release
