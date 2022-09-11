@@ -34,68 +34,79 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(HomeController());
     return GetBuilder<HomeController>(builder: (controller) {
+			ScrollController scrollController = ScrollController();
       return Scaffold(
-          body: CustomScrollView(slivers: [
-        SliverAppBar.large(
-            leading: IconButton(
-                onPressed: (() {
-                  if (controller.currnetPath == "/storage/emulated/0") {
-                    SystemNavigator.pop(animated: true);
-										SystemSound.play(SystemSoundType.click);
-                  } else {
-                    final aaa = Directory(controller.currnetPath);
-                    controller.getFiles(aaa.parent.path);
-                    controller.update();
-                  }
+        body:
+            CustomScrollView(
+							physics: const BouncingScrollPhysics(),
+							controller: scrollController,
+							slivers: [
+          SliverAppBar.large(
+              leading: IconButton(
+                  onPressed: (() {
+                    if (controller.currnetPath == "/storage/emulated/0") {
+                      SystemNavigator.pop(animated: true);
+                      SystemSound.play(SystemSoundType.click);
+                    } else {
+                      final aaa = Directory(controller.currnetPath);
+                      controller.getFiles(aaa.parent.path);
+                      controller.update();
+                    }
+                  }),
+                  icon: const Icon(Icons.arrow_back)),
+              title: const Text("Simple File Manager"),
+              actions: [
+                IconButton(
+                  onPressed: (() async {
+                    final storageStaus = await Permission.storage.status;
+                    final managePermission =
+                        await Permission.manageExternalStorage.status;
+                    if (storageStaus.isDenied || managePermission.isDenied) {
+                      await Permission.storage.request();
+                      await Permission.manageExternalStorage.request();
+                    } else {
+                      final list1 = Directory("/storage/emulated/0").listSync();
+                      controller.allFiles = list1;
+                      controller.update();
+                      Get.snackbar(
+                          "Path", "${await getExternalStorageDirectories()}");
+                      Get.snackbar("Path2",
+                          "${await getExternalStorageDirectories(type: StorageDirectory.dcim)}");
+                    }
+                  }),
+                  icon: const Icon(Icons.more_vert),
+                ),
+              ]),
+          SliverList(
+            delegate: SliverChildListDelegate([
+              ListView.separated(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: ((context, index) {
+                  return ListTile(
+                      title: Text(controller.allFiles[index].path
+                          .replaceAll("${controller.currnetPath}/", "")),
+                      leading: const Icon(Icons.folder_outlined),
+                      onTap: (() {
+                        if (controller.allFiles[index] is Directory) {
+                          controller.getFiles(controller.allFiles[index].path);
+													scrollController.jumpTo(0);
+                          controller.update();
+													
+                        } else {
+                          Get.snackbar("Info", "This is a File");
+                        }
+                      }));
                 }),
-                icon: const Icon(Icons.arrow_back)),
-            title: const Text("Simple File Manager"),
-            actions: [
-              IconButton(
-                onPressed: (() async {
-                  final storageStaus = await Permission.storage.status;
-                  final managePermission =
-                      await Permission.manageExternalStorage.status;
-                  if (storageStaus.isDenied || managePermission.isDenied) {
-                    await Permission.storage.request();
-                    await Permission.manageExternalStorage.request();
-                  } else {
-                    final list1 = Directory("/storage/emulated/0").listSync();
-                    controller.allFiles = list1;
-										controller.update();
-										Get.snackbar("Path", "${await getExternalStorageDirectories()}");
-										Get.snackbar("Path2", "${await getExternalStorageDirectories(type: StorageDirectory.dcim)}");
-                  }
+                itemCount: 15,
+                separatorBuilder: ((context, index) {
+                  return const CustomDivider();
                 }),
-                icon: const Icon(Icons.more_vert),
               ),
             ]),
-        SliverList(
-            delegate: SliverChildListDelegate([
-          ListView.separated(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemBuilder: ((context, index) {
-              return ListTile(
-                  title: Text(controller.allFiles[index].path
-                      .replaceAll("${controller.currnetPath}/", "")),
-                  leading: const Icon(Icons.folder_outlined),
-                  onTap: (() {
-                    if (controller.allFiles[index] is Directory) {
-                      controller.getFiles(controller.allFiles[index].path);
-                      controller.update();
-                    } else {
-                      Get.snackbar("Info", "This is a File");
-                    }
-                  }));
-            }),
-            itemCount: 15,
-            separatorBuilder: ((context, index) {
-              return const CustomDivider();
-            }),
           )
-        ]))
-      ]));
+        ]),
+      );
     });
   }
 }
