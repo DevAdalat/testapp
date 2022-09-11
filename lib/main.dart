@@ -98,7 +98,7 @@ class Home extends StatelessWidget {
                         }
                       }));
                 }),
-                itemCount: 15,
+                itemCount: controller.allFiles.length,
                 separatorBuilder: ((context, index) {
                   return const CustomDivider();
                 }),
