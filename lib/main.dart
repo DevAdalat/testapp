@@ -2,7 +2,9 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,7 +39,7 @@ class Home extends StatelessWidget {
             leading: IconButton(
                 onPressed: (() {
                   if (controller.currnetPath == "/storage/emulated/0") {
-                    exit(0);
+                    SystemNavigator.pop(animated: true);
                   } else {
                     final aaa = Directory(controller.currnetPath);
                     controller.getFiles(aaa.parent.path);
@@ -49,12 +51,20 @@ class Home extends StatelessWidget {
             actions: [
               IconButton(
                 onPressed: (() async {
+									final storageStaus = await Permission.storage.status;
+									final managePermission = await Permission.manageExternalStorage.status;
+									if (storageStaus.isDenied || managePermission.isDenied) {
+									  await Permission.storage.request();
+									  await	Permission.manageExternalStorage.request();
+									} else {
                   final list1 = Directory("/storage/emulated/0").listSync();
                   final list2 = Directory("/storage/emulated/0").list();
                   Get.snackbar("listSync", list1.toString());
                   final data = await list2.toList();
                   Get.snackbar("list", data.toString());
-                }),
+ 
+									}
+               }),
                 icon: const Icon(Icons.more_vert),
               ),
             ]),
