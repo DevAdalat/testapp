@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 void main() {
@@ -40,6 +41,7 @@ class Home extends StatelessWidget {
                 onPressed: (() {
                   if (controller.currnetPath == "/storage/emulated/0") {
                     SystemNavigator.pop(animated: true);
+										SystemSound.play(SystemSoundType.click);
                   } else {
                     final aaa = Directory(controller.currnetPath);
                     controller.getFiles(aaa.parent.path);
@@ -51,20 +53,20 @@ class Home extends StatelessWidget {
             actions: [
               IconButton(
                 onPressed: (() async {
-									final storageStaus = await Permission.storage.status;
-									final managePermission = await Permission.manageExternalStorage.status;
-									if (storageStaus.isDenied || managePermission.isDenied) {
-									  await Permission.storage.request();
-									  await	Permission.manageExternalStorage.request();
-									} else {
-                  final list1 = Directory("/storage/emulated/0").listSync();
-                  final list2 = Directory("/storage/emulated/0").list();
-                  Get.snackbar("listSync", list1.toString());
-                  final data = await list2.toList();
-                  Get.snackbar("list", data.toString());
- 
-									}
-               }),
+                  final storageStaus = await Permission.storage.status;
+                  final managePermission =
+                      await Permission.manageExternalStorage.status;
+                  if (storageStaus.isDenied || managePermission.isDenied) {
+                    await Permission.storage.request();
+                    await Permission.manageExternalStorage.request();
+                  } else {
+                    final list1 = Directory("/storage/emulated/0").listSync();
+                    controller.allFiles = list1;
+										controller.update();
+										Get.snackbar("Path", "${await getExternalStorageDirectories()}");
+										Get.snackbar("Path2", "${await getExternalStorageDirectories(type: StorageDirectory.dcim)}");
+                  }
+                }),
                 icon: const Icon(Icons.more_vert),
               ),
             ]),
@@ -104,9 +106,13 @@ class HomeController extends GetxController {
   String currnetPath = "";
   getFiles(String path) {
     currnetPath = path;
-    final dir = Directory(path);
-    final listDirs = dir.listSync();
-    allFiles = listDirs;
+    try {
+      final dir = Directory(path);
+      final listDirs = dir.listSync();
+      allFiles = listDirs;
+    } catch (e) {
+      Get.snackbar("Error", e.toString());
+    }
   }
 
   @override
