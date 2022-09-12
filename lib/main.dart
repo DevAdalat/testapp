@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:math';
 
+import 'package:android_package_manager/android_package_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -101,7 +102,7 @@ class Home extends StatelessWidget {
                                 .replaceAll("${controller.currnetPath}/", "")),
                             leading: controller.allFiles[index] is Directory
                                 ? const Icon(Icons.folder_outlined)
-                                : const Icon(Icons.file_present),
+                                : controller.allFiles[index].path.isAPKFileName? const Icon(Icons.android_rounded) : const Icon(Icons.file_copy),
                             onTap: (() {
                               if (controller.allFiles[index] is Directory) {
                                 controller
@@ -109,9 +110,11 @@ class Home extends StatelessWidget {
                                 scrollController.jumpTo(0);
                                 controller.update();
                               } else {
-                                Get.snackbar("Info", "This is a File");
+                                if (controller.allFiles[index].path.isAPKFileName) {
+                                	controller.getApkIcon(controller.allFiles[index].path);
+                                }
                               }
-                            }));
+                            }),);
                       }),
                       itemCount: controller.allFiles.length,
                       separatorBuilder: ((context, index) {
@@ -141,6 +144,13 @@ class HomeController extends GetxController {
       Get.snackbar("Error", e.toString());
     }
   }
+
+	getApkIcon(String path) async {
+		final pm = AndroidPackageManager();
+		final info = await pm.getPackageArchiveInfo(archiveFilePath: path);
+		final icon = info!.applicationInfo!.icon;
+		Get.snackbar("Icon",icon.toString());
+	}
 
   @override
   onInit() {

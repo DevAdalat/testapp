@@ -15,6 +15,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.7.0"
+  android_package_manager:
+    dependency: "direct main"
+    description:
+      name: android_package_manager
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
   args:
     dependency: transitive
     description:
@@ -29,6 +36,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.9.0"
+  back_button_interceptor:
+    dependency: "direct main"
+    description:
+      name: back_button_interceptor
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "6.0.1"
   boolean_selector:
     dependency: transitive
     description:
