@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,6 +38,21 @@ class FileTree extends StatelessWidget {
               slivers: [
                 SliverAppBar.medium(
                   title: const Text("Internal Storage"),
+									actions: [
+										IconButton(
+											onPressed: (() async {
+												final storage = await Permission.storage.status;
+												final manageStoarage = await Permission.manageExternalStorage.status;
+												if (storage.isDenied || manageStoarage.isDenied) {
+												await	Permission.storage.request();
+												await Permission.manageExternalStorage.request();
+												} else {
+													Get.snackbar("Info", "Permission is already granted");
+												}
+											}),
+											icon: const Icon(Icons.settings_phone_rounded),
+											)
+									]
                 ),
                 SliverList(
                   delegate: SliverChildListDelegate([
