@@ -4,19 +4,10 @@ class HomeController extends GetxController {
   //TODO: Implement HomeController
 
   final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
+  final data = "".obs;
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
+  void changeData(String text) {
+    data.value = text;
   }
 
   void increment() => count.value++;

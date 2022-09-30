@@ -1,13 +1,9 @@
-import 'dart:ffi';
-
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';
-
-typedef SumFunc = Int32 Function(Int32 a, Int32 b);
-typedef Sum = int Function(int a, int b);
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
@@ -16,23 +12,22 @@ class HomeView extends GetView<HomeController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('HomeView'),
-        centerTitle: true,
       ),
-      body: Center(
-          child: TextButton(
-              onPressed: (() {
-                try {
-                  DynamicLibrary library = DynamicLibrary.open("libtest.so");
-                  final addPoiner =
-                      library.lookup<NativeFunction<SumFunc>>("add");
-                  final add = addPoiner.asFunction<Sum>();
-                  Get.snackbar("Add",
-                      "Sum of 1776771346 + 4568898726 = ${add(1776771346, 4568898726)}");
-                } catch (e) {
-                  Get.snackbar("Error", e.toString());
-                }
-              }),
-              child: const Text("Add"))),
+      body: Column(children: [
+        SizedBox(
+          height: Get.height * 0.13,
+          child: Obx(
+            (() => AutoSizeText(
+                  controller.data.value,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                )),
+          ),
+        ),
+        TextField(
+            decoration: const InputDecoration(hintText: "Hello"),
+            onChanged: controller.changeData),
+      ]),
     );
   }
 }
