@@ -1,7 +1,6 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+import 'package:telegram_client/telegram_client.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -10,24 +9,21 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('HomeView'),
-      ),
-      body: Column(children: [
-        SizedBox(
-          height: Get.height * 0.13,
-          child: Obx(
-            (() => AutoSizeText(
-                  controller.data.value,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                )),
-          ),
-        ),
-        TextField(
-            decoration: const InputDecoration(hintText: "Hello"),
-            onChanged: controller.changeData),
-      ]),
-    );
+        body: Center(
+            child: ElevatedButton(
+      onPressed: (() async {
+        const path = "/storage/emulated/0";
+        Tdlib tg = Tdlib("libtdjson.so", clientOption: {
+          'api_id': 12860793,
+          'api_hash': '668c3c09dc67819c912c918db5648cf1',
+          'database_directory': "$path/user/",
+          'files_directory': "$path/user/",
+        });
+        final me = await tg.getMe(clientId: 1570907697);
+        Get.snackbar("Me", me.toString());
+        await tg.initIsolate();
+      }),
+      child: const Text("Get Data"),
+    )));
   }
 }

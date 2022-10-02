@@ -10,6 +10,10 @@ void main() {
       title: "Application",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
+			theme: ThemeData(
+				useMaterial3: true,
+				primarySwatch: Colors.purple,
+				),
     ),
   );
 }

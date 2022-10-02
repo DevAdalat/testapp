@@ -16,6 +16,8 @@ jobs:
         run: flutter doctor
       - name: accecpt licences
         run:  yes | flutter doctor --android-licenses
+      - name: Download Binary
+        run: wget https://github.com/i-Naji/tdlib/raw/master/android/src/main/jniLibs/arm64-v8a/libtdjson.so -O android/app/src/main/jniLibs/arm64-v8a/libtdjson.so
 #     - name: Build go library
 #       run: |
 #         env GOOS=android GOARCH=arm64 go build -buildmode=c-shared -ldflags="-s -w" -o android/app/src/main/jniLibs/arm64-v8a/libtest.so gocode/test.go
