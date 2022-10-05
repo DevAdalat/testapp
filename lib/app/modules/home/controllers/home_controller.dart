@@ -1,41 +1,23 @@
-import 'dart:async';
-import 'dart:isolate';
-
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:isar/isar.dart';
+import 'package:testapp/app/model/user.dart';
 
-class HomeController extends GetxController
-    with GetSingleTickerProviderStateMixin {
-  late Animation<double> animation;
-  RxString count = "".obs;
-  late AnimationController animationController;
+class HomeController extends GetxController {
+  List<String> names = [];
+  List<int> age = [];
+  List<String> addess = [];
 
-	void recieve(){
-		ReceivePort port = ReceivePort();
-		final isolate = Isolate.spawn(runTimer, port.sendPort);
-		port.listen(((message){
-			count.value = message.toString();
-		}));
-	}
+  handleData() async {
+    final isar = await Isar.open([UserSchema]);
+    final user = await isar.users.get(User().id);
+    names = user!.names ?? [];
+    age = user.age ?? [];
+    addess = user.addess ?? [];
+  }
 
   @override
   onInit() {
-    animationController = AnimationController(
-      vsync: this,
-      duration: 200.milliseconds,
-    );
-    final curvedAnimation =
-        CurvedAnimation(curve: Curves.easeInOut, parent: animationController);
-    animation = Tween<double>(begin: 0, end: 1).animate(curvedAnimation);
+    handleData();
     super.onInit();
-  }
-
-  void runTimer(SendPort sendPort) {
-    int count = 0;
-    Timer.periodic(const Duration(seconds: 1), (Timer t) {
-      count++;
-      String msg = 'notification $count';
-      sendPort.send(msg);
-    });
   }
 }
