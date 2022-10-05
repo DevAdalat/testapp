@@ -73,6 +73,8 @@ class HomeView extends StatelessWidget {
                             isar.writeTxn((() async {
                               isar.users.put(user);
                             }));
+													  final myData = await isar.users.get(user.id);
+													  Get.snackbar("Info", myData!.names.toString());
                           } catch (e) {
                             Get.snackbar("Info", e.toString());
                           }
