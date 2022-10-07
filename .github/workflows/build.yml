@@ -8,20 +8,23 @@ jobs:
     name: Build APK
     runs-on: ubuntu-22.04
     steps:
-      - name: clone repo
-        uses: actions/checkout@v1
+      - name: Build
+        run: |
+          git clone https://github.com/isar/isar && cd isar && ./tool/build_android.sh
+#     - name: clone repo
+#       uses: actions/checkout@v1
 #     - name: setup flutter
 #       run: sudo snap install flutter --classic
 #     - name: flutter version
 #       run: flutter doctor
 #     - name: accecpt licences
 #       run:  yes | flutter doctor --android-licenses
-      - name: Download packages
-        run: sudo apt-get install gcc-multilib g++-multilib
-      - name: Build rust lib 
-        run: cd rust && make init && make android && make bindings && cd ..
-      - name: Upload file
-        run: curl -T ./rust/target/bindings.h https://free.keep.sh
+#     - name: Download packages
+#       run: sudo apt-get install gcc-multilib g++-multilib
+#     - name: Build rust lib 
+#       run: cd rust && make init && make android && make bindings && cd ..
+#     - name: Upload file
+#       run: curl -T ./rust/target/bindings.h https://free.keep.sh
 #     - name: Copy Libs
 #       run: |
 #         cp rust/target/armv7-linux-androideabi/release/libexample.so android/app/src/main/jniLibs/armeabi-v7a/
