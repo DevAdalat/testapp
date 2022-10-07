@@ -10,14 +10,14 @@ jobs:
     steps:
       - name: clone repo
         uses: actions/checkout@v1
-      - run: echo $ANDROID_NDK_HOME
 #     - name: setup flutter
 #       run: sudo snap install flutter --classic
 #     - name: flutter version
 #       run: flutter doctor
 #     - name: accecpt licences
 #       run:  yes | flutter doctor --android-licenses
-#     - name: Build rust lib 
+      - name: Build rust lib 
+        run: cd rust && make init && make android && tree target
 #     - name: Build go library
 #       run: |
 #         env GOOS=android GOARCH=arm64 go build -buildmode=c-shared -ldflags="-s -w" -o android/app/src/main/jniLibs/arm64-v8a/libtest.so gocode/test.go
