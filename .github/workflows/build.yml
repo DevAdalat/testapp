@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: clone repo
         uses: actions/checkout@v1
-        run: echo $ANDROID_NDK_HOME
+      - run: echo $ANDROID_NDK_HOME
 #     - name: setup flutter
 #       run: sudo snap install flutter --classic
 #     - name: flutter version
