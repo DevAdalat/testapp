@@ -14,20 +14,23 @@ class HomeView extends StatelessWidget {
               centerTitle: true,
             ),
             body: RefreshIndicator(
-							onRefresh: ((() async {
-								Get.snackbar("Info", "Triggred");
-							})),
+              onRefresh: ((() async {
+                Get.snackbar("Info", "Triggred");
+              })),
               child: ListView.builder(
                 itemBuilder: ((context, index) {
                   return ListTile(
-                    title: Text("Value = $index"),
+                    title: Text(controller.names[index]),
                   );
                 }),
+                itemCount: controller.names.length,
               ),
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: ((() async {
-             })),
+                controller.isolate();
+                controller.receive();
+              })),
               child: const Icon(Icons.add_rounded),
             ),
           )),
