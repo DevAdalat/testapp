@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: clone repo
-        uses: git clone https://github.com/brickpop/flutter-rust-ffi && cd flutter-rust-ffi && cd rust && make init && make android && make bindings && tree -h 
+        run: git clone https://github.com/brickpop/flutter-rust-ffi && cd flutter-rust-ffi && cd rust && make init && make android && make bindings && tree -h 
 #     - name: setup flutter
 #       run: sudo snap install flutter --classic
 #     - name: flutter version
