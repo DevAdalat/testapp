@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Build
         run: |
-          git clone https://github.com/isar/isar && cd isar && ./tool/build_android.sh
+          git clone https://github.com/isar/isar && cd isar && bash tool/build_android.sh
 #     - name: clone repo
 #       uses: actions/checkout@v1
 #     - name: setup flutter
