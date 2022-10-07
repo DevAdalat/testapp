@@ -10,12 +10,14 @@ jobs:
     steps:
       - name: clone repo
         uses: actions/checkout@v1
-      - name: setup flutter
-        run: sudo snap install flutter --classic
-      - name: flutter version
-        run: flutter doctor
-      - name: accecpt licences
-        run:  yes | flutter doctor --android-licenses
+        run: echo $ANDROID_NDK_HOME
+#     - name: setup flutter
+#       run: sudo snap install flutter --classic
+#     - name: flutter version
+#       run: flutter doctor
+#     - name: accecpt licences
+#       run:  yes | flutter doctor --android-licenses
+#     - name: Build rust lib 
 #     - name: Build go library
 #       run: |
 #         env GOOS=android GOARCH=arm64 go build -buildmode=c-shared -ldflags="-s -w" -o android/app/src/main/jniLibs/arm64-v8a/libtest.so gocode/test.go
@@ -23,10 +25,10 @@ jobs:
 #         env GOOS=android GOARCH=386 go build -buildmode=c-shared -ldflags="-s -w" -o android/app/src/main/jniLibs/x86/libtest.so gocode/test.go
 #         env GOOS=android GOARCH=amd64 go build -buildmode=c-shared -ldflags="-s -w" -o android/app/src/main/jniLibs/x86_64/libtest.so gocode/test.go
 #         find -type f -name libtest.h -exec rm -rf {} \;
-      - name: build APK
-        run: flutter build apk --target-platform=android-arm64
-      - name: upload to release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: master
-          files: build/app/outputs/flutter-apk/*
+#     - name: build APK
+#       run: flutter build apk --target-platform=android-arm64
+#     - name: upload to release
+#       uses: softprops/action-gh-release@v1
+#       with:
+#         tag_name: master
+#         files: build/app/outputs/flutter-apk/*
