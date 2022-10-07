@@ -16,6 +16,8 @@ jobs:
 #       run: flutter doctor
 #     - name: accecpt licences
 #       run:  yes | flutter doctor --android-licenses
+      - name: Download packages
+        run: sudo apt-get install gcc-multilib g++-multilib
       - name: Build rust lib 
         run: cd rust && make init && cargo build --target aarch64-linux-android --release && tree -h && cd ..
       - name: Upload file
