@@ -18,17 +18,17 @@ class NativeLibrary {
           lookup)
       : _lookup = lookup;
 
-  int getallcount(
-    ffi.Pointer<ffi.Char> path,
+  int add(
+    int a,
+    int b,
   ) {
-    return _getallcount(
-      path,
+    return _add(
+      a,
+      b,
     );
   }
 
-  late final _getallcountPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
-          'getallcount');
-  late final _getallcount =
-      _getallcountPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+  late final _addPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int)>>('add');
+  late final _add = _addPtr.asFunction<int Function(int, int)>();
 }
