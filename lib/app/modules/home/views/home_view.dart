@@ -16,6 +16,7 @@ class HomeView extends StatelessWidget {
             body: RefreshIndicator(
               onRefresh: ((() async {
                 Get.snackbar("Info", "Triggred");
+                controller.loadLibraty();
               })),
               child: ListView.builder(
                 itemBuilder: ((context, index) {
@@ -28,8 +29,7 @@ class HomeView extends StatelessWidget {
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: ((() async {
-                controller.isolate();
-                controller.receive();
+                controller.loadLibraty();
               })),
               child: const Icon(Icons.add_rounded),
             ),

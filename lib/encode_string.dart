@@ -1,31 +1,6 @@
 import 'dart:ffi';
 import 'dart:typed_data';
 
-import 'package:get/get.dart';
-import 'dart:isolate';
-import 'package:ffi/ffi.dart';
-
-import 'package:testapp/generated_bindings.dart';
-
-class HomeController extends GetxController {
-  List<String> names = [];
-  List<int> age = [];
-  List<String> addess = [];
-  ReceivePort receivePort = ReceivePort();
-
-  void loadLibraty() {
-    NativeLibrary lib = NativeLibrary(DynamicLibrary.open("libstorage.so"));
-    final files = lib.getallcount("/storage/emulated/0".toCString(malloc));
-    Get.snackbar("Total files", files.toString());
-  }
-
-  @override
-  onInit() {
-    loadLibraty();
-    super.onInit();
-  }
-}
-
 const int _oneByteLimit = 0x7f; // 7 bits
 const int _twoByteLimit = 0x7ff; // 11 bits
 const int _surrogateTagMask = 0xFC00;
