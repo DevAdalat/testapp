@@ -1,27 +1,20 @@
 import 'dart:ffi';
 import 'dart:typed_data';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:isolate';
-import 'package:ffi/ffi.dart';
-
-import 'package:testapp/generated_bindings.dart';
 
 class HomeController extends GetxController {
   List<String> names = [];
+  TextEditingController valOne = TextEditingController();
+  TextEditingController valTwo = TextEditingController();
   List<int> age = [];
   List<String> addess = [];
   ReceivePort receivePort = ReceivePort();
 
-  void loadLibraty() {
-    NativeLibrary lib = NativeLibrary(DynamicLibrary.open("libstorage.so"));
-    final files = lib.getallcount("/storage/emulated/0".toCString(malloc));
-    Get.snackbar("Total files", files.toString());
-  }
-
   @override
   onInit() {
-    loadLibraty();
     super.onInit();
   }
 }

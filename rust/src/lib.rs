@@ -1,9 +1,7 @@
 use std::{
-    ffi::{c_char, c_int, CStr},
+    ffi::{c_char, c_int, CStr, CString},
     thread,
 };
-
-use walkdir::WalkDir;
 
 // pub fn main() {
 //  //  let aa = CString::new("/sdcard").ok().unwrap();
@@ -21,12 +19,18 @@ use walkdir::WalkDir;
 //  //  data.join().unwrap();
 //}
 
+//#[no_mangle]
+//pub extern "C" fn getallcount(path: c_char) -> c_int {
+//  let c_str = unsafe { CStr::from_ptr(path) };
+//  let str_slice = c_str.to_str().unwrap();
+//  let count = thread::spawn(move || WalkDir::new(str_slice).into_iter().count());
+//  count.join().unwrap() as c_int
+//}
+
 #[no_mangle]
-pub extern "C" fn getallcount(path: *mut c_char) -> c_int {
-    let c_str = unsafe { CStr::from_ptr(path) };
-    let str_slice = c_str.to_str().unwrap();
-    let count = thread::spawn(move || WalkDir::new(str_slice).into_iter().count());
-    count.join().unwrap() as c_int
+pub extern "C" fn add(a: c_int, b: c_int) -> c_int {
+    let sum = thread::spawn(move || a + b);
+    sum.join().unwrap()
 }
 
 // fn totalImagesSize(path: *mut c_char) {

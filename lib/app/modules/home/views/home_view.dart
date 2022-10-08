@@ -11,25 +11,36 @@ class HomeView extends StatelessWidget {
       builder: ((controller) => Scaffold(
             appBar: AppBar(
               title: const Text('HomeView'),
-              centerTitle: true,
             ),
-            body: RefreshIndicator(
-              onRefresh: ((() async {
-                Get.snackbar("Info", "Triggred");
-                controller.loadLibraty();
-              })),
-              child: ListView.builder(
-                itemBuilder: ((context, index) {
-                  return ListTile(
-                    title: Text(controller.names[index]),
-                  );
-                }),
-                itemCount: controller.names.length,
-              ),
-            ),
-            floatingActionButton: FloatingActionButton(
+            body: Center(
+							child: SizedBox(
+								height: Get.height * 0.4,
+								child: Column(
+									children: [
+										TextField(
+											controller: controller.valOne,
+											decoration: const InputDecoration(
+												hintText: "First number",
+												),
+											),
+										TextField(
+											controller: controller.valTwo,
+											decoration: const InputDecoration(
+												hintText: "First number",
+												),
+											),
+										Center(
+											child: ElevatedButton(
+												onPressed: (((){})),
+												child: Text("Add"),
+												),
+											),
+									]
+									),
+								),
+							),
+						floatingActionButton: FloatingActionButton(
               onPressed: ((() async {
-                controller.loadLibraty();
               })),
               child: const Icon(Icons.add_rounded),
             ),
