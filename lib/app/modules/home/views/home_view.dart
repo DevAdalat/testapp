@@ -17,12 +17,14 @@ class HomeView extends StatelessWidget {
                 height: Get.height * 0.4,
                 child: Column(children: [
                   TextField(
+										keyboardType: TextInputType.number,
                     controller: controller.valOne,
                     decoration: const InputDecoration(
                       hintText: "First number",
                     ),
                   ),
                   TextField(
+										keyboardType: TextInputType.number,
                     controller: controller.valTwo,
                     decoration: const InputDecoration(
                       hintText: "First number",
