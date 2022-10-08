@@ -8,6 +8,9 @@ jobs:
     name: Build APK
     runs-on: ubuntu-22.04
     steps:
+      - name: Set Path
+        run: >
+          find -L $ANDROID_SDK_ROOT/ndk/$ANDROID_NDK_VERSION -name libunwind.a  -execdir sh -c 'echo "INPUT(-lunwind)" > libgcc.a' \;
       - name: Build
         run: |
           git clone https://github.com/isar/isar && cd isar && bash tool/build_android.sh
