@@ -4,6 +4,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ffi/ffi.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:testapp/generated_bindings.dart';
 
 class HomeController extends GetxController {
@@ -14,24 +15,41 @@ class HomeController extends GetxController {
   RxString greet = "".obs;
   List<String> addess = [];
 
-   rustGreet(String name) {
-	var value = name.toNativeUtf8().cast<ffi.Char>();
-		Get.snackbar("String", value.toString());
+  handlePermission() async {
+    PermissionStatus status = await Permission.manageExternalStorage.status;
+    PermissionStatus status1 = await Permission.storage.status;
+    if (status.isDenied || status1.isDenied) {
+      await Permission.manageExternalStorage.request();
+      await Permission.storage.request();
+    } else {
+      Get.snackbar("Info", "Permission already granted");
+    }
+  }
+
+  rustGreet(String name) {
+    handlePermission();
+    var value = name.toNativeUtf8().cast<ffi.Char>();
+    Get.snackbar("String", value.toString());
     try {
       NativeLibrary lib = NativeLibrary(DynamicLibrary.open("libstorage.so"));
-      greet.value = lib
-          .rust_greeting(value)
-          .cast<Utf8>()
-          .toDartString();
-			lib.rust_cstr_free(value);
+      greet.value = lib.rust_greeting(value).cast<Utf8>().toDartString();
+      lib.rust_cstr_free(value);
     } catch (e) {
       Get.snackbar("Error", e.toString());
     }
   }
-	 
-	 @override
-  dispose(){
+
+  getAllSizeImage(String dirPath) {
+    handlePermission();
+    NativeLibrary lib = NativeLibrary(DynamicLibrary.open("libstorage.so"));
+    var path = dirPath.toNativeUtf8().cast<ffi.Char>();
+    greet.value = lib.get_all_image_size(path).toString();
+    malloc.free(path);
+  }
+
+  @override
+  dispose() {
     super.dispose();
-		 valOne.dispose();
-	 }
+    valOne.dispose();
+  }
 }

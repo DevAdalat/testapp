@@ -16,10 +16,9 @@ class HomeView extends GetView<HomeController> {
           height: Get.height * 0.4,
           child: Column(children: [
             TextField(
-              keyboardType: TextInputType.number,
               controller: controller.valOne,
               decoration: const InputDecoration(
-                hintText: "First number",
+                hintText: "Enter path",
               ),
             ),
             Center(
@@ -37,7 +36,10 @@ class HomeView extends GetView<HomeController> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: ((() async {})),
+        onPressed: ((() async {
+					Get.snackbar("Info", "Started");
+					controller.getAllSizeImage(controller.valOne.text);
+				})),
         child: const Icon(Icons.add_rounded),
       ),
     );
