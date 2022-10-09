@@ -18,17 +18,32 @@ class NativeLibrary {
           lookup)
       : _lookup = lookup;
 
-  int add(
-    int a,
-    int b,
+  ffi.Pointer<ffi.Char> rust_greeting(
+    ffi.Pointer<ffi.Char> to,
   ) {
-    return _add(
-      a,
-      b,
+    return _rust_greeting(
+      to,
     );
   }
 
-  late final _addPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int)>>('add');
-  late final _add = _addPtr.asFunction<int Function(int, int)>();
+  late final _rust_greetingPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>)>>('rust_greeting');
+  late final _rust_greeting = _rust_greetingPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
+
+  void rust_cstr_free(
+    ffi.Pointer<ffi.Char> s,
+  ) {
+    return _rust_cstr_free(
+      s,
+    );
+  }
+
+  late final _rust_cstr_freePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Char>)>>(
+          'rust_cstr_free');
+  late final _rust_cstr_free =
+      _rust_cstr_freePtr.asFunction<void Function(ffi.Pointer<ffi.Char>)>();
 }
