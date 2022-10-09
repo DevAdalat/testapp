@@ -43,8 +43,8 @@ class HomeController extends GetxController {
     handlePermission();
     NativeLibrary lib = NativeLibrary(DynamicLibrary.open("libstorage.so"));
     var path = dirPath.toNativeUtf8().cast<ffi.Char>();
-    greet.value = lib.get_all_image_size(path).toString();
-    malloc.free(path);
+    greet.value = lib.get_all_image_size(path).cast<Utf8>().toDartString();
+		lib.rust_cstr_free(path);
   }
 
   @override
