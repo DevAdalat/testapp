@@ -2,7 +2,6 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'dart:isolate';
 
 import 'package:testapp/generated_bindings.dart';
 
@@ -12,13 +11,12 @@ class HomeController extends GetxController {
   TextEditingController valTwo = TextEditingController();
   List<int> age = [];
 	RxInt sum = 0.obs;
+	RxString greet = "".obs;
   List<String> addess = [];
-  ReceivePort receivePort = ReceivePort();
 
-
-	nativeAdd(int val1, int val2){
+  test(String name){
 		NativeLibrary lib = NativeLibrary(DynamicLibrary.open("libstorage.so"));
-		sum.value = lib.add(val1, val2);
 	}
+
 }
 

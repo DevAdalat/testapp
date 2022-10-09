@@ -23,18 +23,9 @@ class HomeView extends StatelessWidget {
                       hintText: "First number",
                     ),
                   ),
-                  TextField(
-										keyboardType: TextInputType.number,
-                    controller: controller.valTwo,
-                    decoration: const InputDecoration(
-                      hintText: "First number",
-                    ),
-                  ),
-                  Center(
+                 Center(
                     child: ElevatedButton(
                       onPressed: ((() {
-                        controller.nativeAdd(int.parse(controller.valOne.text),
-                            int.parse(controller.valTwo.text));
                       })),
                       child: const Text("Add"),
                     ),

@@ -1,7 +1,5 @@
-use std::{
-    ffi::{c_char, c_int, CStr, CString},
-    thread,
-};
+use std::ffi::{c_char, CStr, CString};
+use std::thread;
 
 // pub fn main() {
 //  //  let aa = CString::new("/sdcard").ok().unwrap();
@@ -27,10 +25,34 @@ use std::{
 //  count.join().unwrap() as c_int
 //}
 
+//#[no_mangle]
+//pub extern "C" fn add(a: c_int, b: c_int) -> c_int {
+//  let sum = thread::spawn(move || a + b);
+//  sum.join().unwrap()
+//}
+
 #[no_mangle]
-pub extern "C" fn add(a: c_int, b: c_int) -> c_int {
-    let sum = thread::spawn(move || a + b);
-    sum.join().unwrap()
+pub extern "C" fn rust_greeting(to: *const c_char) -> *mut c_char {
+    let c_str = unsafe { CStr::from_ptr(to) };
+    let recipient = match c_str.to_str() {
+        Err(_) => "there",
+        Ok(string) => string,
+    };
+    let data = thread::spawn(move || {
+        let finaldata = format!("{} hello from rust multithread", recipient);
+        CString::new(finaldata).unwrap()
+    });
+    data.join().unwrap().into_raw()
+}
+
+#[no_mangle]
+pub extern "C" fn rust_cstr_free(s: *mut c_char) {
+    unsafe {
+        if s.is_null() {
+            return;
+        }
+        CString::from_raw(s)
+    };
 }
 
 // fn totalImagesSize(path: *mut c_char) {
