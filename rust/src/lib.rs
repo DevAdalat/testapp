@@ -55,6 +55,35 @@ pub extern "C" fn rust_cstr_free(s: *mut c_char) {
     };
 }
 
+#[no_mangle]
+pub extern "C" fn get_all_image_size(path: *mut c_char) -> c_int {
+    let c_str = unsafe { CStr::from_ptr(path) };
+    let recipient = match c_str.to_str() {
+        Err(_) => "there",
+        Ok(string) => string,
+    };
+    let total_size = thread::spawn(move || {
+        let mut size = 0;
+        for files in WalkDir::new(recipient)
+            .follow_links(true)
+            .into_iter()
+            .find_map(|e| e.ok())
+        {
+            let file_name = files.file_name().to_string_lossy();
+            if file_name.ends_with(".png")
+                || file_name.ends_with(".jpg")
+                || file_name.ends_with(".jpeg")
+                || file_name.ends_with(".gif")
+                || file_name.ends_with(".bmp")
+            {
+                size += files.metadata().ok().unwrap().len();
+            }
+        }
+        size
+    });
+    total_size.join().unwrap() as c_int
+}
+
 // fn totalImagesSize(path: *mut c_char) {
 //  let c_str = unsafe { CStr::from_ptr(path) };
 //  let str_slice = c_str.to_str().unwrap();
