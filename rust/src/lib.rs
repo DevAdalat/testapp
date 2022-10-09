@@ -1,39 +1,8 @@
-use std::{
-    ffi::{c_char, c_int, CStr, CString},
-    thread,
-};
+use std::ffi::CStr;
+use std::ffi::CString;
+use std::{ffi::c_char, thread};
 
 use walkdir::WalkDir;
-
-// pub fn main() {
-//  //  let aa = CString::new("/sdcard").ok().unwrap();
-//  //  let data = thread::spawn(move || getallcount(aa.into_raw()));
-
-//  //  println!("Loading files count");
-//  //  let count = data.join().unwrap();
-//  //  println!("{} files found", count.to_string());
-
-//  //  let data = thread::spawn(move || {
-//  //      let length = getallcount(aa.into_raw());
-//  //      println!("{} total files found", length.to_string());
-//  //  });
-//  //  println!("Getting total files");
-//  //  data.join().unwrap();
-//}
-
-//#[no_mangle]
-//pub extern "C" fn getallcount(path: c_char) -> c_int {
-//  let c_str = unsafe { CStr::from_ptr(path) };
-//  let str_slice = c_str.to_str().unwrap();
-//  let count = thread::spawn(move || WalkDir::new(str_slice).into_iter().count());
-//  count.join().unwrap() as c_int
-//}
-
-//#[no_mangle]
-//pub extern "C" fn add(a: c_int, b: c_int) -> c_int {
-//  let sum = thread::spawn(move || a + b);
-//  sum.join().unwrap()
-//}
 
 #[no_mangle]
 pub extern "C" fn rust_greeting(to: *const c_char) -> *mut c_char {
@@ -60,56 +29,28 @@ pub extern "C" fn rust_cstr_free(s: *mut c_char) {
 }
 
 #[no_mangle]
-pub extern "C" fn get_all_image_size(path: *mut c_char) -> c_int {
+pub extern "C" fn get_all_image_size(path: *mut c_char) -> *mut c_char {
     let c_str = unsafe { CStr::from_ptr(path) };
     let recipient = match c_str.to_str() {
         Err(_) => "there",
         Ok(string) => string,
     };
-    let total_size = thread::spawn(move || {
-        let mut size = 0;
-        for files in WalkDir::new(recipient)
-            .follow_links(true)
+    let size = thread::spawn(move || {
+        WalkDir::new(recipient)
             .into_iter()
-            .find_map(|e| e.ok())
-        {
-            let file_name = files.file_name().to_string_lossy();
-            if file_name.ends_with(".png")
-                || file_name.ends_with(".jpg")
-                || file_name.ends_with(".jpeg")
-                || file_name.ends_with(".gif")
-                || file_name.ends_with(".bmp")
-            {
-                size += files.metadata().ok().unwrap().len();
-            }
-        }
-        size
+            .filter_map(|entry| entry.ok())
+            .filter(|a| {
+                a.file_name().to_string_lossy().ends_with(".png")
+                    || a.file_name().to_string_lossy().ends_with(".jpg")
+                    || a.file_name().to_string_lossy().ends_with(".jpeg")
+                    || a.file_name().to_string_lossy().ends_with(".bmp")
+                    || a.file_name().to_string_lossy().ends_with(".gif")
+                    || a.file_name().to_string_lossy().ends_with(".dng")
+            })
+            .filter_map(|entry| entry.metadata().ok())
+            .filter(|metadata| metadata.is_file())
+            .fold(0, |acc, m| acc + m.len())
     });
-    total_size.join().unwrap() as c_int
+    let final_size = size.join().unwrap();
+    CString::new(final_size.to_string()).unwrap().into_raw()
 }
-
-// fn totalImagesSize(path: *mut c_char) {
-//  let c_str = unsafe { CStr::from_ptr(path) };
-//  let str_slice = c_str.to_str().unwrap();
-//  let data = WalkDir::new(str_slice)
-//      .into_iter()
-//      .find_map(|e| e.ok())
-//      .filter(|e| e.file_name().to_string_lossy().ends_with(".json"))
-//      .unwrap();
-// }
-
-//  fn is_not_hidden(entry: &DirEntry, ishidden: bool) -> bool {
-//  if ishidden {
-//      entry
-//          .file_name()
-//          .to_str()
-//          .map(|s| entry.depth() == 0 || !s.starts_with("."))
-//          .unwrap_or(false)
-//  } else {
-//      entry
-//          .file_name()
-//          .to_str()
-//          .map(|s| entry.depth() == 0 || s.starts_with("."))
-//          .unwrap_or(false)
-//  }
-// }
