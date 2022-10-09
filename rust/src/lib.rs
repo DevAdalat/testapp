@@ -1,5 +1,8 @@
-use std::ffi::{c_char, CStr, CString};
-use std::thread;
+use std::{
+    ffi::{c_char, c_int, CStr, CString},
+    thread,
+};
+
 use walkdir::WalkDir;
 
 // pub fn main() {
