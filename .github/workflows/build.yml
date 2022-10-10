@@ -5,9 +5,19 @@ on: [push]
 
 jobs:
   build:
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - name: Release
+            command: --release
+          - name: Split per abi
+            command: --split-per-abi
+          - name: Debug
+            command: --debug
     name: Build APK
     runs-on: ubuntu-22.04
-    steps:
+    steps: 
       - name: clone repo
         uses: actions/checkout@v1
       - name: setup flutter
@@ -39,9 +49,9 @@ jobs:
 #         env GOOS=android GOARCH=amd64 go build -buildmode=c-shared -ldflags="-s -w" -o android/app/src/main/jniLibs/x86_64/libtest.so gocode/test.go
 #         find -type f -name libtest.h -exec rm -rf {} \;
       - name: build APK
-        run: flutter build apk --target-platform=android-arm64
+        run: flutter build apk ${{ matrix.command }}
       - name: upload to release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: master
+          tag_name: ${{ github.ref }}
           files: build/app/outputs/flutter-apk/*

@@ -1,9 +1,9 @@
-use std::env;
-use std::ffi::CStr;
-use std::ffi::CString;
-use std::thread::sleep;
-use std::time::Duration;
-use std::{ffi::c_char, thread};
+use std::{
+    env,
+    ffi::{c_char, CStr, CString},
+    thread::{self, sleep},
+    time::Duration,
+};
 
 use walkdir::WalkDir;
 
@@ -41,20 +41,26 @@ pub extern "C" fn get_images_size(path: *mut c_char) -> *mut c_char {
     env::set_var("SEARCH_PATH", recipient);
     env::set_var("PNG_SIZE", 0.to_string());
     thread::spawn(|| {
-        let size = WalkDir::new(env::var("SEARCH_PATH").expect("/sdcard"))
+        for entry in WalkDir::new("/sdcard")
+            .follow_links(true)
             .into_iter()
-            .filter_map(|entry| entry.ok())
-            .filter(|a| {
-                a.file_name().to_string_lossy().ends_with(".png")
-                    || a.file_name().to_string_lossy().ends_with(".jpg")
-                    || a.file_name().to_string_lossy().ends_with(".jpeg")
-                    || a.file_name().to_string_lossy().ends_with(".bmp")
-                    || a.file_name().to_string_lossy().ends_with(".gif")
-                    || a.file_name().to_string_lossy().ends_with(".dng")
-            })
-            .filter_map(|entry| entry.metadata().ok())
-            .filter(|metadata| metadata.is_file())
-            .fold(0, |acc, m| acc + m.len());
+            .filter_map(|e| e.ok())
+        {}
+
+        //     let size = WalkDir::new(env::var("SEARCH_PATH").expect("/sdcard"))
+        //         .into_iter()
+        //         .filter_map(|entry| entry.ok())
+        //         .filter(|a| {
+        //             a.file_name().to_string_lossy().ends_with(".png")
+        //                 || a.file_name().to_string_lossy().ends_with(".jpg")
+        //                 || a.file_name().to_string_lossy().ends_with(".jpeg")
+        //                 || a.file_name().to_string_lossy().ends_with(".bmp")
+        //                 || a.file_name().to_string_lossy().ends_with(".gif")
+        //                 || a.file_name().to_string_lossy().ends_with(".dng")
+        //         })
+        //         .filter_map(|entry| entry.metadata().ok())
+        //         .filter(|metadata| metadata.is_file())
+        //         .fold(0, |acc, m| acc + m.len());
         env::set_var("PNG_SIZE", size.to_string());
     });
 
@@ -65,9 +71,8 @@ pub extern "C" fn get_images_size(path: *mut c_char) -> *mut c_char {
         } else {
             sleep(Duration::from_secs(1));
             println!("Getting Data");
-            () // 'if' can also insert () in the else block when used as an expression
+            ()
         }
     };
-
     CString::new(result).expect("Failure").into_raw()
 }
