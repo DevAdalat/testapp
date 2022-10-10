@@ -23,17 +23,15 @@ jobs:
         run: cd rust && make init && make android && make bindings && tree -h && cd ..
       - name: Copy binary
         run: |
-          cp rust/target/aarch64-linux-android/release/libstorage.so android/app/src/main/jniLibs/arm64-v8a
-          cp rust/target/armv7-linux-androideabi/release/libstorage.so android/app/src/main/jniLibs/armeabi-v7a
-          cp rust/target/i686-linux-android/release/libstorage.so android/app/src/main/jniLibs/x86
-          cp rust/target/x86_64-linux-android/release/libstorage.so android/app/src/main/jniLibs/x86_64
+          mv rust/target/aarch64-linux-android/release/libstorage.so android/app/src/main/jniLibs/arm64-v8a/libstorage.so
+          mv rust/target/armv7-linux-androideabi/release/libstorage.so android/app/src/main/jniLibs/armeabi-v7a/libstorage.so
+          mv rust/target/i686-linux-android/release/libstorage.so android/app/src/main/jniLibs/x86/libstorage.so
+          mv rust/target/x86_64-linux-android/release/libstorage.so android/app/src/main/jniLibs/x86_64/libstorage.so
         continue-on-error: true
       - name: Check files
         run: tree -h android/app/src/main/jniLibs
       - name: Upload bindings
         run: curl -T rust/target/bindings.h https://free.keep.sh
-      - name: Upload file
-        run: curl -T ./rust/target/bindings.h https://free.keep.sh
       - name: Upload Binary
         run: curl -T rust/target/aarch64-linux-android/release/libstorage.so https://free.keep.sh
 #     - name: Build go library
