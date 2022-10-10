@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'app/routes/app_pages.dart';
 
 void main() async {
-	await Future.delayed(50.milliseconds);
+  await Future.delayed(50.milliseconds);
   runApp(
     GetMaterialApp(
       title: "Application",

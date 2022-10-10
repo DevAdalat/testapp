@@ -37,9 +37,9 @@ class HomeView extends GetView<HomeController> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: ((() async {
-					Get.snackbar("Info", "Started");
-					controller.getAllSizeImage(controller.valOne.text);
-				})),
+          Get.snackbar("Info", "Started");
+          controller.getAllSizeImage(controller.valOne.text);
+        })),
         child: const Icon(Icons.add_rounded),
       ),
     );

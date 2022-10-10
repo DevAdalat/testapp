@@ -21,8 +21,6 @@ class HomeController extends GetxController {
     if (status.isDenied || status1.isDenied) {
       await Permission.manageExternalStorage.request();
       await Permission.storage.request();
-    } else {
-      Get.snackbar("Info", "Permission already granted");
     }
   }
 
@@ -43,8 +41,8 @@ class HomeController extends GetxController {
     handlePermission();
     NativeLibrary lib = NativeLibrary(DynamicLibrary.open("libstorage.so"));
     var path = dirPath.toNativeUtf8().cast<ffi.Char>();
-    greet.value = lib.get_all_image_size(path).cast<Utf8>().toDartString();
-		lib.rust_cstr_free(path);
+    greet.value = lib.get_images_size(path).cast<Utf8>().toDartString();
+    lib.rust_cstr_free(path);
   }
 
   @override

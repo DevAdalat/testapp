@@ -47,18 +47,18 @@ class NativeLibrary {
   late final _rust_cstr_free =
       _rust_cstr_freePtr.asFunction<void Function(ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Char> get_all_image_size(
+  ffi.Pointer<ffi.Char> get_images_size(
     ffi.Pointer<ffi.Char> path,
   ) {
-    return _get_all_image_size(
+    return _get_images_size(
       path,
     );
   }
 
-  late final _get_all_image_sizePtr = _lookup<
+  late final _get_images_sizePtr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<ffi.Char> Function(
-              ffi.Pointer<ffi.Char>)>>('get_all_image_size');
-  late final _get_all_image_size = _get_all_image_sizePtr
+              ffi.Pointer<ffi.Char>)>>('get_images_size');
+  late final _get_images_size = _get_images_sizePtr
       .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 }
