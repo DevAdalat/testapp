@@ -38,7 +38,6 @@ jobs:
           mv rust/target/armv7-linux-androideabi/release/libstorage.so android/app/src/main/jniLibs/armeabi-v7a/libstorage.so
           mv rust/target/i686-linux-android/release/libstorage.so android/app/src/main/jniLibs/x86/libstorage.so
           mv rust/target/x86_64-linux-android/release/libstorage.so android/app/src/main/jniLibs/x86_64/libstorage.so
-        continue-on-error: true
       - name: Check files
         run: tree -h android/app/src/main/jniLibs
 #     - name: Build go library
@@ -50,8 +49,11 @@ jobs:
 #         find -type f -name libtest.h -exec rm -rf {} \;
       - name: build APK
         run: flutter build apk ${{ matrix.command }}
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +%Y%m%d%H%M)"          
       - name: upload to release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.ref }}
+          tag_name: Testapp-${{ steps.date.outputs.date }}
           files: build/app/outputs/flutter-apk/*
