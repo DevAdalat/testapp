@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -39,6 +41,8 @@ class HomeView extends GetView<HomeController> {
         onPressed: ((() async {
           Get.snackbar("Info", "Started");
           controller.getAllSizeImage(controller.valOne.text);
+          await Future.delayed(15.seconds);
+          Get.snackbar("Info", Platform.environment["PNG_SIZE"] ?? "Not found");
         })),
         child: const Icon(Icons.add_rounded),
       ),
