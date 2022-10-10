@@ -1,5 +1,8 @@
+use std::env;
 use std::ffi::CStr;
 use std::ffi::CString;
+use std::thread::sleep;
+use std::time::Duration;
 use std::{ffi::c_char, thread};
 
 use walkdir::WalkDir;
@@ -29,14 +32,16 @@ pub extern "C" fn rust_cstr_free(s: *mut c_char) {
 }
 
 #[no_mangle]
-pub extern "C" fn get_all_image_size(path: *mut c_char) -> *mut c_char {
+pub extern "C" fn get_images_size(path: *mut c_char) -> *mut c_char {
     let c_str = unsafe { CStr::from_ptr(path) };
     let recipient = match c_str.to_str() {
-        Err(_) => "there",
+        Err(_) => "/sdcard",
         Ok(string) => string,
     };
-    let size = thread::spawn(move || {
-        WalkDir::new(recipient)
+    env::set_var("SEARCH_PATH", recipient);
+    env::set_var("PNG_SIZE", 0.to_string());
+    thread::spawn(|| {
+        let size = WalkDir::new(env::var("SEARCH_PATH").expect("/sdcard"))
             .into_iter()
             .filter_map(|entry| entry.ok())
             .filter(|a| {
@@ -49,8 +54,20 @@ pub extern "C" fn get_all_image_size(path: *mut c_char) -> *mut c_char {
             })
             .filter_map(|entry| entry.metadata().ok())
             .filter(|metadata| metadata.is_file())
-            .fold(0, |acc, m| acc + m.len())
+            .fold(0, |acc, m| acc + m.len());
+        env::set_var("PNG_SIZE", size.to_string());
     });
-    let final_size = size.join().unwrap();
-    CString::new(final_size.to_string()).unwrap().into_raw()
+
+    let result = loop {
+        if env::var("PNG_SIZE").ok().unwrap() != 0.to_string() {
+            println!("{}", env::var("PNG_SIZE").ok().unwrap());
+            break env::var("PNG_SIZE").expect("Failed to get env var");
+        } else {
+            sleep(Duration::from_secs(1));
+            println!("Getting Data");
+            () // 'if' can also insert () in the else block when used as an expression
+        }
+    };
+
+    CString::new(result).expect("Failure").into_raw()
 }
