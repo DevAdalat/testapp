@@ -34,11 +34,16 @@ pub extern "C" fn rust_cstr_free(s: *mut c_char) {
 #[no_mangle]
 pub extern "C" fn get_images_size(path: *mut c_char) -> *mut c_char {
     let c_str = unsafe { CStr::from_ptr(path) };
-    let recipient = match c_str.to_str() {
+    let my_path = match c_str.to_str() {
         Err(_) => "/sdcard",
         Ok(string) => string,
     };
-    env::set_var("SEARCH_PATH", recipient);
+    env::set_var("SEARCH_PATH", my_path);
+    get_total_size_of_images();
+    CString::new("Loading...").unwrap().into_raw()
+}
+
+fn get_total_size_of_images() {
     env::set_var("PNG_SIZE", 0.to_string());
     thread::spawn(|| {
         let mut size = 0;
@@ -61,16 +66,4 @@ pub extern "C" fn get_images_size(path: *mut c_char) -> *mut c_char {
         }
         env::set_var("PNG_SIZE", size.to_string());
     });
-
-    let result = loop {
-        if env::var("PNG_SIZE").ok().unwrap() != 0.to_string() {
-            println!("{}", env::var("PNG_SIZE").ok().unwrap());
-            break env::var("PNG_SIZE").expect("Failed to get env var");
-        } else {
-            sleep(Duration::from_secs(1));
-            println!("Getting Data");
-            ()
-        }
-    };
-    CString::new(result).expect("Failure").into_raw()
 }
