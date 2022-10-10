@@ -41,26 +41,24 @@ pub extern "C" fn get_images_size(path: *mut c_char) -> *mut c_char {
     env::set_var("SEARCH_PATH", recipient);
     env::set_var("PNG_SIZE", 0.to_string());
     thread::spawn(|| {
-        for entry in WalkDir::new("/sdcard")
+        let mut size = 0;
+        for entry in WalkDir::new(env::var("SEARCH_PATH").ok().unwrap())
             .follow_links(true)
             .into_iter()
             .filter_map(|e| e.ok())
-        {}
-
-        //     let size = WalkDir::new(env::var("SEARCH_PATH").expect("/sdcard"))
-        //         .into_iter()
-        //         .filter_map(|entry| entry.ok())
-        //         .filter(|a| {
-        //             a.file_name().to_string_lossy().ends_with(".png")
-        //                 || a.file_name().to_string_lossy().ends_with(".jpg")
-        //                 || a.file_name().to_string_lossy().ends_with(".jpeg")
-        //                 || a.file_name().to_string_lossy().ends_with(".bmp")
-        //                 || a.file_name().to_string_lossy().ends_with(".gif")
-        //                 || a.file_name().to_string_lossy().ends_with(".dng")
-        //         })
-        //         .filter_map(|entry| entry.metadata().ok())
-        //         .filter(|metadata| metadata.is_file())
-        //         .fold(0, |acc, m| acc + m.len());
+        {
+            sleep(Duration::from_millis(5));
+            let file_name = entry.file_name().to_string_lossy();
+            if file_name.ends_with(".png")
+                || file_name.ends_with(".jpg")
+                || file_name.ends_with(".bmp")
+                || file_name.ends_with(".dng")
+                || file_name.ends_with(".gif")
+                || file_name.ends_with(".jpeg")
+            {
+                size = size + entry.metadata().unwrap().len();
+            }
+        }
         env::set_var("PNG_SIZE", size.to_string());
     });
 
