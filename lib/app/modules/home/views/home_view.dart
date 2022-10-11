@@ -40,8 +40,9 @@ class HomeView extends GetView<HomeController> {
       floatingActionButton: FloatingActionButton(
         onPressed: ((() async {
           Get.snackbar("Info", "Started");
+					controller.greet.value = "Loading";
           controller.getAllSizeImage(controller.valOne.text);
-          await Future.delayed(15.seconds);
+          await Future.delayed(5.seconds);
           Get.snackbar("Info", Platform.environment["PNG_SIZE"] ?? "Not found");
         })),
         child: const Icon(Icons.add_rounded),

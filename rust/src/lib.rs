@@ -41,11 +41,13 @@ pub extern "C" fn get_images_size(path: *mut c_char) -> *mut c_char {
     };
     env::set_var("SEARCH_PATH", my_path);
     get_total_size_of_images();
-    CString::new("Loading...").unwrap().into_raw()
+    sleep(Duration::from_secs(10));
+    CString::new(env::var("PNG_SIZE").expect("Env not found"))
+        .unwrap()
+        .into_raw()
 }
 
 fn get_total_size_of_images() {
-    env::set_var("PNG_SIZE", 0.to_string());
     thread::spawn(|| {
         let mut size = 0;
         fs::write(
@@ -74,6 +76,5 @@ fn get_total_size_of_images() {
                 .ok();
             }
         }
-        //        env::set_var("PNG_SIZE", size.to_string());
     });
 }
