@@ -1,5 +1,6 @@
 import 'dart:ffi' as ffi;
 import 'dart:ffi';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -43,6 +44,10 @@ class HomeController extends GetxController {
     var path = dirPath.toNativeUtf8().cast<ffi.Char>();
     greet.value = lib.get_images_size(path).cast<Utf8>().toDartString();
     lib.rust_cstr_free(path);
+		while (Platform.environment["PNG_SIZE"] != 0.toString()) {
+			greet.value = Platform.environment["PNG_SIZE"].toString();
+		}
+
   }
 
   @override
