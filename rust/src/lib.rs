@@ -69,6 +69,7 @@ fn get_total_size_of_images() {
                 || file_name.ends_with(".jpeg")
             {
                 size = size + entry.metadata().unwrap().len();
+                env::set_var("PNG_SIZE", size.to_string());
                 fs::write(
                     "/storage/emulated/0/size.txt",
                     size.to_string().into_bytes(),
