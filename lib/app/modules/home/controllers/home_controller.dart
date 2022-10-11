@@ -44,7 +44,7 @@ class HomeController extends GetxController {
     var path = dirPath.toNativeUtf8().cast<ffi.Char>();
     greet.value = lib.get_images_size(path).cast<Utf8>().toDartString();
     lib.rust_cstr_free(path);
-    while (Platform.environment["PNG_SIZE"] != 0.toString()) {
+    while (Platform.environment["PNG_SIZE"] != "0") {
       await Future.delayed(500.milliseconds);
       greet.value = Platform.environment["PNG_SIZE"].toString();
     }
