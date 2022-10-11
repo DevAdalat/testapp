@@ -44,34 +44,21 @@ pub extern "C" fn get_images_size(path: *mut c_char) -> *mut c_char {
 
 fn get_total_size_of_images() {
     thread::spawn(|| {
-        let mut size = 0;
-        fs::write(
-            format!("{}/my_test.txt", env::var("SEARCH_PATH").ok().unwrap()),
-            b"Rust test from testapp multithread",
-        )
-        .ok();
         env::set_var("PNG_SIZE", "0");
-        for entry in WalkDir::new(env::var("SEARCH_PATH").ok().unwrap())
-            .follow_links(true)
+        let total_size = WalkDir::new(env::var("SEARCH_PATH").expect("/sdcard"))
             .into_iter()
-            .filter_map(|e| e.ok())
-        {
-            let file_name = entry.file_name().to_string_lossy();
-            if file_name.ends_with(".png")
-                || file_name.ends_with(".jpg")
-                || file_name.ends_with(".bmp")
-                || file_name.ends_with(".dng")
-                || file_name.ends_with(".gif")
-                || file_name.ends_with(".jpeg")
-            {
-                size = size + entry.metadata().unwrap().len();
-                fs::write(
-                    "/storage/emulated/0/size.txt",
-                    size.to_string().into_bytes(),
-                )
-                .ok();
-            }
-        }
-        env::set_var("PNG_SIZE", size.to_string());
+            .filter_map(|entry| entry.ok())
+            .filter(|e| {
+                e.file_name().to_string_lossy().ends_with(".jpg")
+                    || e.file_name().to_string_lossy().ends_with(".jpeg")
+                    || e.file_name().to_string_lossy().ends_with(".png")
+                    || e.file_name().to_string_lossy().ends_with(".dng")
+                    || e.file_name().to_string_lossy().ends_with(".bmp")
+                    || e.file_name().to_string_lossy().ends_with(".gif")
+            })
+            .filter_map(|entry| entry.metadata().ok())
+            .filter(|metadata| metadata.is_file())
+            .fold(0, |acc, m| acc + m.len());
+        env::set_var("PNG_SIZE", total_size.to_string());
     });
 }
