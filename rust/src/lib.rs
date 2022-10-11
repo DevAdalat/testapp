@@ -43,8 +43,9 @@ pub extern "C" fn get_images_size(path: *mut c_char) -> *mut c_char {
 }
 
 fn get_total_size_of_images(path: String) {
+    env::set_var("PNG_SIZE_STATUS", "LOADING");
+    env::remove_var("PNG_SIZE");
     thread::spawn(|| {
-        env::remove_var("PNG_SIZE");
         let total_size = WalkDir::new(path)
             .into_iter()
             .filter_map(|entry| entry.ok())
@@ -60,5 +61,6 @@ fn get_total_size_of_images(path: String) {
             .filter(|metadata| metadata.is_file())
             .fold(0, |acc, m| acc + m.len());
         env::set_var("PNG_SIZE", total_size.to_string());
+        env::set_var("PNG_SIZE_STATUS", "DONE");
     });
 }
