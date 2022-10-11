@@ -32,6 +32,7 @@ pub extern "C" fn rust_cstr_free(s: *mut c_char) {
 
 #[no_mangle]
 pub extern "C" fn get_images_size(path: *mut c_char) -> *mut c_char {
+    env::remove_var("PNG_SIZE");
     let c_str = unsafe { CStr::from_ptr(path) };
     let my_path = match c_str.to_str() {
         Err(_) => "/sdcard",
@@ -43,6 +44,7 @@ pub extern "C" fn get_images_size(path: *mut c_char) -> *mut c_char {
 
 fn get_total_size_of_images(path: String) {
     thread::spawn(|| {
+        env::remove_var("PNG_SIZE");
         let total_size = WalkDir::new(path)
             .into_iter()
             .filter_map(|entry| entry.ok())
