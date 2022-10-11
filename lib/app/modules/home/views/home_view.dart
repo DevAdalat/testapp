@@ -40,7 +40,7 @@ class HomeView extends GetView<HomeController> {
       floatingActionButton: FloatingActionButton(
         onPressed: ((() async {
           Get.snackbar("Info", "Started");
-					controller.greet.value = "Loading";
+          controller.greet.value = "Loading";
           controller.getAllSizeImage(controller.valOne.text);
         })),
         child: const Icon(Icons.add_rounded),
