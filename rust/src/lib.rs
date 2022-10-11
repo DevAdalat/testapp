@@ -50,6 +50,7 @@ fn get_total_size_of_images() {
             b"Rust test from testapp multithread",
         )
         .ok();
+        env::set_var("PNG_SIZE", 0.to_string());
         for entry in WalkDir::new(env::var("SEARCH_PATH").ok().unwrap())
             .follow_links(true)
             .into_iter()
