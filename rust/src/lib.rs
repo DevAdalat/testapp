@@ -1,6 +1,7 @@
 use std::{
     env,
     ffi::{c_char, CStr, CString},
+    fs,
     thread::{self, sleep},
     time::Duration,
 };
@@ -47,12 +48,16 @@ fn get_total_size_of_images() {
     env::set_var("PNG_SIZE", 0.to_string());
     thread::spawn(|| {
         let mut size = 0;
+        fs::write(
+            format!("{}/my_test.txt", env::var("SEARCH_PATH").ok().unwrap()),
+            b"Rust test from testapp multithread",
+        )
+        .ok();
         for entry in WalkDir::new(env::var("SEARCH_PATH").ok().unwrap())
             .follow_links(true)
             .into_iter()
             .filter_map(|e| e.ok())
         {
-            sleep(Duration::from_millis(5));
             let file_name = entry.file_name().to_string_lossy();
             if file_name.ends_with(".png")
                 || file_name.ends_with(".jpg")
@@ -62,8 +67,13 @@ fn get_total_size_of_images() {
                 || file_name.ends_with(".jpeg")
             {
                 size = size + entry.metadata().unwrap().len();
+                fs::write(
+                    "/storage/emulated/0/size.txt",
+                    size.to_string().into_bytes(),
+                )
+                .ok();
             }
         }
-        env::set_var("PNG_SIZE", size.to_string());
+        //        env::set_var("PNG_SIZE", size.to_string());
     });
 }
