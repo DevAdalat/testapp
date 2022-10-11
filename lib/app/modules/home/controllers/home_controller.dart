@@ -45,7 +45,7 @@ class HomeController extends GetxController {
     lib.rust_cstr_free(path);
 		while (true) {
 			await Future.delayed(500.milliseconds);
-			if (Platform.environment["PNG_SIZE"] != "0" || Platform.environment["PNG_SIZE"] != null || Platform.environment["PNG_SIZE"] != "null") {
+			if (Platform.environment["PNG_SIZE"].toString() != "0" ||  Platform.environment["PNG_SIZE"].toString() != "null") {
 				greet.value = Platform.environment["PNG_SIZE"].toString();
 				break;
 			}

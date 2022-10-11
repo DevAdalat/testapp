@@ -1,7 +1,7 @@
 use std::{
     env,
     ffi::{c_char, CStr, CString},
-    fs, thread,
+    thread,
 };
 
 use walkdir::WalkDir;
@@ -37,15 +37,13 @@ pub extern "C" fn get_images_size(path: *mut c_char) -> *mut c_char {
         Err(_) => "/sdcard",
         Ok(string) => string,
     };
-    env::set_var("SEARCH_PATH", my_path);
-    get_total_size_of_images();
+    get_total_size_of_images(my_path.to_string());
     CString::new("Loading...").unwrap().into_raw()
 }
 
-fn get_total_size_of_images() {
+fn get_total_size_of_images(path: String) {
     thread::spawn(|| {
-        env::set_var("PNG_SIZE", "0");
-        let total_size = WalkDir::new(env::var("SEARCH_PATH").expect("/sdcard"))
+        let total_size = WalkDir::new(path)
             .into_iter()
             .filter_map(|entry| entry.ok())
             .filter(|e| {
