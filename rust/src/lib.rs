@@ -1,9 +1,7 @@
 use std::{
     env,
     ffi::{c_char, CStr, CString},
-    fs,
-    thread::{self, sleep},
-    time::Duration,
+    fs, thread,
 };
 
 use walkdir::WalkDir;
@@ -41,10 +39,7 @@ pub extern "C" fn get_images_size(path: *mut c_char) -> *mut c_char {
     };
     env::set_var("SEARCH_PATH", my_path);
     get_total_size_of_images();
-    sleep(Duration::from_secs(10));
-    CString::new(env::var("PNG_SIZE").expect("Env not found"))
-        .unwrap()
-        .into_raw()
+    CString::new("Loading...").unwrap().into_raw()
 }
 
 fn get_total_size_of_images() {

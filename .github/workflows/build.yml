@@ -40,13 +40,6 @@ jobs:
           mv rust/target/x86_64-linux-android/release/libstorage.so android/app/src/main/jniLibs/x86_64/libstorage.so
       - name: Check files
         run: tree -h android/app/src/main/jniLibs
-#     - name: Build go library
-#       run: |
-#         env GOOS=android GOARCH=arm64 go build -buildmode=c-shared -ldflags="-s -w" -o android/app/src/main/jniLibs/arm64-v8a/libtest.so gocode/test.go
-#         env GOOS=android GOARCH=arm go build -buildmode=c-shared -ldflags="-s -w" -o android/app/src/main/jniLibs/armeabi-v7a/libtest.so gocode/test.go
-#         env GOOS=android GOARCH=386 go build -buildmode=c-shared -ldflags="-s -w" -o android/app/src/main/jniLibs/x86/libtest.so gocode/test.go
-#         env GOOS=android GOARCH=amd64 go build -buildmode=c-shared -ldflags="-s -w" -o android/app/src/main/jniLibs/x86_64/libtest.so gocode/test.go
-#         find -type f -name libtest.h -exec rm -rf {} \;
       - name: build APK
         run: flutter build apk ${{ matrix.command }}
       - name: Get current date

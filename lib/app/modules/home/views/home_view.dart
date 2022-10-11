@@ -42,7 +42,7 @@ class HomeView extends GetView<HomeController> {
           Get.snackbar("Info", "Started");
 					controller.greet.value = "Loading";
           controller.getAllSizeImage(controller.valOne.text);
-          await Future.delayed(5.seconds);
+          await Future.delayed(10.seconds);
           Get.snackbar("Info", Platform.environment["PNG_SIZE"] ?? "Not found");
         })),
         child: const Icon(Icons.add_rounded),
