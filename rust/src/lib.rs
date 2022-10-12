@@ -65,6 +65,7 @@ fn get_total_size_of_images(path: String) {
     });
 }
 
+#[no_mangle]
 pub extern "C" fn is_png_size_work_done() -> bool {
     if env::var("PNG_SIZE_STATUS").unwrap() == "LOADING" {
         false
@@ -73,6 +74,7 @@ pub extern "C" fn is_png_size_work_done() -> bool {
     }
 }
 
+#[no_mangle]
 pub extern "C" fn get_png_size() -> *mut c_char {
     CString::new(env::var("PNG_SIZE").unwrap())
         .unwrap()
