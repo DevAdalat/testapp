@@ -43,13 +43,14 @@ class HomeController extends GetxController {
     var path = dirPath.toNativeUtf8().cast<ffi.Char>();
     greet.value = lib.get_images_size(path).cast<Utf8>().toDartString();
     lib.rust_cstr_free(path);
-    while (Platform.environment["PNG_SIZE_STATUS"] == "LOADING" ||
-        Platform.environment["PNG_SIZE_STATUS"] == null) {
+    while (true) {
       await Future.delayed(200.milliseconds);
-      greet.value =
-          Platform.environment["PNG_SIZE_STATUS"] ?? "Faild to get environment";
+      if (Platform.environment["PNG_SIZE_STATUS"] != "LOADING") {
+        greet.value = Platform.environment["PNG_SIZE"] ?? "FAILED";
+        break;
+      }
     }
-    greet.value = Platform.environment["PNG_SIZE"] ?? "Failed";
+    Get.snackbar("Status", "Done");
   }
 
   @override
