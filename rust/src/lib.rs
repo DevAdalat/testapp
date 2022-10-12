@@ -38,12 +38,12 @@ pub extern "C" fn get_images_size(path: *mut c_char) -> *mut c_char {
         Err(_) => "/sdcard",
         Ok(string) => string,
     };
+    env::set_var("PNG_SIZE_STATUS", "LOADING");
     get_total_size_of_images(my_path.to_string());
     CString::new("Loading...").unwrap().into_raw()
 }
 
 fn get_total_size_of_images(path: String) {
-    env::set_var("PNG_SIZE_STATUS", "LOADING");
     env::remove_var("PNG_SIZE");
     thread::spawn(|| {
         let total_size = WalkDir::new(path)
