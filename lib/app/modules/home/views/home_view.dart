@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -34,6 +32,11 @@ class HomeView extends GetView<HomeController> {
             Center(
               child: Obx((() => Text(controller.greet.value))),
             ),
+            Obx((() => Text("Image Size: ${controller.imageSize.value} B"))),
+            Obx((() => Text("Videos Size: ${controller.videosSize.value} B"))),
+            Obx((() => Text("Audios Size: ${controller.audiosSize.value} B"))),
+            Obx((() => Text("Docs Size: ${controller.docsSize.value} B"))),
+            Obx((() => Text("APKs Size: ${controller.apkSize.value} B"))),
           ]),
         ),
       ),

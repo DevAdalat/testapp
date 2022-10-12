@@ -47,37 +47,178 @@ class NativeLibrary {
   late final _rust_cstr_free =
       _rust_cstr_freePtr.asFunction<void Function(ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Char> init(
+  ffi.Pointer<ffi.Char> init_image_size(
     ffi.Pointer<ffi.Char> path,
   ) {
-    return _init(
+    return _init_image_size(
       path,
     );
   }
 
-  late final _initPtr = _lookup<
+  late final _init_image_sizePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('init');
-  late final _init = _initPtr
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>)>>('init_image_size');
+  late final _init_image_size = _init_image_sizePtr
       .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Char> is_png_size_work_done() {
-    return _is_png_size_work_done();
+  ffi.Pointer<ffi.Char> is_image_size_work_done() {
+    return _is_image_size_work_done();
   }
 
-  late final _is_png_size_work_donePtr =
+  late final _is_image_size_work_donePtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function()>>(
-          'is_png_size_work_done');
-  late final _is_png_size_work_done =
-      _is_png_size_work_donePtr.asFunction<ffi.Pointer<ffi.Char> Function()>();
+          'is_image_size_work_done');
+  late final _is_image_size_work_done = _is_image_size_work_donePtr
+      .asFunction<ffi.Pointer<ffi.Char> Function()>();
 
-  ffi.Pointer<ffi.Char> get_png_size() {
-    return _get_png_size();
+  ffi.Pointer<ffi.Char> get_image_size() {
+    return _get_image_size();
   }
 
-  late final _get_png_sizePtr =
+  late final _get_image_sizePtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function()>>(
-          'get_png_size');
-  late final _get_png_size =
-      _get_png_sizePtr.asFunction<ffi.Pointer<ffi.Char> Function()>();
+          'get_image_size');
+  late final _get_image_size =
+      _get_image_sizePtr.asFunction<ffi.Pointer<ffi.Char> Function()>();
+
+  ffi.Pointer<ffi.Char> init_videos_size(
+    ffi.Pointer<ffi.Char> path,
+  ) {
+    return _init_videos_size(
+      path,
+    );
+  }
+
+  late final _init_videos_sizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>)>>('init_videos_size');
+  late final _init_videos_size = _init_videos_sizePtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> is_videos_size_work_done() {
+    return _is_videos_size_work_done();
+  }
+
+  late final _is_videos_size_work_donePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function()>>(
+          'is_videos_size_work_done');
+  late final _is_videos_size_work_done = _is_videos_size_work_donePtr
+      .asFunction<ffi.Pointer<ffi.Char> Function()>();
+
+  ffi.Pointer<ffi.Char> get_videos_size() {
+    return _get_videos_size();
+  }
+
+  late final _get_videos_sizePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function()>>(
+          'get_videos_size');
+  late final _get_videos_size =
+      _get_videos_sizePtr.asFunction<ffi.Pointer<ffi.Char> Function()>();
+
+  ffi.Pointer<ffi.Char> init_apks_size(
+    ffi.Pointer<ffi.Char> path,
+  ) {
+    return _init_apks_size(
+      path,
+    );
+  }
+
+  late final _init_apks_sizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>)>>('init_apks_size');
+  late final _init_apks_size = _init_apks_sizePtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> is_apk_size_work_done() {
+    return _is_apk_size_work_done();
+  }
+
+  late final _is_apk_size_work_donePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function()>>(
+          'is_apk_size_work_done');
+  late final _is_apk_size_work_done =
+      _is_apk_size_work_donePtr.asFunction<ffi.Pointer<ffi.Char> Function()>();
+
+  ffi.Pointer<ffi.Char> get_apk_size() {
+    return _get_apk_size();
+  }
+
+  late final _get_apk_sizePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function()>>(
+          'get_apk_size');
+  late final _get_apk_size =
+      _get_apk_sizePtr.asFunction<ffi.Pointer<ffi.Char> Function()>();
+
+  ffi.Pointer<ffi.Char> init_musics_size(
+    ffi.Pointer<ffi.Char> path,
+  ) {
+    return _init_musics_size(
+      path,
+    );
+  }
+
+  late final _init_musics_sizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>)>>('init_musics_size');
+  late final _init_musics_size = _init_musics_sizePtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> is_musics_size_work_done() {
+    return _is_musics_size_work_done();
+  }
+
+  late final _is_musics_size_work_donePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function()>>(
+          'is_musics_size_work_done');
+  late final _is_musics_size_work_done = _is_musics_size_work_donePtr
+      .asFunction<ffi.Pointer<ffi.Char> Function()>();
+
+  ffi.Pointer<ffi.Char> get_musics_size() {
+    return _get_musics_size();
+  }
+
+  late final _get_musics_sizePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function()>>(
+          'get_musics_size');
+  late final _get_musics_size =
+      _get_musics_sizePtr.asFunction<ffi.Pointer<ffi.Char> Function()>();
+
+  ffi.Pointer<ffi.Char> init_docs_size(
+    ffi.Pointer<ffi.Char> path,
+  ) {
+    return _init_docs_size(
+      path,
+    );
+  }
+
+  late final _init_docs_sizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>)>>('init_docs_size');
+  late final _init_docs_size = _init_docs_sizePtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> is_docs_size_work_done() {
+    return _is_docs_size_work_done();
+  }
+
+  late final _is_docs_size_work_donePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function()>>(
+          'is_docs_size_work_done');
+  late final _is_docs_size_work_done =
+      _is_docs_size_work_donePtr.asFunction<ffi.Pointer<ffi.Char> Function()>();
+
+  ffi.Pointer<ffi.Char> get_docs_size() {
+    return _get_docs_size();
+  }
+
+  late final _get_docs_sizePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function()>>(
+          'get_docs_size');
+  late final _get_docs_size =
+      _get_docs_sizePtr.asFunction<ffi.Pointer<ffi.Char> Function()>();
 }

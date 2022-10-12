@@ -1,6 +1,5 @@
 import 'dart:ffi' as ffi;
 import 'dart:ffi';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,6 +14,11 @@ class HomeController extends GetxController {
   RxInt sum = 0.obs;
   RxString greet = "".obs;
   List<String> addess = [];
+	var imageSize = "".obs;
+	var apkSize = "".obs;
+	var videosSize = "".obs;
+	var audiosSize = "".obs;
+	var docsSize = "".obs;
 
   handlePermission() async {
     PermissionStatus status = await Permission.manageExternalStorage.status;
@@ -41,19 +45,54 @@ class HomeController extends GetxController {
     handlePermission();
     NativeLibrary lib = NativeLibrary(DynamicLibrary.open("libstorage.so"));
     var path = dirPath.toNativeUtf8().cast<ffi.Char>();
-    greet.value = lib.init(path).cast<Utf8>().toDartString();
+    greet.value = "Loading";
+		imageSize.value = lib.init_image_size(path).toDString();
+		videosSize.value = lib.init_videos_size(path).toDString();
+		apkSize.value = lib.init_apks_size(path).toDString();
+		audiosSize.value = lib.init_musics_size(path).toDString();
+		docsSize.value = lib.init_docs_size(path).toDString();
     lib.rust_cstr_free(path);
     int count = 0;
-    while (true) {
-      await Future.delayed(100.milliseconds);
-      if (lib.is_png_size_work_done().cast<Utf8>().toDartString() == "true") {
-        greet.value = lib.get_png_size().cast<Utf8>().toDartString();
-        break;
-      } else {
-        count = count + 1;
-        greet.value = count.toString();
-      }
-    }
+	  while (true) {
+			await Future.delayed(100.milliseconds);
+			count++;
+	  	if (lib.is_image_size_work_done().toDString() == "true") {
+	  		imageSize.value = lib.get_image_size().toDString();
+				break;
+	  	} else {
+				greet.value = count.toString();
+			}
+	  }
+	  while (true) {
+			await Future.delayed(100.milliseconds);
+	  	if (lib.is_videos_size_work_done().toDString() == "true") {
+	  		videosSize.value = lib.get_videos_size().toDString();
+				break;
+	  	}
+	  }
+	  while (true) {
+			await Future.delayed(100.milliseconds);
+	  	if (lib.is_docs_size_work_done().toDString() == "true") {
+	  		docsSize.value = lib.get_docs_size().toDString();
+				break;
+	  	}
+	  }
+	  while (true) {
+			await Future.delayed(100.milliseconds);
+	  	if (lib.is_musics_size_work_done().toDString() == "true") {
+	  		audiosSize.value = lib.get_musics_size().toDString();
+				break;
+	  	}
+	  }
+
+	  while (true) {
+			await Future.delayed(100.milliseconds);
+	  	if (lib.is_apk_size_work_done().toDString() == "true") {
+	  		apkSize.value = lib.get_apk_size().toDString();
+				break;
+	  	}
+	  }
+
   }
 
   @override
@@ -61,4 +100,17 @@ class HomeController extends GetxController {
     super.dispose();
     valOne.dispose();
   }
+}
+
+
+extension CString on String {
+	ffi.Pointer<ffi.Char> toCString(){
+		return toNativeUtf8().cast<ffi.Char>();
+	}
+}
+
+extension DString on ffi.Pointer<ffi.Char>{
+	String toDString(){
+		return cast<Utf8>().toDartString();
+	}
 }
