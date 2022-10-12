@@ -41,16 +41,19 @@ class HomeController extends GetxController {
     handlePermission();
     NativeLibrary lib = NativeLibrary(DynamicLibrary.open("libstorage.so"));
     var path = dirPath.toNativeUtf8().cast<ffi.Char>();
-    greet.value = lib.get_images_size(path).cast<Utf8>().toDartString();
+    greet.value = lib.init(path).cast<Utf8>().toDartString();
     lib.rust_cstr_free(path);
+    int count = 0;
     while (true) {
-      await Future.delayed(200.milliseconds);
-      if (Platform.environment["PNG_SIZE_STATUS"] != "LOADING") {
-        greet.value = Platform.environment["PNG_SIZE"] ?? "FAILED";
+      await Future.delayed(100.milliseconds);
+      if (lib.is_png_size_work_done().cast<Utf8>().toDartString() == "true") {
+        greet.value = lib.get_png_size().cast<Utf8>().toDartString();
         break;
+      } else {
+        count = count + 1;
+        greet.value = count.toString();
       }
     }
-    Get.snackbar("Status", "Done");
   }
 
   @override

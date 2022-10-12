@@ -4,4 +4,8 @@ char *rust_greeting(const char *to);
 
 void rust_cstr_free(char *s);
 
-char *get_images_size(char *path);
+char *init(char *path);
+
+char *is_png_size_work_done(void);
+
+char *get_png_size(void);
