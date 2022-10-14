@@ -9,12 +9,12 @@ jobs:
       fail-fast: true
       matrix:
         include:
-          - name: Release
-            command: --release
+#         - name: Release
+#           command: --release
           - name: Split per abi
             command: --split-per-abi
-          - name: Debug
-            command: --debug
+#         - name: Debug
+#           command: --debug
     name: Build APK
     runs-on: ubuntu-22.04
     steps: 
@@ -26,22 +26,28 @@ jobs:
         run: flutter doctor
       - name: accecpt licences
         run:  yes | flutter doctor --android-licenses
-      - name: Set Path
-        run: >
-          find -L $ANDROID_SDK_ROOT/ndk/$ANDROID_NDK_VERSION -name libunwind.a  -execdir sh -c 'echo "INPUT(-lunwind)" > libgcc.a' \;
-      - name: Build rust lib 
-        run: cd rust && make init && make android && make bindings && tree -h && cd ..
-      - name: Upload headers
-        run: curl -T ./rust/target/bindings.h https://free.keep.sh
-      - name: Copy binary
-        run: |
-          pwd
-          mv rust/target/aarch64-linux-android/release/libstorage.so android/app/src/main/jniLibs/arm64-v8a/libstorage.so
-          mv rust/target/armv7-linux-androideabi/release/libstorage.so android/app/src/main/jniLibs/armeabi-v7a/libstorage.so
-          mv rust/target/i686-linux-android/release/libstorage.so android/app/src/main/jniLibs/x86/libstorage.so
-          mv rust/target/x86_64-linux-android/release/libstorage.so android/app/src/main/jniLibs/x86_64/libstorage.so
-      - name: Check files
-        run: tree -h android/app/src/main/jniLibs
+      - name: Download tdlib
+        run: wget https://github.com/DevAdalat/android-libtdjson/releases/download/tdlib/libs.tar.gz -O android/app/src/main/jniLibs/libs.tar.gz
+      - name: Extract libs
+        run: tar -xf android/app/src/main/jniLibs/libs.tar.gz
+      - name: Delete libs.tar.gz
+        run: rm -rf android/app/src/main/jniLibs/libs.tar.gz
+#     - name: Set Path
+#       run: >
+#         find -L $ANDROID_SDK_ROOT/ndk/$ANDROID_NDK_VERSION -name libunwind.a  -execdir sh -c 'echo "INPUT(-lunwind)" > libgcc.a' \;
+#     - name: Build rust lib 
+#       run: cd rust && make init && make android && make bindings && tree -h && cd ..
+#     - name: Upload headers
+#       run: curl -T ./rust/target/bindings.h https://free.keep.sh
+#     - name: Copy binary
+#       run: |
+#         pwd
+#         mv rust/target/aarch64-linux-android/release/libstorage.so android/app/src/main/jniLibs/arm64-v8a/libstorage.so
+#         mv rust/target/armv7-linux-androideabi/release/libstorage.so android/app/src/main/jniLibs/armeabi-v7a/libstorage.so
+#         mv rust/target/i686-linux-android/release/libstorage.so android/app/src/main/jniLibs/x86/libstorage.so
+#         mv rust/target/x86_64-linux-android/release/libstorage.so android/app/src/main/jniLibs/x86_64/libstorage.so
+#     - name: Check files
+#       run: tree -h android/app/src/main/jniLibs
       - name: build APK
         run: flutter build apk ${{ matrix.command }}
       - name: Get current date

@@ -1,5 +1,9 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:telegram_client/telegram_client.dart';
+import 'package:testapp/tdlib_bindings.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -24,7 +28,7 @@ class HomeView extends GetView<HomeController> {
             Center(
               child: ElevatedButton(
                 onPressed: ((() {
-                  controller.rustGreet(controller.valOne.text);
+//                  controller.rustGreet(controller.valOne.text);
                 })),
                 child: const Text("Add"),
               ),
@@ -32,19 +36,20 @@ class HomeView extends GetView<HomeController> {
             Center(
               child: Obx((() => Text(controller.greet.value))),
             ),
-            Obx((() => Text("Image Size: ${controller.imageSize.value} B"))),
-            Obx((() => Text("Videos Size: ${controller.videosSize.value} B"))),
-            Obx((() => Text("Audios Size: ${controller.audiosSize.value} B"))),
-            Obx((() => Text("Docs Size: ${controller.docsSize.value} B"))),
-            Obx((() => Text("APKs Size: ${controller.apkSize.value} B"))),
           ]),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: ((() async {
-          Get.snackbar("Info", "Started");
-          controller.greet.value = "Loading";
-          controller.getAllSizeImage(controller.valOne.text);
+          try {
+            NativeLibrary td =
+                NativeLibrary(DynamicLibrary.open("libtdjson.so"));
+            int client = td.td_create_client_id();
+            Get.snackbar("Client id", client.toString());
+            controller.startReceiver(td);
+          } catch (e) {
+            Get.snackbar("Error", e.toString());
+          }
         })),
         child: const Icon(Icons.add_rounded),
       ),
