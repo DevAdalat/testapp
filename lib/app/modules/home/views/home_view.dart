@@ -14,7 +14,7 @@ class HomeView extends StatelessWidget {
               ),
               body: ListView.builder(itemBuilder: (((context, index) {
                 return ListTile(
-                  title: Text(controller.names[index]),
+                  title: Text("Count Number $index"),
                 );
               }))),
               floatingActionButton: FloatingActionButton(

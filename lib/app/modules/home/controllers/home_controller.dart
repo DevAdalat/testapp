@@ -32,7 +32,8 @@ class HomeController extends GetxController {
     NativeLibrary lib = NativeLibrary(DynamicLibrary.open("librtest.so"));
     var rawList = lib.get_list();
     var data = rawList.cast<ffi.Pointer<Utf8>>();
-    names = toStringList(data).toList();
+    final namesData = toStringList(data).toList();
+		Get.snackbar("Names", namesData.toString());
     update();
     malloc.free(data);
     malloc.free(rawList);
