@@ -1,10 +1,10 @@
 import 'dart:ffi' as ffi;
-
+import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ffi/ffi.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:testapp/tdlib_bindings.dart';
+import 'package:testapp/generated_bindings.dart';
 
 class HomeController extends GetxController {
   List<String> names = [];
@@ -26,6 +26,16 @@ class HomeController extends GetxController {
       await Permission.manageExternalStorage.request();
       await Permission.storage.request();
     }
+  }
+
+  getData() {
+    NativeLibrary lib = NativeLibrary(DynamicLibrary.open("librtest.so"));
+    var rawList = lib.get_list();
+    var data = rawList.cast<ffi.Pointer<Utf8>>();
+    names = toStringList(data).toList();
+    update();
+    malloc.free(data);
+    malloc.free(rawList);
   }
 
 //rustGreet(String name) {
@@ -94,20 +104,23 @@ class HomeController extends GetxController {
 
 //}
 
-  void startReceiver(NativeLibrary td) async {
-    while (true) {
-      await Future.delayed(100.milliseconds);
-      final data = td.td_receive(10);
-      if (data.toDString() != "null") {
-        Get.snackbar("Data", data.toDString());
-      }
-    }
-  }
-
   @override
   dispose() {
     super.dispose();
     valOne.dispose();
+  }
+
+  Iterable<String> toStringList(
+      Pointer<Pointer<Utf8>> charPointerPointer) sync* {
+    int index = 0;
+    while (true) {
+      final charPointer = charPointerPointer[index];
+      if (charPointer == nullptr) {
+        break;
+      }
+      yield charPointer.toDartString();
+      index++;
+    }
   }
 }
 
