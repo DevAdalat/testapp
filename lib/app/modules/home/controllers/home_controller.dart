@@ -39,9 +39,10 @@ class HomeController extends GetxController {
           enableStorageOptimizer: true,
         );
         td.td_json_client_send(client, tdParam.toJson().toString().toCString());
+      } else if (data.contains("error")) {
+        Get.snackbar("Td Error", data);
+        break;
       }
-      Get.snackbar("Td Data", data);
-      break;
     }
   }
 
