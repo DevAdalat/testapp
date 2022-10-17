@@ -18,22 +18,22 @@ class HomeView extends StatelessWidget {
         appBar: AppBar(title: const Text("Test App")),
         body: Center(
             child: SizedBox(
-							height: 150,
-              child: Column(
-                children: [
-									TextButton(
-										onPressed: (() async {
-											await Permission.manageExternalStorage.request();
-											await Permission.storage.request();
-										}),
-										child: const Text("Request"),
-										),
-                  TextButton(
-                      onPressed: ((() => controller.startService())),
-                      child: const Text("Run")),
-                ],
+          height: 150,
+          child: Column(
+            children: [
+              TextButton(
+                onPressed: (() async {
+                  await Permission.manageExternalStorage.request();
+                  await Permission.storage.request();
+                }),
+                child: const Text("Request"),
               ),
-            )),
+              TextButton(
+                  onPressed: ((() => controller.startService())),
+                  child: const Text("Run")),
+            ],
+          ),
+        )),
       );
     })));
   }
