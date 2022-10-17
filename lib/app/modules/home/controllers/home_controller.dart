@@ -19,6 +19,8 @@ class HomeController extends GetxController {
       final recData = rawRecData.toDString();
       Get.snackbar("Td Data", recData);
       if (recData.contains("error")) {
+        malloc.free(rawRecData);
+        malloc.free(rawData);
         break;
       }
     }
@@ -29,6 +31,12 @@ class HomeController extends GetxController {
     super.onInit();
     td = NativeLibrary(DynamicLibrary.open("libtdjson.so"));
     client = td.td_json_client_create();
+  }
+
+  @override
+  dispose() {
+    super.dispose();
+    valController.dispose();
   }
 }
 

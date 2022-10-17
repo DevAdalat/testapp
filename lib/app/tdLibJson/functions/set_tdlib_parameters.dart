@@ -133,7 +133,6 @@ class SetTdlibParameters extends TdFunction {
       );
 
 // ignore: constant_identifier_names
-// ignore: constant_identifier_names
   static const CONSTRUCTOR = 'setTdlibParameters';
 
   @override
