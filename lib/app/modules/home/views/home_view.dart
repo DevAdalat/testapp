@@ -4,6 +4,7 @@ import 'package:ffi/ffi.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:testapp/generated_bindings.dart';
 
 import '../controllers/home_controller.dart';
@@ -16,9 +17,23 @@ class HomeView extends StatelessWidget {
       return Scaffold(
         appBar: AppBar(title: const Text("Test App")),
         body: Center(
-            child: TextButton(
-                onPressed: ((() => controller.startService())),
-                child: const Text("Run"))),
+            child: SizedBox(
+							height: 150,
+              child: Column(
+                children: [
+									TextButton(
+										onPressed: (() async {
+											await Permission.manageExternalStorage.request();
+											await Permission.storage.request();
+										}),
+										child: const Text("Request"),
+										),
+                  TextButton(
+                      onPressed: ((() => controller.startService())),
+                      child: const Text("Run")),
+                ],
+              ),
+            )),
       );
     })));
   }
