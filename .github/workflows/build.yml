@@ -21,11 +21,9 @@ jobs:
       - name: clone repo
         uses: actions/checkout@v1
       - name: setup flutter
-        run: sudo snap install flutter --classic
-      - name: flutter version
-        run: flutter doctor
-      - name: accecpt licences
-        run:  yes | flutter doctor --android-licenses
+        uses: subosito/flutter-action@v2
+        with:
+         channel: 'stable'
 #     - name: Download tdlib
 #       run: wget https://github.com/DevAdalat/android-libtdjson/releases/download/tdlib/libs.tar.gz -O android/app/src/main/jniLibs/libs.tar.gz
 #     - name: Extract libs
