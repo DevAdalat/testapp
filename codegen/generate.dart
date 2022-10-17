@@ -3,8 +3,8 @@
 import 'dart:convert';
 import 'dart:io';
 
-const tdApiDir = 'lib/app/tdlib';
-final tdApiFile = File('$tdApiDir/tdlibjson.dart');
+const tdApiDir = 'lib/app/tdLibJson';
+final tdApiFile = File('$tdApiDir/tdlibjson_api.dart');
 final functionsDir = Directory("$tdApiDir/functions");
 final objectsDir = Directory("$tdApiDir/objects");
 const builtInTypes = [
@@ -33,7 +33,7 @@ final List<TlObject> _objects = [];
 class DartTdDocumentationGenerator {
   String schemePath = 'codegen/td_api.tl';
   int skipLines = 13;
-  String mainPart = 'part of \'../tdlibjson.dart\';';
+  String mainPart = 'part of \'../tdlibjson_api.dart\';';
 
   /// Main generating function
   void generate() {
@@ -356,6 +356,9 @@ class DartTdDocumentationGenerator {
 }
 
 void main() {
+	tdApiFile.create(recursive: true);
+	functionsDir.create(recursive: true);
+	objectsDir.create(recursive: true);
   return DartTdDocumentationGenerator().generate();
 }
 

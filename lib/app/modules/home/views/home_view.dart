@@ -12,20 +12,14 @@ class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeController>(
-			builder: (((controller){
-				return Scaffold(
-					appBar: AppBar(
-						title: const Text("Test App")
-						),
-					body: Center(
-						child: TextButton(
-							onPressed: ((() => controller.startService())),
-							child: const Text("Run")
-							)
-						),
-					);
-			}))
-			);
+    return GetBuilder<HomeController>(builder: (((controller) {
+      return Scaffold(
+        appBar: AppBar(title: const Text("Test App")),
+        body: Center(
+            child: TextButton(
+                onPressed: ((() => controller.startService())),
+                child: const Text("Run"))),
+      );
+    })));
   }
 }

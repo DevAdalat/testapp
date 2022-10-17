@@ -1,36 +1,65 @@
 import 'dart:ffi' as ffi;
 import 'dart:ffi';
-import 'dart:io';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ffi/ffi.dart';
-import 'package:telegram_client/tdlib/tdlib.dart';
+import 'package:testapp/app/tdLibJson/tdlibjson_api.dart';
+import 'package:testapp/generated_bindings.dart';
 
 class HomeController extends GetxController {
+  late NativeLibrary td;
   startService() async {
-    try {
-      Tdlib tg = Tdlib("libtdjson.so", clientOption: {
-        "api_id": 12860793,
-        "api_hash": "668c3c09dc67819c912c918db5648cf1",
-        'database_directory': "",
-        'files_directory': "",
-        "use_file_database": true,
-        "use_chat_info_database": true,
-        "use_message_database": true,
-        "use_secret_chats": true,
-        'enable_storage_optimizer': true,
-        'system_language_code': 'en',
-        'new_verbosity_level': 0,
-        'application_version': 'v1',
-        'device_model': 'Mi 10i',
-        'system_version': Platform.operatingSystemVersion,
-        "database_key": "",
-        "start": true,
-      });
-      final clients = await tg.getChat(1570907697, clientId: 1570907697);
-      Get.snackbar("Info", clients.toString());
-    } catch (e) {
-      Get.snackbar("Error", e.toString());
+    final client = td.td_json_client_create();
+    const authState = GetAuthorizationState();
+    td.td_json_client_send(client, authState.toJson().toString().toCString());
+    startReciever(client);
+  }
+
+  startReciever(ffi.Pointer<ffi.Void> client) async {
+    while (true) {
+      await Future.delayed(100.milliseconds);
+      final rawData = td.td_json_client_receive(client, 10);
+      final data = rawData.toDString();
+      if (data.contains("authorizationStateWaitTdlibParameters")) {
+        const tdParam = SetTdlibParameters(
+          ignoreFileNames: false,
+          useTestDc: true,
+          useSecretChats: true,
+          useFileDatabase: false,
+          useMessageDatabase: false,
+          useChatInfoDatabase: false,
+          apiId: 12860793,
+          apiHash: "668c3c09dc67819c912c918db5648cf1",
+          applicationVersion: "v1",
+          systemVersion: "",
+          systemLanguageCode: "en",
+          deviceModel: "Mi 10i",
+          databaseDirectory: "/sdcard/Movies",
+          databaseEncryptionKey: "Testkey",
+          filesDirectory: "/sdcard/Movies",
+          enableStorageOptimizer: true,
+        );
+        td.td_json_client_send(client, tdParam.toJson().toString().toCString());
+      }
+      Get.snackbar("Td Data", data);
+      break;
     }
+  }
+
+  @override
+  onInit() {
+    super.onInit();
+    td = NativeLibrary(DynamicLibrary.open("libtdjson.so"));
+  }
+}
+
+extension CString on String {
+  ffi.Pointer<ffi.Char> toCString() {
+    return toNativeUtf8().cast<ffi.Char>();
+  }
+}
+
+extension DString on ffi.Pointer<ffi.Char> {
+  String toDString() {
+    return cast<Utf8>().toDartString();
   }
 }
