@@ -6,24 +6,29 @@ import 'package:ffi/ffi.dart';
 import 'package:testapp/generated_bindings.dart';
 
 class HomeController extends GetxController {
-	final valController = TextEditingController();
+  final valController = TextEditingController();
   late NativeLibrary td;
-	late ffi.Pointer<ffi.Void> client;
+  late ffi.Pointer<ffi.Void> client;
 
   startService(String data) async {
-		final rawData = data.toCString();
-		td.td_json_client_send(client, rawData);
-		final rawRecData = td.td_json_client_receive(client, 10);
-		final recData = rawRecData.toDString();
-		Get.snackbar("Td Data", recData);	
+    while (true) {
+      await Future.delayed(100.milliseconds);
+      final rawData = data.toCString();
+      td.td_json_client_send(client, rawData);
+      final rawRecData = td.td_json_client_receive(client, 10);
+      final recData = rawRecData.toDString();
+      Get.snackbar("Td Data", recData);
+      if (recData.contains("error")) {
+        break;
+      }
+    }
   }
 
   @override
   onInit() {
     super.onInit();
     td = NativeLibrary(DynamicLibrary.open("libtdjson.so"));
-		client = td.td_json_client_create();
-
+    client = td.td_json_client_create();
   }
 }
 

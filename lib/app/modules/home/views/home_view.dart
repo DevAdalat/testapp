@@ -28,14 +28,15 @@ class HomeView extends StatelessWidget {
                 }),
                 child: const Text("Request"),
               ),
-							TextField(
-								controller: controller.valController,
-								decoration: const InputDecoration(
-									hintText: "Enter data",
-									),
-								),
+              TextField(
+                controller: controller.valController,
+                decoration: const InputDecoration(
+                  hintText: "Enter data",
+                ),
+              ),
               TextButton(
-                  onPressed: ((() => controller.startService(controller.valController.text))),
+                  onPressed: ((() =>
+                      controller.startService(controller.valController.text))),
                   child: const Text("Run")),
             ],
           ),
