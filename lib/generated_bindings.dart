@@ -20,13 +20,79 @@ class NativeLibrary {
           lookup)
       : _lookup = lookup;
 
-  ffi.Pointer<ffi.Pointer<ffi.Char>> get_list() {
-    return _get_list();
+  ffi.Pointer<ffi.Void> td_json_client_create() {
+    return __td_json_client_create();
   }
 
-  late final _get_listPtr = _lookup<
-          ffi.NativeFunction<ffi.Pointer<ffi.Pointer<ffi.Char>> Function()>>(
-      'get_list');
-  late final _get_list =
-      _get_listPtr.asFunction<ffi.Pointer<ffi.Pointer<ffi.Char>> Function()>();
+  late final __td_json_client_createPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function()>>(
+          '_td_json_client_create');
+  late final __td_json_client_create =
+      __td_json_client_createPtr.asFunction<ffi.Pointer<ffi.Void> Function()>();
+
+  void td_json_client_send(
+    ffi.Pointer<ffi.Void> client,
+    ffi.Pointer<ffi.Char> request,
+  ) {
+    return __td_json_client_send(
+      client,
+      request,
+    );
+  }
+
+  late final __td_json_client_sendPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Char>)>>('_td_json_client_send');
+  late final __td_json_client_send = __td_json_client_sendPtr.asFunction<
+      void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> td_json_client_receive(
+    ffi.Pointer<ffi.Void> client,
+    double timeout,
+  ) {
+    return __td_json_client_receive(
+      client,
+      timeout,
+    );
+  }
+
+  late final __td_json_client_receivePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Void>, ffi.Double)>>('_td_json_client_receive');
+  late final __td_json_client_receive = __td_json_client_receivePtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Void>, double)>();
+
+  ffi.Pointer<ffi.Char> td_json_client_execute(
+    ffi.Pointer<ffi.Void> client,
+    ffi.Pointer<ffi.Char> request,
+  ) {
+    return __td_json_client_execute(
+      client,
+      request,
+    );
+  }
+
+  late final __td_json_client_executePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Char>)>>('_td_json_client_execute');
+  late final __td_json_client_execute = __td_json_client_executePtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Char>)>();
+
+  void td_json_client_destroy(
+    ffi.Pointer<ffi.Void> client,
+  ) {
+    return __td_json_client_destroy(
+      client,
+    );
+  }
+
+  late final __td_json_client_destroyPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          '_td_json_client_destroy');
+  late final __td_json_client_destroy = __td_json_client_destroyPtr
+      .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 }

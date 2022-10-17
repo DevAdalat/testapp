@@ -13,30 +13,19 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
-        builder: (((controller) => Scaffold(
-              appBar: AppBar(
-                title: const Text('HomeView'),
-              ),
-              body: ListView.builder(itemBuilder: (((context, index) {
-                return ListTile(
-                  title: Text("Count Number $index"),
-                );
-              }))),
-              floatingActionButton: FloatingActionButton(
-                onPressed: ((() {
-                  try {
-                    NativeLibrary lib =
-                        NativeLibrary(DynamicLibrary.open("librtest.so"));
-                    final data = lib.get_list().cast<ffi.Pointer<Utf8>>();
-                    final dartData = controller.toStringList(data);
-                    Get.snackbar("Rust List", dartData.toList().toString());
-                    malloc.free(data);
-                  } catch (e) {
-                    Get.snackbar("Error", e.toString());
-                  }
-                })),
-                child: const Icon(Icons.add_rounded),
-              ),
-            ))));
+			builder: (((controller){
+				return Scaffold(
+					appBar: AppBar(
+						title: const Text("Test App")
+						),
+					body: Center(
+						child: TextButton(
+							onPressed: ((() => controller.startService())),
+							child: const Text("Run")
+							)
+						),
+					);
+			}))
+			);
   }
 }
