@@ -33,7 +33,7 @@ class HomeController extends GetxController {
     var rawList = lib.get_list();
     var data = rawList.cast<ffi.Pointer<Utf8>>();
     final namesData = toStringList(data).toList();
-		Get.snackbar("Names", namesData.toString());
+    Get.snackbar("Names", namesData.toString());
     update();
     malloc.free(data);
     malloc.free(rawList);
