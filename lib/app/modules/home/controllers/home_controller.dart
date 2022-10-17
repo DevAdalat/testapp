@@ -19,7 +19,9 @@ class HomeController extends GetxController {
       await Future.delayed(100.milliseconds);
       final rawData = td.td_json_client_receive(client, 10);
       final data = rawData.toDString();
+			Get.snackbar("Data", data);
       if (data.contains("authorizationStateWaitTdlibParameters")) {
+			Get.snackbar("Data", data);
         const tdParam = SetTdlibParameters(
           ignoreFileNames: false,
           useTestDc: true,
