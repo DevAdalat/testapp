@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class PinChatMessage extends TdFunction {
+
   /// Pins a message in a chat; requires can_pin_messages rights or can_edit_messages rights in the channel
   const PinChatMessage({
     required this.chatId,
@@ -8,7 +9,7 @@ class PinChatMessage extends TdFunction {
     required this.disableNotification,
     required this.onlyForSelf,
   });
-
+  
   /// [chatId] Identifier of the chat
   final int chatId;
 
@@ -20,36 +21,37 @@ class PinChatMessage extends TdFunction {
 
   /// [onlyForSelf] Pass true to pin the message only for self; private chats only
   final bool onlyForSelf;
-
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "chat_id": chatId,
-      "message_id": messageId,
-      "disable_notification": disableNotification,
-      "only_for_self": onlyForSelf,
-      "@extra": extra,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "chat_id": "$chatId",
+    "message_id": "$messageId",
+    "disable_notification": $disableNotification,
+    "only_for_self": $onlyForSelf
   }
-
+	""";
+  }
+  
   PinChatMessage copyWith({
     int? chatId,
     int? messageId,
     bool? disableNotification,
     bool? onlyForSelf,
-  }) =>
-      PinChatMessage(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        disableNotification: disableNotification ?? this.disableNotification,
-        onlyForSelf: onlyForSelf ?? this.onlyForSelf,
-      );
+  }) => PinChatMessage(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    disableNotification: disableNotification ?? this.disableNotification,
+    onlyForSelf: onlyForSelf ?? this.onlyForSelf,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'pinChatMessage';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

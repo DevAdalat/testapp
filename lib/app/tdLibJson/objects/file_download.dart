@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class FileDownload extends TdObject {
+
   /// Describes a file added to file download list
   const FileDownload({
     required this.fileId,
@@ -9,7 +10,7 @@ class FileDownload extends TdObject {
     required this.completeDate,
     required this.isPaused,
   });
-
+  
   /// [fileId] File identifier
   final int fileId;
 
@@ -24,47 +25,50 @@ class FileDownload extends TdObject {
 
   /// [isPaused] True, if downloading of the file is paused
   final bool isPaused;
-
+  
   /// Parse from a json
   factory FileDownload.fromJson(Map<String, dynamic> json) => FileDownload(
-        fileId: json['file_id'],
-        message: Message.fromJson(json['message']),
-        addDate: json['add_date'],
-        completeDate: json['complete_date'],
-        isPaused: json['is_paused'],
-      );
-
+    fileId: json['file_id'],
+    message: Message.fromJson(json['message']),
+    addDate: json['add_date'],
+    completeDate: json['complete_date'],
+    isPaused: json['is_paused'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "file_id": fileId,
-      "message": message.toJson(),
-      "add_date": addDate,
-      "complete_date": completeDate,
-      "is_paused": isPaused,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "file_id": "$fileId",
+    "message": "${message.toJson()}",
+    "add_date": "$addDate",
+    "complete_date": "$completeDate",
+    "is_paused": $isPaused
   }
-
+	""";
+  }
+  
   FileDownload copyWith({
     int? fileId,
     Message? message,
     int? addDate,
     int? completeDate,
     bool? isPaused,
-  }) =>
-      FileDownload(
-        fileId: fileId ?? this.fileId,
-        message: message ?? this.message,
-        addDate: addDate ?? this.addDate,
-        completeDate: completeDate ?? this.completeDate,
-        isPaused: isPaused ?? this.isPaused,
-      );
+  }) => FileDownload(
+    fileId: fileId ?? this.fileId,
+    message: message ?? this.message,
+    addDate: addDate ?? this.addDate,
+    completeDate: completeDate ?? this.completeDate,
+    isPaused: isPaused ?? this.isPaused,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'fileDownload';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

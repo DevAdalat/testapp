@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class ChatFilterInfo extends TdObject {
+
   /// Contains basic information about a chat filter
   const ChatFilterInfo({
     required this.id,
@@ -9,7 +10,7 @@ class ChatFilterInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-
+  
   /// [id] Unique chat filter identifier
   final int id;
 
@@ -26,45 +27,48 @@ class ChatFilterInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-
+  
   /// Parse from a json
   factory ChatFilterInfo.fromJson(Map<String, dynamic> json) => ChatFilterInfo(
-        id: json['id'],
-        title: json['title'],
-        iconName: json['icon_name'],
-        extra: json['@extra'],
-        clientId: json['@client_id'],
-      );
-
+    id: json['id'],
+    title: json['title'],
+    iconName: json['icon_name'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "id": id,
-      "title": title,
-      "icon_name": iconName,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "id": "$id",
+    "title": "$title",
+    "icon_name": "$iconName"
   }
-
+	""";
+  }
+  
   ChatFilterInfo copyWith({
     int? id,
     String? title,
     String? iconName,
     dynamic extra,
     int? clientId,
-  }) =>
-      ChatFilterInfo(
-        id: id ?? this.id,
-        title: title ?? this.title,
-        iconName: iconName ?? this.iconName,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ChatFilterInfo(
+    id: id ?? this.id,
+    title: title ?? this.title,
+    iconName: iconName ?? this.iconName,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'chatFilterInfo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

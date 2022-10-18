@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class Notification extends TdObject {
+
   /// Contains information about a notification
   const Notification({
     required this.id,
@@ -8,8 +9,8 @@ class Notification extends TdObject {
     required this.isSilent,
     required this.type,
   });
-
-  /// [id] Unique persistent identifier of this notification
+  
+  /// [id] Unique persistent identifier of this notification 
   final int id;
 
   /// [date] Notification date
@@ -20,43 +21,46 @@ class Notification extends TdObject {
 
   /// [type] Notification type
   final NotificationType type;
-
+  
   /// Parse from a json
   factory Notification.fromJson(Map<String, dynamic> json) => Notification(
-        id: json['id'],
-        date: json['date'],
-        isSilent: json['is_silent'],
-        type: NotificationType.fromJson(json['type']),
-      );
-
+    id: json['id'],
+    date: json['date'],
+    isSilent: json['is_silent'],
+    type: NotificationType.fromJson(json['type']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "id": id,
-      "date": date,
-      "is_silent": isSilent,
-      "type": type.toJson(),
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "id": "$id",
+    "date": "$date",
+    "is_silent": $isSilent,
+    "type": "${type.toJson()}"
   }
-
+	""";
+  }
+  
   Notification copyWith({
     int? id,
     int? date,
     bool? isSilent,
     NotificationType? type,
-  }) =>
-      Notification(
-        id: id ?? this.id,
-        date: date ?? this.date,
-        isSilent: isSilent ?? this.isSilent,
-        type: type ?? this.type,
-      );
+  }) => Notification(
+    id: id ?? this.id,
+    date: date ?? this.date,
+    isSilent: isSilent ?? this.isSilent,
+    type: type ?? this.type,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'notification';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

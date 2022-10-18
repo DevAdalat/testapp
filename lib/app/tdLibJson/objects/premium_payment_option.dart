@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class PremiumPaymentOption extends TdObject {
+
   /// Describes an option for buying Telegram Premium to a user
   const PremiumPaymentOption({
     required this.currency,
@@ -10,7 +11,7 @@ class PremiumPaymentOption extends TdObject {
     required this.storeProductId,
     this.paymentLink,
   });
-
+  
   /// [currency] ISO 4217 currency code for Telegram Premium subscription payment
   final String currency;
 
@@ -28,33 +29,34 @@ class PremiumPaymentOption extends TdObject {
 
   /// [paymentLink] An internal link to be opened for buying Telegram Premium to the user if store payment isn't possible; may be null if direct payment isn't available
   final InternalLinkType? paymentLink;
-
+  
   /// Parse from a json
-  factory PremiumPaymentOption.fromJson(Map<String, dynamic> json) =>
-      PremiumPaymentOption(
-        currency: json['currency'],
-        amount: json['amount'],
-        discountPercentage: json['discount_percentage'],
-        monthCount: json['month_count'],
-        storeProductId: json['store_product_id'],
-        paymentLink: json['payment_link'] == null
-            ? null
-            : InternalLinkType.fromJson(json['payment_link']),
-      );
-
+  factory PremiumPaymentOption.fromJson(Map<String, dynamic> json) => PremiumPaymentOption(
+    currency: json['currency'],
+    amount: json['amount'],
+    discountPercentage: json['discount_percentage'],
+    monthCount: json['month_count'],
+    storeProductId: json['store_product_id'],
+    paymentLink: json['payment_link'] == null ? null : InternalLinkType.fromJson(json['payment_link']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "currency": currency,
-      "amount": amount,
-      "discount_percentage": discountPercentage,
-      "month_count": monthCount,
-      "store_product_id": storeProductId,
-      "payment_link": paymentLink?.toJson(),
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "currency": "$currency",
+    "amount": "$amount",
+    "discount_percentage": "$discountPercentage",
+    "month_count": "$monthCount",
+    "store_product_id": "$storeProductId",
+    "payment_link": "${paymentLink?.toJson()}"
   }
-
+	""";
+  }
+  
   PremiumPaymentOption copyWith({
     String? currency,
     int? amount,
@@ -62,20 +64,19 @@ class PremiumPaymentOption extends TdObject {
     int? monthCount,
     String? storeProductId,
     InternalLinkType? paymentLink,
-  }) =>
-      PremiumPaymentOption(
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-        discountPercentage: discountPercentage ?? this.discountPercentage,
-        monthCount: monthCount ?? this.monthCount,
-        storeProductId: storeProductId ?? this.storeProductId,
-        paymentLink: paymentLink ?? this.paymentLink,
-      );
+  }) => PremiumPaymentOption(
+    currency: currency ?? this.currency,
+    amount: amount ?? this.amount,
+    discountPercentage: discountPercentage ?? this.discountPercentage,
+    monthCount: monthCount ?? this.monthCount,
+    storeProductId: storeProductId ?? this.storeProductId,
+    paymentLink: paymentLink ?? this.paymentLink,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'premiumPaymentOption';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

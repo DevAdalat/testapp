@@ -1,34 +1,36 @@
 part of '../tdlibjson_api.dart';
 
 class SetProfilePhoto extends TdFunction {
+
   /// Changes a profile photo for the current user
   const SetProfilePhoto({
     required this.photo,
   });
-
+  
   /// [photo] Profile photo to set
   final InputChatPhoto photo;
-
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "photo": photo.toJson(),
-      "@extra": extra,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "photo": "${photo.toJson()}"
   }
-
+	""";
+  }
+  
   SetProfilePhoto copyWith({
     InputChatPhoto? photo,
-  }) =>
-      SetProfilePhoto(
-        photo: photo ?? this.photo,
-      );
+  }) => SetProfilePhoto(
+    photo: photo ?? this.photo,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'setProfilePhoto';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

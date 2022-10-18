@@ -1,9 +1,10 @@
 part of '../tdlibjson_api.dart';
 
 class InputInlineQueryResult extends TdObject {
+
   /// Represents a single result of an inline query; for bots only
   const InputInlineQueryResult();
-
+  
   /// a InputInlineQueryResult return type can be :
   /// * [InputInlineQueryResultAnimation]
   /// * [InputInlineQueryResultArticle]
@@ -17,8 +18,8 @@ class InputInlineQueryResult extends TdObject {
   /// * [InputInlineQueryResultVenue]
   /// * [InputInlineQueryResultVideo]
   /// * [InputInlineQueryResultVoiceNote]
-  factory InputInlineQueryResult.fromJson(Map<String, dynamic> json) {
-    switch (json["@type"]) {
+  factory InputInlineQueryResult.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case InputInlineQueryResultAnimation.CONSTRUCTOR:
         return InputInlineQueryResultAnimation.fromJson(json);
       case InputInlineQueryResultArticle.CONSTRUCTOR:
@@ -47,23 +48,30 @@ class InputInlineQueryResult extends TdObject {
         return const InputInlineQueryResult();
     }
   }
-
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {};
+  String toJson() {
+	return 
+	"""
+  {
+  
   }
-
+	""";
+  }
+  
   InputInlineQueryResult copyWith() => const InputInlineQueryResult();
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'inputInlineQueryResult';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
+
 class InputInlineQueryResultAnimation extends InputInlineQueryResult {
+
   /// Represents a link to an animated GIF or an animated (i.e., without sound) H.264/MPEG-4 AVC video
   const InputInlineQueryResultAnimation({
     required this.id,
@@ -78,7 +86,7 @@ class InputInlineQueryResultAnimation extends InputInlineQueryResult {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-
+  
   /// [id] Unique identifier of the query result
   final String id;
 
@@ -100,7 +108,7 @@ class InputInlineQueryResultAnimation extends InputInlineQueryResult {
   /// [videoDuration] Duration of the video, in seconds
   final int videoDuration;
 
-  /// [videoWidth] Width of the video
+  /// [videoWidth] Width of the video 
   final int videoWidth;
 
   /// [videoHeight] Height of the video
@@ -111,44 +119,44 @@ class InputInlineQueryResultAnimation extends InputInlineQueryResult {
 
   /// [inputMessageContent] The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageAnimation, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
-
+  
   /// Parse from a json
-  factory InputInlineQueryResultAnimation.fromJson(Map<String, dynamic> json) =>
-      InputInlineQueryResultAnimation(
-        id: json['id'],
-        title: json['title'],
-        thumbnailUrl: json['thumbnail_url'],
-        thumbnailMimeType: json['thumbnail_mime_type'],
-        videoUrl: json['video_url'],
-        videoMimeType: json['video_mime_type'],
-        videoDuration: json['video_duration'],
-        videoWidth: json['video_width'],
-        videoHeight: json['video_height'],
-        replyMarkup: json['reply_markup'] == null
-            ? null
-            : ReplyMarkup.fromJson(json['reply_markup']),
-        inputMessageContent:
-            InputMessageContent.fromJson(json['input_message_content']),
-      );
-
+  factory InputInlineQueryResultAnimation.fromJson(Map<String, dynamic> json) => InputInlineQueryResultAnimation(
+    id: json['id'],
+    title: json['title'],
+    thumbnailUrl: json['thumbnail_url'],
+    thumbnailMimeType: json['thumbnail_mime_type'],
+    videoUrl: json['video_url'],
+    videoMimeType: json['video_mime_type'],
+    videoDuration: json['video_duration'],
+    videoWidth: json['video_width'],
+    videoHeight: json['video_height'],
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
+    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "id": id,
-      "title": title,
-      "thumbnail_url": thumbnailUrl,
-      "thumbnail_mime_type": thumbnailMimeType,
-      "video_url": videoUrl,
-      "video_mime_type": videoMimeType,
-      "video_duration": videoDuration,
-      "video_width": videoWidth,
-      "video_height": videoHeight,
-      "reply_markup": replyMarkup?.toJson(),
-      "input_message_content": inputMessageContent.toJson(),
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "id": "$id",
+    "title": "$title",
+    "thumbnail_url": "$thumbnailUrl",
+    "thumbnail_mime_type": "$thumbnailMimeType",
+    "video_url": "$videoUrl",
+    "video_mime_type": "$videoMimeType",
+    "video_duration": "$videoDuration",
+    "video_width": "$videoWidth",
+    "video_height": "$videoHeight",
+    "reply_markup": "${replyMarkup?.toJson()}",
+    "input_message_content": "${inputMessageContent.toJson()}"
   }
-
+	""";
+  }
+  
   @override
   InputInlineQueryResultAnimation copyWith({
     String? id,
@@ -162,30 +170,31 @@ class InputInlineQueryResultAnimation extends InputInlineQueryResult {
     int? videoHeight,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      InputInlineQueryResultAnimation(
-        id: id ?? this.id,
-        title: title ?? this.title,
-        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-        thumbnailMimeType: thumbnailMimeType ?? this.thumbnailMimeType,
-        videoUrl: videoUrl ?? this.videoUrl,
-        videoMimeType: videoMimeType ?? this.videoMimeType,
-        videoDuration: videoDuration ?? this.videoDuration,
-        videoWidth: videoWidth ?? this.videoWidth,
-        videoHeight: videoHeight ?? this.videoHeight,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => InputInlineQueryResultAnimation(
+    id: id ?? this.id,
+    title: title ?? this.title,
+    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+    thumbnailMimeType: thumbnailMimeType ?? this.thumbnailMimeType,
+    videoUrl: videoUrl ?? this.videoUrl,
+    videoMimeType: videoMimeType ?? this.videoMimeType,
+    videoDuration: videoDuration ?? this.videoDuration,
+    videoWidth: videoWidth ?? this.videoWidth,
+    videoHeight: videoHeight ?? this.videoHeight,
+    replyMarkup: replyMarkup ?? this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'inputInlineQueryResultAnimation';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
+
 class InputInlineQueryResultArticle extends InputInlineQueryResult {
+
   /// Represents a link to an article or web page
   const InputInlineQueryResultArticle({
     required this.id,
@@ -199,14 +208,14 @@ class InputInlineQueryResultArticle extends InputInlineQueryResult {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-
-  /// [id] Unique identifier of the query result
+  
+  /// [id] Unique identifier of the query result 
   final String id;
 
-  /// [url] URL of the result, if it exists
+  /// [url] URL of the result, if it exists 
   final String url;
 
-  /// [hideUrl] True, if the URL must be not shown
+  /// [hideUrl] True, if the URL must be not shown 
   final bool hideUrl;
 
   /// [title] Title of the result
@@ -215,10 +224,10 @@ class InputInlineQueryResultArticle extends InputInlineQueryResult {
   /// [description] A short description of the result
   final String description;
 
-  /// [thumbnailUrl] URL of the result thumbnail, if it exists
+  /// [thumbnailUrl] URL of the result thumbnail, if it exists 
   final String thumbnailUrl;
 
-  /// [thumbnailWidth] Thumbnail width, if known
+  /// [thumbnailWidth] Thumbnail width, if known 
   final int thumbnailWidth;
 
   /// [thumbnailHeight] Thumbnail height, if known
@@ -229,42 +238,42 @@ class InputInlineQueryResultArticle extends InputInlineQueryResult {
 
   /// [inputMessageContent] The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
-
+  
   /// Parse from a json
-  factory InputInlineQueryResultArticle.fromJson(Map<String, dynamic> json) =>
-      InputInlineQueryResultArticle(
-        id: json['id'],
-        url: json['url'],
-        hideUrl: json['hide_url'],
-        title: json['title'],
-        description: json['description'],
-        thumbnailUrl: json['thumbnail_url'],
-        thumbnailWidth: json['thumbnail_width'],
-        thumbnailHeight: json['thumbnail_height'],
-        replyMarkup: json['reply_markup'] == null
-            ? null
-            : ReplyMarkup.fromJson(json['reply_markup']),
-        inputMessageContent:
-            InputMessageContent.fromJson(json['input_message_content']),
-      );
-
+  factory InputInlineQueryResultArticle.fromJson(Map<String, dynamic> json) => InputInlineQueryResultArticle(
+    id: json['id'],
+    url: json['url'],
+    hideUrl: json['hide_url'],
+    title: json['title'],
+    description: json['description'],
+    thumbnailUrl: json['thumbnail_url'],
+    thumbnailWidth: json['thumbnail_width'],
+    thumbnailHeight: json['thumbnail_height'],
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
+    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "id": id,
-      "url": url,
-      "hide_url": hideUrl,
-      "title": title,
-      "description": description,
-      "thumbnail_url": thumbnailUrl,
-      "thumbnail_width": thumbnailWidth,
-      "thumbnail_height": thumbnailHeight,
-      "reply_markup": replyMarkup?.toJson(),
-      "input_message_content": inputMessageContent.toJson(),
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "id": "$id",
+    "url": "$url",
+    "hide_url": $hideUrl,
+    "title": "$title",
+    "description": "$description",
+    "thumbnail_url": "$thumbnailUrl",
+    "thumbnail_width": "$thumbnailWidth",
+    "thumbnail_height": "$thumbnailHeight",
+    "reply_markup": "${replyMarkup?.toJson()}",
+    "input_message_content": "${inputMessageContent.toJson()}"
   }
-
+	""";
+  }
+  
   @override
   InputInlineQueryResultArticle copyWith({
     String? id,
@@ -277,29 +286,30 @@ class InputInlineQueryResultArticle extends InputInlineQueryResult {
     int? thumbnailHeight,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      InputInlineQueryResultArticle(
-        id: id ?? this.id,
-        url: url ?? this.url,
-        hideUrl: hideUrl ?? this.hideUrl,
-        title: title ?? this.title,
-        description: description ?? this.description,
-        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-        thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
-        thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => InputInlineQueryResultArticle(
+    id: id ?? this.id,
+    url: url ?? this.url,
+    hideUrl: hideUrl ?? this.hideUrl,
+    title: title ?? this.title,
+    description: description ?? this.description,
+    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+    thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
+    thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
+    replyMarkup: replyMarkup ?? this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'inputInlineQueryResultArticle';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
+
 class InputInlineQueryResultAudio extends InputInlineQueryResult {
+
   /// Represents a link to an MP3 audio file
   const InputInlineQueryResultAudio({
     required this.id,
@@ -310,11 +320,11 @@ class InputInlineQueryResultAudio extends InputInlineQueryResult {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-
-  /// [id] Unique identifier of the query result
+  
+  /// [id] Unique identifier of the query result 
   final String id;
 
-  /// [title] Title of the audio file
+  /// [title] Title of the audio file 
   final String title;
 
   /// [performer] Performer of the audio file
@@ -331,36 +341,36 @@ class InputInlineQueryResultAudio extends InputInlineQueryResult {
 
   /// [inputMessageContent] The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageAudio, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
-
+  
   /// Parse from a json
-  factory InputInlineQueryResultAudio.fromJson(Map<String, dynamic> json) =>
-      InputInlineQueryResultAudio(
-        id: json['id'],
-        title: json['title'],
-        performer: json['performer'],
-        audioUrl: json['audio_url'],
-        audioDuration: json['audio_duration'],
-        replyMarkup: json['reply_markup'] == null
-            ? null
-            : ReplyMarkup.fromJson(json['reply_markup']),
-        inputMessageContent:
-            InputMessageContent.fromJson(json['input_message_content']),
-      );
-
+  factory InputInlineQueryResultAudio.fromJson(Map<String, dynamic> json) => InputInlineQueryResultAudio(
+    id: json['id'],
+    title: json['title'],
+    performer: json['performer'],
+    audioUrl: json['audio_url'],
+    audioDuration: json['audio_duration'],
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
+    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "id": id,
-      "title": title,
-      "performer": performer,
-      "audio_url": audioUrl,
-      "audio_duration": audioDuration,
-      "reply_markup": replyMarkup?.toJson(),
-      "input_message_content": inputMessageContent.toJson(),
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "id": "$id",
+    "title": "$title",
+    "performer": "$performer",
+    "audio_url": "$audioUrl",
+    "audio_duration": "$audioDuration",
+    "reply_markup": "${replyMarkup?.toJson()}",
+    "input_message_content": "${inputMessageContent.toJson()}"
   }
-
+	""";
+  }
+  
   @override
   InputInlineQueryResultAudio copyWith({
     String? id,
@@ -370,26 +380,27 @@ class InputInlineQueryResultAudio extends InputInlineQueryResult {
     int? audioDuration,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      InputInlineQueryResultAudio(
-        id: id ?? this.id,
-        title: title ?? this.title,
-        performer: performer ?? this.performer,
-        audioUrl: audioUrl ?? this.audioUrl,
-        audioDuration: audioDuration ?? this.audioDuration,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => InputInlineQueryResultAudio(
+    id: id ?? this.id,
+    title: title ?? this.title,
+    performer: performer ?? this.performer,
+    audioUrl: audioUrl ?? this.audioUrl,
+    audioDuration: audioDuration ?? this.audioDuration,
+    replyMarkup: replyMarkup ?? this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'inputInlineQueryResultAudio';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
+
 class InputInlineQueryResultContact extends InputInlineQueryResult {
+
   /// Represents a user contact
   const InputInlineQueryResultContact({
     required this.id,
@@ -400,17 +411,17 @@ class InputInlineQueryResultContact extends InputInlineQueryResult {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-
-  /// [id] Unique identifier of the query result
+  
+  /// [id] Unique identifier of the query result 
   final String id;
 
-  /// [contact] User contact
+  /// [contact] User contact 
   final Contact contact;
 
-  /// [thumbnailUrl] URL of the result thumbnail, if it exists
+  /// [thumbnailUrl] URL of the result thumbnail, if it exists 
   final String thumbnailUrl;
 
-  /// [thumbnailWidth] Thumbnail width, if known
+  /// [thumbnailWidth] Thumbnail width, if known 
   final int thumbnailWidth;
 
   /// [thumbnailHeight] Thumbnail height, if known
@@ -421,36 +432,36 @@ class InputInlineQueryResultContact extends InputInlineQueryResult {
 
   /// [inputMessageContent] The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
-
+  
   /// Parse from a json
-  factory InputInlineQueryResultContact.fromJson(Map<String, dynamic> json) =>
-      InputInlineQueryResultContact(
-        id: json['id'],
-        contact: Contact.fromJson(json['contact']),
-        thumbnailUrl: json['thumbnail_url'],
-        thumbnailWidth: json['thumbnail_width'],
-        thumbnailHeight: json['thumbnail_height'],
-        replyMarkup: json['reply_markup'] == null
-            ? null
-            : ReplyMarkup.fromJson(json['reply_markup']),
-        inputMessageContent:
-            InputMessageContent.fromJson(json['input_message_content']),
-      );
-
+  factory InputInlineQueryResultContact.fromJson(Map<String, dynamic> json) => InputInlineQueryResultContact(
+    id: json['id'],
+    contact: Contact.fromJson(json['contact']),
+    thumbnailUrl: json['thumbnail_url'],
+    thumbnailWidth: json['thumbnail_width'],
+    thumbnailHeight: json['thumbnail_height'],
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
+    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "id": id,
-      "contact": contact.toJson(),
-      "thumbnail_url": thumbnailUrl,
-      "thumbnail_width": thumbnailWidth,
-      "thumbnail_height": thumbnailHeight,
-      "reply_markup": replyMarkup?.toJson(),
-      "input_message_content": inputMessageContent.toJson(),
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "id": "$id",
+    "contact": "${contact.toJson()}",
+    "thumbnail_url": "$thumbnailUrl",
+    "thumbnail_width": "$thumbnailWidth",
+    "thumbnail_height": "$thumbnailHeight",
+    "reply_markup": "${replyMarkup?.toJson()}",
+    "input_message_content": "${inputMessageContent.toJson()}"
   }
-
+	""";
+  }
+  
   @override
   InputInlineQueryResultContact copyWith({
     String? id,
@@ -460,26 +471,27 @@ class InputInlineQueryResultContact extends InputInlineQueryResult {
     int? thumbnailHeight,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      InputInlineQueryResultContact(
-        id: id ?? this.id,
-        contact: contact ?? this.contact,
-        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-        thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
-        thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => InputInlineQueryResultContact(
+    id: id ?? this.id,
+    contact: contact ?? this.contact,
+    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+    thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
+    thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
+    replyMarkup: replyMarkup ?? this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'inputInlineQueryResultContact';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
+
 class InputInlineQueryResultDocument extends InputInlineQueryResult {
+
   /// Represents a link to a file
   const InputInlineQueryResultDocument({
     required this.id,
@@ -493,17 +505,17 @@ class InputInlineQueryResultDocument extends InputInlineQueryResult {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-
-  /// [id] Unique identifier of the query result
+  
+  /// [id] Unique identifier of the query result 
   final String id;
 
-  /// [title] Title of the resulting file
+  /// [title] Title of the resulting file 
   final String title;
 
-  /// [description] Short description of the result, if known
+  /// [description] Short description of the result, if known 
   final String description;
 
-  /// [documentUrl] URL of the file
+  /// [documentUrl] URL of the file 
   final String documentUrl;
 
   /// [mimeType] MIME type of the file content; only "application/pdf" and "application/zip" are currently allowed
@@ -512,7 +524,7 @@ class InputInlineQueryResultDocument extends InputInlineQueryResult {
   /// [thumbnailUrl] The URL of the file thumbnail, if it exists
   final String thumbnailUrl;
 
-  /// [thumbnailWidth] Width of the thumbnail
+  /// [thumbnailWidth] Width of the thumbnail 
   final int thumbnailWidth;
 
   /// [thumbnailHeight] Height of the thumbnail
@@ -523,42 +535,42 @@ class InputInlineQueryResultDocument extends InputInlineQueryResult {
 
   /// [inputMessageContent] The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageDocument, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
-
+  
   /// Parse from a json
-  factory InputInlineQueryResultDocument.fromJson(Map<String, dynamic> json) =>
-      InputInlineQueryResultDocument(
-        id: json['id'],
-        title: json['title'],
-        description: json['description'],
-        documentUrl: json['document_url'],
-        mimeType: json['mime_type'],
-        thumbnailUrl: json['thumbnail_url'],
-        thumbnailWidth: json['thumbnail_width'],
-        thumbnailHeight: json['thumbnail_height'],
-        replyMarkup: json['reply_markup'] == null
-            ? null
-            : ReplyMarkup.fromJson(json['reply_markup']),
-        inputMessageContent:
-            InputMessageContent.fromJson(json['input_message_content']),
-      );
-
+  factory InputInlineQueryResultDocument.fromJson(Map<String, dynamic> json) => InputInlineQueryResultDocument(
+    id: json['id'],
+    title: json['title'],
+    description: json['description'],
+    documentUrl: json['document_url'],
+    mimeType: json['mime_type'],
+    thumbnailUrl: json['thumbnail_url'],
+    thumbnailWidth: json['thumbnail_width'],
+    thumbnailHeight: json['thumbnail_height'],
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
+    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "id": id,
-      "title": title,
-      "description": description,
-      "document_url": documentUrl,
-      "mime_type": mimeType,
-      "thumbnail_url": thumbnailUrl,
-      "thumbnail_width": thumbnailWidth,
-      "thumbnail_height": thumbnailHeight,
-      "reply_markup": replyMarkup?.toJson(),
-      "input_message_content": inputMessageContent.toJson(),
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "id": "$id",
+    "title": "$title",
+    "description": "$description",
+    "document_url": "$documentUrl",
+    "mime_type": "$mimeType",
+    "thumbnail_url": "$thumbnailUrl",
+    "thumbnail_width": "$thumbnailWidth",
+    "thumbnail_height": "$thumbnailHeight",
+    "reply_markup": "${replyMarkup?.toJson()}",
+    "input_message_content": "${inputMessageContent.toJson()}"
   }
-
+	""";
+  }
+  
   @override
   InputInlineQueryResultDocument copyWith({
     String? id,
@@ -571,86 +583,89 @@ class InputInlineQueryResultDocument extends InputInlineQueryResult {
     int? thumbnailHeight,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      InputInlineQueryResultDocument(
-        id: id ?? this.id,
-        title: title ?? this.title,
-        description: description ?? this.description,
-        documentUrl: documentUrl ?? this.documentUrl,
-        mimeType: mimeType ?? this.mimeType,
-        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-        thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
-        thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => InputInlineQueryResultDocument(
+    id: id ?? this.id,
+    title: title ?? this.title,
+    description: description ?? this.description,
+    documentUrl: documentUrl ?? this.documentUrl,
+    mimeType: mimeType ?? this.mimeType,
+    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+    thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
+    thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
+    replyMarkup: replyMarkup ?? this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'inputInlineQueryResultDocument';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
+
 class InputInlineQueryResultGame extends InputInlineQueryResult {
+
   /// Represents a game
   const InputInlineQueryResultGame({
     required this.id,
     required this.gameShortName,
     this.replyMarkup,
   });
-
-  /// [id] Unique identifier of the query result
+  
+  /// [id] Unique identifier of the query result 
   final String id;
 
-  /// [gameShortName] Short name of the game
+  /// [gameShortName] Short name of the game 
   final String gameShortName;
 
   /// [replyMarkup] The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
   final ReplyMarkup? replyMarkup;
-
+  
   /// Parse from a json
-  factory InputInlineQueryResultGame.fromJson(Map<String, dynamic> json) =>
-      InputInlineQueryResultGame(
-        id: json['id'],
-        gameShortName: json['game_short_name'],
-        replyMarkup: json['reply_markup'] == null
-            ? null
-            : ReplyMarkup.fromJson(json['reply_markup']),
-      );
-
+  factory InputInlineQueryResultGame.fromJson(Map<String, dynamic> json) => InputInlineQueryResultGame(
+    id: json['id'],
+    gameShortName: json['game_short_name'],
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "id": id,
-      "game_short_name": gameShortName,
-      "reply_markup": replyMarkup?.toJson(),
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "id": "$id",
+    "game_short_name": "$gameShortName",
+    "reply_markup": "${replyMarkup?.toJson()}"
   }
-
+	""";
+  }
+  
   @override
   InputInlineQueryResultGame copyWith({
     String? id,
     String? gameShortName,
     ReplyMarkup? replyMarkup,
-  }) =>
-      InputInlineQueryResultGame(
-        id: id ?? this.id,
-        gameShortName: gameShortName ?? this.gameShortName,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
-      );
+  }) => InputInlineQueryResultGame(
+    id: id ?? this.id,
+    gameShortName: gameShortName ?? this.gameShortName,
+    replyMarkup: replyMarkup ?? this.replyMarkup,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'inputInlineQueryResultGame';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
+
 class InputInlineQueryResultLocation extends InputInlineQueryResult {
+
   /// Represents a point on the map
   const InputInlineQueryResultLocation({
     required this.id,
@@ -663,8 +678,8 @@ class InputInlineQueryResultLocation extends InputInlineQueryResult {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-
-  /// [id] Unique identifier of the query result
+  
+  /// [id] Unique identifier of the query result 
   final String id;
 
   /// [location] Location result
@@ -676,10 +691,10 @@ class InputInlineQueryResultLocation extends InputInlineQueryResult {
   /// [title] Title of the result
   final String title;
 
-  /// [thumbnailUrl] URL of the result thumbnail, if it exists
+  /// [thumbnailUrl] URL of the result thumbnail, if it exists 
   final String thumbnailUrl;
 
-  /// [thumbnailWidth] Thumbnail width, if known
+  /// [thumbnailWidth] Thumbnail width, if known 
   final int thumbnailWidth;
 
   /// [thumbnailHeight] Thumbnail height, if known
@@ -690,40 +705,40 @@ class InputInlineQueryResultLocation extends InputInlineQueryResult {
 
   /// [inputMessageContent] The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
-
+  
   /// Parse from a json
-  factory InputInlineQueryResultLocation.fromJson(Map<String, dynamic> json) =>
-      InputInlineQueryResultLocation(
-        id: json['id'],
-        location: Location.fromJson(json['location']),
-        livePeriod: json['live_period'],
-        title: json['title'],
-        thumbnailUrl: json['thumbnail_url'],
-        thumbnailWidth: json['thumbnail_width'],
-        thumbnailHeight: json['thumbnail_height'],
-        replyMarkup: json['reply_markup'] == null
-            ? null
-            : ReplyMarkup.fromJson(json['reply_markup']),
-        inputMessageContent:
-            InputMessageContent.fromJson(json['input_message_content']),
-      );
-
+  factory InputInlineQueryResultLocation.fromJson(Map<String, dynamic> json) => InputInlineQueryResultLocation(
+    id: json['id'],
+    location: Location.fromJson(json['location']),
+    livePeriod: json['live_period'],
+    title: json['title'],
+    thumbnailUrl: json['thumbnail_url'],
+    thumbnailWidth: json['thumbnail_width'],
+    thumbnailHeight: json['thumbnail_height'],
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
+    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "id": id,
-      "location": location.toJson(),
-      "live_period": livePeriod,
-      "title": title,
-      "thumbnail_url": thumbnailUrl,
-      "thumbnail_width": thumbnailWidth,
-      "thumbnail_height": thumbnailHeight,
-      "reply_markup": replyMarkup?.toJson(),
-      "input_message_content": inputMessageContent.toJson(),
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "id": "$id",
+    "location": "${location.toJson()}",
+    "live_period": "$livePeriod",
+    "title": "$title",
+    "thumbnail_url": "$thumbnailUrl",
+    "thumbnail_width": "$thumbnailWidth",
+    "thumbnail_height": "$thumbnailHeight",
+    "reply_markup": "${replyMarkup?.toJson()}",
+    "input_message_content": "${inputMessageContent.toJson()}"
   }
-
+	""";
+  }
+  
   @override
   InputInlineQueryResultLocation copyWith({
     String? id,
@@ -735,28 +750,29 @@ class InputInlineQueryResultLocation extends InputInlineQueryResult {
     int? thumbnailHeight,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      InputInlineQueryResultLocation(
-        id: id ?? this.id,
-        location: location ?? this.location,
-        livePeriod: livePeriod ?? this.livePeriod,
-        title: title ?? this.title,
-        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-        thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
-        thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => InputInlineQueryResultLocation(
+    id: id ?? this.id,
+    location: location ?? this.location,
+    livePeriod: livePeriod ?? this.livePeriod,
+    title: title ?? this.title,
+    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+    thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
+    thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
+    replyMarkup: replyMarkup ?? this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'inputInlineQueryResultLocation';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
+
 class InputInlineQueryResultPhoto extends InputInlineQueryResult {
+
   /// Represents link to a JPEG image
   const InputInlineQueryResultPhoto({
     required this.id,
@@ -769,14 +785,14 @@ class InputInlineQueryResultPhoto extends InputInlineQueryResult {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-
-  /// [id] Unique identifier of the query result
+  
+  /// [id] Unique identifier of the query result 
   final String id;
 
-  /// [title] Title of the result, if known
+  /// [title] Title of the result, if known 
   final String title;
 
-  /// [description] A short description of the result, if known
+  /// [description] A short description of the result, if known 
   final String description;
 
   /// [thumbnailUrl] URL of the photo thumbnail, if it exists
@@ -785,7 +801,7 @@ class InputInlineQueryResultPhoto extends InputInlineQueryResult {
   /// [photoUrl] The URL of the JPEG photo (photo size must not exceed 5MB)
   final String photoUrl;
 
-  /// [photoWidth] Width of the photo
+  /// [photoWidth] Width of the photo 
   final int photoWidth;
 
   /// [photoHeight] Height of the photo
@@ -796,40 +812,40 @@ class InputInlineQueryResultPhoto extends InputInlineQueryResult {
 
   /// [inputMessageContent] The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessagePhoto, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
-
+  
   /// Parse from a json
-  factory InputInlineQueryResultPhoto.fromJson(Map<String, dynamic> json) =>
-      InputInlineQueryResultPhoto(
-        id: json['id'],
-        title: json['title'],
-        description: json['description'],
-        thumbnailUrl: json['thumbnail_url'],
-        photoUrl: json['photo_url'],
-        photoWidth: json['photo_width'],
-        photoHeight: json['photo_height'],
-        replyMarkup: json['reply_markup'] == null
-            ? null
-            : ReplyMarkup.fromJson(json['reply_markup']),
-        inputMessageContent:
-            InputMessageContent.fromJson(json['input_message_content']),
-      );
-
+  factory InputInlineQueryResultPhoto.fromJson(Map<String, dynamic> json) => InputInlineQueryResultPhoto(
+    id: json['id'],
+    title: json['title'],
+    description: json['description'],
+    thumbnailUrl: json['thumbnail_url'],
+    photoUrl: json['photo_url'],
+    photoWidth: json['photo_width'],
+    photoHeight: json['photo_height'],
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
+    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "id": id,
-      "title": title,
-      "description": description,
-      "thumbnail_url": thumbnailUrl,
-      "photo_url": photoUrl,
-      "photo_width": photoWidth,
-      "photo_height": photoHeight,
-      "reply_markup": replyMarkup?.toJson(),
-      "input_message_content": inputMessageContent.toJson(),
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "id": "$id",
+    "title": "$title",
+    "description": "$description",
+    "thumbnail_url": "$thumbnailUrl",
+    "photo_url": "$photoUrl",
+    "photo_width": "$photoWidth",
+    "photo_height": "$photoHeight",
+    "reply_markup": "${replyMarkup?.toJson()}",
+    "input_message_content": "${inputMessageContent.toJson()}"
   }
-
+	""";
+  }
+  
   @override
   InputInlineQueryResultPhoto copyWith({
     String? id,
@@ -841,28 +857,29 @@ class InputInlineQueryResultPhoto extends InputInlineQueryResult {
     int? photoHeight,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      InputInlineQueryResultPhoto(
-        id: id ?? this.id,
-        title: title ?? this.title,
-        description: description ?? this.description,
-        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-        photoUrl: photoUrl ?? this.photoUrl,
-        photoWidth: photoWidth ?? this.photoWidth,
-        photoHeight: photoHeight ?? this.photoHeight,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => InputInlineQueryResultPhoto(
+    id: id ?? this.id,
+    title: title ?? this.title,
+    description: description ?? this.description,
+    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+    photoUrl: photoUrl ?? this.photoUrl,
+    photoWidth: photoWidth ?? this.photoWidth,
+    photoHeight: photoHeight ?? this.photoHeight,
+    replyMarkup: replyMarkup ?? this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'inputInlineQueryResultPhoto';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
+
 class InputInlineQueryResultSticker extends InputInlineQueryResult {
+
   /// Represents a link to a WEBP, TGS, or WEBM sticker
   const InputInlineQueryResultSticker({
     required this.id,
@@ -873,8 +890,8 @@ class InputInlineQueryResultSticker extends InputInlineQueryResult {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-
-  /// [id] Unique identifier of the query result
+  
+  /// [id] Unique identifier of the query result 
   final String id;
 
   /// [thumbnailUrl] URL of the sticker thumbnail, if it exists
@@ -883,7 +900,7 @@ class InputInlineQueryResultSticker extends InputInlineQueryResult {
   /// [stickerUrl] The URL of the WEBP, TGS, or WEBM sticker (sticker file size must not exceed 5MB)
   final String stickerUrl;
 
-  /// [stickerWidth] Width of the sticker
+  /// [stickerWidth] Width of the sticker 
   final int stickerWidth;
 
   /// [stickerHeight] Height of the sticker
@@ -894,36 +911,36 @@ class InputInlineQueryResultSticker extends InputInlineQueryResult {
 
   /// [inputMessageContent] The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageSticker, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
-
+  
   /// Parse from a json
-  factory InputInlineQueryResultSticker.fromJson(Map<String, dynamic> json) =>
-      InputInlineQueryResultSticker(
-        id: json['id'],
-        thumbnailUrl: json['thumbnail_url'],
-        stickerUrl: json['sticker_url'],
-        stickerWidth: json['sticker_width'],
-        stickerHeight: json['sticker_height'],
-        replyMarkup: json['reply_markup'] == null
-            ? null
-            : ReplyMarkup.fromJson(json['reply_markup']),
-        inputMessageContent:
-            InputMessageContent.fromJson(json['input_message_content']),
-      );
-
+  factory InputInlineQueryResultSticker.fromJson(Map<String, dynamic> json) => InputInlineQueryResultSticker(
+    id: json['id'],
+    thumbnailUrl: json['thumbnail_url'],
+    stickerUrl: json['sticker_url'],
+    stickerWidth: json['sticker_width'],
+    stickerHeight: json['sticker_height'],
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
+    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "id": id,
-      "thumbnail_url": thumbnailUrl,
-      "sticker_url": stickerUrl,
-      "sticker_width": stickerWidth,
-      "sticker_height": stickerHeight,
-      "reply_markup": replyMarkup?.toJson(),
-      "input_message_content": inputMessageContent.toJson(),
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "id": "$id",
+    "thumbnail_url": "$thumbnailUrl",
+    "sticker_url": "$stickerUrl",
+    "sticker_width": "$stickerWidth",
+    "sticker_height": "$stickerHeight",
+    "reply_markup": "${replyMarkup?.toJson()}",
+    "input_message_content": "${inputMessageContent.toJson()}"
   }
-
+	""";
+  }
+  
   @override
   InputInlineQueryResultSticker copyWith({
     String? id,
@@ -933,26 +950,27 @@ class InputInlineQueryResultSticker extends InputInlineQueryResult {
     int? stickerHeight,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      InputInlineQueryResultSticker(
-        id: id ?? this.id,
-        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-        stickerUrl: stickerUrl ?? this.stickerUrl,
-        stickerWidth: stickerWidth ?? this.stickerWidth,
-        stickerHeight: stickerHeight ?? this.stickerHeight,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => InputInlineQueryResultSticker(
+    id: id ?? this.id,
+    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+    stickerUrl: stickerUrl ?? this.stickerUrl,
+    stickerWidth: stickerWidth ?? this.stickerWidth,
+    stickerHeight: stickerHeight ?? this.stickerHeight,
+    replyMarkup: replyMarkup ?? this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'inputInlineQueryResultSticker';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
+
 class InputInlineQueryResultVenue extends InputInlineQueryResult {
+
   /// Represents information about a venue
   const InputInlineQueryResultVenue({
     required this.id,
@@ -963,17 +981,17 @@ class InputInlineQueryResultVenue extends InputInlineQueryResult {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-
-  /// [id] Unique identifier of the query result
+  
+  /// [id] Unique identifier of the query result 
   final String id;
 
-  /// [venue] Venue result
+  /// [venue] Venue result 
   final Venue venue;
 
-  /// [thumbnailUrl] URL of the result thumbnail, if it exists
+  /// [thumbnailUrl] URL of the result thumbnail, if it exists 
   final String thumbnailUrl;
 
-  /// [thumbnailWidth] Thumbnail width, if known
+  /// [thumbnailWidth] Thumbnail width, if known 
   final int thumbnailWidth;
 
   /// [thumbnailHeight] Thumbnail height, if known
@@ -984,36 +1002,36 @@ class InputInlineQueryResultVenue extends InputInlineQueryResult {
 
   /// [inputMessageContent] The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
-
+  
   /// Parse from a json
-  factory InputInlineQueryResultVenue.fromJson(Map<String, dynamic> json) =>
-      InputInlineQueryResultVenue(
-        id: json['id'],
-        venue: Venue.fromJson(json['venue']),
-        thumbnailUrl: json['thumbnail_url'],
-        thumbnailWidth: json['thumbnail_width'],
-        thumbnailHeight: json['thumbnail_height'],
-        replyMarkup: json['reply_markup'] == null
-            ? null
-            : ReplyMarkup.fromJson(json['reply_markup']),
-        inputMessageContent:
-            InputMessageContent.fromJson(json['input_message_content']),
-      );
-
+  factory InputInlineQueryResultVenue.fromJson(Map<String, dynamic> json) => InputInlineQueryResultVenue(
+    id: json['id'],
+    venue: Venue.fromJson(json['venue']),
+    thumbnailUrl: json['thumbnail_url'],
+    thumbnailWidth: json['thumbnail_width'],
+    thumbnailHeight: json['thumbnail_height'],
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
+    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "id": id,
-      "venue": venue.toJson(),
-      "thumbnail_url": thumbnailUrl,
-      "thumbnail_width": thumbnailWidth,
-      "thumbnail_height": thumbnailHeight,
-      "reply_markup": replyMarkup?.toJson(),
-      "input_message_content": inputMessageContent.toJson(),
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "id": "$id",
+    "venue": "${venue.toJson()}",
+    "thumbnail_url": "$thumbnailUrl",
+    "thumbnail_width": "$thumbnailWidth",
+    "thumbnail_height": "$thumbnailHeight",
+    "reply_markup": "${replyMarkup?.toJson()}",
+    "input_message_content": "${inputMessageContent.toJson()}"
   }
-
+	""";
+  }
+  
   @override
   InputInlineQueryResultVenue copyWith({
     String? id,
@@ -1023,26 +1041,27 @@ class InputInlineQueryResultVenue extends InputInlineQueryResult {
     int? thumbnailHeight,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      InputInlineQueryResultVenue(
-        id: id ?? this.id,
-        venue: venue ?? this.venue,
-        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-        thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
-        thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => InputInlineQueryResultVenue(
+    id: id ?? this.id,
+    venue: venue ?? this.venue,
+    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+    thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
+    thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
+    replyMarkup: replyMarkup ?? this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'inputInlineQueryResultVenue';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
+
 class InputInlineQueryResultVideo extends InputInlineQueryResult {
+
   /// Represents a link to a page containing an embedded video player or a video file
   const InputInlineQueryResultVideo({
     required this.id,
@@ -1057,11 +1076,11 @@ class InputInlineQueryResultVideo extends InputInlineQueryResult {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-
-  /// [id] Unique identifier of the query result
+  
+  /// [id] Unique identifier of the query result 
   final String id;
 
-  /// [title] Title of the result
+  /// [title] Title of the result 
   final String title;
 
   /// [description] A short description of the result, if known
@@ -1070,7 +1089,7 @@ class InputInlineQueryResultVideo extends InputInlineQueryResult {
   /// [thumbnailUrl] The URL of the video thumbnail (JPEG), if it exists
   final String thumbnailUrl;
 
-  /// [videoUrl] URL of the embedded video player or video file
+  /// [videoUrl] URL of the embedded video player or video file 
   final String videoUrl;
 
   /// [mimeType] MIME type of the content of the video URL, only "text/html" or "video/mp4" are currently supported
@@ -1079,7 +1098,7 @@ class InputInlineQueryResultVideo extends InputInlineQueryResult {
   /// [videoWidth] Width of the video
   final int videoWidth;
 
-  /// [videoHeight] Height of the video
+  /// [videoHeight] Height of the video 
   final int videoHeight;
 
   /// [videoDuration] Video duration, in seconds
@@ -1090,44 +1109,44 @@ class InputInlineQueryResultVideo extends InputInlineQueryResult {
 
   /// [inputMessageContent] The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageVideo, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
-
+  
   /// Parse from a json
-  factory InputInlineQueryResultVideo.fromJson(Map<String, dynamic> json) =>
-      InputInlineQueryResultVideo(
-        id: json['id'],
-        title: json['title'],
-        description: json['description'],
-        thumbnailUrl: json['thumbnail_url'],
-        videoUrl: json['video_url'],
-        mimeType: json['mime_type'],
-        videoWidth: json['video_width'],
-        videoHeight: json['video_height'],
-        videoDuration: json['video_duration'],
-        replyMarkup: json['reply_markup'] == null
-            ? null
-            : ReplyMarkup.fromJson(json['reply_markup']),
-        inputMessageContent:
-            InputMessageContent.fromJson(json['input_message_content']),
-      );
-
+  factory InputInlineQueryResultVideo.fromJson(Map<String, dynamic> json) => InputInlineQueryResultVideo(
+    id: json['id'],
+    title: json['title'],
+    description: json['description'],
+    thumbnailUrl: json['thumbnail_url'],
+    videoUrl: json['video_url'],
+    mimeType: json['mime_type'],
+    videoWidth: json['video_width'],
+    videoHeight: json['video_height'],
+    videoDuration: json['video_duration'],
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
+    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "id": id,
-      "title": title,
-      "description": description,
-      "thumbnail_url": thumbnailUrl,
-      "video_url": videoUrl,
-      "mime_type": mimeType,
-      "video_width": videoWidth,
-      "video_height": videoHeight,
-      "video_duration": videoDuration,
-      "reply_markup": replyMarkup?.toJson(),
-      "input_message_content": inputMessageContent.toJson(),
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "id": "$id",
+    "title": "$title",
+    "description": "$description",
+    "thumbnail_url": "$thumbnailUrl",
+    "video_url": "$videoUrl",
+    "mime_type": "$mimeType",
+    "video_width": "$videoWidth",
+    "video_height": "$videoHeight",
+    "video_duration": "$videoDuration",
+    "reply_markup": "${replyMarkup?.toJson()}",
+    "input_message_content": "${inputMessageContent.toJson()}"
   }
-
+	""";
+  }
+  
   @override
   InputInlineQueryResultVideo copyWith({
     String? id,
@@ -1141,30 +1160,31 @@ class InputInlineQueryResultVideo extends InputInlineQueryResult {
     int? videoDuration,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      InputInlineQueryResultVideo(
-        id: id ?? this.id,
-        title: title ?? this.title,
-        description: description ?? this.description,
-        thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
-        videoUrl: videoUrl ?? this.videoUrl,
-        mimeType: mimeType ?? this.mimeType,
-        videoWidth: videoWidth ?? this.videoWidth,
-        videoHeight: videoHeight ?? this.videoHeight,
-        videoDuration: videoDuration ?? this.videoDuration,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => InputInlineQueryResultVideo(
+    id: id ?? this.id,
+    title: title ?? this.title,
+    description: description ?? this.description,
+    thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+    videoUrl: videoUrl ?? this.videoUrl,
+    mimeType: mimeType ?? this.mimeType,
+    videoWidth: videoWidth ?? this.videoWidth,
+    videoHeight: videoHeight ?? this.videoHeight,
+    videoDuration: videoDuration ?? this.videoDuration,
+    replyMarkup: replyMarkup ?? this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'inputInlineQueryResultVideo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
+
 class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
+
   /// Represents a link to an opus-encoded audio file within an OGG container, single channel audio
   const InputInlineQueryResultVoiceNote({
     required this.id,
@@ -1174,8 +1194,8 @@ class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-
-  /// [id] Unique identifier of the query result
+  
+  /// [id] Unique identifier of the query result 
   final String id;
 
   /// [title] Title of the voice note
@@ -1192,34 +1212,34 @@ class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
 
   /// [inputMessageContent] The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageVoiceNote, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
-
+  
   /// Parse from a json
-  factory InputInlineQueryResultVoiceNote.fromJson(Map<String, dynamic> json) =>
-      InputInlineQueryResultVoiceNote(
-        id: json['id'],
-        title: json['title'],
-        voiceNoteUrl: json['voice_note_url'],
-        voiceNoteDuration: json['voice_note_duration'],
-        replyMarkup: json['reply_markup'] == null
-            ? null
-            : ReplyMarkup.fromJson(json['reply_markup']),
-        inputMessageContent:
-            InputMessageContent.fromJson(json['input_message_content']),
-      );
-
+  factory InputInlineQueryResultVoiceNote.fromJson(Map<String, dynamic> json) => InputInlineQueryResultVoiceNote(
+    id: json['id'],
+    title: json['title'],
+    voiceNoteUrl: json['voice_note_url'],
+    voiceNoteDuration: json['voice_note_duration'],
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
+    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "id": id,
-      "title": title,
-      "voice_note_url": voiceNoteUrl,
-      "voice_note_duration": voiceNoteDuration,
-      "reply_markup": replyMarkup?.toJson(),
-      "input_message_content": inputMessageContent.toJson(),
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "id": "$id",
+    "title": "$title",
+    "voice_note_url": "$voiceNoteUrl",
+    "voice_note_duration": "$voiceNoteDuration",
+    "reply_markup": "${replyMarkup?.toJson()}",
+    "input_message_content": "${inputMessageContent.toJson()}"
   }
-
+	""";
+  }
+  
   @override
   InputInlineQueryResultVoiceNote copyWith({
     String? id,
@@ -1228,20 +1248,19 @@ class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
     int? voiceNoteDuration,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) =>
-      InputInlineQueryResultVoiceNote(
-        id: id ?? this.id,
-        title: title ?? this.title,
-        voiceNoteUrl: voiceNoteUrl ?? this.voiceNoteUrl,
-        voiceNoteDuration: voiceNoteDuration ?? this.voiceNoteDuration,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
-        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-      );
+  }) => InputInlineQueryResultVoiceNote(
+    id: id ?? this.id,
+    title: title ?? this.title,
+    voiceNoteUrl: voiceNoteUrl ?? this.voiceNoteUrl,
+    voiceNoteDuration: voiceNoteDuration ?? this.voiceNoteDuration,
+    replyMarkup: replyMarkup ?? this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'inputInlineQueryResultVoiceNote';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

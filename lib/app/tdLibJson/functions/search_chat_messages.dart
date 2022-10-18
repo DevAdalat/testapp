@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class SearchChatMessages extends TdFunction {
+
   /// Searches for messages with given words in the chat. Returns the results in reverse chronological order, i.e. in order of decreasing message_id. Cannot be used in secret chats with a non-empty query. (searchSecretMessages must be used instead), or without an enabled message database. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
   const SearchChatMessages({
     required this.chatId,
@@ -12,7 +13,7 @@ class SearchChatMessages extends TdFunction {
     this.filter,
     required this.messageThreadId,
   });
-
+  
   /// [chatId] Identifier of the chat in which to search messages
   final int chatId;
 
@@ -36,23 +37,25 @@ class SearchChatMessages extends TdFunction {
 
   /// [messageThreadId] If not 0, only messages in the specified thread will be returned; supergroups only
   final int messageThreadId;
-
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "chat_id": chatId,
-      "query": query,
-      "sender_id": senderId?.toJson(),
-      "from_message_id": fromMessageId,
-      "offset": offset,
-      "limit": limit,
-      "filter": filter?.toJson(),
-      "message_thread_id": messageThreadId,
-      "@extra": extra,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "chat_id": "$chatId",
+    "query": "$query",
+    "sender_id": "${senderId?.toJson()}",
+    "from_message_id": "$fromMessageId",
+    "offset": "$offset",
+    "limit": "$limit",
+    "filter": "${filter?.toJson()}",
+    "message_thread_id": "$messageThreadId"
   }
-
+	""";
+  }
+  
   SearchChatMessages copyWith({
     int? chatId,
     String? query,
@@ -62,22 +65,21 @@ class SearchChatMessages extends TdFunction {
     int? limit,
     SearchMessagesFilter? filter,
     int? messageThreadId,
-  }) =>
-      SearchChatMessages(
-        chatId: chatId ?? this.chatId,
-        query: query ?? this.query,
-        senderId: senderId ?? this.senderId,
-        fromMessageId: fromMessageId ?? this.fromMessageId,
-        offset: offset ?? this.offset,
-        limit: limit ?? this.limit,
-        filter: filter ?? this.filter,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
-      );
+  }) => SearchChatMessages(
+    chatId: chatId ?? this.chatId,
+    query: query ?? this.query,
+    senderId: senderId ?? this.senderId,
+    fromMessageId: fromMessageId ?? this.fromMessageId,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+    filter: filter ?? this.filter,
+    messageThreadId: messageThreadId ?? this.messageThreadId,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'searchChatMessages';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

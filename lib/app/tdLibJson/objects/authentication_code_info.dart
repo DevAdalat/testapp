@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class AuthenticationCodeInfo extends TdObject {
+
   /// Information about the authentication code that was sent
   const AuthenticationCodeInfo({
     required this.phoneNumber,
@@ -10,14 +11,14 @@ class AuthenticationCodeInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-
-  /// [phoneNumber] A phone number that is being authenticated
+  
+  /// [phoneNumber] A phone number that is being authenticated 
   final String phoneNumber;
 
-  /// [type] The way the code was sent to the user
+  /// [type] The way the code was sent to the user 
   final AuthenticationCodeType type;
 
-  /// [nextType] The way the next code will be sent to the user; may be null
+  /// [nextType] The way the next code will be sent to the user; may be null 
   final AuthenticationCodeType? nextType;
 
   /// [timeout] Timeout before the code can be re-sent, in seconds
@@ -30,31 +31,32 @@ class AuthenticationCodeInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-
+  
   /// Parse from a json
-  factory AuthenticationCodeInfo.fromJson(Map<String, dynamic> json) =>
-      AuthenticationCodeInfo(
-        phoneNumber: json['phone_number'],
-        type: AuthenticationCodeType.fromJson(json['type']),
-        nextType: json['next_type'] == null
-            ? null
-            : AuthenticationCodeType.fromJson(json['next_type']),
-        timeout: json['timeout'],
-        extra: json['@extra'],
-        clientId: json['@client_id'],
-      );
-
+  factory AuthenticationCodeInfo.fromJson(Map<String, dynamic> json) => AuthenticationCodeInfo(
+    phoneNumber: json['phone_number'],
+    type: AuthenticationCodeType.fromJson(json['type']),
+    nextType: json['next_type'] == null ? null : AuthenticationCodeType.fromJson(json['next_type']),
+    timeout: json['timeout'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "phone_number": phoneNumber,
-      "type": type.toJson(),
-      "next_type": nextType?.toJson(),
-      "timeout": timeout,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "phone_number": "$phoneNumber",
+    "type": "${type.toJson()}",
+    "next_type": "${nextType?.toJson()}",
+    "timeout": "$timeout"
   }
-
+	""";
+  }
+  
   AuthenticationCodeInfo copyWith({
     String? phoneNumber,
     AuthenticationCodeType? type,
@@ -62,20 +64,19 @@ class AuthenticationCodeInfo extends TdObject {
     int? timeout,
     dynamic extra,
     int? clientId,
-  }) =>
-      AuthenticationCodeInfo(
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        type: type ?? this.type,
-        nextType: nextType ?? this.nextType,
-        timeout: timeout ?? this.timeout,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => AuthenticationCodeInfo(
+    phoneNumber: phoneNumber ?? this.phoneNumber,
+    type: type ?? this.type,
+    nextType: nextType ?? this.nextType,
+    timeout: timeout ?? this.timeout,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'authenticationCodeInfo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

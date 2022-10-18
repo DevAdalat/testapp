@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class CreateNewStickerSet extends TdFunction {
+
   /// Creates a new sticker set. Returns the newly created sticker set
   const CreateNewStickerSet({
     required this.userId,
@@ -10,7 +11,7 @@ class CreateNewStickerSet extends TdFunction {
     required this.stickers,
     required this.source,
   });
-
+  
   /// [userId] Sticker set owner; ignored for regular users
   final int userId;
 
@@ -28,21 +29,23 @@ class CreateNewStickerSet extends TdFunction {
 
   /// [source] Source of the sticker set; may be empty if unknown
   final String source;
-
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "user_id": userId,
-      "title": title,
-      "name": name,
-      "sticker_type": stickerType.toJson(),
-      "stickers": stickers.map((i) => i.toJson()).toList(),
-      "source": source,
-      "@extra": extra,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "user_id": "$userId",
+    "title": "$title",
+    "name": "$name",
+    "sticker_type": "${stickerType.toJson()}",
+    "stickers": "${stickers.map((i) => i.toJson()).toList()}",
+    "source": "$source"
   }
-
+	""";
+  }
+  
   CreateNewStickerSet copyWith({
     int? userId,
     String? title,
@@ -50,20 +53,19 @@ class CreateNewStickerSet extends TdFunction {
     StickerType? stickerType,
     List<InputSticker>? stickers,
     String? source,
-  }) =>
-      CreateNewStickerSet(
-        userId: userId ?? this.userId,
-        title: title ?? this.title,
-        name: name ?? this.name,
-        stickerType: stickerType ?? this.stickerType,
-        stickers: stickers ?? this.stickers,
-        source: source ?? this.source,
-      );
+  }) => CreateNewStickerSet(
+    userId: userId ?? this.userId,
+    title: title ?? this.title,
+    name: name ?? this.name,
+    stickerType: stickerType ?? this.stickerType,
+    stickers: stickers ?? this.stickers,
+    source: source ?? this.source,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'createNewStickerSet';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

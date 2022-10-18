@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class EditMessageCaption extends TdFunction {
+
   /// Edits the message content caption. Returns the edited message after the edit is completed on the server side
   const EditMessageCaption({
     required this.chatId,
@@ -8,7 +9,7 @@ class EditMessageCaption extends TdFunction {
     this.replyMarkup,
     this.caption,
   });
-
+  
   /// [chatId] The chat the message belongs to
   final int chatId;
 
@@ -20,36 +21,37 @@ class EditMessageCaption extends TdFunction {
 
   /// [caption] New message content caption; 0-GetOption("message_caption_length_max") characters; pass null to remove caption
   final FormattedText? caption;
-
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "chat_id": chatId,
-      "message_id": messageId,
-      "reply_markup": replyMarkup?.toJson(),
-      "caption": caption?.toJson(),
-      "@extra": extra,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "chat_id": "$chatId",
+    "message_id": "$messageId",
+    "reply_markup": "${replyMarkup?.toJson()}",
+    "caption": "${caption?.toJson()}"
   }
-
+	""";
+  }
+  
   EditMessageCaption copyWith({
     int? chatId,
     int? messageId,
     ReplyMarkup? replyMarkup,
     FormattedText? caption,
-  }) =>
-      EditMessageCaption(
-        chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
-        caption: caption ?? this.caption,
-      );
+  }) => EditMessageCaption(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    replyMarkup: replyMarkup ?? this.replyMarkup,
+    caption: caption ?? this.caption,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'editMessageCaption';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

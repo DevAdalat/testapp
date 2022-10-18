@@ -9,6 +9,6 @@ abstract class TdObject<T> {
 
   const TdObject();
   TdObject.fromJson(Map<String, dynamic> json);
-  Map<String, dynamic> toJson();
+  String toJson();
   String getConstructor();
 }

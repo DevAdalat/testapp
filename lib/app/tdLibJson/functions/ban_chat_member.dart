@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class BanChatMember extends TdFunction {
+
   /// Bans a member in a chat. Members can't be banned in private or secret chats. In supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first
   const BanChatMember({
     required this.chatId,
@@ -8,7 +9,7 @@ class BanChatMember extends TdFunction {
     required this.bannedUntilDate,
     required this.revokeMessages,
   });
-
+  
   /// [chatId] Chat identifier
   final int chatId;
 
@@ -20,36 +21,37 @@ class BanChatMember extends TdFunction {
 
   /// [revokeMessages] Pass true to delete all messages in the chat for the user that is being removed. Always true for supergroups and channels
   final bool revokeMessages;
-
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "chat_id": chatId,
-      "member_id": memberId.toJson(),
-      "banned_until_date": bannedUntilDate,
-      "revoke_messages": revokeMessages,
-      "@extra": extra,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "chat_id": "$chatId",
+    "member_id": "${memberId.toJson()}",
+    "banned_until_date": "$bannedUntilDate",
+    "revoke_messages": $revokeMessages
   }
-
+	""";
+  }
+  
   BanChatMember copyWith({
     int? chatId,
     MessageSender? memberId,
     int? bannedUntilDate,
     bool? revokeMessages,
-  }) =>
-      BanChatMember(
-        chatId: chatId ?? this.chatId,
-        memberId: memberId ?? this.memberId,
-        bannedUntilDate: bannedUntilDate ?? this.bannedUntilDate,
-        revokeMessages: revokeMessages ?? this.revokeMessages,
-      );
+  }) => BanChatMember(
+    chatId: chatId ?? this.chatId,
+    memberId: memberId ?? this.memberId,
+    bannedUntilDate: bannedUntilDate ?? this.bannedUntilDate,
+    revokeMessages: revokeMessages ?? this.revokeMessages,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'banChatMember';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

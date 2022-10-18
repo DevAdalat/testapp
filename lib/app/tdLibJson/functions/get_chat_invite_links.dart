@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class GetChatInviteLinks extends TdFunction {
+
   /// Returns invite links for a chat created by specified administrator. Requires administrator privileges and can_invite_users right in the chat to get own links and owner privileges to get other links
   const GetChatInviteLinks({
     required this.chatId,
@@ -10,7 +11,7 @@ class GetChatInviteLinks extends TdFunction {
     required this.offsetInviteLink,
     required this.limit,
   });
-
+  
   /// [chatId] Chat identifier
   final int chatId;
 
@@ -28,21 +29,23 @@ class GetChatInviteLinks extends TdFunction {
 
   /// [limit] The maximum number of invite links to return; up to 100
   final int limit;
-
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "chat_id": chatId,
-      "creator_user_id": creatorUserId,
-      "is_revoked": isRevoked,
-      "offset_date": offsetDate,
-      "offset_invite_link": offsetInviteLink,
-      "limit": limit,
-      "@extra": extra,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "chat_id": "$chatId",
+    "creator_user_id": "$creatorUserId",
+    "is_revoked": $isRevoked,
+    "offset_date": "$offsetDate",
+    "offset_invite_link": "$offsetInviteLink",
+    "limit": "$limit"
   }
-
+	""";
+  }
+  
   GetChatInviteLinks copyWith({
     int? chatId,
     int? creatorUserId,
@@ -50,20 +53,19 @@ class GetChatInviteLinks extends TdFunction {
     int? offsetDate,
     String? offsetInviteLink,
     int? limit,
-  }) =>
-      GetChatInviteLinks(
-        chatId: chatId ?? this.chatId,
-        creatorUserId: creatorUserId ?? this.creatorUserId,
-        isRevoked: isRevoked ?? this.isRevoked,
-        offsetDate: offsetDate ?? this.offsetDate,
-        offsetInviteLink: offsetInviteLink ?? this.offsetInviteLink,
-        limit: limit ?? this.limit,
-      );
+  }) => GetChatInviteLinks(
+    chatId: chatId ?? this.chatId,
+    creatorUserId: creatorUserId ?? this.creatorUserId,
+    isRevoked: isRevoked ?? this.isRevoked,
+    offsetDate: offsetDate ?? this.offsetDate,
+    offsetInviteLink: offsetInviteLink ?? this.offsetInviteLink,
+    limit: limit ?? this.limit,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'getChatInviteLinks';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

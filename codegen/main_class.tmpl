@@ -7,10 +7,13 @@ class CLASS_NAME extends PARENT {
   VARIABLESEXTRA
   FROM_JSON
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      TO_JSON
-    };
+  String toJson() {
+	return 
+	"""
+  {
+  TO_JSON
+  }
+	""";
   }
   COPY_OVERRIDE
   CLASS_NAME copyWith(COPY_FIELDS) => COPY_RETUEN;

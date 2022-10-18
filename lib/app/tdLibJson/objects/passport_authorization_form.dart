@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class PassportAuthorizationForm extends TdObject {
+
   /// Contains information about a Telegram Passport authorization form that was requested
   const PassportAuthorizationForm({
     required this.id,
@@ -9,7 +10,7 @@ class PassportAuthorizationForm extends TdObject {
     this.extra,
     this.clientId,
   });
-
+  
   /// [id] Unique identifier of the authorization form
   final int id;
 
@@ -26,49 +27,48 @@ class PassportAuthorizationForm extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-
+  
   /// Parse from a json
-  factory PassportAuthorizationForm.fromJson(Map<String, dynamic> json) =>
-      PassportAuthorizationForm(
-        id: json['id'],
-        requiredElements: List<PassportRequiredElement>.from(
-            (json['required_elements'] ?? [])
-                .map((item) => PassportRequiredElement.fromJson(item))
-                .toList()),
-        privacyPolicyUrl: json['privacy_policy_url'],
-        extra: json['@extra'],
-        clientId: json['@client_id'],
-      );
-
+  factory PassportAuthorizationForm.fromJson(Map<String, dynamic> json) => PassportAuthorizationForm(
+    id: json['id'],
+    requiredElements: List<PassportRequiredElement>.from((json['required_elements'] ?? []).map((item) => PassportRequiredElement.fromJson(item)).toList()),
+    privacyPolicyUrl: json['privacy_policy_url'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "id": id,
-      "required_elements": requiredElements.map((i) => i.toJson()).toList(),
-      "privacy_policy_url": privacyPolicyUrl,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "id": "$id",
+    "required_elements": "${requiredElements.map((i) => i.toJson()).toList()}",
+    "privacy_policy_url": "$privacyPolicyUrl"
   }
-
+	""";
+  }
+  
   PassportAuthorizationForm copyWith({
     int? id,
     List<PassportRequiredElement>? requiredElements,
     String? privacyPolicyUrl,
     dynamic extra,
     int? clientId,
-  }) =>
-      PassportAuthorizationForm(
-        id: id ?? this.id,
-        requiredElements: requiredElements ?? this.requiredElements,
-        privacyPolicyUrl: privacyPolicyUrl ?? this.privacyPolicyUrl,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => PassportAuthorizationForm(
+    id: id ?? this.id,
+    requiredElements: requiredElements ?? this.requiredElements,
+    privacyPolicyUrl: privacyPolicyUrl ?? this.privacyPolicyUrl,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'passportAuthorizationForm';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

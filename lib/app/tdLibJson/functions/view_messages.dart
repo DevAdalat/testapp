@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class ViewMessages extends TdFunction {
+
   /// Informs TDLib that messages are being viewed by the user. Sponsored messages must be marked as viewed only when the entire text of the message is shown on the screen (excluding the button). Many useful activities depend on whether the messages are currently being viewed or not (e.g., marking messages as read, incrementing a view counter, updating a view counter, removing deleted messages in supergroups and channels)
   const ViewMessages({
     required this.chatId,
@@ -8,7 +9,7 @@ class ViewMessages extends TdFunction {
     required this.messageIds,
     required this.forceRead,
   });
-
+  
   /// [chatId] Chat identifier
   final int chatId;
 
@@ -20,36 +21,37 @@ class ViewMessages extends TdFunction {
 
   /// [forceRead] Pass true to mark as read the specified messages even the chat is closed
   final bool forceRead;
-
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "chat_id": chatId,
-      "message_thread_id": messageThreadId,
-      "message_ids": messageIds.map((i) => i).toList(),
-      "force_read": forceRead,
-      "@extra": extra,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "chat_id": "$chatId",
+    "message_thread_id": "$messageThreadId",
+    "message_ids": "${messageIds.map((i) => i).toList()}",
+    "force_read": $forceRead
   }
-
+	""";
+  }
+  
   ViewMessages copyWith({
     int? chatId,
     int? messageThreadId,
     List<int>? messageIds,
     bool? forceRead,
-  }) =>
-      ViewMessages(
-        chatId: chatId ?? this.chatId,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
-        messageIds: messageIds ?? this.messageIds,
-        forceRead: forceRead ?? this.forceRead,
-      );
+  }) => ViewMessages(
+    chatId: chatId ?? this.chatId,
+    messageThreadId: messageThreadId ?? this.messageThreadId,
+    messageIds: messageIds ?? this.messageIds,
+    forceRead: forceRead ?? this.forceRead,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'viewMessages';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

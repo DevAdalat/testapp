@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class ConnectedWebsite extends TdObject {
+
   /// Contains information about one website the current user is logged in with Telegram
   const ConnectedWebsite({
     required this.id,
@@ -13,7 +14,7 @@ class ConnectedWebsite extends TdObject {
     required this.ip,
     required this.location,
   });
-
+  
   /// [id] Website identifier
   final int id;
 
@@ -40,37 +41,40 @@ class ConnectedWebsite extends TdObject {
 
   /// [location] Human-readable description of a country and a region from which the user was logged in, based on the IP address
   final String location;
-
+  
   /// Parse from a json
-  factory ConnectedWebsite.fromJson(Map<String, dynamic> json) =>
-      ConnectedWebsite(
-        id: int.parse(json['id']),
-        domainName: json['domain_name'],
-        botUserId: json['bot_user_id'],
-        browser: json['browser'],
-        platform: json['platform'],
-        logInDate: json['log_in_date'],
-        lastActiveDate: json['last_active_date'],
-        ip: json['ip'],
-        location: json['location'],
-      );
-
+  factory ConnectedWebsite.fromJson(Map<String, dynamic> json) => ConnectedWebsite(
+    id: int.parse(json['id']),
+    domainName: json['domain_name'],
+    botUserId: json['bot_user_id'],
+    browser: json['browser'],
+    platform: json['platform'],
+    logInDate: json['log_in_date'],
+    lastActiveDate: json['last_active_date'],
+    ip: json['ip'],
+    location: json['location'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "id": id,
-      "domain_name": domainName,
-      "bot_user_id": botUserId,
-      "browser": browser,
-      "platform": platform,
-      "log_in_date": logInDate,
-      "last_active_date": lastActiveDate,
-      "ip": ip,
-      "location": location,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "id": "$id",
+    "domain_name": "$domainName",
+    "bot_user_id": "$botUserId",
+    "browser": "$browser",
+    "platform": "$platform",
+    "log_in_date": "$logInDate",
+    "last_active_date": "$lastActiveDate",
+    "ip": "$ip",
+    "location": "$location"
   }
-
+	""";
+  }
+  
   ConnectedWebsite copyWith({
     int? id,
     String? domainName,
@@ -81,23 +85,22 @@ class ConnectedWebsite extends TdObject {
     int? lastActiveDate,
     String? ip,
     String? location,
-  }) =>
-      ConnectedWebsite(
-        id: id ?? this.id,
-        domainName: domainName ?? this.domainName,
-        botUserId: botUserId ?? this.botUserId,
-        browser: browser ?? this.browser,
-        platform: platform ?? this.platform,
-        logInDate: logInDate ?? this.logInDate,
-        lastActiveDate: lastActiveDate ?? this.lastActiveDate,
-        ip: ip ?? this.ip,
-        location: location ?? this.location,
-      );
+  }) => ConnectedWebsite(
+    id: id ?? this.id,
+    domainName: domainName ?? this.domainName,
+    botUserId: botUserId ?? this.botUserId,
+    browser: browser ?? this.browser,
+    platform: platform ?? this.platform,
+    logInDate: logInDate ?? this.logInDate,
+    lastActiveDate: lastActiveDate ?? this.lastActiveDate,
+    ip: ip ?? this.ip,
+    location: location ?? this.location,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'connectedWebsite';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

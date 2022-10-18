@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class ChatStatisticsAdministratorActionsInfo extends TdObject {
+
   /// Contains statistics about administrator actions done by a user
   const ChatStatisticsAdministratorActionsInfo({
     required this.userId,
@@ -8,7 +9,7 @@ class ChatStatisticsAdministratorActionsInfo extends TdObject {
     required this.bannedUserCount,
     required this.restrictedUserCount,
   });
-
+  
   /// [userId] Administrator user identifier
   final int userId;
 
@@ -20,45 +21,46 @@ class ChatStatisticsAdministratorActionsInfo extends TdObject {
 
   /// [restrictedUserCount] Number of users restricted by the administrator
   final int restrictedUserCount;
-
+  
   /// Parse from a json
-  factory ChatStatisticsAdministratorActionsInfo.fromJson(
-          Map<String, dynamic> json) =>
-      ChatStatisticsAdministratorActionsInfo(
-        userId: json['user_id'],
-        deletedMessageCount: json['deleted_message_count'],
-        bannedUserCount: json['banned_user_count'],
-        restrictedUserCount: json['restricted_user_count'],
-      );
-
+  factory ChatStatisticsAdministratorActionsInfo.fromJson(Map<String, dynamic> json) => ChatStatisticsAdministratorActionsInfo(
+    userId: json['user_id'],
+    deletedMessageCount: json['deleted_message_count'],
+    bannedUserCount: json['banned_user_count'],
+    restrictedUserCount: json['restricted_user_count'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "user_id": userId,
-      "deleted_message_count": deletedMessageCount,
-      "banned_user_count": bannedUserCount,
-      "restricted_user_count": restrictedUserCount,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "user_id": "$userId",
+    "deleted_message_count": "$deletedMessageCount",
+    "banned_user_count": "$bannedUserCount",
+    "restricted_user_count": "$restrictedUserCount"
   }
-
+	""";
+  }
+  
   ChatStatisticsAdministratorActionsInfo copyWith({
     int? userId,
     int? deletedMessageCount,
     int? bannedUserCount,
     int? restrictedUserCount,
-  }) =>
-      ChatStatisticsAdministratorActionsInfo(
-        userId: userId ?? this.userId,
-        deletedMessageCount: deletedMessageCount ?? this.deletedMessageCount,
-        bannedUserCount: bannedUserCount ?? this.bannedUserCount,
-        restrictedUserCount: restrictedUserCount ?? this.restrictedUserCount,
-      );
+  }) => ChatStatisticsAdministratorActionsInfo(
+    userId: userId ?? this.userId,
+    deletedMessageCount: deletedMessageCount ?? this.deletedMessageCount,
+    bannedUserCount: bannedUserCount ?? this.bannedUserCount,
+    restrictedUserCount: restrictedUserCount ?? this.restrictedUserCount,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'chatStatisticsAdministratorActionsInfo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

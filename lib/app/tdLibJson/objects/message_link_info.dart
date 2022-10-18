@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class MessageLinkInfo extends TdObject {
+
   /// Contains information about a link to a message in a chat
   const MessageLinkInfo({
     required this.isPublic,
@@ -12,7 +13,7 @@ class MessageLinkInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-
+  
   /// [isPublic] True, if the link is a public link for a message in a chat
   final bool isPublic;
 
@@ -38,34 +39,36 @@ class MessageLinkInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-
+  
   /// Parse from a json
-  factory MessageLinkInfo.fromJson(Map<String, dynamic> json) =>
-      MessageLinkInfo(
-        isPublic: json['is_public'],
-        chatId: json['chat_id'],
-        message:
-            json['message'] == null ? null : Message.fromJson(json['message']),
-        mediaTimestamp: json['media_timestamp'],
-        forAlbum: json['for_album'],
-        forComment: json['for_comment'],
-        extra: json['@extra'],
-        clientId: json['@client_id'],
-      );
-
+  factory MessageLinkInfo.fromJson(Map<String, dynamic> json) => MessageLinkInfo(
+    isPublic: json['is_public'],
+    chatId: json['chat_id'],
+    message: json['message'] == null ? null : Message.fromJson(json['message']),
+    mediaTimestamp: json['media_timestamp'],
+    forAlbum: json['for_album'],
+    forComment: json['for_comment'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "is_public": isPublic,
-      "chat_id": chatId,
-      "message": message?.toJson(),
-      "media_timestamp": mediaTimestamp,
-      "for_album": forAlbum,
-      "for_comment": forComment,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "is_public": $isPublic,
+    "chat_id": "$chatId",
+    "message": "${message?.toJson()}",
+    "media_timestamp": "$mediaTimestamp",
+    "for_album": $forAlbum,
+    "for_comment": $forComment
   }
-
+	""";
+  }
+  
   MessageLinkInfo copyWith({
     bool? isPublic,
     int? chatId,
@@ -75,22 +78,21 @@ class MessageLinkInfo extends TdObject {
     bool? forComment,
     dynamic extra,
     int? clientId,
-  }) =>
-      MessageLinkInfo(
-        isPublic: isPublic ?? this.isPublic,
-        chatId: chatId ?? this.chatId,
-        message: message ?? this.message,
-        mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp,
-        forAlbum: forAlbum ?? this.forAlbum,
-        forComment: forComment ?? this.forComment,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => MessageLinkInfo(
+    isPublic: isPublic ?? this.isPublic,
+    chatId: chatId ?? this.chatId,
+    message: message ?? this.message,
+    mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp,
+    forAlbum: forAlbum ?? this.forAlbum,
+    forComment: forComment ?? this.forComment,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageLinkInfo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

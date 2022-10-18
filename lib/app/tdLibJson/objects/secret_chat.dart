@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class SecretChat extends TdObject {
+
   /// Represents a secret chat
   const SecretChat({
     required this.id,
@@ -12,7 +13,7 @@ class SecretChat extends TdObject {
     this.extra,
     this.clientId,
   });
-
+  
   /// [id] Secret chat identifier
   final int id;
 
@@ -38,32 +39,36 @@ class SecretChat extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-
+  
   /// Parse from a json
   factory SecretChat.fromJson(Map<String, dynamic> json) => SecretChat(
-        id: json['id'],
-        userId: json['user_id'],
-        state: SecretChatState.fromJson(json['state']),
-        isOutbound: json['is_outbound'],
-        keyHash: json['key_hash'],
-        layer: json['layer'],
-        extra: json['@extra'],
-        clientId: json['@client_id'],
-      );
-
+    id: json['id'],
+    userId: json['user_id'],
+    state: SecretChatState.fromJson(json['state']),
+    isOutbound: json['is_outbound'],
+    keyHash: json['key_hash'],
+    layer: json['layer'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "id": id,
-      "user_id": userId,
-      "state": state.toJson(),
-      "is_outbound": isOutbound,
-      "key_hash": keyHash,
-      "layer": layer,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "id": "$id",
+    "user_id": "$userId",
+    "state": "${state.toJson()}",
+    "is_outbound": $isOutbound,
+    "key_hash": "$keyHash",
+    "layer": "$layer"
   }
-
+	""";
+  }
+  
   SecretChat copyWith({
     int? id,
     int? userId,
@@ -73,22 +78,21 @@ class SecretChat extends TdObject {
     int? layer,
     dynamic extra,
     int? clientId,
-  }) =>
-      SecretChat(
-        id: id ?? this.id,
-        userId: userId ?? this.userId,
-        state: state ?? this.state,
-        isOutbound: isOutbound ?? this.isOutbound,
-        keyHash: keyHash ?? this.keyHash,
-        layer: layer ?? this.layer,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => SecretChat(
+    id: id ?? this.id,
+    userId: userId ?? this.userId,
+    state: state ?? this.state,
+    isOutbound: isOutbound ?? this.isOutbound,
+    keyHash: keyHash ?? this.keyHash,
+    layer: layer ?? this.layer,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'secretChat';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

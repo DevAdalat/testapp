@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class User extends TdObject {
+
   /// Represents a user
   const User({
     required this.id,
@@ -26,7 +27,7 @@ class User extends TdObject {
     this.extra,
     this.clientId,
   });
-
+  
   /// [id] User identifier
   final int id;
 
@@ -94,64 +95,64 @@ class User extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-
+  
   /// Parse from a json
   factory User.fromJson(Map<String, dynamic> json) => User(
-        id: json['id'],
-        firstName: json['first_name'],
-        lastName: json['last_name'],
-        username: json['username'],
-        phoneNumber: json['phone_number'],
-        status: UserStatus.fromJson(json['status']),
-        profilePhoto: json['profile_photo'] == null
-            ? null
-            : ProfilePhoto.fromJson(json['profile_photo']),
-        emojiStatus: json['emoji_status'] == null
-            ? null
-            : EmojiStatus.fromJson(json['emoji_status']),
-        isContact: json['is_contact'],
-        isMutualContact: json['is_mutual_contact'],
-        isVerified: json['is_verified'],
-        isPremium: json['is_premium'],
-        isSupport: json['is_support'],
-        restrictionReason: json['restriction_reason'],
-        isScam: json['is_scam'],
-        isFake: json['is_fake'],
-        haveAccess: json['have_access'],
-        type: UserType.fromJson(json['type']),
-        languageCode: json['language_code'],
-        addedToAttachmentMenu: json['added_to_attachment_menu'],
-        extra: json['@extra'],
-        clientId: json['@client_id'],
-      );
-
+    id: json['id'],
+    firstName: json['first_name'],
+    lastName: json['last_name'],
+    username: json['username'],
+    phoneNumber: json['phone_number'],
+    status: UserStatus.fromJson(json['status']),
+    profilePhoto: json['profile_photo'] == null ? null : ProfilePhoto.fromJson(json['profile_photo']),
+    emojiStatus: json['emoji_status'] == null ? null : EmojiStatus.fromJson(json['emoji_status']),
+    isContact: json['is_contact'],
+    isMutualContact: json['is_mutual_contact'],
+    isVerified: json['is_verified'],
+    isPremium: json['is_premium'],
+    isSupport: json['is_support'],
+    restrictionReason: json['restriction_reason'],
+    isScam: json['is_scam'],
+    isFake: json['is_fake'],
+    haveAccess: json['have_access'],
+    type: UserType.fromJson(json['type']),
+    languageCode: json['language_code'],
+    addedToAttachmentMenu: json['added_to_attachment_menu'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "id": id,
-      "first_name": firstName,
-      "last_name": lastName,
-      "username": username,
-      "phone_number": phoneNumber,
-      "status": status.toJson(),
-      "profile_photo": profilePhoto?.toJson(),
-      "emoji_status": emojiStatus?.toJson(),
-      "is_contact": isContact,
-      "is_mutual_contact": isMutualContact,
-      "is_verified": isVerified,
-      "is_premium": isPremium,
-      "is_support": isSupport,
-      "restriction_reason": restrictionReason,
-      "is_scam": isScam,
-      "is_fake": isFake,
-      "have_access": haveAccess,
-      "type": type.toJson(),
-      "language_code": languageCode,
-      "added_to_attachment_menu": addedToAttachmentMenu,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "id": "$id",
+    "first_name": "$firstName",
+    "last_name": "$lastName",
+    "username": "$username",
+    "phone_number": "$phoneNumber",
+    "status": "${status.toJson()}",
+    "profile_photo": "${profilePhoto?.toJson()}",
+    "emoji_status": "${emojiStatus?.toJson()}",
+    "is_contact": $isContact,
+    "is_mutual_contact": $isMutualContact,
+    "is_verified": $isVerified,
+    "is_premium": $isPremium,
+    "is_support": $isSupport,
+    "restriction_reason": "$restrictionReason",
+    "is_scam": $isScam,
+    "is_fake": $isFake,
+    "have_access": $haveAccess,
+    "type": "${type.toJson()}",
+    "language_code": "$languageCode",
+    "added_to_attachment_menu": $addedToAttachmentMenu
   }
-
+	""";
+  }
+  
   User copyWith({
     int? id,
     String? firstName,
@@ -175,37 +176,35 @@ class User extends TdObject {
     bool? addedToAttachmentMenu,
     dynamic extra,
     int? clientId,
-  }) =>
-      User(
-        id: id ?? this.id,
-        firstName: firstName ?? this.firstName,
-        lastName: lastName ?? this.lastName,
-        username: username ?? this.username,
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        status: status ?? this.status,
-        profilePhoto: profilePhoto ?? this.profilePhoto,
-        emojiStatus: emojiStatus ?? this.emojiStatus,
-        isContact: isContact ?? this.isContact,
-        isMutualContact: isMutualContact ?? this.isMutualContact,
-        isVerified: isVerified ?? this.isVerified,
-        isPremium: isPremium ?? this.isPremium,
-        isSupport: isSupport ?? this.isSupport,
-        restrictionReason: restrictionReason ?? this.restrictionReason,
-        isScam: isScam ?? this.isScam,
-        isFake: isFake ?? this.isFake,
-        haveAccess: haveAccess ?? this.haveAccess,
-        type: type ?? this.type,
-        languageCode: languageCode ?? this.languageCode,
-        addedToAttachmentMenu:
-            addedToAttachmentMenu ?? this.addedToAttachmentMenu,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => User(
+    id: id ?? this.id,
+    firstName: firstName ?? this.firstName,
+    lastName: lastName ?? this.lastName,
+    username: username ?? this.username,
+    phoneNumber: phoneNumber ?? this.phoneNumber,
+    status: status ?? this.status,
+    profilePhoto: profilePhoto ?? this.profilePhoto,
+    emojiStatus: emojiStatus ?? this.emojiStatus,
+    isContact: isContact ?? this.isContact,
+    isMutualContact: isMutualContact ?? this.isMutualContact,
+    isVerified: isVerified ?? this.isVerified,
+    isPremium: isPremium ?? this.isPremium,
+    isSupport: isSupport ?? this.isSupport,
+    restrictionReason: restrictionReason ?? this.restrictionReason,
+    isScam: isScam ?? this.isScam,
+    isFake: isFake ?? this.isFake,
+    haveAccess: haveAccess ?? this.haveAccess,
+    type: type ?? this.type,
+    languageCode: languageCode ?? this.languageCode,
+    addedToAttachmentMenu: addedToAttachmentMenu ?? this.addedToAttachmentMenu,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'user';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

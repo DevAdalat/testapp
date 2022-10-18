@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class SetTdlibParameters extends TdFunction {
+
   /// Sets the parameters for TDLib initialization. Works only when the current authorization state is authorizationStateWaitTdlibParameters
   const SetTdlibParameters({
     required this.useTestDc,
@@ -20,7 +21,7 @@ class SetTdlibParameters extends TdFunction {
     required this.enableStorageOptimizer,
     required this.ignoreFileNames,
   });
-
+  
   /// [useTestDc] Pass true to use Telegram test environment instead of the production environment
   final bool useTestDc;
 
@@ -68,31 +69,33 @@ class SetTdlibParameters extends TdFunction {
 
   /// [ignoreFileNames] Pass true to ignore original file names for downloaded files. Otherwise, downloaded files are saved under names as close as possible to the original name
   final bool ignoreFileNames;
-
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "use_test_dc": useTestDc,
-      "database_directory": databaseDirectory,
-      "files_directory": filesDirectory,
-      "database_encryption_key": databaseEncryptionKey,
-      "use_file_database": useFileDatabase,
-      "use_chat_info_database": useChatInfoDatabase,
-      "use_message_database": useMessageDatabase,
-      "use_secret_chats": useSecretChats,
-      "api_id": apiId,
-      "api_hash": apiHash,
-      "system_language_code": systemLanguageCode,
-      "device_model": deviceModel,
-      "system_version": systemVersion,
-      "application_version": applicationVersion,
-      "enable_storage_optimizer": enableStorageOptimizer,
-      "ignore_file_names": ignoreFileNames,
-      "@extra": extra,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "use_test_dc": $useTestDc,
+    "database_directory": "$databaseDirectory",
+    "files_directory": "$filesDirectory",
+    "database_encryption_key": "$databaseEncryptionKey",
+    "use_file_database": $useFileDatabase,
+    "use_chat_info_database": $useChatInfoDatabase,
+    "use_message_database": $useMessageDatabase,
+    "use_secret_chats": $useSecretChats,
+    "api_id": "$apiId",
+    "api_hash": "$apiHash",
+    "system_language_code": "$systemLanguageCode",
+    "device_model": "$deviceModel",
+    "system_version": "$systemVersion",
+    "application_version": "$applicationVersion",
+    "enable_storage_optimizer": $enableStorageOptimizer,
+    "ignore_file_names": $ignoreFileNames
   }
-
+	""";
+  }
+  
   SetTdlibParameters copyWith({
     bool? useTestDc,
     String? databaseDirectory,
@@ -110,31 +113,29 @@ class SetTdlibParameters extends TdFunction {
     String? applicationVersion,
     bool? enableStorageOptimizer,
     bool? ignoreFileNames,
-  }) =>
-      SetTdlibParameters(
-        useTestDc: useTestDc ?? this.useTestDc,
-        databaseDirectory: databaseDirectory ?? this.databaseDirectory,
-        filesDirectory: filesDirectory ?? this.filesDirectory,
-        databaseEncryptionKey:
-            databaseEncryptionKey ?? this.databaseEncryptionKey,
-        useFileDatabase: useFileDatabase ?? this.useFileDatabase,
-        useChatInfoDatabase: useChatInfoDatabase ?? this.useChatInfoDatabase,
-        useMessageDatabase: useMessageDatabase ?? this.useMessageDatabase,
-        useSecretChats: useSecretChats ?? this.useSecretChats,
-        apiId: apiId ?? this.apiId,
-        apiHash: apiHash ?? this.apiHash,
-        systemLanguageCode: systemLanguageCode ?? this.systemLanguageCode,
-        deviceModel: deviceModel ?? this.deviceModel,
-        systemVersion: systemVersion ?? this.systemVersion,
-        applicationVersion: applicationVersion ?? this.applicationVersion,
-        enableStorageOptimizer:
-            enableStorageOptimizer ?? this.enableStorageOptimizer,
-        ignoreFileNames: ignoreFileNames ?? this.ignoreFileNames,
-      );
+  }) => SetTdlibParameters(
+    useTestDc: useTestDc ?? this.useTestDc,
+    databaseDirectory: databaseDirectory ?? this.databaseDirectory,
+    filesDirectory: filesDirectory ?? this.filesDirectory,
+    databaseEncryptionKey: databaseEncryptionKey ?? this.databaseEncryptionKey,
+    useFileDatabase: useFileDatabase ?? this.useFileDatabase,
+    useChatInfoDatabase: useChatInfoDatabase ?? this.useChatInfoDatabase,
+    useMessageDatabase: useMessageDatabase ?? this.useMessageDatabase,
+    useSecretChats: useSecretChats ?? this.useSecretChats,
+    apiId: apiId ?? this.apiId,
+    apiHash: apiHash ?? this.apiHash,
+    systemLanguageCode: systemLanguageCode ?? this.systemLanguageCode,
+    deviceModel: deviceModel ?? this.deviceModel,
+    systemVersion: systemVersion ?? this.systemVersion,
+    applicationVersion: applicationVersion ?? this.applicationVersion,
+    enableStorageOptimizer: enableStorageOptimizer ?? this.enableStorageOptimizer,
+    ignoreFileNames: ignoreFileNames ?? this.ignoreFileNames,
+  );
 
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'setTdlibParameters';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

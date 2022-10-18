@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class ChatPhoto extends TdObject {
+
   /// Describes a chat or user profile photo
   const ChatPhoto({
     required this.id,
@@ -10,7 +11,7 @@ class ChatPhoto extends TdObject {
     this.animation,
     this.smallAnimation,
   });
-
+  
   /// [id] Unique photo identifier
   final int id;
 
@@ -28,38 +29,34 @@ class ChatPhoto extends TdObject {
 
   /// [smallAnimation] A small (160x160) animated variant of the photo in MPEG4 format; may be null even the big animation is available
   final AnimatedChatPhoto? smallAnimation;
-
+  
   /// Parse from a json
   factory ChatPhoto.fromJson(Map<String, dynamic> json) => ChatPhoto(
-        id: int.parse(json['id']),
-        addedDate: json['added_date'],
-        minithumbnail: json['minithumbnail'] == null
-            ? null
-            : Minithumbnail.fromJson(json['minithumbnail']),
-        sizes: List<PhotoSize>.from((json['sizes'] ?? [])
-            .map((item) => PhotoSize.fromJson(item))
-            .toList()),
-        animation: json['animation'] == null
-            ? null
-            : AnimatedChatPhoto.fromJson(json['animation']),
-        smallAnimation: json['small_animation'] == null
-            ? null
-            : AnimatedChatPhoto.fromJson(json['small_animation']),
-      );
-
+    id: int.parse(json['id']),
+    addedDate: json['added_date'],
+    minithumbnail: json['minithumbnail'] == null ? null : Minithumbnail.fromJson(json['minithumbnail']),
+    sizes: List<PhotoSize>.from((json['sizes'] ?? []).map((item) => PhotoSize.fromJson(item)).toList()),
+    animation: json['animation'] == null ? null : AnimatedChatPhoto.fromJson(json['animation']),
+    smallAnimation: json['small_animation'] == null ? null : AnimatedChatPhoto.fromJson(json['small_animation']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "id": id,
-      "added_date": addedDate,
-      "minithumbnail": minithumbnail?.toJson(),
-      "sizes": sizes.map((i) => i.toJson()).toList(),
-      "animation": animation?.toJson(),
-      "small_animation": smallAnimation?.toJson(),
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "id": "$id",
+    "added_date": "$addedDate",
+    "minithumbnail": "${minithumbnail?.toJson()}",
+    "sizes": "${sizes.map((i) => i.toJson()).toList()}",
+    "animation": "${animation?.toJson()}",
+    "small_animation": "${smallAnimation?.toJson()}"
   }
-
+	""";
+  }
+  
   ChatPhoto copyWith({
     int? id,
     int? addedDate,
@@ -67,20 +64,19 @@ class ChatPhoto extends TdObject {
     List<PhotoSize>? sizes,
     AnimatedChatPhoto? animation,
     AnimatedChatPhoto? smallAnimation,
-  }) =>
-      ChatPhoto(
-        id: id ?? this.id,
-        addedDate: addedDate ?? this.addedDate,
-        minithumbnail: minithumbnail ?? this.minithumbnail,
-        sizes: sizes ?? this.sizes,
-        animation: animation ?? this.animation,
-        smallAnimation: smallAnimation ?? this.smallAnimation,
-      );
+  }) => ChatPhoto(
+    id: id ?? this.id,
+    addedDate: addedDate ?? this.addedDate,
+    minithumbnail: minithumbnail ?? this.minithumbnail,
+    sizes: sizes ?? this.sizes,
+    animation: animation ?? this.animation,
+    smallAnimation: smallAnimation ?? this.smallAnimation,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'chatPhoto';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

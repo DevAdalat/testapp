@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class ScopeNotificationSettings extends TdObject {
+
   /// Contains information about notification settings for several chats
   const ScopeNotificationSettings({
     required this.muteFor,
@@ -11,7 +12,7 @@ class ScopeNotificationSettings extends TdObject {
     this.extra,
     this.clientId,
   });
-
+  
   /// [muteFor] Time left before notifications will be unmuted, in seconds
   final int muteFor;
 
@@ -34,32 +35,34 @@ class ScopeNotificationSettings extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-
+  
   /// Parse from a json
-  factory ScopeNotificationSettings.fromJson(Map<String, dynamic> json) =>
-      ScopeNotificationSettings(
-        muteFor: json['mute_for'],
-        soundId: int.parse(json['sound_id']),
-        showPreview: json['show_preview'],
-        disablePinnedMessageNotifications:
-            json['disable_pinned_message_notifications'],
-        disableMentionNotifications: json['disable_mention_notifications'],
-        extra: json['@extra'],
-        clientId: json['@client_id'],
-      );
-
+  factory ScopeNotificationSettings.fromJson(Map<String, dynamic> json) => ScopeNotificationSettings(
+    muteFor: json['mute_for'],
+    soundId: int.parse(json['sound_id']),
+    showPreview: json['show_preview'],
+    disablePinnedMessageNotifications: json['disable_pinned_message_notifications'],
+    disableMentionNotifications: json['disable_mention_notifications'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "mute_for": muteFor,
-      "sound_id": soundId,
-      "show_preview": showPreview,
-      "disable_pinned_message_notifications": disablePinnedMessageNotifications,
-      "disable_mention_notifications": disableMentionNotifications,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "mute_for": "$muteFor",
+    "sound_id": "$soundId",
+    "show_preview": $showPreview,
+    "disable_pinned_message_notifications": $disablePinnedMessageNotifications,
+    "disable_mention_notifications": $disableMentionNotifications
   }
-
+	""";
+  }
+  
   ScopeNotificationSettings copyWith({
     int? muteFor,
     int? soundId,
@@ -68,23 +71,20 @@ class ScopeNotificationSettings extends TdObject {
     bool? disableMentionNotifications,
     dynamic extra,
     int? clientId,
-  }) =>
-      ScopeNotificationSettings(
-        muteFor: muteFor ?? this.muteFor,
-        soundId: soundId ?? this.soundId,
-        showPreview: showPreview ?? this.showPreview,
-        disablePinnedMessageNotifications: disablePinnedMessageNotifications ??
-            this.disablePinnedMessageNotifications,
-        disableMentionNotifications:
-            disableMentionNotifications ?? this.disableMentionNotifications,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => ScopeNotificationSettings(
+    muteFor: muteFor ?? this.muteFor,
+    soundId: soundId ?? this.soundId,
+    showPreview: showPreview ?? this.showPreview,
+    disablePinnedMessageNotifications: disablePinnedMessageNotifications ?? this.disablePinnedMessageNotifications,
+    disableMentionNotifications: disableMentionNotifications ?? this.disableMentionNotifications,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'scopeNotificationSettings';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

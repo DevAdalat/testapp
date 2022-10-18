@@ -214,14 +214,15 @@ class DartTdDocumentationGenerator {
         fromJsonFields.add('    return const ${obj.name}();');
         fromJsonFields.add('}');
       } else {
-        toJsonFields.add('"@type": CONSTRUCTOR,');
+        toJsonFields.add('   "@type": "\$CONSTRUCTOR",');
         for (var variable in obj.variables) {
           variables.add(
               '/// [${variable.argName}] ${variable.description}\n  final ${variable.optional ? "${variable.type}?" : variable.type} ${variable.argName};');
           arguments.add(
               '${variable.optional ? '' : 'required '}this.${variable.argName}');
           fromJsonFields.add('${variable.argName}: ${variable.read},');
-          toJsonFields.add('\n      "${variable.name}": ${variable.write},');
+          toJsonFields.add(
+              '\n    "${variable.name}": ${(variable.type == "bool") ? "\$${variable.write}" : "\"${(!variable.write.contains(".") ? "\$${variable.write}" : "\${${variable.write}}" )}\""}${(variable.write == obj.variables.last.write) ? "" :","}');
           copyWithFields.add('${variable.type}? ${variable.argName},');
           copyWithReturnFields.add(
               '${variable.argName}: ${variable.argName} ?? this.${variable.argName},');
@@ -230,7 +231,6 @@ class DartTdDocumentationGenerator {
           fromJsonFields = [];
           parent = 'TdFunction';
           //variables.add('/// callback sign\n  dynamic extra;');
-          toJsonFields.add('\n      "@extra": extra,');
         } else {
           // if (_objects.any((func) =>
           //     func.isFunction && func.relevantObjects.contains(obj.name))) {
@@ -356,9 +356,9 @@ class DartTdDocumentationGenerator {
 }
 
 void main() {
-	tdApiFile.create(recursive: true);
-	functionsDir.create(recursive: true);
-	objectsDir.create(recursive: true);
+  tdApiFile.create(recursive: true);
+  functionsDir.create(recursive: true);
+  objectsDir.create(recursive: true);
   return DartTdDocumentationGenerator().generate();
 }
 

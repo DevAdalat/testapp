@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class UserFullInfo extends TdObject {
+
   /// Contains full information about a user
   const UserFullInfo({
     this.photo,
@@ -18,7 +19,7 @@ class UserFullInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-
+  
   /// [photo] User profile photo; may be null
   final ChatPhoto? photo;
 
@@ -62,53 +63,48 @@ class UserFullInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-
+  
   /// Parse from a json
   factory UserFullInfo.fromJson(Map<String, dynamic> json) => UserFullInfo(
-        photo: json['photo'] == null ? null : ChatPhoto.fromJson(json['photo']),
-        isBlocked: json['is_blocked'],
-        canBeCalled: json['can_be_called'],
-        supportsVideoCalls: json['supports_video_calls'],
-        hasPrivateCalls: json['has_private_calls'],
-        hasPrivateForwards: json['has_private_forwards'],
-        hasRestrictedVoiceAndVideoNoteMessages:
-            json['has_restricted_voice_and_video_note_messages'],
-        needPhoneNumberPrivacyException:
-            json['need_phone_number_privacy_exception'],
-        bio: json['bio'] == null ? null : FormattedText.fromJson(json['bio']),
-        premiumGiftOptions: List<PremiumPaymentOption>.from(
-            (json['premium_gift_options'] ?? [])
-                .map((item) => PremiumPaymentOption.fromJson(item))
-                .toList()),
-        groupInCommonCount: json['group_in_common_count'],
-        botInfo: json['bot_info'] == null
-            ? null
-            : BotInfo.fromJson(json['bot_info']),
-        extra: json['@extra'],
-        clientId: json['@client_id'],
-      );
-
+    photo: json['photo'] == null ? null : ChatPhoto.fromJson(json['photo']),
+    isBlocked: json['is_blocked'],
+    canBeCalled: json['can_be_called'],
+    supportsVideoCalls: json['supports_video_calls'],
+    hasPrivateCalls: json['has_private_calls'],
+    hasPrivateForwards: json['has_private_forwards'],
+    hasRestrictedVoiceAndVideoNoteMessages: json['has_restricted_voice_and_video_note_messages'],
+    needPhoneNumberPrivacyException: json['need_phone_number_privacy_exception'],
+    bio: json['bio'] == null ? null : FormattedText.fromJson(json['bio']),
+    premiumGiftOptions: List<PremiumPaymentOption>.from((json['premium_gift_options'] ?? []).map((item) => PremiumPaymentOption.fromJson(item)).toList()),
+    groupInCommonCount: json['group_in_common_count'],
+    botInfo: json['bot_info'] == null ? null : BotInfo.fromJson(json['bot_info']),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "photo": photo?.toJson(),
-      "is_blocked": isBlocked,
-      "can_be_called": canBeCalled,
-      "supports_video_calls": supportsVideoCalls,
-      "has_private_calls": hasPrivateCalls,
-      "has_private_forwards": hasPrivateForwards,
-      "has_restricted_voice_and_video_note_messages":
-          hasRestrictedVoiceAndVideoNoteMessages,
-      "need_phone_number_privacy_exception": needPhoneNumberPrivacyException,
-      "bio": bio?.toJson(),
-      "premium_gift_options":
-          premiumGiftOptions.map((i) => i.toJson()).toList(),
-      "group_in_common_count": groupInCommonCount,
-      "bot_info": botInfo?.toJson(),
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "photo": "${photo?.toJson()}",
+    "is_blocked": $isBlocked,
+    "can_be_called": $canBeCalled,
+    "supports_video_calls": $supportsVideoCalls,
+    "has_private_calls": $hasPrivateCalls,
+    "has_private_forwards": $hasPrivateForwards,
+    "has_restricted_voice_and_video_note_messages": $hasRestrictedVoiceAndVideoNoteMessages,
+    "need_phone_number_privacy_exception": $needPhoneNumberPrivacyException,
+    "bio": "${bio?.toJson()}",
+    "premium_gift_options": "${premiumGiftOptions.map((i) => i.toJson()).toList()}",
+    "group_in_common_count": "$groupInCommonCount",
+    "bot_info": "${botInfo?.toJson()}"
   }
-
+	""";
+  }
+  
   UserFullInfo copyWith({
     ChatPhoto? photo,
     bool? isBlocked,
@@ -124,31 +120,27 @@ class UserFullInfo extends TdObject {
     BotInfo? botInfo,
     dynamic extra,
     int? clientId,
-  }) =>
-      UserFullInfo(
-        photo: photo ?? this.photo,
-        isBlocked: isBlocked ?? this.isBlocked,
-        canBeCalled: canBeCalled ?? this.canBeCalled,
-        supportsVideoCalls: supportsVideoCalls ?? this.supportsVideoCalls,
-        hasPrivateCalls: hasPrivateCalls ?? this.hasPrivateCalls,
-        hasPrivateForwards: hasPrivateForwards ?? this.hasPrivateForwards,
-        hasRestrictedVoiceAndVideoNoteMessages:
-            hasRestrictedVoiceAndVideoNoteMessages ??
-                this.hasRestrictedVoiceAndVideoNoteMessages,
-        needPhoneNumberPrivacyException: needPhoneNumberPrivacyException ??
-            this.needPhoneNumberPrivacyException,
-        bio: bio ?? this.bio,
-        premiumGiftOptions: premiumGiftOptions ?? this.premiumGiftOptions,
-        groupInCommonCount: groupInCommonCount ?? this.groupInCommonCount,
-        botInfo: botInfo ?? this.botInfo,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
+  }) => UserFullInfo(
+    photo: photo ?? this.photo,
+    isBlocked: isBlocked ?? this.isBlocked,
+    canBeCalled: canBeCalled ?? this.canBeCalled,
+    supportsVideoCalls: supportsVideoCalls ?? this.supportsVideoCalls,
+    hasPrivateCalls: hasPrivateCalls ?? this.hasPrivateCalls,
+    hasPrivateForwards: hasPrivateForwards ?? this.hasPrivateForwards,
+    hasRestrictedVoiceAndVideoNoteMessages: hasRestrictedVoiceAndVideoNoteMessages ?? this.hasRestrictedVoiceAndVideoNoteMessages,
+    needPhoneNumberPrivacyException: needPhoneNumberPrivacyException ?? this.needPhoneNumberPrivacyException,
+    bio: bio ?? this.bio,
+    premiumGiftOptions: premiumGiftOptions ?? this.premiumGiftOptions,
+    groupInCommonCount: groupInCommonCount ?? this.groupInCommonCount,
+    botInfo: botInfo ?? this.botInfo,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'userFullInfo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

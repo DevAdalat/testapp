@@ -1,17 +1,18 @@
 part of '../tdlibjson_api.dart';
 
 class ConnectionState extends TdObject {
+
   /// Describes the current state of the connection to Telegram servers
   const ConnectionState();
-
+  
   /// a ConnectionState return type can be :
   /// * [ConnectionStateWaitingForNetwork]
   /// * [ConnectionStateConnectingToProxy]
   /// * [ConnectionStateConnecting]
   /// * [ConnectionStateUpdating]
   /// * [ConnectionStateReady]
-  factory ConnectionState.fromJson(Map<String, dynamic> json) {
-    switch (json["@type"]) {
+  factory ConnectionState.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case ConnectionStateWaitingForNetwork.CONSTRUCTOR:
         return ConnectionStateWaitingForNetwork.fromJson(json);
       case ConnectionStateConnectingToProxy.CONSTRUCTOR:
@@ -26,152 +27,173 @@ class ConnectionState extends TdObject {
         return const ConnectionState();
     }
   }
-
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {};
+  String toJson() {
+	return 
+	"""
+  {
+  
   }
-
+	""";
+  }
+  
   ConnectionState copyWith() => const ConnectionState();
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'connectionState';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class ConnectionStateWaitingForNetwork extends ConnectionState {
+
   /// Currently waiting for the network to become available. Use setNetworkType to change the available network type
   const ConnectionStateWaitingForNetwork();
-
+  
   /// Parse from a json
-  factory ConnectionStateWaitingForNetwork.fromJson(
-          Map<String, dynamic> json) =>
-      const ConnectionStateWaitingForNetwork();
-
+  factory ConnectionStateWaitingForNetwork.fromJson(Map<String, dynamic> json) => const ConnectionStateWaitingForNetwork();
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
   }
-
+	""";
+  }
+  
   @override
-  ConnectionStateWaitingForNetwork copyWith() =>
-      const ConnectionStateWaitingForNetwork();
+  ConnectionStateWaitingForNetwork copyWith() => const ConnectionStateWaitingForNetwork();
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'connectionStateWaitingForNetwork';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class ConnectionStateConnectingToProxy extends ConnectionState {
+
   /// Currently establishing a connection with a proxy server
   const ConnectionStateConnectingToProxy();
-
+  
   /// Parse from a json
-  factory ConnectionStateConnectingToProxy.fromJson(
-          Map<String, dynamic> json) =>
-      const ConnectionStateConnectingToProxy();
-
+  factory ConnectionStateConnectingToProxy.fromJson(Map<String, dynamic> json) => const ConnectionStateConnectingToProxy();
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
   }
-
+	""";
+  }
+  
   @override
-  ConnectionStateConnectingToProxy copyWith() =>
-      const ConnectionStateConnectingToProxy();
+  ConnectionStateConnectingToProxy copyWith() => const ConnectionStateConnectingToProxy();
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'connectionStateConnectingToProxy';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
+
 class ConnectionStateConnecting extends ConnectionState {
+
   /// Currently establishing a connection to the Telegram servers
   const ConnectionStateConnecting();
-
+  
   /// Parse from a json
-  factory ConnectionStateConnecting.fromJson(Map<String, dynamic> json) =>
-      const ConnectionStateConnecting();
-
+  factory ConnectionStateConnecting.fromJson(Map<String, dynamic> json) => const ConnectionStateConnecting();
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
   }
-
+	""";
+  }
+  
   @override
   ConnectionStateConnecting copyWith() => const ConnectionStateConnecting();
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'connectionStateConnecting';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
+
 class ConnectionStateUpdating extends ConnectionState {
+
   /// Downloading data received while the application was offline
   const ConnectionStateUpdating();
-
+  
   /// Parse from a json
-  factory ConnectionStateUpdating.fromJson(Map<String, dynamic> json) =>
-      const ConnectionStateUpdating();
-
+  factory ConnectionStateUpdating.fromJson(Map<String, dynamic> json) => const ConnectionStateUpdating();
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
   }
-
+	""";
+  }
+  
   @override
   ConnectionStateUpdating copyWith() => const ConnectionStateUpdating();
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'connectionStateUpdating';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
+
 class ConnectionStateReady extends ConnectionState {
+
   /// There is a working connection to the Telegram servers
   const ConnectionStateReady();
-
+  
   /// Parse from a json
-  factory ConnectionStateReady.fromJson(Map<String, dynamic> json) =>
-      const ConnectionStateReady();
-
+  factory ConnectionStateReady.fromJson(Map<String, dynamic> json) => const ConnectionStateReady();
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
   }
-
+	""";
+  }
+  
   @override
   ConnectionStateReady copyWith() => const ConnectionStateReady();
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'connectionStateReady';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,6 +1,7 @@
 part of '../tdlibjson_api.dart';
 
 class OptimizeStorage extends TdFunction {
+
   /// Optimizes storage usage, i.e. deletes some files and returns new storage usage statistics. Secret thumbnails can't be deleted
   const OptimizeStorage({
     required this.size,
@@ -13,7 +14,7 @@ class OptimizeStorage extends TdFunction {
     required this.returnDeletedFileStatistics,
     required this.chatLimit,
   });
-
+  
   /// [size] Limit on the total size of files after deletion, in bytes. Pass -1 to use the default limit
   final int size;
 
@@ -40,24 +41,26 @@ class OptimizeStorage extends TdFunction {
 
   /// [chatLimit] Same as in getStorageStatistics. Affects only returned statistics
   final int chatLimit;
-
+  
   @override
-  Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      "@type": CONSTRUCTOR,
-      "size": size,
-      "ttl": ttl,
-      "count": count,
-      "immunity_delay": immunityDelay,
-      "file_types": fileTypes.map((i) => i.toJson()).toList(),
-      "chat_ids": chatIds.map((i) => i).toList(),
-      "exclude_chat_ids": excludeChatIds.map((i) => i).toList(),
-      "return_deleted_file_statistics": returnDeletedFileStatistics,
-      "chat_limit": chatLimit,
-      "@extra": extra,
-    };
+  String toJson() {
+	return 
+	"""
+  {
+     "@type": "$CONSTRUCTOR",
+    "size": "$size",
+    "ttl": "$ttl",
+    "count": "$count",
+    "immunity_delay": "$immunityDelay",
+    "file_types": "${fileTypes.map((i) => i.toJson()).toList()}",
+    "chat_ids": "${chatIds.map((i) => i).toList()}",
+    "exclude_chat_ids": "${excludeChatIds.map((i) => i).toList()}",
+    "return_deleted_file_statistics": $returnDeletedFileStatistics,
+    "chat_limit": "$chatLimit"
   }
-
+	""";
+  }
+  
   OptimizeStorage copyWith({
     int? size,
     int? ttl,
@@ -68,24 +71,22 @@ class OptimizeStorage extends TdFunction {
     List<int>? excludeChatIds,
     bool? returnDeletedFileStatistics,
     int? chatLimit,
-  }) =>
-      OptimizeStorage(
-        size: size ?? this.size,
-        ttl: ttl ?? this.ttl,
-        count: count ?? this.count,
-        immunityDelay: immunityDelay ?? this.immunityDelay,
-        fileTypes: fileTypes ?? this.fileTypes,
-        chatIds: chatIds ?? this.chatIds,
-        excludeChatIds: excludeChatIds ?? this.excludeChatIds,
-        returnDeletedFileStatistics:
-            returnDeletedFileStatistics ?? this.returnDeletedFileStatistics,
-        chatLimit: chatLimit ?? this.chatLimit,
-      );
+  }) => OptimizeStorage(
+    size: size ?? this.size,
+    ttl: ttl ?? this.ttl,
+    count: count ?? this.count,
+    immunityDelay: immunityDelay ?? this.immunityDelay,
+    fileTypes: fileTypes ?? this.fileTypes,
+    chatIds: chatIds ?? this.chatIds,
+    excludeChatIds: excludeChatIds ?? this.excludeChatIds,
+    returnDeletedFileStatistics: returnDeletedFileStatistics ?? this.returnDeletedFileStatistics,
+    chatLimit: chatLimit ?? this.chatLimit,
+  );
 
-// ignore: constant_identifier_names
+// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'optimizeStorage';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
