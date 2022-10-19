@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class GroupCallParticipant extends TdObject {
-
   /// Represents a group call participant
   const GroupCallParticipant({
     required this.participantId,
@@ -23,7 +22,7 @@ class GroupCallParticipant extends TdObject {
     required this.volumeLevel,
     required this.order,
   });
-  
+
   /// [participantId] Identifier of the group call participant
   final MessageSender participantId;
 
@@ -77,58 +76,62 @@ class GroupCallParticipant extends TdObject {
 
   /// [order] User's order in the group call participant list. Orders must be compared lexicographically. The bigger is order, the higher is user in the list. If order is empty, the user must be removed from the participant list
   final String order;
-  
+
   /// Parse from a json
-  factory GroupCallParticipant.fromJson(Map<String, dynamic> json) => GroupCallParticipant(
-    participantId: MessageSender.fromJson(json['participant_id']),
-    audioSourceId: json['audio_source_id'],
-    screenSharingAudioSourceId: json['screen_sharing_audio_source_id'],
-    videoInfo: json['video_info'] == null ? null : GroupCallParticipantVideoInfo.fromJson(json['video_info']),
-    screenSharingVideoInfo: json['screen_sharing_video_info'] == null ? null : GroupCallParticipantVideoInfo.fromJson(json['screen_sharing_video_info']),
-    bio: json['bio'],
-    isCurrentUser: json['is_current_user'],
-    isSpeaking: json['is_speaking'],
-    isHandRaised: json['is_hand_raised'],
-    canBeMutedForAllUsers: json['can_be_muted_for_all_users'],
-    canBeUnmutedForAllUsers: json['can_be_unmuted_for_all_users'],
-    canBeMutedForCurrentUser: json['can_be_muted_for_current_user'],
-    canBeUnmutedForCurrentUser: json['can_be_unmuted_for_current_user'],
-    isMutedForAllUsers: json['is_muted_for_all_users'],
-    isMutedForCurrentUser: json['is_muted_for_current_user'],
-    canUnmuteSelf: json['can_unmute_self'],
-    volumeLevel: json['volume_level'],
-    order: json['order'],
-  );
-  
-  
+  factory GroupCallParticipant.fromJson(Map<String, dynamic> json) =>
+      GroupCallParticipant(
+        participantId: MessageSender.fromJson(json['participant_id']),
+        audioSourceId: json['audio_source_id'],
+        screenSharingAudioSourceId: json['screen_sharing_audio_source_id'],
+        videoInfo: json['video_info'] == null
+            ? null
+            : GroupCallParticipantVideoInfo.fromJson(json['video_info']),
+        screenSharingVideoInfo: json['screen_sharing_video_info'] == null
+            ? null
+            : GroupCallParticipantVideoInfo.fromJson(
+                json['screen_sharing_video_info']),
+        bio: json['bio'],
+        isCurrentUser: json['is_current_user'],
+        isSpeaking: json['is_speaking'],
+        isHandRaised: json['is_hand_raised'],
+        canBeMutedForAllUsers: json['can_be_muted_for_all_users'],
+        canBeUnmutedForAllUsers: json['can_be_unmuted_for_all_users'],
+        canBeMutedForCurrentUser: json['can_be_muted_for_current_user'],
+        canBeUnmutedForCurrentUser: json['can_be_unmuted_for_current_user'],
+        isMutedForAllUsers: json['is_muted_for_all_users'],
+        isMutedForCurrentUser: json['is_muted_for_current_user'],
+        canUnmuteSelf: json['can_unmute_self'],
+        volumeLevel: json['volume_level'],
+        order: json['order'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "participant_id": "${participantId.toJson()}",
-    "audio_source_id": "$audioSourceId",
-    "screen_sharing_audio_source_id": "$screenSharingAudioSourceId",
-    "video_info": "${videoInfo?.toJson()}",
-    "screen_sharing_video_info": "${screenSharingVideoInfo?.toJson()}",
-    "bio": "$bio",
-    "is_current_user": $isCurrentUser,
-    "is_speaking": $isSpeaking,
-    "is_hand_raised": $isHandRaised,
-    "can_be_muted_for_all_users": $canBeMutedForAllUsers,
-    "can_be_unmuted_for_all_users": $canBeUnmutedForAllUsers,
-    "can_be_muted_for_current_user": $canBeMutedForCurrentUser,
-    "can_be_unmuted_for_current_user": $canBeUnmutedForCurrentUser,
-    "is_muted_for_all_users": $isMutedForAllUsers,
-    "is_muted_for_current_user": $isMutedForCurrentUser,
-    "can_unmute_self": $canUnmuteSelf,
-    "volume_level": "$volumeLevel",
-    "order": "$order"
-  }
+   "@type":"$CONSTRUCTOR",
+   "participant_id":"${participantId.toJson()}",
+   "audio_source_id":$audioSourceId,
+   "screen_sharing_audio_source_id":$screenSharingAudioSourceId,
+   "video_info":"${videoInfo?.toJson()}",
+   "screen_sharing_video_info":"${screenSharingVideoInfo?.toJson()}",
+   "bio":"$bio",
+   "is_current_user":$isCurrentUser,
+   "is_speaking":$isSpeaking,
+   "is_hand_raised":$isHandRaised,
+   "can_be_muted_for_all_users":$canBeMutedForAllUsers,
+   "can_be_unmuted_for_all_users":$canBeUnmutedForAllUsers,
+   "can_be_muted_for_current_user":$canBeMutedForCurrentUser,
+   "can_be_unmuted_for_current_user":$canBeUnmutedForCurrentUser,
+   "is_muted_for_all_users":$isMutedForAllUsers,
+   "is_muted_for_current_user":$isMutedForCurrentUser,
+   "can_unmute_self":$canUnmuteSelf,
+   "volume_level":$volumeLevel,
+   "order":"$order"
+}
 	""";
   }
-  
+
   GroupCallParticipant copyWith({
     MessageSender? participantId,
     int? audioSourceId,
@@ -148,31 +151,38 @@ class GroupCallParticipant extends TdObject {
     bool? canUnmuteSelf,
     int? volumeLevel,
     String? order,
-  }) => GroupCallParticipant(
-    participantId: participantId ?? this.participantId,
-    audioSourceId: audioSourceId ?? this.audioSourceId,
-    screenSharingAudioSourceId: screenSharingAudioSourceId ?? this.screenSharingAudioSourceId,
-    videoInfo: videoInfo ?? this.videoInfo,
-    screenSharingVideoInfo: screenSharingVideoInfo ?? this.screenSharingVideoInfo,
-    bio: bio ?? this.bio,
-    isCurrentUser: isCurrentUser ?? this.isCurrentUser,
-    isSpeaking: isSpeaking ?? this.isSpeaking,
-    isHandRaised: isHandRaised ?? this.isHandRaised,
-    canBeMutedForAllUsers: canBeMutedForAllUsers ?? this.canBeMutedForAllUsers,
-    canBeUnmutedForAllUsers: canBeUnmutedForAllUsers ?? this.canBeUnmutedForAllUsers,
-    canBeMutedForCurrentUser: canBeMutedForCurrentUser ?? this.canBeMutedForCurrentUser,
-    canBeUnmutedForCurrentUser: canBeUnmutedForCurrentUser ?? this.canBeUnmutedForCurrentUser,
-    isMutedForAllUsers: isMutedForAllUsers ?? this.isMutedForAllUsers,
-    isMutedForCurrentUser: isMutedForCurrentUser ?? this.isMutedForCurrentUser,
-    canUnmuteSelf: canUnmuteSelf ?? this.canUnmuteSelf,
-    volumeLevel: volumeLevel ?? this.volumeLevel,
-    order: order ?? this.order,
-  );
+  }) =>
+      GroupCallParticipant(
+        participantId: participantId ?? this.participantId,
+        audioSourceId: audioSourceId ?? this.audioSourceId,
+        screenSharingAudioSourceId:
+            screenSharingAudioSourceId ?? this.screenSharingAudioSourceId,
+        videoInfo: videoInfo ?? this.videoInfo,
+        screenSharingVideoInfo:
+            screenSharingVideoInfo ?? this.screenSharingVideoInfo,
+        bio: bio ?? this.bio,
+        isCurrentUser: isCurrentUser ?? this.isCurrentUser,
+        isSpeaking: isSpeaking ?? this.isSpeaking,
+        isHandRaised: isHandRaised ?? this.isHandRaised,
+        canBeMutedForAllUsers:
+            canBeMutedForAllUsers ?? this.canBeMutedForAllUsers,
+        canBeUnmutedForAllUsers:
+            canBeUnmutedForAllUsers ?? this.canBeUnmutedForAllUsers,
+        canBeMutedForCurrentUser:
+            canBeMutedForCurrentUser ?? this.canBeMutedForCurrentUser,
+        canBeUnmutedForCurrentUser:
+            canBeUnmutedForCurrentUser ?? this.canBeUnmutedForCurrentUser,
+        isMutedForAllUsers: isMutedForAllUsers ?? this.isMutedForAllUsers,
+        isMutedForCurrentUser:
+            isMutedForCurrentUser ?? this.isMutedForCurrentUser,
+        canUnmuteSelf: canUnmuteSelf ?? this.canUnmuteSelf,
+        volumeLevel: volumeLevel ?? this.volumeLevel,
+        order: order ?? this.order,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'groupCallParticipant';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

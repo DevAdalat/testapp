@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class SendInlineQueryResultMessage extends TdFunction {
-
   /// Sends the result of an inline query as a message. Returns the sent message. Always clears a chat draft message
   const SendInlineQueryResultMessage({
     required this.chatId,
@@ -12,7 +11,7 @@ class SendInlineQueryResultMessage extends TdFunction {
     required this.resultId,
     required this.hideViaBot,
   });
-  
+
   /// [chatId] Target chat
   final int chatId;
 
@@ -33,24 +32,23 @@ class SendInlineQueryResultMessage extends TdFunction {
 
   /// [hideViaBot] Pass true to hide the bot, via which the message is sent. Can be used only for bots GetOption("animation_search_bot_username"), GetOption("photo_search_bot_username"), and GetOption("venue_search_bot_username")
   final bool hideViaBot;
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "chat_id": "$chatId",
-    "message_thread_id": "$messageThreadId",
-    "reply_to_message_id": "$replyToMessageId",
-    "options": "${options?.toJson()}",
-    "query_id": "$queryId",
-    "result_id": "$resultId",
-    "hide_via_bot": $hideViaBot
-  }
+   "@type":"$CONSTRUCTOR",
+   "chat_id":$chatId,
+   "message_thread_id":$messageThreadId,
+   "reply_to_message_id":$replyToMessageId,
+   "options":"${options?.toJson()}",
+   "query_id":$queryId,
+   "result_id":"$resultId",
+   "hide_via_bot":$hideViaBot
+}
 	""";
   }
-  
+
   SendInlineQueryResultMessage copyWith({
     int? chatId,
     int? messageThreadId,
@@ -59,20 +57,20 @@ class SendInlineQueryResultMessage extends TdFunction {
     int? queryId,
     String? resultId,
     bool? hideViaBot,
-  }) => SendInlineQueryResultMessage(
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    replyToMessageId: replyToMessageId ?? this.replyToMessageId,
-    options: options ?? this.options,
-    queryId: queryId ?? this.queryId,
-    resultId: resultId ?? this.resultId,
-    hideViaBot: hideViaBot ?? this.hideViaBot,
-  );
+  }) =>
+      SendInlineQueryResultMessage(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+        replyToMessageId: replyToMessageId ?? this.replyToMessageId,
+        options: options ?? this.options,
+        queryId: queryId ?? this.queryId,
+        resultId: resultId ?? this.resultId,
+        hideViaBot: hideViaBot ?? this.hideViaBot,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'sendInlineQueryResultMessage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

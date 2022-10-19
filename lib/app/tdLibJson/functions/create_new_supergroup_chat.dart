@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class CreateNewSupergroupChat extends TdFunction {
-
   /// Creates a new supergroup or channel and sends a corresponding messageSupergroupChatCreate. Returns the newly created chat
   const CreateNewSupergroupChat({
     required this.title,
@@ -10,7 +9,7 @@ class CreateNewSupergroupChat extends TdFunction {
     this.location,
     required this.forImport,
   });
-  
+
   /// [title] Title of the new chat; 1-128 characters
   final String title;
 
@@ -25,40 +24,39 @@ class CreateNewSupergroupChat extends TdFunction {
 
   /// [forImport] Pass true to create a supergroup for importing messages using importMessage
   final bool forImport;
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "title": "$title",
-    "is_channel": $isChannel,
-    "description": "$description",
-    "location": "${location?.toJson()}",
-    "for_import": $forImport
-  }
+   "@type":"$CONSTRUCTOR",
+   "title":"$title",
+   "is_channel":$isChannel,
+   "description":"$description",
+   "location":"${location?.toJson()}",
+   "for_import":$forImport
+}
 	""";
   }
-  
+
   CreateNewSupergroupChat copyWith({
     String? title,
     bool? isChannel,
     String? description,
     ChatLocation? location,
     bool? forImport,
-  }) => CreateNewSupergroupChat(
-    title: title ?? this.title,
-    isChannel: isChannel ?? this.isChannel,
-    description: description ?? this.description,
-    location: location ?? this.location,
-    forImport: forImport ?? this.forImport,
-  );
+  }) =>
+      CreateNewSupergroupChat(
+        title: title ?? this.title,
+        isChannel: isChannel ?? this.isChannel,
+        description: description ?? this.description,
+        location: location ?? this.location,
+        forImport: forImport ?? this.forImport,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'createNewSupergroupChat';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

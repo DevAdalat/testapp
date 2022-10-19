@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class OpenWebApp extends TdFunction {
-
   /// Informs TDLib that a Web App is being opened from attachment menu, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an inlineKeyboardButtonTypeWebApp button.. For each bot, a confirmation alert about data sent to the bot must be shown once
   const OpenWebApp({
     required this.chatId,
@@ -11,7 +10,7 @@ class OpenWebApp extends TdFunction {
     required this.applicationName,
     required this.replyToMessageId,
   });
-  
+
   /// [chatId] Identifier of the chat in which the Web App is opened
   final int chatId;
 
@@ -29,23 +28,22 @@ class OpenWebApp extends TdFunction {
 
   /// [replyToMessageId] Identifier of the replied message for the message sent by the Web App; 0 if none
   final int replyToMessageId;
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "chat_id": "$chatId",
-    "bot_user_id": "$botUserId",
-    "url": "$url",
-    "theme": "${theme?.toJson()}",
-    "application_name": "$applicationName",
-    "reply_to_message_id": "$replyToMessageId"
-  }
+   "@type":"$CONSTRUCTOR",
+   "chat_id":$chatId,
+   "bot_user_id":$botUserId,
+   "url":"$url",
+   "theme":"${theme?.toJson()}",
+   "application_name":"$applicationName",
+   "reply_to_message_id":$replyToMessageId
+}
 	""";
   }
-  
+
   OpenWebApp copyWith({
     int? chatId,
     int? botUserId,
@@ -53,19 +51,19 @@ class OpenWebApp extends TdFunction {
     ThemeParameters? theme,
     String? applicationName,
     int? replyToMessageId,
-  }) => OpenWebApp(
-    chatId: chatId ?? this.chatId,
-    botUserId: botUserId ?? this.botUserId,
-    url: url ?? this.url,
-    theme: theme ?? this.theme,
-    applicationName: applicationName ?? this.applicationName,
-    replyToMessageId: replyToMessageId ?? this.replyToMessageId,
-  );
+  }) =>
+      OpenWebApp(
+        chatId: chatId ?? this.chatId,
+        botUserId: botUserId ?? this.botUserId,
+        url: url ?? this.url,
+        theme: theme ?? this.theme,
+        applicationName: applicationName ?? this.applicationName,
+        replyToMessageId: replyToMessageId ?? this.replyToMessageId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'openWebApp';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

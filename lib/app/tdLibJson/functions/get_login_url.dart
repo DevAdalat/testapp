@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class GetLoginUrl extends TdFunction {
-
   /// Returns an HTTP URL which can be used to automatically authorize the user on a website after clicking an inline button of type inlineKeyboardButtonTypeLoginUrl.. Use the method getLoginUrlInfo to find whether a prior user confirmation is needed. If an error is returned, then the button must be handled as an ordinary URL button
   const GetLoginUrl({
     required this.chatId,
@@ -9,11 +8,11 @@ class GetLoginUrl extends TdFunction {
     required this.buttonId,
     required this.allowWriteAccess,
   });
-  
+
   /// [chatId] Chat identifier of the message with the button
   final int chatId;
 
-  /// [messageId] Message identifier of the message with the button 
+  /// [messageId] Message identifier of the message with the button
   final int messageId;
 
   /// [buttonId] Button identifier
@@ -21,37 +20,36 @@ class GetLoginUrl extends TdFunction {
 
   /// [allowWriteAccess] Pass true to allow the bot to send messages to the current user
   final bool allowWriteAccess;
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "chat_id": "$chatId",
-    "message_id": "$messageId",
-    "button_id": "$buttonId",
-    "allow_write_access": $allowWriteAccess
-  }
+   "@type":"$CONSTRUCTOR",
+   "chat_id":$chatId,
+   "message_id":$messageId,
+   "button_id":$buttonId,
+   "allow_write_access":$allowWriteAccess
+}
 	""";
   }
-  
+
   GetLoginUrl copyWith({
     int? chatId,
     int? messageId,
     int? buttonId,
     bool? allowWriteAccess,
-  }) => GetLoginUrl(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    buttonId: buttonId ?? this.buttonId,
-    allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
-  );
+  }) =>
+      GetLoginUrl(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        buttonId: buttonId ?? this.buttonId,
+        allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'getLoginUrl';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class StickerSets extends TdObject {
-
   /// Represents a list of sticker sets
   const StickerSets({
     required this.totalCount,
@@ -9,8 +8,8 @@ class StickerSets extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [totalCount] Approximate total number of sticker sets found 
+
+  /// [totalCount] Approximate total number of sticker sets found
   final int totalCount;
 
   /// [sets] List of sticker sets
@@ -23,44 +22,44 @@ class StickerSets extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory StickerSets.fromJson(Map<String, dynamic> json) => StickerSets(
-    totalCount: json['total_count'],
-    sets: List<StickerSetInfo>.from((json['sets'] ?? []).map((item) => StickerSetInfo.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        totalCount: json['total_count'],
+        sets: List<StickerSetInfo>.from((json['sets'] ?? [])
+            .map((item) => StickerSetInfo.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "total_count": "$totalCount",
-    "sets": "${sets.map((i) => i.toJson()).toList()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "total_count":$totalCount,
+   "sets":"${sets.map((i) => i.toJson()).toList()}"
+}
 	""";
   }
-  
+
   StickerSets copyWith({
     int? totalCount,
     List<StickerSetInfo>? sets,
     dynamic extra,
     int? clientId,
-  }) => StickerSets(
-    totalCount: totalCount ?? this.totalCount,
-    sets: sets ?? this.sets,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      StickerSets(
+        totalCount: totalCount ?? this.totalCount,
+        sets: sets ?? this.sets,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'stickerSets';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

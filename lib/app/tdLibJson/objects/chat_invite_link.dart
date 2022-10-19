@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class ChatInviteLink extends TdObject {
-
   /// Contains a chat invite link
   const ChatInviteLink({
     required this.inviteLink,
@@ -19,7 +18,7 @@ class ChatInviteLink extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [inviteLink] Chat invite link
   final String inviteLink;
 
@@ -63,48 +62,46 @@ class ChatInviteLink extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory ChatInviteLink.fromJson(Map<String, dynamic> json) => ChatInviteLink(
-    inviteLink: json['invite_link'],
-    name: json['name'],
-    creatorUserId: json['creator_user_id'],
-    date: json['date'],
-    editDate: json['edit_date'],
-    expirationDate: json['expiration_date'],
-    memberLimit: json['member_limit'],
-    memberCount: json['member_count'],
-    pendingJoinRequestCount: json['pending_join_request_count'],
-    createsJoinRequest: json['creates_join_request'],
-    isPrimary: json['is_primary'],
-    isRevoked: json['is_revoked'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        inviteLink: json['invite_link'],
+        name: json['name'],
+        creatorUserId: json['creator_user_id'],
+        date: json['date'],
+        editDate: json['edit_date'],
+        expirationDate: json['expiration_date'],
+        memberLimit: json['member_limit'],
+        memberCount: json['member_count'],
+        pendingJoinRequestCount: json['pending_join_request_count'],
+        createsJoinRequest: json['creates_join_request'],
+        isPrimary: json['is_primary'],
+        isRevoked: json['is_revoked'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "invite_link": "$inviteLink",
-    "name": "$name",
-    "creator_user_id": "$creatorUserId",
-    "date": "$date",
-    "edit_date": "$editDate",
-    "expiration_date": "$expirationDate",
-    "member_limit": "$memberLimit",
-    "member_count": "$memberCount",
-    "pending_join_request_count": "$pendingJoinRequestCount",
-    "creates_join_request": $createsJoinRequest,
-    "is_primary": $isPrimary,
-    "is_revoked": $isRevoked
-  }
+   "@type":"$CONSTRUCTOR",
+   "invite_link":"$inviteLink",
+   "name":"$name",
+   "creator_user_id":$creatorUserId,
+   "date":$date,
+   "edit_date":$editDate,
+   "expiration_date":$expirationDate,
+   "member_limit":$memberLimit,
+   "member_count":$memberCount,
+   "pending_join_request_count":$pendingJoinRequestCount,
+   "creates_join_request":$createsJoinRequest,
+   "is_primary":$isPrimary,
+   "is_revoked":$isRevoked
+}
 	""";
   }
-  
+
   ChatInviteLink copyWith({
     String? inviteLink,
     String? name,
@@ -120,27 +117,28 @@ class ChatInviteLink extends TdObject {
     bool? isRevoked,
     dynamic extra,
     int? clientId,
-  }) => ChatInviteLink(
-    inviteLink: inviteLink ?? this.inviteLink,
-    name: name ?? this.name,
-    creatorUserId: creatorUserId ?? this.creatorUserId,
-    date: date ?? this.date,
-    editDate: editDate ?? this.editDate,
-    expirationDate: expirationDate ?? this.expirationDate,
-    memberLimit: memberLimit ?? this.memberLimit,
-    memberCount: memberCount ?? this.memberCount,
-    pendingJoinRequestCount: pendingJoinRequestCount ?? this.pendingJoinRequestCount,
-    createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
-    isPrimary: isPrimary ?? this.isPrimary,
-    isRevoked: isRevoked ?? this.isRevoked,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ChatInviteLink(
+        inviteLink: inviteLink ?? this.inviteLink,
+        name: name ?? this.name,
+        creatorUserId: creatorUserId ?? this.creatorUserId,
+        date: date ?? this.date,
+        editDate: editDate ?? this.editDate,
+        expirationDate: expirationDate ?? this.expirationDate,
+        memberLimit: memberLimit ?? this.memberLimit,
+        memberCount: memberCount ?? this.memberCount,
+        pendingJoinRequestCount:
+            pendingJoinRequestCount ?? this.pendingJoinRequestCount,
+        createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
+        isPrimary: isPrimary ?? this.isPrimary,
+        isRevoked: isRevoked ?? this.isRevoked,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'chatInviteLink';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

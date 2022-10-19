@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class WebAppInfo extends TdObject {
-
   /// Contains information about a Web App
   const WebAppInfo({
     required this.launchId,
@@ -9,8 +8,8 @@ class WebAppInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [launchId] Unique identifier for the Web App launch 
+
+  /// [launchId] Unique identifier for the Web App launch
   final int launchId;
 
   /// [url] A Web App URL to open in a web view
@@ -23,44 +22,42 @@ class WebAppInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory WebAppInfo.fromJson(Map<String, dynamic> json) => WebAppInfo(
-    launchId: int.parse(json['launch_id']),
-    url: json['url'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        launchId: int.parse(json['launch_id']),
+        url: json['url'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "launch_id": "$launchId",
-    "url": "$url"
-  }
+   "@type":"$CONSTRUCTOR",
+   "launch_id":$launchId,
+   "url":"$url"
+}
 	""";
   }
-  
+
   WebAppInfo copyWith({
     int? launchId,
     String? url,
     dynamic extra,
     int? clientId,
-  }) => WebAppInfo(
-    launchId: launchId ?? this.launchId,
-    url: url ?? this.url,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      WebAppInfo(
+        launchId: launchId ?? this.launchId,
+        url: url ?? this.url,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'webAppInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class ForwardMessages extends TdFunction {
-
   /// Forwards previously sent messages. Returns the forwarded messages in the same order as the message identifiers passed in message_ids. If a message can't be forwarded, null will be returned instead of the message
   const ForwardMessages({
     required this.chatId,
@@ -12,7 +11,7 @@ class ForwardMessages extends TdFunction {
     required this.removeCaption,
     required this.onlyPreview,
   });
-  
+
   /// [chatId] Identifier of the chat to which to forward messages
   final int chatId;
 
@@ -33,24 +32,23 @@ class ForwardMessages extends TdFunction {
 
   /// [onlyPreview] Pass true to get fake messages instead of actually forwarding them
   final bool onlyPreview;
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "chat_id": "$chatId",
-    "from_chat_id": "$fromChatId",
-    "message_ids": "${messageIds.map((i) => i).toList()}",
-    "options": "${options?.toJson()}",
-    "send_copy": $sendCopy,
-    "remove_caption": $removeCaption,
-    "only_preview": $onlyPreview
-  }
+   "@type":"$CONSTRUCTOR",
+   "chat_id":$chatId,
+   "from_chat_id":$fromChatId,
+   "message_ids":"${messageIds.map((i) => i).toList()}",
+   "options":"${options?.toJson()}",
+   "send_copy":$sendCopy,
+   "remove_caption":$removeCaption,
+   "only_preview":$onlyPreview
+}
 	""";
   }
-  
+
   ForwardMessages copyWith({
     int? chatId,
     int? fromChatId,
@@ -59,20 +57,20 @@ class ForwardMessages extends TdFunction {
     bool? sendCopy,
     bool? removeCaption,
     bool? onlyPreview,
-  }) => ForwardMessages(
-    chatId: chatId ?? this.chatId,
-    fromChatId: fromChatId ?? this.fromChatId,
-    messageIds: messageIds ?? this.messageIds,
-    options: options ?? this.options,
-    sendCopy: sendCopy ?? this.sendCopy,
-    removeCaption: removeCaption ?? this.removeCaption,
-    onlyPreview: onlyPreview ?? this.onlyPreview,
-  );
+  }) =>
+      ForwardMessages(
+        chatId: chatId ?? this.chatId,
+        fromChatId: fromChatId ?? this.fromChatId,
+        messageIds: messageIds ?? this.messageIds,
+        options: options ?? this.options,
+        sendCopy: sendCopy ?? this.sendCopy,
+        removeCaption: removeCaption ?? this.removeCaption,
+        onlyPreview: onlyPreview ?? this.onlyPreview,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'forwardMessages';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,14 +1,13 @@
 part of '../tdlibjson_api.dart';
 
 class DraftMessage extends TdObject {
-
   /// Contains information about a message draft
   const DraftMessage({
     required this.replyToMessageId,
     required this.date,
     required this.inputMessageText,
   });
-  
+
   /// [replyToMessageId] Identifier of the replied message; 0 if none
   final int replyToMessageId;
 
@@ -17,42 +16,41 @@ class DraftMessage extends TdObject {
 
   /// [inputMessageText] Content of the message draft; must be of the type inputMessageText
   final InputMessageContent inputMessageText;
-  
+
   /// Parse from a json
   factory DraftMessage.fromJson(Map<String, dynamic> json) => DraftMessage(
-    replyToMessageId: json['reply_to_message_id'] ?? 0,
-    date: json['date'],
-    inputMessageText: InputMessageContent.fromJson(json['input_message_text']),
-  );
-  
-  
+        replyToMessageId: json['reply_to_message_id'] ?? 0,
+        date: json['date'],
+        inputMessageText:
+            InputMessageContent.fromJson(json['input_message_text']),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "reply_to_message_id": "$replyToMessageId",
-    "date": "$date",
-    "input_message_text": "${inputMessageText.toJson()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "reply_to_message_id":$replyToMessageId,
+   "date":$date,
+   "input_message_text":"${inputMessageText.toJson()}"
+}
 	""";
   }
-  
+
   DraftMessage copyWith({
     int? replyToMessageId,
     int? date,
     InputMessageContent? inputMessageText,
-  }) => DraftMessage(
-    replyToMessageId: replyToMessageId ?? this.replyToMessageId,
-    date: date ?? this.date,
-    inputMessageText: inputMessageText ?? this.inputMessageText,
-  );
+  }) =>
+      DraftMessage(
+        replyToMessageId: replyToMessageId ?? this.replyToMessageId,
+        date: date ?? this.date,
+        inputMessageText: inputMessageText ?? this.inputMessageText,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'draftMessage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

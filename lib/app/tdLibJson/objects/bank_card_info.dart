@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class BankCardInfo extends TdObject {
-
   /// Information about a bank card
   const BankCardInfo({
     required this.title,
@@ -9,8 +8,8 @@ class BankCardInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [title] Title of the bank card description 
+
+  /// [title] Title of the bank card description
   final String title;
 
   /// [actions] Actions that can be done with the bank card number
@@ -23,44 +22,44 @@ class BankCardInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory BankCardInfo.fromJson(Map<String, dynamic> json) => BankCardInfo(
-    title: json['title'],
-    actions: List<BankCardActionOpenUrl>.from((json['actions'] ?? []).map((item) => BankCardActionOpenUrl.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        title: json['title'],
+        actions: List<BankCardActionOpenUrl>.from((json['actions'] ?? [])
+            .map((item) => BankCardActionOpenUrl.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "title": "$title",
-    "actions": "${actions.map((i) => i.toJson()).toList()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "title":"$title",
+   "actions":"${actions.map((i) => i.toJson()).toList()}"
+}
 	""";
   }
-  
+
   BankCardInfo copyWith({
     String? title,
     List<BankCardActionOpenUrl>? actions,
     dynamic extra,
     int? clientId,
-  }) => BankCardInfo(
-    title: title ?? this.title,
-    actions: actions ?? this.actions,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      BankCardInfo(
+        title: title ?? this.title,
+        actions: actions ?? this.actions,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'bankCardInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

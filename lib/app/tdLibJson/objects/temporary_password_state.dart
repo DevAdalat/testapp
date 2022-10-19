@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class TemporaryPasswordState extends TdObject {
-
   /// Returns information about the availability of a temporary password, which can be used for payments
   const TemporaryPasswordState({
     required this.hasPassword,
@@ -9,8 +8,8 @@ class TemporaryPasswordState extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [hasPassword] True, if a temporary password is available 
+
+  /// [hasPassword] True, if a temporary password is available
   final bool hasPassword;
 
   /// [validFor] Time left before the temporary password expires, in seconds
@@ -23,44 +22,43 @@ class TemporaryPasswordState extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory TemporaryPasswordState.fromJson(Map<String, dynamic> json) => TemporaryPasswordState(
-    hasPassword: json['has_password'],
-    validFor: json['valid_for'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory TemporaryPasswordState.fromJson(Map<String, dynamic> json) =>
+      TemporaryPasswordState(
+        hasPassword: json['has_password'],
+        validFor: json['valid_for'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "has_password": $hasPassword,
-    "valid_for": "$validFor"
-  }
+   "@type":"$CONSTRUCTOR",
+   "has_password":$hasPassword,
+   "valid_for":$validFor
+}
 	""";
   }
-  
+
   TemporaryPasswordState copyWith({
     bool? hasPassword,
     int? validFor,
     dynamic extra,
     int? clientId,
-  }) => TemporaryPasswordState(
-    hasPassword: hasPassword ?? this.hasPassword,
-    validFor: validFor ?? this.validFor,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      TemporaryPasswordState(
+        hasPassword: hasPassword ?? this.hasPassword,
+        validFor: validFor ?? this.validFor,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'temporaryPasswordState';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

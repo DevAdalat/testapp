@@ -1,50 +1,48 @@
 part of '../tdlibjson_api.dart';
 
 class PageBlockCaption extends TdObject {
-
   /// Contains a caption of an instant view web page block, consisting of a text and a trailing credit
   const PageBlockCaption({
     required this.text,
     required this.credit,
   });
-  
-  /// [text] Content of the caption 
+
+  /// [text] Content of the caption
   final RichText text;
 
   /// [credit] Block credit (like HTML tag <cite>)
   final RichText credit;
-  
+
   /// Parse from a json
-  factory PageBlockCaption.fromJson(Map<String, dynamic> json) => PageBlockCaption(
-    text: RichText.fromJson(json['text']),
-    credit: RichText.fromJson(json['credit']),
-  );
-  
-  
+  factory PageBlockCaption.fromJson(Map<String, dynamic> json) =>
+      PageBlockCaption(
+        text: RichText.fromJson(json['text']),
+        credit: RichText.fromJson(json['credit']),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "text": "${text.toJson()}",
-    "credit": "${credit.toJson()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "text":"${text.toJson()}",
+   "credit":"${credit.toJson()}"
+}
 	""";
   }
-  
+
   PageBlockCaption copyWith({
     RichText? text,
     RichText? credit,
-  }) => PageBlockCaption(
-    text: text ?? this.text,
-    credit: credit ?? this.credit,
-  );
+  }) =>
+      PageBlockCaption(
+        text: text ?? this.text,
+        credit: credit ?? this.credit,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'pageBlockCaption';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

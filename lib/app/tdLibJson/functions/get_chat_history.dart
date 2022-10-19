@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class GetChatHistory extends TdFunction {
-
   /// Returns messages in a chat. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id).. For optimal performance, the number of returned messages is chosen by TDLib. This is an offline request if only_local is true
   const GetChatHistory({
     required this.chatId,
@@ -10,7 +9,7 @@ class GetChatHistory extends TdFunction {
     required this.limit,
     required this.onlyLocal,
   });
-  
+
   /// [chatId] Chat identifier
   final int chatId;
 
@@ -25,40 +24,39 @@ class GetChatHistory extends TdFunction {
 
   /// [onlyLocal] Pass true to get only messages that are available without sending network requests
   final bool onlyLocal;
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "chat_id": "$chatId",
-    "from_message_id": "$fromMessageId",
-    "offset": "$offset",
-    "limit": "$limit",
-    "only_local": $onlyLocal
-  }
+   "@type":"$CONSTRUCTOR",
+   "chat_id":$chatId,
+   "from_message_id":$fromMessageId,
+   "offset":$offset,
+   "limit":$limit,
+   "only_local":$onlyLocal
+}
 	""";
   }
-  
+
   GetChatHistory copyWith({
     int? chatId,
     int? fromMessageId,
     int? offset,
     int? limit,
     bool? onlyLocal,
-  }) => GetChatHistory(
-    chatId: chatId ?? this.chatId,
-    fromMessageId: fromMessageId ?? this.fromMessageId,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-    onlyLocal: onlyLocal ?? this.onlyLocal,
-  );
+  }) =>
+      GetChatHistory(
+        chatId: chatId ?? this.chatId,
+        fromMessageId: fromMessageId ?? this.fromMessageId,
+        offset: offset ?? this.offset,
+        limit: limit ?? this.limit,
+        onlyLocal: onlyLocal ?? this.onlyLocal,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'getChatHistory';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

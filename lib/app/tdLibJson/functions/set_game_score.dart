@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class SetGameScore extends TdFunction {
-
   /// Updates the game score of the specified user in the game; for bots only
   const SetGameScore({
     required this.chatId,
@@ -11,8 +10,8 @@ class SetGameScore extends TdFunction {
     required this.score,
     required this.force,
   });
-  
-  /// [chatId] The chat to which the message with the game belongs 
+
+  /// [chatId] The chat to which the message with the game belongs
   final int chatId;
 
   /// [messageId] Identifier of the message
@@ -21,7 +20,7 @@ class SetGameScore extends TdFunction {
   /// [editMessage] Pass true to edit the game message to include the current scoreboard
   final bool editMessage;
 
-  /// [userId] User identifier 
+  /// [userId] User identifier
   final int userId;
 
   /// [score] The new score
@@ -29,23 +28,22 @@ class SetGameScore extends TdFunction {
 
   /// [force] Pass true to update the score even if it decreases. If the score is 0, the user will be deleted from the high score table
   final bool force;
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "chat_id": "$chatId",
-    "message_id": "$messageId",
-    "edit_message": $editMessage,
-    "user_id": "$userId",
-    "score": "$score",
-    "force": $force
-  }
+   "@type":"$CONSTRUCTOR",
+   "chat_id":$chatId,
+   "message_id":$messageId,
+   "edit_message":$editMessage,
+   "user_id":$userId,
+   "score":$score,
+   "force":$force
+}
 	""";
   }
-  
+
   SetGameScore copyWith({
     int? chatId,
     int? messageId,
@@ -53,19 +51,19 @@ class SetGameScore extends TdFunction {
     int? userId,
     int? score,
     bool? force,
-  }) => SetGameScore(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    editMessage: editMessage ?? this.editMessage,
-    userId: userId ?? this.userId,
-    score: score ?? this.score,
-    force: force ?? this.force,
-  );
+  }) =>
+      SetGameScore(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        editMessage: editMessage ?? this.editMessage,
+        userId: userId ?? this.userId,
+        score: score ?? this.score,
+        force: force ?? this.force,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'setGameScore';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

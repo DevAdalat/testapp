@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class BotCommands extends TdObject {
-
   /// Contains a list of bot commands
   const BotCommands({
     required this.botUserId,
@@ -9,8 +8,8 @@ class BotCommands extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [botUserId] Bot's user identifier 
+
+  /// [botUserId] Bot's user identifier
   final int botUserId;
 
   /// [commands] List of bot commands
@@ -23,44 +22,44 @@ class BotCommands extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory BotCommands.fromJson(Map<String, dynamic> json) => BotCommands(
-    botUserId: json['bot_user_id'],
-    commands: List<BotCommand>.from((json['commands'] ?? []).map((item) => BotCommand.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        botUserId: json['bot_user_id'],
+        commands: List<BotCommand>.from((json['commands'] ?? [])
+            .map((item) => BotCommand.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "bot_user_id": "$botUserId",
-    "commands": "${commands.map((i) => i.toJson()).toList()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "bot_user_id":$botUserId,
+   "commands":"${commands.map((i) => i.toJson()).toList()}"
+}
 	""";
   }
-  
+
   BotCommands copyWith({
     int? botUserId,
     List<BotCommand>? commands,
     dynamic extra,
     int? clientId,
-  }) => BotCommands(
-    botUserId: botUserId ?? this.botUserId,
-    commands: commands ?? this.commands,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      BotCommands(
+        botUserId: botUserId ?? this.botUserId,
+        commands: commands ?? this.commands,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'botCommands';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,14 +1,13 @@
 part of '../tdlibjson_api.dart';
 
 class RecommendedChatFilters extends TdObject {
-
   /// Contains a list of recommended chat filters
   const RecommendedChatFilters({
     required this.chatFilters,
     this.extra,
     this.clientId,
   });
-  
+
   /// [chatFilters] List of recommended chat filters
   final List<RecommendedChatFilter> chatFilters;
 
@@ -19,40 +18,42 @@ class RecommendedChatFilters extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory RecommendedChatFilters.fromJson(Map<String, dynamic> json) => RecommendedChatFilters(
-    chatFilters: List<RecommendedChatFilter>.from((json['chat_filters'] ?? []).map((item) => RecommendedChatFilter.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory RecommendedChatFilters.fromJson(Map<String, dynamic> json) =>
+      RecommendedChatFilters(
+        chatFilters: List<RecommendedChatFilter>.from(
+            (json['chat_filters'] ?? [])
+                .map((item) => RecommendedChatFilter.fromJson(item))
+                .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "chat_filters": "${chatFilters.map((i) => i.toJson()).toList()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "chat_filters":"${chatFilters.map((i) => i.toJson()).toList()}"
+}
 	""";
   }
-  
+
   RecommendedChatFilters copyWith({
     List<RecommendedChatFilter>? chatFilters,
     dynamic extra,
     int? clientId,
-  }) => RecommendedChatFilters(
-    chatFilters: chatFilters ?? this.chatFilters,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      RecommendedChatFilters(
+        chatFilters: chatFilters ?? this.chatFilters,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'recommendedChatFilters';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

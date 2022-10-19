@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class PhoneNumberAuthenticationSettings extends TdObject {
-
   /// Contains settings for the authentication of the user's phone number
   const PhoneNumberAuthenticationSettings({
     required this.allowFlashCall,
@@ -10,7 +9,7 @@ class PhoneNumberAuthenticationSettings extends TdObject {
     required this.allowSmsRetrieverApi,
     required this.authenticationTokens,
   });
-  
+
   /// [allowFlashCall] Pass true if the authentication code may be sent via a flash call to the specified phone number
   final bool allowFlashCall;
 
@@ -25,50 +24,51 @@ class PhoneNumberAuthenticationSettings extends TdObject {
 
   /// [authenticationTokens] List of up to 20 authentication tokens, recently received in updateOption("authentication_token") in previously logged out sessions
   final List<String> authenticationTokens;
-  
+
   /// Parse from a json
-  factory PhoneNumberAuthenticationSettings.fromJson(Map<String, dynamic> json) => PhoneNumberAuthenticationSettings(
-    allowFlashCall: json['allow_flash_call'],
-    allowMissedCall: json['allow_missed_call'],
-    isCurrentPhoneNumber: json['is_current_phone_number'],
-    allowSmsRetrieverApi: json['allow_sms_retriever_api'],
-    authenticationTokens: List<String>.from((json['authentication_tokens'] ?? []).map((item) => item).toList()),
-  );
-  
-  
+  factory PhoneNumberAuthenticationSettings.fromJson(
+          Map<String, dynamic> json) =>
+      PhoneNumberAuthenticationSettings(
+        allowFlashCall: json['allow_flash_call'],
+        allowMissedCall: json['allow_missed_call'],
+        isCurrentPhoneNumber: json['is_current_phone_number'],
+        allowSmsRetrieverApi: json['allow_sms_retriever_api'],
+        authenticationTokens: List<String>.from(
+            (json['authentication_tokens'] ?? []).map((item) => item).toList()),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "allow_flash_call": $allowFlashCall,
-    "allow_missed_call": $allowMissedCall,
-    "is_current_phone_number": $isCurrentPhoneNumber,
-    "allow_sms_retriever_api": $allowSmsRetrieverApi,
-    "authentication_tokens": "${authenticationTokens.map((i) => i).toList()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "allow_flash_call":$allowFlashCall,
+   "allow_missed_call":$allowMissedCall,
+   "is_current_phone_number":$isCurrentPhoneNumber,
+   "allow_sms_retriever_api":$allowSmsRetrieverApi,
+   "authentication_tokens":"${authenticationTokens.map((i) => i).toList()}"
+}
 	""";
   }
-  
+
   PhoneNumberAuthenticationSettings copyWith({
     bool? allowFlashCall,
     bool? allowMissedCall,
     bool? isCurrentPhoneNumber,
     bool? allowSmsRetrieverApi,
     List<String>? authenticationTokens,
-  }) => PhoneNumberAuthenticationSettings(
-    allowFlashCall: allowFlashCall ?? this.allowFlashCall,
-    allowMissedCall: allowMissedCall ?? this.allowMissedCall,
-    isCurrentPhoneNumber: isCurrentPhoneNumber ?? this.isCurrentPhoneNumber,
-    allowSmsRetrieverApi: allowSmsRetrieverApi ?? this.allowSmsRetrieverApi,
-    authenticationTokens: authenticationTokens ?? this.authenticationTokens,
-  );
+  }) =>
+      PhoneNumberAuthenticationSettings(
+        allowFlashCall: allowFlashCall ?? this.allowFlashCall,
+        allowMissedCall: allowMissedCall ?? this.allowMissedCall,
+        isCurrentPhoneNumber: isCurrentPhoneNumber ?? this.isCurrentPhoneNumber,
+        allowSmsRetrieverApi: allowSmsRetrieverApi ?? this.allowSmsRetrieverApi,
+        authenticationTokens: authenticationTokens ?? this.authenticationTokens,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'phoneNumberAuthenticationSettings';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

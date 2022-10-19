@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class EmailAddressAuthenticationCodeInfo extends TdObject {
-
   /// Information about the email address authentication code that was sent
   const EmailAddressAuthenticationCodeInfo({
     required this.emailAddressPattern,
@@ -9,8 +8,8 @@ class EmailAddressAuthenticationCodeInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [emailAddressPattern] Pattern of the email address to which an authentication code was sent 
+
+  /// [emailAddressPattern] Pattern of the email address to which an authentication code was sent
   final String emailAddressPattern;
 
   /// [length] Length of the code; 0 if unknown
@@ -23,44 +22,44 @@ class EmailAddressAuthenticationCodeInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory EmailAddressAuthenticationCodeInfo.fromJson(Map<String, dynamic> json) => EmailAddressAuthenticationCodeInfo(
-    emailAddressPattern: json['email_address_pattern'],
-    length: json['length'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory EmailAddressAuthenticationCodeInfo.fromJson(
+          Map<String, dynamic> json) =>
+      EmailAddressAuthenticationCodeInfo(
+        emailAddressPattern: json['email_address_pattern'],
+        length: json['length'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "email_address_pattern": "$emailAddressPattern",
-    "length": "$length"
-  }
+   "@type":"$CONSTRUCTOR",
+   "email_address_pattern":"$emailAddressPattern",
+   "length":$length
+}
 	""";
   }
-  
+
   EmailAddressAuthenticationCodeInfo copyWith({
     String? emailAddressPattern,
     int? length,
     dynamic extra,
     int? clientId,
-  }) => EmailAddressAuthenticationCodeInfo(
-    emailAddressPattern: emailAddressPattern ?? this.emailAddressPattern,
-    length: length ?? this.length,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      EmailAddressAuthenticationCodeInfo(
+        emailAddressPattern: emailAddressPattern ?? this.emailAddressPattern,
+        length: length ?? this.length,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'emailAddressAuthenticationCodeInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

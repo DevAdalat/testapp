@@ -1,10 +1,9 @@
 part of '../tdlibjson_api.dart';
 
 class MessageContent extends TdObject {
-
   /// Contains the content of a message
   const MessageContent();
-  
+
   /// a MessageContent return type can be :
   /// * [MessageText]
   /// * [MessageAnimation]
@@ -58,8 +57,8 @@ class MessageContent extends TdObject {
   /// * [MessagePassportDataReceived]
   /// * [MessageProximityAlertTriggered]
   /// * [MessageUnsupported]
-  factory MessageContent.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory MessageContent.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case MessageText.CONSTRUCTOR:
         return MessageText.fromJson(json);
       case MessageAnimation.CONSTRUCTOR:
@@ -168,589 +167,549 @@ class MessageContent extends TdObject {
         return const MessageContent();
     }
   }
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
   
-  }
+}
 	""";
   }
-  
+
   MessageContent copyWith() => const MessageContent();
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageContent';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageText extends MessageContent {
-
   /// A text message
   const MessageText({
     required this.text,
     this.webPage,
   });
-  
-  /// [text] Text of the message 
+
+  /// [text] Text of the message
   final FormattedText text;
 
   /// [webPage] A preview of the web page that's mentioned in the text; may be null
   final WebPage? webPage;
-  
+
   /// Parse from a json
   factory MessageText.fromJson(Map<String, dynamic> json) => MessageText(
-    text: FormattedText.fromJson(json['text']),
-    webPage: json['web_page'] == null ? null : WebPage.fromJson(json['web_page']),
-  );
-  
-  
+        text: FormattedText.fromJson(json['text']),
+        webPage: json['web_page'] == null
+            ? null
+            : WebPage.fromJson(json['web_page']),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "text": "${text.toJson()}",
-    "web_page": "${webPage?.toJson()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "text":"${text.toJson()}",
+   "web_page":"${webPage?.toJson()}"
+}
 	""";
   }
-  
+
   @override
   MessageText copyWith({
     FormattedText? text,
     WebPage? webPage,
-  }) => MessageText(
-    text: text ?? this.text,
-    webPage: webPage ?? this.webPage,
-  );
+  }) =>
+      MessageText(
+        text: text ?? this.text,
+        webPage: webPage ?? this.webPage,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageText';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageAnimation extends MessageContent {
-
   /// An animation message (GIF-style).
   const MessageAnimation({
     required this.animation,
     required this.caption,
     required this.isSecret,
   });
-  
-  /// [animation] The animation description 
+
+  /// [animation] The animation description
   final Animation animation;
 
-  /// [caption] Animation caption 
+  /// [caption] Animation caption
   final FormattedText caption;
 
   /// [isSecret] True, if the animation thumbnail must be blurred and the animation must be shown only while tapped
   final bool isSecret;
-  
+
   /// Parse from a json
-  factory MessageAnimation.fromJson(Map<String, dynamic> json) => MessageAnimation(
-    animation: Animation.fromJson(json['animation']),
-    caption: FormattedText.fromJson(json['caption']),
-    isSecret: json['is_secret'],
-  );
-  
-  
+  factory MessageAnimation.fromJson(Map<String, dynamic> json) =>
+      MessageAnimation(
+        animation: Animation.fromJson(json['animation']),
+        caption: FormattedText.fromJson(json['caption']),
+        isSecret: json['is_secret'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "animation": "${animation.toJson()}",
-    "caption": "${caption.toJson()}",
-    "is_secret": $isSecret
-  }
+   "@type":"$CONSTRUCTOR",
+   "animation":"${animation.toJson()}",
+   "caption":"${caption.toJson()}",
+   "is_secret":$isSecret
+}
 	""";
   }
-  
+
   @override
   MessageAnimation copyWith({
     Animation? animation,
     FormattedText? caption,
     bool? isSecret,
-  }) => MessageAnimation(
-    animation: animation ?? this.animation,
-    caption: caption ?? this.caption,
-    isSecret: isSecret ?? this.isSecret,
-  );
+  }) =>
+      MessageAnimation(
+        animation: animation ?? this.animation,
+        caption: caption ?? this.caption,
+        isSecret: isSecret ?? this.isSecret,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageAnimation';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageAudio extends MessageContent {
-
   /// An audio message
   const MessageAudio({
     required this.audio,
     required this.caption,
   });
-  
-  /// [audio] The audio description 
+
+  /// [audio] The audio description
   final Audio audio;
 
   /// [caption] Audio caption
   final FormattedText caption;
-  
+
   /// Parse from a json
   factory MessageAudio.fromJson(Map<String, dynamic> json) => MessageAudio(
-    audio: Audio.fromJson(json['audio']),
-    caption: FormattedText.fromJson(json['caption']),
-  );
-  
-  
+        audio: Audio.fromJson(json['audio']),
+        caption: FormattedText.fromJson(json['caption']),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "audio": "${audio.toJson()}",
-    "caption": "${caption.toJson()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "audio":"${audio.toJson()}",
+   "caption":"${caption.toJson()}"
+}
 	""";
   }
-  
+
   @override
   MessageAudio copyWith({
     Audio? audio,
     FormattedText? caption,
-  }) => MessageAudio(
-    audio: audio ?? this.audio,
-    caption: caption ?? this.caption,
-  );
+  }) =>
+      MessageAudio(
+        audio: audio ?? this.audio,
+        caption: caption ?? this.caption,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageAudio';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageDocument extends MessageContent {
-
   /// A document message (general file)
   const MessageDocument({
     required this.document,
     required this.caption,
   });
-  
-  /// [document] The document description 
+
+  /// [document] The document description
   final Document document;
 
   /// [caption] Document caption
   final FormattedText caption;
-  
+
   /// Parse from a json
-  factory MessageDocument.fromJson(Map<String, dynamic> json) => MessageDocument(
-    document: Document.fromJson(json['document']),
-    caption: FormattedText.fromJson(json['caption']),
-  );
-  
-  
+  factory MessageDocument.fromJson(Map<String, dynamic> json) =>
+      MessageDocument(
+        document: Document.fromJson(json['document']),
+        caption: FormattedText.fromJson(json['caption']),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "document": "${document.toJson()}",
-    "caption": "${caption.toJson()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "document":"${document.toJson()}",
+   "caption":"${caption.toJson()}"
+}
 	""";
   }
-  
+
   @override
   MessageDocument copyWith({
     Document? document,
     FormattedText? caption,
-  }) => MessageDocument(
-    document: document ?? this.document,
-    caption: caption ?? this.caption,
-  );
+  }) =>
+      MessageDocument(
+        document: document ?? this.document,
+        caption: caption ?? this.caption,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageDocument';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessagePhoto extends MessageContent {
-
   /// A photo message
   const MessagePhoto({
     required this.photo,
     required this.caption,
     required this.isSecret,
   });
-  
-  /// [photo] The photo description 
+
+  /// [photo] The photo description
   final Photo photo;
 
-  /// [caption] Photo caption 
+  /// [caption] Photo caption
   final FormattedText caption;
 
   /// [isSecret] True, if the photo must be blurred and must be shown only while tapped
   final bool isSecret;
-  
+
   /// Parse from a json
   factory MessagePhoto.fromJson(Map<String, dynamic> json) => MessagePhoto(
-    photo: Photo.fromJson(json['photo']),
-    caption: FormattedText.fromJson(json['caption']),
-    isSecret: json['is_secret'],
-  );
-  
-  
+        photo: Photo.fromJson(json['photo']),
+        caption: FormattedText.fromJson(json['caption']),
+        isSecret: json['is_secret'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "photo": "${photo.toJson()}",
-    "caption": "${caption.toJson()}",
-    "is_secret": $isSecret
-  }
+   "@type":"$CONSTRUCTOR",
+   "photo":"${photo.toJson()}",
+   "caption":"${caption.toJson()}",
+   "is_secret":$isSecret
+}
 	""";
   }
-  
+
   @override
   MessagePhoto copyWith({
     Photo? photo,
     FormattedText? caption,
     bool? isSecret,
-  }) => MessagePhoto(
-    photo: photo ?? this.photo,
-    caption: caption ?? this.caption,
-    isSecret: isSecret ?? this.isSecret,
-  );
+  }) =>
+      MessagePhoto(
+        photo: photo ?? this.photo,
+        caption: caption ?? this.caption,
+        isSecret: isSecret ?? this.isSecret,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messagePhoto';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageExpiredPhoto extends MessageContent {
-
   /// An expired photo message (self-destructed after TTL has elapsed)
   const MessageExpiredPhoto();
-  
+
   /// Parse from a json
-  factory MessageExpiredPhoto.fromJson(Map<String, dynamic> json) => const MessageExpiredPhoto();
-  
+  factory MessageExpiredPhoto.fromJson(Map<String, dynamic> json) =>
+      const MessageExpiredPhoto();
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-  }
+   "@type":"$CONSTRUCTOR",
+}
 	""";
   }
-  
+
   @override
   MessageExpiredPhoto copyWith() => const MessageExpiredPhoto();
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageExpiredPhoto';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageSticker extends MessageContent {
-
   /// A sticker message
   const MessageSticker({
     required this.sticker,
     required this.isPremium,
   });
-  
-  /// [sticker] The sticker description 
+
+  /// [sticker] The sticker description
   final Sticker sticker;
 
   /// [isPremium] True, if premium animation of the sticker must be played
   final bool isPremium;
-  
+
   /// Parse from a json
   factory MessageSticker.fromJson(Map<String, dynamic> json) => MessageSticker(
-    sticker: Sticker.fromJson(json['sticker']),
-    isPremium: json['is_premium'],
-  );
-  
-  
+        sticker: Sticker.fromJson(json['sticker']),
+        isPremium: json['is_premium'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "sticker": "${sticker.toJson()}",
-    "is_premium": $isPremium
-  }
+   "@type":"$CONSTRUCTOR",
+   "sticker":"${sticker.toJson()}",
+   "is_premium":$isPremium
+}
 	""";
   }
-  
+
   @override
   MessageSticker copyWith({
     Sticker? sticker,
     bool? isPremium,
-  }) => MessageSticker(
-    sticker: sticker ?? this.sticker,
-    isPremium: isPremium ?? this.isPremium,
-  );
+  }) =>
+      MessageSticker(
+        sticker: sticker ?? this.sticker,
+        isPremium: isPremium ?? this.isPremium,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageSticker';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageVideo extends MessageContent {
-
   /// A video message
   const MessageVideo({
     required this.video,
     required this.caption,
     required this.isSecret,
   });
-  
-  /// [video] The video description 
+
+  /// [video] The video description
   final Video video;
 
-  /// [caption] Video caption 
+  /// [caption] Video caption
   final FormattedText caption;
 
   /// [isSecret] True, if the video thumbnail must be blurred and the video must be shown only while tapped
   final bool isSecret;
-  
+
   /// Parse from a json
   factory MessageVideo.fromJson(Map<String, dynamic> json) => MessageVideo(
-    video: Video.fromJson(json['video']),
-    caption: FormattedText.fromJson(json['caption']),
-    isSecret: json['is_secret'],
-  );
-  
-  
+        video: Video.fromJson(json['video']),
+        caption: FormattedText.fromJson(json['caption']),
+        isSecret: json['is_secret'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "video": "${video.toJson()}",
-    "caption": "${caption.toJson()}",
-    "is_secret": $isSecret
-  }
+   "@type":"$CONSTRUCTOR",
+   "video":"${video.toJson()}",
+   "caption":"${caption.toJson()}",
+   "is_secret":$isSecret
+}
 	""";
   }
-  
+
   @override
   MessageVideo copyWith({
     Video? video,
     FormattedText? caption,
     bool? isSecret,
-  }) => MessageVideo(
-    video: video ?? this.video,
-    caption: caption ?? this.caption,
-    isSecret: isSecret ?? this.isSecret,
-  );
+  }) =>
+      MessageVideo(
+        video: video ?? this.video,
+        caption: caption ?? this.caption,
+        isSecret: isSecret ?? this.isSecret,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageVideo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageExpiredVideo extends MessageContent {
-
   /// An expired video message (self-destructed after TTL has elapsed)
   const MessageExpiredVideo();
-  
+
   /// Parse from a json
-  factory MessageExpiredVideo.fromJson(Map<String, dynamic> json) => const MessageExpiredVideo();
-  
+  factory MessageExpiredVideo.fromJson(Map<String, dynamic> json) =>
+      const MessageExpiredVideo();
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-  }
+   "@type":"$CONSTRUCTOR",
+}
 	""";
   }
-  
+
   @override
   MessageExpiredVideo copyWith() => const MessageExpiredVideo();
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageExpiredVideo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageVideoNote extends MessageContent {
-
   /// A video note message
   const MessageVideoNote({
     required this.videoNote,
     required this.isViewed,
     required this.isSecret,
   });
-  
-  /// [videoNote] The video note description 
+
+  /// [videoNote] The video note description
   final VideoNote videoNote;
 
-  /// [isViewed] True, if at least one of the recipients has viewed the video note 
+  /// [isViewed] True, if at least one of the recipients has viewed the video note
   final bool isViewed;
 
   /// [isSecret] True, if the video note thumbnail must be blurred and the video note must be shown only while tapped
   final bool isSecret;
-  
+
   /// Parse from a json
-  factory MessageVideoNote.fromJson(Map<String, dynamic> json) => MessageVideoNote(
-    videoNote: VideoNote.fromJson(json['video_note']),
-    isViewed: json['is_viewed'],
-    isSecret: json['is_secret'],
-  );
-  
-  
+  factory MessageVideoNote.fromJson(Map<String, dynamic> json) =>
+      MessageVideoNote(
+        videoNote: VideoNote.fromJson(json['video_note']),
+        isViewed: json['is_viewed'],
+        isSecret: json['is_secret'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "video_note": "${videoNote.toJson()}",
-    "is_viewed": $isViewed,
-    "is_secret": $isSecret
-  }
+   "@type":"$CONSTRUCTOR",
+   "video_note":"${videoNote.toJson()}",
+   "is_viewed":$isViewed,
+   "is_secret":$isSecret
+}
 	""";
   }
-  
+
   @override
   MessageVideoNote copyWith({
     VideoNote? videoNote,
     bool? isViewed,
     bool? isSecret,
-  }) => MessageVideoNote(
-    videoNote: videoNote ?? this.videoNote,
-    isViewed: isViewed ?? this.isViewed,
-    isSecret: isSecret ?? this.isSecret,
-  );
+  }) =>
+      MessageVideoNote(
+        videoNote: videoNote ?? this.videoNote,
+        isViewed: isViewed ?? this.isViewed,
+        isSecret: isSecret ?? this.isSecret,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageVideoNote';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageVoiceNote extends MessageContent {
-
   /// A voice note message
   const MessageVoiceNote({
     required this.voiceNote,
     required this.caption,
     required this.isListened,
   });
-  
-  /// [voiceNote] The voice note description 
+
+  /// [voiceNote] The voice note description
   final VoiceNote voiceNote;
 
-  /// [caption] Voice note caption 
+  /// [caption] Voice note caption
   final FormattedText caption;
 
   /// [isListened] True, if at least one of the recipients has listened to the voice note
   final bool isListened;
-  
+
   /// Parse from a json
-  factory MessageVoiceNote.fromJson(Map<String, dynamic> json) => MessageVoiceNote(
-    voiceNote: VoiceNote.fromJson(json['voice_note']),
-    caption: FormattedText.fromJson(json['caption']),
-    isListened: json['is_listened'],
-  );
-  
-  
+  factory MessageVoiceNote.fromJson(Map<String, dynamic> json) =>
+      MessageVoiceNote(
+        voiceNote: VoiceNote.fromJson(json['voice_note']),
+        caption: FormattedText.fromJson(json['caption']),
+        isListened: json['is_listened'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "voice_note": "${voiceNote.toJson()}",
-    "caption": "${caption.toJson()}",
-    "is_listened": $isListened
-  }
+   "@type":"$CONSTRUCTOR",
+   "voice_note":"${voiceNote.toJson()}",
+   "caption":"${caption.toJson()}",
+   "is_listened":$isListened
+}
 	""";
   }
-  
+
   @override
   MessageVoiceNote copyWith({
     VoiceNote? voiceNote,
     FormattedText? caption,
     bool? isListened,
-  }) => MessageVoiceNote(
-    voiceNote: voiceNote ?? this.voiceNote,
-    caption: caption ?? this.caption,
-    isListened: isListened ?? this.isListened,
-  );
+  }) =>
+      MessageVoiceNote(
+        voiceNote: voiceNote ?? this.voiceNote,
+        caption: caption ?? this.caption,
+        isListened: isListened ?? this.isListened,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageVoiceNote';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageLocation extends MessageContent {
-
   /// A message with a location
   const MessageLocation({
     required this.location,
@@ -759,8 +718,8 @@ class MessageLocation extends MessageContent {
     required this.heading,
     required this.proximityAlertRadius,
   });
-  
-  /// [location] The location description 
+
+  /// [location] The location description
   final Location location;
 
   /// [livePeriod] Time relative to the message send date, for which the location can be updated, in seconds
@@ -774,32 +733,31 @@ class MessageLocation extends MessageContent {
 
   /// [proximityAlertRadius] For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). 0 if the notification is disabled. Available only for the message sender
   final int proximityAlertRadius;
-  
+
   /// Parse from a json
-  factory MessageLocation.fromJson(Map<String, dynamic> json) => MessageLocation(
-    location: Location.fromJson(json['location']),
-    livePeriod: json['live_period'],
-    expiresIn: json['expires_in'],
-    heading: json['heading'],
-    proximityAlertRadius: json['proximity_alert_radius'],
-  );
-  
-  
+  factory MessageLocation.fromJson(Map<String, dynamic> json) =>
+      MessageLocation(
+        location: Location.fromJson(json['location']),
+        livePeriod: json['live_period'],
+        expiresIn: json['expires_in'],
+        heading: json['heading'],
+        proximityAlertRadius: json['proximity_alert_radius'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "location": "${location.toJson()}",
-    "live_period": "$livePeriod",
-    "expires_in": "$expiresIn",
-    "heading": "$heading",
-    "proximity_alert_radius": "$proximityAlertRadius"
-  }
+   "@type":"$CONSTRUCTOR",
+   "location":"${location.toJson()}",
+   "live_period":$livePeriod,
+   "expires_in":$expiresIn,
+   "heading":$heading,
+   "proximity_alert_radius":$proximityAlertRadius
+}
 	""";
   }
-  
+
   @override
   MessageLocation copyWith({
     Location? location,
@@ -807,162 +765,149 @@ class MessageLocation extends MessageContent {
     int? expiresIn,
     int? heading,
     int? proximityAlertRadius,
-  }) => MessageLocation(
-    location: location ?? this.location,
-    livePeriod: livePeriod ?? this.livePeriod,
-    expiresIn: expiresIn ?? this.expiresIn,
-    heading: heading ?? this.heading,
-    proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
-  );
+  }) =>
+      MessageLocation(
+        location: location ?? this.location,
+        livePeriod: livePeriod ?? this.livePeriod,
+        expiresIn: expiresIn ?? this.expiresIn,
+        heading: heading ?? this.heading,
+        proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageLocation';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageVenue extends MessageContent {
-
   /// A message with information about a venue
   const MessageVenue({
     required this.venue,
   });
-  
+
   /// [venue] The venue description
   final Venue venue;
-  
+
   /// Parse from a json
   factory MessageVenue.fromJson(Map<String, dynamic> json) => MessageVenue(
-    venue: Venue.fromJson(json['venue']),
-  );
-  
-  
+        venue: Venue.fromJson(json['venue']),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "venue": "${venue.toJson()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "venue":"${venue.toJson()}"
+}
 	""";
   }
-  
+
   @override
   MessageVenue copyWith({
     Venue? venue,
-  }) => MessageVenue(
-    venue: venue ?? this.venue,
-  );
+  }) =>
+      MessageVenue(
+        venue: venue ?? this.venue,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageVenue';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageContact extends MessageContent {
-
   /// A message with a user contact
   const MessageContact({
     required this.contact,
   });
-  
+
   /// [contact] The contact description
   final Contact contact;
-  
+
   /// Parse from a json
   factory MessageContact.fromJson(Map<String, dynamic> json) => MessageContact(
-    contact: Contact.fromJson(json['contact']),
-  );
-  
-  
+        contact: Contact.fromJson(json['contact']),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "contact": "${contact.toJson()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "contact":"${contact.toJson()}"
+}
 	""";
   }
-  
+
   @override
   MessageContact copyWith({
     Contact? contact,
-  }) => MessageContact(
-    contact: contact ?? this.contact,
-  );
+  }) =>
+      MessageContact(
+        contact: contact ?? this.contact,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageContact';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageAnimatedEmoji extends MessageContent {
-
   /// A message with an animated emoji
   const MessageAnimatedEmoji({
     required this.animatedEmoji,
     required this.emoji,
   });
-  
-  /// [animatedEmoji] The animated emoji 
+
+  /// [animatedEmoji] The animated emoji
   final AnimatedEmoji animatedEmoji;
 
   /// [emoji] The corresponding emoji
   final String emoji;
-  
+
   /// Parse from a json
-  factory MessageAnimatedEmoji.fromJson(Map<String, dynamic> json) => MessageAnimatedEmoji(
-    animatedEmoji: AnimatedEmoji.fromJson(json['animated_emoji']),
-    emoji: json['emoji'],
-  );
-  
-  
+  factory MessageAnimatedEmoji.fromJson(Map<String, dynamic> json) =>
+      MessageAnimatedEmoji(
+        animatedEmoji: AnimatedEmoji.fromJson(json['animated_emoji']),
+        emoji: json['emoji'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "animated_emoji": "${animatedEmoji.toJson()}",
-    "emoji": "$emoji"
-  }
+   "@type":"$CONSTRUCTOR",
+   "animated_emoji":"${animatedEmoji.toJson()}",
+   "emoji":"$emoji"
+}
 	""";
   }
-  
+
   @override
   MessageAnimatedEmoji copyWith({
     AnimatedEmoji? animatedEmoji,
     String? emoji,
-  }) => MessageAnimatedEmoji(
-    animatedEmoji: animatedEmoji ?? this.animatedEmoji,
-    emoji: emoji ?? this.emoji,
-  );
+  }) =>
+      MessageAnimatedEmoji(
+        animatedEmoji: animatedEmoji ?? this.animatedEmoji,
+        emoji: emoji ?? this.emoji,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageAnimatedEmoji';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageDice extends MessageContent {
-
   /// A dice message. The dice value is randomly generated by the server
   const MessageDice({
     this.initialState,
@@ -971,7 +916,7 @@ class MessageDice extends MessageContent {
     required this.value,
     required this.successAnimationFrameNumber,
   });
-  
+
   /// [initialState] The animated stickers with the initial dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known
   final DiceStickers? initialState;
 
@@ -986,32 +931,34 @@ class MessageDice extends MessageContent {
 
   /// [successAnimationFrameNumber] Number of frame after which a success animation like a shower of confetti needs to be shown on updateMessageSendSucceeded
   final int successAnimationFrameNumber;
-  
+
   /// Parse from a json
   factory MessageDice.fromJson(Map<String, dynamic> json) => MessageDice(
-    initialState: json['initial_state'] == null ? null : DiceStickers.fromJson(json['initial_state']),
-    finalState: json['final_state'] == null ? null : DiceStickers.fromJson(json['final_state']),
-    emoji: json['emoji'],
-    value: json['value'],
-    successAnimationFrameNumber: json['success_animation_frame_number'],
-  );
-  
-  
+        initialState: json['initial_state'] == null
+            ? null
+            : DiceStickers.fromJson(json['initial_state']),
+        finalState: json['final_state'] == null
+            ? null
+            : DiceStickers.fromJson(json['final_state']),
+        emoji: json['emoji'],
+        value: json['value'],
+        successAnimationFrameNumber: json['success_animation_frame_number'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "initial_state": "${initialState?.toJson()}",
-    "final_state": "${finalState?.toJson()}",
-    "emoji": "$emoji",
-    "value": "$value",
-    "success_animation_frame_number": "$successAnimationFrameNumber"
-  }
+   "@type":"$CONSTRUCTOR",
+   "initial_state":"${initialState?.toJson()}",
+   "final_state":"${finalState?.toJson()}",
+   "emoji":"$emoji",
+   "value":$value,
+   "success_animation_frame_number":$successAnimationFrameNumber
+}
 	""";
   }
-  
+
   @override
   MessageDice copyWith({
     DiceStickers? initialState,
@@ -1019,111 +966,102 @@ class MessageDice extends MessageContent {
     String? emoji,
     int? value,
     int? successAnimationFrameNumber,
-  }) => MessageDice(
-    initialState: initialState ?? this.initialState,
-    finalState: finalState ?? this.finalState,
-    emoji: emoji ?? this.emoji,
-    value: value ?? this.value,
-    successAnimationFrameNumber: successAnimationFrameNumber ?? this.successAnimationFrameNumber,
-  );
+  }) =>
+      MessageDice(
+        initialState: initialState ?? this.initialState,
+        finalState: finalState ?? this.finalState,
+        emoji: emoji ?? this.emoji,
+        value: value ?? this.value,
+        successAnimationFrameNumber:
+            successAnimationFrameNumber ?? this.successAnimationFrameNumber,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageDice';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageGame extends MessageContent {
-
   /// A message with a game
   const MessageGame({
     required this.game,
   });
-  
+
   /// [game] The game description
   final Game game;
-  
+
   /// Parse from a json
   factory MessageGame.fromJson(Map<String, dynamic> json) => MessageGame(
-    game: Game.fromJson(json['game']),
-  );
-  
-  
+        game: Game.fromJson(json['game']),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "game": "${game.toJson()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "game":"${game.toJson()}"
+}
 	""";
   }
-  
+
   @override
   MessageGame copyWith({
     Game? game,
-  }) => MessageGame(
-    game: game ?? this.game,
-  );
+  }) =>
+      MessageGame(
+        game: game ?? this.game,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageGame';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessagePoll extends MessageContent {
-
   /// A message with a poll
   const MessagePoll({
     required this.poll,
   });
-  
+
   /// [poll] The poll description
   final Poll poll;
-  
+
   /// Parse from a json
   factory MessagePoll.fromJson(Map<String, dynamic> json) => MessagePoll(
-    poll: Poll.fromJson(json['poll']),
-  );
-  
-  
+        poll: Poll.fromJson(json['poll']),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "poll": "${poll.toJson()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "poll":"${poll.toJson()}"
+}
 	""";
   }
-  
+
   @override
   MessagePoll copyWith({
     Poll? poll,
-  }) => MessagePoll(
-    poll: poll ?? this.poll,
-  );
+  }) =>
+      MessagePoll(
+        poll: poll ?? this.poll,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messagePoll';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageInvoice extends MessageContent {
-
   /// A message with an invoice from a bot
   const MessageInvoice({
     required this.title,
@@ -1137,17 +1075,17 @@ class MessageInvoice extends MessageContent {
     required this.receiptMessageId,
     this.extendedMedia,
   });
-  
-  /// [title] Product title 
+
+  /// [title] Product title
   final String title;
 
-  /// [description] Product description 
+  /// [description] Product description
   final FormattedText description;
 
-  /// [photo] Product photo; may be null 
+  /// [photo] Product photo; may be null
   final Photo? photo;
 
-  /// [currency] Currency for the product price 
+  /// [currency] Currency for the product price
   final String currency;
 
   /// [totalAmount] Product total price in the smallest units of the currency
@@ -1167,42 +1105,42 @@ class MessageInvoice extends MessageContent {
 
   /// [extendedMedia] Extended media attached to the invoice; may be null
   final MessageExtendedMedia? extendedMedia;
-  
+
   /// Parse from a json
   factory MessageInvoice.fromJson(Map<String, dynamic> json) => MessageInvoice(
-    title: json['title'],
-    description: FormattedText.fromJson(json['description']),
-    photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
-    currency: json['currency'],
-    totalAmount: json['total_amount'],
-    startParameter: json['start_parameter'],
-    isTest: json['is_test'],
-    needShippingAddress: json['need_shipping_address'],
-    receiptMessageId: json['receipt_message_id'],
-    extendedMedia: json['extended_media'] == null ? null : MessageExtendedMedia.fromJson(json['extended_media']),
-  );
-  
-  
+        title: json['title'],
+        description: FormattedText.fromJson(json['description']),
+        photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
+        currency: json['currency'],
+        totalAmount: json['total_amount'],
+        startParameter: json['start_parameter'],
+        isTest: json['is_test'],
+        needShippingAddress: json['need_shipping_address'],
+        receiptMessageId: json['receipt_message_id'],
+        extendedMedia: json['extended_media'] == null
+            ? null
+            : MessageExtendedMedia.fromJson(json['extended_media']),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "title": "$title",
-    "description": "${description.toJson()}",
-    "photo": "${photo?.toJson()}",
-    "currency": "$currency",
-    "total_amount": "$totalAmount",
-    "start_parameter": "$startParameter",
-    "is_test": $isTest,
-    "need_shipping_address": $needShippingAddress,
-    "receipt_message_id": "$receiptMessageId",
-    "extended_media": "${extendedMedia?.toJson()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "title":"$title",
+   "description":"${description.toJson()}",
+   "photo":"${photo?.toJson()}",
+   "currency":"$currency",
+   "total_amount":$totalAmount,
+   "start_parameter":"$startParameter",
+   "is_test":$isTest,
+   "need_shipping_address":$needShippingAddress,
+   "receipt_message_id":$receiptMessageId,
+   "extended_media":"${extendedMedia?.toJson()}"
+}
 	""";
   }
-  
+
   @override
   MessageInvoice copyWith({
     String? title,
@@ -1215,988 +1153,923 @@ class MessageInvoice extends MessageContent {
     bool? needShippingAddress,
     int? receiptMessageId,
     MessageExtendedMedia? extendedMedia,
-  }) => MessageInvoice(
-    title: title ?? this.title,
-    description: description ?? this.description,
-    photo: photo ?? this.photo,
-    currency: currency ?? this.currency,
-    totalAmount: totalAmount ?? this.totalAmount,
-    startParameter: startParameter ?? this.startParameter,
-    isTest: isTest ?? this.isTest,
-    needShippingAddress: needShippingAddress ?? this.needShippingAddress,
-    receiptMessageId: receiptMessageId ?? this.receiptMessageId,
-    extendedMedia: extendedMedia ?? this.extendedMedia,
-  );
+  }) =>
+      MessageInvoice(
+        title: title ?? this.title,
+        description: description ?? this.description,
+        photo: photo ?? this.photo,
+        currency: currency ?? this.currency,
+        totalAmount: totalAmount ?? this.totalAmount,
+        startParameter: startParameter ?? this.startParameter,
+        isTest: isTest ?? this.isTest,
+        needShippingAddress: needShippingAddress ?? this.needShippingAddress,
+        receiptMessageId: receiptMessageId ?? this.receiptMessageId,
+        extendedMedia: extendedMedia ?? this.extendedMedia,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageInvoice';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageCall extends MessageContent {
-
   /// A message with information about an ended call
   const MessageCall({
     required this.isVideo,
     required this.discardReason,
     required this.duration,
   });
-  
-  /// [isVideo] True, if the call was a video call 
+
+  /// [isVideo] True, if the call was a video call
   final bool isVideo;
 
-  /// [discardReason] Reason why the call was discarded 
+  /// [discardReason] Reason why the call was discarded
   final CallDiscardReason discardReason;
 
   /// [duration] Call duration, in seconds
   final int duration;
-  
+
   /// Parse from a json
   factory MessageCall.fromJson(Map<String, dynamic> json) => MessageCall(
-    isVideo: json['is_video'],
-    discardReason: CallDiscardReason.fromJson(json['discard_reason']),
-    duration: json['duration'],
-  );
-  
-  
+        isVideo: json['is_video'],
+        discardReason: CallDiscardReason.fromJson(json['discard_reason']),
+        duration: json['duration'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "is_video": $isVideo,
-    "discard_reason": "${discardReason.toJson()}",
-    "duration": "$duration"
-  }
+   "@type":"$CONSTRUCTOR",
+   "is_video":$isVideo,
+   "discard_reason":"${discardReason.toJson()}",
+   "duration":$duration
+}
 	""";
   }
-  
+
   @override
   MessageCall copyWith({
     bool? isVideo,
     CallDiscardReason? discardReason,
     int? duration,
-  }) => MessageCall(
-    isVideo: isVideo ?? this.isVideo,
-    discardReason: discardReason ?? this.discardReason,
-    duration: duration ?? this.duration,
-  );
+  }) =>
+      MessageCall(
+        isVideo: isVideo ?? this.isVideo,
+        discardReason: discardReason ?? this.discardReason,
+        duration: duration ?? this.duration,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageCall';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageVideoChatScheduled extends MessageContent {
-
   /// A new video chat was scheduled
   const MessageVideoChatScheduled({
     required this.groupCallId,
     required this.startDate,
   });
-  
-  /// [groupCallId] Identifier of the video chat. The video chat can be received through the method getGroupCall 
+
+  /// [groupCallId] Identifier of the video chat. The video chat can be received through the method getGroupCall
   final int groupCallId;
 
   /// [startDate] Point in time (Unix timestamp) when the group call is supposed to be started by an administrator
   final int startDate;
-  
+
   /// Parse from a json
-  factory MessageVideoChatScheduled.fromJson(Map<String, dynamic> json) => MessageVideoChatScheduled(
-    groupCallId: json['group_call_id'],
-    startDate: json['start_date'],
-  );
-  
-  
+  factory MessageVideoChatScheduled.fromJson(Map<String, dynamic> json) =>
+      MessageVideoChatScheduled(
+        groupCallId: json['group_call_id'],
+        startDate: json['start_date'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "group_call_id": "$groupCallId",
-    "start_date": "$startDate"
-  }
+   "@type":"$CONSTRUCTOR",
+   "group_call_id":$groupCallId,
+   "start_date":$startDate
+}
 	""";
   }
-  
+
   @override
   MessageVideoChatScheduled copyWith({
     int? groupCallId,
     int? startDate,
-  }) => MessageVideoChatScheduled(
-    groupCallId: groupCallId ?? this.groupCallId,
-    startDate: startDate ?? this.startDate,
-  );
+  }) =>
+      MessageVideoChatScheduled(
+        groupCallId: groupCallId ?? this.groupCallId,
+        startDate: startDate ?? this.startDate,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageVideoChatScheduled';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageVideoChatStarted extends MessageContent {
-
   /// A newly created video chat
   const MessageVideoChatStarted({
     required this.groupCallId,
   });
-  
+
   /// [groupCallId] Identifier of the video chat. The video chat can be received through the method getGroupCall
   final int groupCallId;
-  
+
   /// Parse from a json
-  factory MessageVideoChatStarted.fromJson(Map<String, dynamic> json) => MessageVideoChatStarted(
-    groupCallId: json['group_call_id'],
-  );
-  
-  
+  factory MessageVideoChatStarted.fromJson(Map<String, dynamic> json) =>
+      MessageVideoChatStarted(
+        groupCallId: json['group_call_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "group_call_id": "$groupCallId"
-  }
+   "@type":"$CONSTRUCTOR",
+   "group_call_id":$groupCallId
+}
 	""";
   }
-  
+
   @override
   MessageVideoChatStarted copyWith({
     int? groupCallId,
-  }) => MessageVideoChatStarted(
-    groupCallId: groupCallId ?? this.groupCallId,
-  );
+  }) =>
+      MessageVideoChatStarted(
+        groupCallId: groupCallId ?? this.groupCallId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageVideoChatStarted';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageVideoChatEnded extends MessageContent {
-
   /// A message with information about an ended video chat
   const MessageVideoChatEnded({
     required this.duration,
   });
-  
+
   /// [duration] Call duration, in seconds
   final int duration;
-  
+
   /// Parse from a json
-  factory MessageVideoChatEnded.fromJson(Map<String, dynamic> json) => MessageVideoChatEnded(
-    duration: json['duration'],
-  );
-  
-  
+  factory MessageVideoChatEnded.fromJson(Map<String, dynamic> json) =>
+      MessageVideoChatEnded(
+        duration: json['duration'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "duration": "$duration"
-  }
+   "@type":"$CONSTRUCTOR",
+   "duration":$duration
+}
 	""";
   }
-  
+
   @override
   MessageVideoChatEnded copyWith({
     int? duration,
-  }) => MessageVideoChatEnded(
-    duration: duration ?? this.duration,
-  );
+  }) =>
+      MessageVideoChatEnded(
+        duration: duration ?? this.duration,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageVideoChatEnded';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageInviteVideoChatParticipants extends MessageContent {
-
   /// A message with information about an invite to a video chat
   const MessageInviteVideoChatParticipants({
     required this.groupCallId,
     required this.userIds,
   });
-  
-  /// [groupCallId] Identifier of the video chat. The video chat can be received through the method getGroupCall 
+
+  /// [groupCallId] Identifier of the video chat. The video chat can be received through the method getGroupCall
   final int groupCallId;
 
   /// [userIds] Invited user identifiers
   final List<int> userIds;
-  
+
   /// Parse from a json
-  factory MessageInviteVideoChatParticipants.fromJson(Map<String, dynamic> json) => MessageInviteVideoChatParticipants(
-    groupCallId: json['group_call_id'],
-    userIds: List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
-  );
-  
-  
+  factory MessageInviteVideoChatParticipants.fromJson(
+          Map<String, dynamic> json) =>
+      MessageInviteVideoChatParticipants(
+        groupCallId: json['group_call_id'],
+        userIds: List<int>.from(
+            (json['user_ids'] ?? []).map((item) => item).toList()),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "group_call_id": "$groupCallId",
-    "user_ids": "${userIds.map((i) => i).toList()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "group_call_id":$groupCallId,
+   "user_ids":"${userIds.map((i) => i).toList()}"
+}
 	""";
   }
-  
+
   @override
   MessageInviteVideoChatParticipants copyWith({
     int? groupCallId,
     List<int>? userIds,
-  }) => MessageInviteVideoChatParticipants(
-    groupCallId: groupCallId ?? this.groupCallId,
-    userIds: userIds ?? this.userIds,
-  );
+  }) =>
+      MessageInviteVideoChatParticipants(
+        groupCallId: groupCallId ?? this.groupCallId,
+        userIds: userIds ?? this.userIds,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageInviteVideoChatParticipants';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageBasicGroupChatCreate extends MessageContent {
-
   /// A newly created basic group
   const MessageBasicGroupChatCreate({
     required this.title,
     required this.memberUserIds,
   });
-  
-  /// [title] Title of the basic group 
+
+  /// [title] Title of the basic group
   final String title;
 
   /// [memberUserIds] User identifiers of members in the basic group
   final List<int> memberUserIds;
-  
+
   /// Parse from a json
-  factory MessageBasicGroupChatCreate.fromJson(Map<String, dynamic> json) => MessageBasicGroupChatCreate(
-    title: json['title'],
-    memberUserIds: List<int>.from((json['member_user_ids'] ?? []).map((item) => item).toList()),
-  );
-  
-  
+  factory MessageBasicGroupChatCreate.fromJson(Map<String, dynamic> json) =>
+      MessageBasicGroupChatCreate(
+        title: json['title'],
+        memberUserIds: List<int>.from(
+            (json['member_user_ids'] ?? []).map((item) => item).toList()),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "title": "$title",
-    "member_user_ids": "${memberUserIds.map((i) => i).toList()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "title":"$title",
+   "member_user_ids":"${memberUserIds.map((i) => i).toList()}"
+}
 	""";
   }
-  
+
   @override
   MessageBasicGroupChatCreate copyWith({
     String? title,
     List<int>? memberUserIds,
-  }) => MessageBasicGroupChatCreate(
-    title: title ?? this.title,
-    memberUserIds: memberUserIds ?? this.memberUserIds,
-  );
+  }) =>
+      MessageBasicGroupChatCreate(
+        title: title ?? this.title,
+        memberUserIds: memberUserIds ?? this.memberUserIds,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageBasicGroupChatCreate';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageSupergroupChatCreate extends MessageContent {
-
   /// A newly created supergroup or channel
   const MessageSupergroupChatCreate({
     required this.title,
   });
-  
+
   /// [title] Title of the supergroup or channel
   final String title;
-  
+
   /// Parse from a json
-  factory MessageSupergroupChatCreate.fromJson(Map<String, dynamic> json) => MessageSupergroupChatCreate(
-    title: json['title'],
-  );
-  
-  
+  factory MessageSupergroupChatCreate.fromJson(Map<String, dynamic> json) =>
+      MessageSupergroupChatCreate(
+        title: json['title'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "title": "$title"
-  }
+   "@type":"$CONSTRUCTOR",
+   "title":"$title"
+}
 	""";
   }
-  
+
   @override
   MessageSupergroupChatCreate copyWith({
     String? title,
-  }) => MessageSupergroupChatCreate(
-    title: title ?? this.title,
-  );
+  }) =>
+      MessageSupergroupChatCreate(
+        title: title ?? this.title,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageSupergroupChatCreate';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageChatChangeTitle extends MessageContent {
-
   /// An updated chat title
   const MessageChatChangeTitle({
     required this.title,
   });
-  
+
   /// [title] New chat title
   final String title;
-  
+
   /// Parse from a json
-  factory MessageChatChangeTitle.fromJson(Map<String, dynamic> json) => MessageChatChangeTitle(
-    title: json['title'],
-  );
-  
-  
+  factory MessageChatChangeTitle.fromJson(Map<String, dynamic> json) =>
+      MessageChatChangeTitle(
+        title: json['title'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "title": "$title"
-  }
+   "@type":"$CONSTRUCTOR",
+   "title":"$title"
+}
 	""";
   }
-  
+
   @override
   MessageChatChangeTitle copyWith({
     String? title,
-  }) => MessageChatChangeTitle(
-    title: title ?? this.title,
-  );
+  }) =>
+      MessageChatChangeTitle(
+        title: title ?? this.title,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageChatChangeTitle';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageChatChangePhoto extends MessageContent {
-
   /// An updated chat photo
   const MessageChatChangePhoto({
     required this.photo,
   });
-  
+
   /// [photo] New chat photo
   final ChatPhoto photo;
-  
+
   /// Parse from a json
-  factory MessageChatChangePhoto.fromJson(Map<String, dynamic> json) => MessageChatChangePhoto(
-    photo: ChatPhoto.fromJson(json['photo']),
-  );
-  
-  
+  factory MessageChatChangePhoto.fromJson(Map<String, dynamic> json) =>
+      MessageChatChangePhoto(
+        photo: ChatPhoto.fromJson(json['photo']),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "photo": "${photo.toJson()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "photo":"${photo.toJson()}"
+}
 	""";
   }
-  
+
   @override
   MessageChatChangePhoto copyWith({
     ChatPhoto? photo,
-  }) => MessageChatChangePhoto(
-    photo: photo ?? this.photo,
-  );
+  }) =>
+      MessageChatChangePhoto(
+        photo: photo ?? this.photo,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageChatChangePhoto';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageChatDeletePhoto extends MessageContent {
-
   /// A deleted chat photo
   const MessageChatDeletePhoto();
-  
+
   /// Parse from a json
-  factory MessageChatDeletePhoto.fromJson(Map<String, dynamic> json) => const MessageChatDeletePhoto();
-  
+  factory MessageChatDeletePhoto.fromJson(Map<String, dynamic> json) =>
+      const MessageChatDeletePhoto();
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-  }
+   "@type":"$CONSTRUCTOR",
+}
 	""";
   }
-  
+
   @override
   MessageChatDeletePhoto copyWith() => const MessageChatDeletePhoto();
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageChatDeletePhoto';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageChatAddMembers extends MessageContent {
-
   /// New chat members were added
   const MessageChatAddMembers({
     required this.memberUserIds,
   });
-  
+
   /// [memberUserIds] User identifiers of the new members
   final List<int> memberUserIds;
-  
+
   /// Parse from a json
-  factory MessageChatAddMembers.fromJson(Map<String, dynamic> json) => MessageChatAddMembers(
-    memberUserIds: List<int>.from((json['member_user_ids'] ?? []).map((item) => item).toList()),
-  );
-  
-  
+  factory MessageChatAddMembers.fromJson(Map<String, dynamic> json) =>
+      MessageChatAddMembers(
+        memberUserIds: List<int>.from(
+            (json['member_user_ids'] ?? []).map((item) => item).toList()),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "member_user_ids": "${memberUserIds.map((i) => i).toList()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "member_user_ids":"${memberUserIds.map((i) => i).toList()}"
+}
 	""";
   }
-  
+
   @override
   MessageChatAddMembers copyWith({
     List<int>? memberUserIds,
-  }) => MessageChatAddMembers(
-    memberUserIds: memberUserIds ?? this.memberUserIds,
-  );
+  }) =>
+      MessageChatAddMembers(
+        memberUserIds: memberUserIds ?? this.memberUserIds,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageChatAddMembers';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageChatJoinByLink extends MessageContent {
-
   /// A new member joined the chat via an invite link
   const MessageChatJoinByLink();
-  
+
   /// Parse from a json
-  factory MessageChatJoinByLink.fromJson(Map<String, dynamic> json) => const MessageChatJoinByLink();
-  
+  factory MessageChatJoinByLink.fromJson(Map<String, dynamic> json) =>
+      const MessageChatJoinByLink();
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-  }
+   "@type":"$CONSTRUCTOR",
+}
 	""";
   }
-  
+
   @override
   MessageChatJoinByLink copyWith() => const MessageChatJoinByLink();
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageChatJoinByLink';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageChatJoinByRequest extends MessageContent {
-
   /// A new member was accepted to the chat by an administrator
   const MessageChatJoinByRequest();
-  
+
   /// Parse from a json
-  factory MessageChatJoinByRequest.fromJson(Map<String, dynamic> json) => const MessageChatJoinByRequest();
-  
+  factory MessageChatJoinByRequest.fromJson(Map<String, dynamic> json) =>
+      const MessageChatJoinByRequest();
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-  }
+   "@type":"$CONSTRUCTOR",
+}
 	""";
   }
-  
+
   @override
   MessageChatJoinByRequest copyWith() => const MessageChatJoinByRequest();
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageChatJoinByRequest';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageChatDeleteMember extends MessageContent {
-
   /// A chat member was deleted
   const MessageChatDeleteMember({
     required this.userId,
   });
-  
+
   /// [userId] User identifier of the deleted chat member
   final int userId;
-  
+
   /// Parse from a json
-  factory MessageChatDeleteMember.fromJson(Map<String, dynamic> json) => MessageChatDeleteMember(
-    userId: json['user_id'],
-  );
-  
-  
+  factory MessageChatDeleteMember.fromJson(Map<String, dynamic> json) =>
+      MessageChatDeleteMember(
+        userId: json['user_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "user_id": "$userId"
-  }
+   "@type":"$CONSTRUCTOR",
+   "user_id":$userId
+}
 	""";
   }
-  
+
   @override
   MessageChatDeleteMember copyWith({
     int? userId,
-  }) => MessageChatDeleteMember(
-    userId: userId ?? this.userId,
-  );
+  }) =>
+      MessageChatDeleteMember(
+        userId: userId ?? this.userId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageChatDeleteMember';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageChatUpgradeTo extends MessageContent {
-
   /// A basic group was upgraded to a supergroup and was deactivated as the result
   const MessageChatUpgradeTo({
     required this.supergroupId,
   });
-  
+
   /// [supergroupId] Identifier of the supergroup to which the basic group was upgraded
   final int supergroupId;
-  
+
   /// Parse from a json
-  factory MessageChatUpgradeTo.fromJson(Map<String, dynamic> json) => MessageChatUpgradeTo(
-    supergroupId: json['supergroup_id'],
-  );
-  
-  
+  factory MessageChatUpgradeTo.fromJson(Map<String, dynamic> json) =>
+      MessageChatUpgradeTo(
+        supergroupId: json['supergroup_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "supergroup_id": "$supergroupId"
-  }
+   "@type":"$CONSTRUCTOR",
+   "supergroup_id":$supergroupId
+}
 	""";
   }
-  
+
   @override
   MessageChatUpgradeTo copyWith({
     int? supergroupId,
-  }) => MessageChatUpgradeTo(
-    supergroupId: supergroupId ?? this.supergroupId,
-  );
+  }) =>
+      MessageChatUpgradeTo(
+        supergroupId: supergroupId ?? this.supergroupId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageChatUpgradeTo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageChatUpgradeFrom extends MessageContent {
-
   /// A supergroup has been created from a basic group
   const MessageChatUpgradeFrom({
     required this.title,
     required this.basicGroupId,
   });
-  
-  /// [title] Title of the newly created supergroup 
+
+  /// [title] Title of the newly created supergroup
   final String title;
 
   /// [basicGroupId] The identifier of the original basic group
   final int basicGroupId;
-  
+
   /// Parse from a json
-  factory MessageChatUpgradeFrom.fromJson(Map<String, dynamic> json) => MessageChatUpgradeFrom(
-    title: json['title'],
-    basicGroupId: json['basic_group_id'],
-  );
-  
-  
+  factory MessageChatUpgradeFrom.fromJson(Map<String, dynamic> json) =>
+      MessageChatUpgradeFrom(
+        title: json['title'],
+        basicGroupId: json['basic_group_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "title": "$title",
-    "basic_group_id": "$basicGroupId"
-  }
+   "@type":"$CONSTRUCTOR",
+   "title":"$title",
+   "basic_group_id":$basicGroupId
+}
 	""";
   }
-  
+
   @override
   MessageChatUpgradeFrom copyWith({
     String? title,
     int? basicGroupId,
-  }) => MessageChatUpgradeFrom(
-    title: title ?? this.title,
-    basicGroupId: basicGroupId ?? this.basicGroupId,
-  );
+  }) =>
+      MessageChatUpgradeFrom(
+        title: title ?? this.title,
+        basicGroupId: basicGroupId ?? this.basicGroupId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageChatUpgradeFrom';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessagePinMessage extends MessageContent {
-
   /// A message has been pinned
   const MessagePinMessage({
     required this.messageId,
   });
-  
+
   /// [messageId] Identifier of the pinned message, can be an identifier of a deleted message or 0
   final int messageId;
-  
+
   /// Parse from a json
-  factory MessagePinMessage.fromJson(Map<String, dynamic> json) => MessagePinMessage(
-    messageId: json['message_id'],
-  );
-  
-  
+  factory MessagePinMessage.fromJson(Map<String, dynamic> json) =>
+      MessagePinMessage(
+        messageId: json['message_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "message_id": "$messageId"
-  }
+   "@type":"$CONSTRUCTOR",
+   "message_id":$messageId
+}
 	""";
   }
-  
+
   @override
   MessagePinMessage copyWith({
     int? messageId,
-  }) => MessagePinMessage(
-    messageId: messageId ?? this.messageId,
-  );
+  }) =>
+      MessagePinMessage(
+        messageId: messageId ?? this.messageId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messagePinMessage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageScreenshotTaken extends MessageContent {
-
   /// A screenshot of a message in the chat has been taken
   const MessageScreenshotTaken();
-  
+
   /// Parse from a json
-  factory MessageScreenshotTaken.fromJson(Map<String, dynamic> json) => const MessageScreenshotTaken();
-  
+  factory MessageScreenshotTaken.fromJson(Map<String, dynamic> json) =>
+      const MessageScreenshotTaken();
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-  }
+   "@type":"$CONSTRUCTOR",
+}
 	""";
   }
-  
+
   @override
   MessageScreenshotTaken copyWith() => const MessageScreenshotTaken();
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageScreenshotTaken';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageChatSetTheme extends MessageContent {
-
   /// A theme in the chat has been changed
   const MessageChatSetTheme({
     required this.themeName,
   });
-  
+
   /// [themeName] If non-empty, name of a new theme, set for the chat. Otherwise chat theme was reset to the default one
   final String themeName;
-  
+
   /// Parse from a json
-  factory MessageChatSetTheme.fromJson(Map<String, dynamic> json) => MessageChatSetTheme(
-    themeName: json['theme_name'],
-  );
-  
-  
+  factory MessageChatSetTheme.fromJson(Map<String, dynamic> json) =>
+      MessageChatSetTheme(
+        themeName: json['theme_name'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "theme_name": "$themeName"
-  }
+   "@type":"$CONSTRUCTOR",
+   "theme_name":"$themeName"
+}
 	""";
   }
-  
+
   @override
   MessageChatSetTheme copyWith({
     String? themeName,
-  }) => MessageChatSetTheme(
-    themeName: themeName ?? this.themeName,
-  );
+  }) =>
+      MessageChatSetTheme(
+        themeName: themeName ?? this.themeName,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageChatSetTheme';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageChatSetTtl extends MessageContent {
-
   /// The TTL (Time To Live) setting for messages in the chat has been changed
   const MessageChatSetTtl({
     required this.ttl,
   });
-  
+
   /// [ttl] New message TTL
   final int ttl;
-  
+
   /// Parse from a json
-  factory MessageChatSetTtl.fromJson(Map<String, dynamic> json) => MessageChatSetTtl(
-    ttl: json['ttl'],
-  );
-  
-  
+  factory MessageChatSetTtl.fromJson(Map<String, dynamic> json) =>
+      MessageChatSetTtl(
+        ttl: json['ttl'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "ttl": "$ttl"
-  }
+   "@type":"$CONSTRUCTOR",
+   "ttl":$ttl
+}
 	""";
   }
-  
+
   @override
   MessageChatSetTtl copyWith({
     int? ttl,
-  }) => MessageChatSetTtl(
-    ttl: ttl ?? this.ttl,
-  );
+  }) =>
+      MessageChatSetTtl(
+        ttl: ttl ?? this.ttl,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageChatSetTtl';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageCustomServiceAction extends MessageContent {
-
   /// A non-standard action has happened in the chat
   const MessageCustomServiceAction({
     required this.text,
   });
-  
+
   /// [text] Message text to be shown in the chat
   final String text;
-  
+
   /// Parse from a json
-  factory MessageCustomServiceAction.fromJson(Map<String, dynamic> json) => MessageCustomServiceAction(
-    text: json['text'],
-  );
-  
-  
+  factory MessageCustomServiceAction.fromJson(Map<String, dynamic> json) =>
+      MessageCustomServiceAction(
+        text: json['text'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "text": "$text"
-  }
+   "@type":"$CONSTRUCTOR",
+   "text":"$text"
+}
 	""";
   }
-  
+
   @override
   MessageCustomServiceAction copyWith({
     String? text,
-  }) => MessageCustomServiceAction(
-    text: text ?? this.text,
-  );
+  }) =>
+      MessageCustomServiceAction(
+        text: text ?? this.text,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageCustomServiceAction';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageGameScore extends MessageContent {
-
   /// A new high score was achieved in a game
   const MessageGameScore({
     required this.gameMessageId,
     required this.gameId,
     required this.score,
   });
-  
-  /// [gameMessageId] Identifier of the message with the game, can be an identifier of a deleted message 
+
+  /// [gameMessageId] Identifier of the message with the game, can be an identifier of a deleted message
   final int gameMessageId;
 
-  /// [gameId] Identifier of the game; may be different from the games presented in the message with the game 
+  /// [gameId] Identifier of the game; may be different from the games presented in the message with the game
   final int gameId;
 
   /// [score] New score
   final int score;
-  
+
   /// Parse from a json
-  factory MessageGameScore.fromJson(Map<String, dynamic> json) => MessageGameScore(
-    gameMessageId: json['game_message_id'],
-    gameId: int.parse(json['game_id']),
-    score: json['score'],
-  );
-  
-  
+  factory MessageGameScore.fromJson(Map<String, dynamic> json) =>
+      MessageGameScore(
+        gameMessageId: json['game_message_id'],
+        gameId: int.parse(json['game_id']),
+        score: json['score'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "game_message_id": "$gameMessageId",
-    "game_id": "$gameId",
-    "score": "$score"
-  }
+   "@type":"$CONSTRUCTOR",
+   "game_message_id":$gameMessageId,
+   "game_id":$gameId,
+   "score":$score
+}
 	""";
   }
-  
+
   @override
   MessageGameScore copyWith({
     int? gameMessageId,
     int? gameId,
     int? score,
-  }) => MessageGameScore(
-    gameMessageId: gameMessageId ?? this.gameMessageId,
-    gameId: gameId ?? this.gameId,
-    score: score ?? this.score,
-  );
+  }) =>
+      MessageGameScore(
+        gameMessageId: gameMessageId ?? this.gameMessageId,
+        gameId: gameId ?? this.gameId,
+        score: score ?? this.score,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageGameScore';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessagePaymentSuccessful extends MessageContent {
-
   /// A payment has been completed
   const MessagePaymentSuccessful({
     required this.invoiceChatId,
@@ -2207,8 +2080,8 @@ class MessagePaymentSuccessful extends MessageContent {
     required this.isFirstRecurring,
     required this.invoiceName,
   });
-  
-  /// [invoiceChatId] Identifier of the chat, containing the corresponding invoice message; 0 if unknown 
+
+  /// [invoiceChatId] Identifier of the chat, containing the corresponding invoice message; 0 if unknown
   final int invoiceChatId;
 
   /// [invoiceMessageId] Identifier of the message with the corresponding invoice; can be 0 or an identifier of a deleted message
@@ -2223,41 +2096,40 @@ class MessagePaymentSuccessful extends MessageContent {
   /// [isRecurring] True, if this is a recurring payment
   final bool isRecurring;
 
-  /// [isFirstRecurring] True, if this is the first recurring payment 
+  /// [isFirstRecurring] True, if this is the first recurring payment
   final bool isFirstRecurring;
 
   /// [invoiceName] Name of the invoice; may be empty if unknown
   final String invoiceName;
-  
+
   /// Parse from a json
-  factory MessagePaymentSuccessful.fromJson(Map<String, dynamic> json) => MessagePaymentSuccessful(
-    invoiceChatId: json['invoice_chat_id'],
-    invoiceMessageId: json['invoice_message_id'],
-    currency: json['currency'],
-    totalAmount: json['total_amount'],
-    isRecurring: json['is_recurring'],
-    isFirstRecurring: json['is_first_recurring'],
-    invoiceName: json['invoice_name'],
-  );
-  
-  
+  factory MessagePaymentSuccessful.fromJson(Map<String, dynamic> json) =>
+      MessagePaymentSuccessful(
+        invoiceChatId: json['invoice_chat_id'],
+        invoiceMessageId: json['invoice_message_id'],
+        currency: json['currency'],
+        totalAmount: json['total_amount'],
+        isRecurring: json['is_recurring'],
+        isFirstRecurring: json['is_first_recurring'],
+        invoiceName: json['invoice_name'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "invoice_chat_id": "$invoiceChatId",
-    "invoice_message_id": "$invoiceMessageId",
-    "currency": "$currency",
-    "total_amount": "$totalAmount",
-    "is_recurring": $isRecurring,
-    "is_first_recurring": $isFirstRecurring,
-    "invoice_name": "$invoiceName"
-  }
+   "@type":"$CONSTRUCTOR",
+   "invoice_chat_id":$invoiceChatId,
+   "invoice_message_id":$invoiceMessageId,
+   "currency":"$currency",
+   "total_amount":$totalAmount,
+   "is_recurring":$isRecurring,
+   "is_first_recurring":$isFirstRecurring,
+   "invoice_name":"$invoiceName"
+}
 	""";
   }
-  
+
   @override
   MessagePaymentSuccessful copyWith({
     int? invoiceChatId,
@@ -2267,27 +2139,25 @@ class MessagePaymentSuccessful extends MessageContent {
     bool? isRecurring,
     bool? isFirstRecurring,
     String? invoiceName,
-  }) => MessagePaymentSuccessful(
-    invoiceChatId: invoiceChatId ?? this.invoiceChatId,
-    invoiceMessageId: invoiceMessageId ?? this.invoiceMessageId,
-    currency: currency ?? this.currency,
-    totalAmount: totalAmount ?? this.totalAmount,
-    isRecurring: isRecurring ?? this.isRecurring,
-    isFirstRecurring: isFirstRecurring ?? this.isFirstRecurring,
-    invoiceName: invoiceName ?? this.invoiceName,
-  );
+  }) =>
+      MessagePaymentSuccessful(
+        invoiceChatId: invoiceChatId ?? this.invoiceChatId,
+        invoiceMessageId: invoiceMessageId ?? this.invoiceMessageId,
+        currency: currency ?? this.currency,
+        totalAmount: totalAmount ?? this.totalAmount,
+        isRecurring: isRecurring ?? this.isRecurring,
+        isFirstRecurring: isFirstRecurring ?? this.isFirstRecurring,
+        invoiceName: invoiceName ?? this.invoiceName,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messagePaymentSuccessful';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessagePaymentSuccessfulBot extends MessageContent {
-
   /// A payment has been completed; for bots only
   const MessagePaymentSuccessfulBot({
     required this.currency,
@@ -2300,8 +2170,8 @@ class MessagePaymentSuccessfulBot extends MessageContent {
     required this.telegramPaymentChargeId,
     required this.providerPaymentChargeId,
   });
-  
-  /// [currency] Currency for price of the product 
+
+  /// [currency] Currency for price of the product
   final String currency;
 
   /// [totalAmount] Total price for the product, in the smallest units of the currency
@@ -2316,7 +2186,7 @@ class MessagePaymentSuccessfulBot extends MessageContent {
   /// [invoicePayload] Invoice payload
   final String invoicePayload;
 
-  /// [shippingOptionId] Identifier of the shipping option chosen by the user; may be empty if not applicable 
+  /// [shippingOptionId] Identifier of the shipping option chosen by the user; may be empty if not applicable
   final String shippingOptionId;
 
   /// [orderInfo] Information about the order; may be null
@@ -2327,40 +2197,41 @@ class MessagePaymentSuccessfulBot extends MessageContent {
 
   /// [providerPaymentChargeId] Provider payment identifier
   final String providerPaymentChargeId;
-  
+
   /// Parse from a json
-  factory MessagePaymentSuccessfulBot.fromJson(Map<String, dynamic> json) => MessagePaymentSuccessfulBot(
-    currency: json['currency'],
-    totalAmount: json['total_amount'],
-    isRecurring: json['is_recurring'],
-    isFirstRecurring: json['is_first_recurring'],
-    invoicePayload: json['invoice_payload'],
-    shippingOptionId: json['shipping_option_id'],
-    orderInfo: json['order_info'] == null ? null : OrderInfo.fromJson(json['order_info']),
-    telegramPaymentChargeId: json['telegram_payment_charge_id'],
-    providerPaymentChargeId: json['provider_payment_charge_id'],
-  );
-  
-  
+  factory MessagePaymentSuccessfulBot.fromJson(Map<String, dynamic> json) =>
+      MessagePaymentSuccessfulBot(
+        currency: json['currency'],
+        totalAmount: json['total_amount'],
+        isRecurring: json['is_recurring'],
+        isFirstRecurring: json['is_first_recurring'],
+        invoicePayload: json['invoice_payload'],
+        shippingOptionId: json['shipping_option_id'],
+        orderInfo: json['order_info'] == null
+            ? null
+            : OrderInfo.fromJson(json['order_info']),
+        telegramPaymentChargeId: json['telegram_payment_charge_id'],
+        providerPaymentChargeId: json['provider_payment_charge_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "currency": "$currency",
-    "total_amount": "$totalAmount",
-    "is_recurring": $isRecurring,
-    "is_first_recurring": $isFirstRecurring,
-    "invoice_payload": "$invoicePayload",
-    "shipping_option_id": "$shippingOptionId",
-    "order_info": "${orderInfo?.toJson()}",
-    "telegram_payment_charge_id": "$telegramPaymentChargeId",
-    "provider_payment_charge_id": "$providerPaymentChargeId"
-  }
+   "@type":"$CONSTRUCTOR",
+   "currency":"$currency",
+   "total_amount":$totalAmount,
+   "is_recurring":$isRecurring,
+   "is_first_recurring":$isFirstRecurring,
+   "invoice_payload":"$invoicePayload",
+   "shipping_option_id":"$shippingOptionId",
+   "order_info":"${orderInfo?.toJson()}",
+   "telegram_payment_charge_id":"$telegramPaymentChargeId",
+   "provider_payment_charge_id":"$providerPaymentChargeId"
+}
 	""";
   }
-  
+
   @override
   MessagePaymentSuccessfulBot copyWith({
     String? currency,
@@ -2372,29 +2243,29 @@ class MessagePaymentSuccessfulBot extends MessageContent {
     OrderInfo? orderInfo,
     String? telegramPaymentChargeId,
     String? providerPaymentChargeId,
-  }) => MessagePaymentSuccessfulBot(
-    currency: currency ?? this.currency,
-    totalAmount: totalAmount ?? this.totalAmount,
-    isRecurring: isRecurring ?? this.isRecurring,
-    isFirstRecurring: isFirstRecurring ?? this.isFirstRecurring,
-    invoicePayload: invoicePayload ?? this.invoicePayload,
-    shippingOptionId: shippingOptionId ?? this.shippingOptionId,
-    orderInfo: orderInfo ?? this.orderInfo,
-    telegramPaymentChargeId: telegramPaymentChargeId ?? this.telegramPaymentChargeId,
-    providerPaymentChargeId: providerPaymentChargeId ?? this.providerPaymentChargeId,
-  );
+  }) =>
+      MessagePaymentSuccessfulBot(
+        currency: currency ?? this.currency,
+        totalAmount: totalAmount ?? this.totalAmount,
+        isRecurring: isRecurring ?? this.isRecurring,
+        isFirstRecurring: isFirstRecurring ?? this.isFirstRecurring,
+        invoicePayload: invoicePayload ?? this.invoicePayload,
+        shippingOptionId: shippingOptionId ?? this.shippingOptionId,
+        orderInfo: orderInfo ?? this.orderInfo,
+        telegramPaymentChargeId:
+            telegramPaymentChargeId ?? this.telegramPaymentChargeId,
+        providerPaymentChargeId:
+            providerPaymentChargeId ?? this.providerPaymentChargeId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messagePaymentSuccessfulBot';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageGiftedPremium extends MessageContent {
-
   /// Telegram Premium was gifted to the user
   const MessageGiftedPremium({
     required this.currency,
@@ -2402,11 +2273,11 @@ class MessageGiftedPremium extends MessageContent {
     required this.monthCount,
     this.sticker,
   });
-  
-  /// [currency] Currency for the paid amount 
+
+  /// [currency] Currency for the paid amount
   final String currency;
 
-  /// [amount] The paid amount, in the smallest units of the currency 
+  /// [amount] The paid amount, in the smallest units of the currency
   final int amount;
 
   /// [monthCount] Number of month the Telegram Premium subscription will be active
@@ -2414,397 +2285,377 @@ class MessageGiftedPremium extends MessageContent {
 
   /// [sticker] A sticker to be shown in the message; may be null if unknown
   final Sticker? sticker;
-  
+
   /// Parse from a json
-  factory MessageGiftedPremium.fromJson(Map<String, dynamic> json) => MessageGiftedPremium(
-    currency: json['currency'],
-    amount: json['amount'],
-    monthCount: json['month_count'],
-    sticker: json['sticker'] == null ? null : Sticker.fromJson(json['sticker']),
-  );
-  
-  
+  factory MessageGiftedPremium.fromJson(Map<String, dynamic> json) =>
+      MessageGiftedPremium(
+        currency: json['currency'],
+        amount: json['amount'],
+        monthCount: json['month_count'],
+        sticker:
+            json['sticker'] == null ? null : Sticker.fromJson(json['sticker']),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "currency": "$currency",
-    "amount": "$amount",
-    "month_count": "$monthCount",
-    "sticker": "${sticker?.toJson()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "currency":"$currency",
+   "amount":$amount,
+   "month_count":$monthCount,
+   "sticker":"${sticker?.toJson()}"
+}
 	""";
   }
-  
+
   @override
   MessageGiftedPremium copyWith({
     String? currency,
     int? amount,
     int? monthCount,
     Sticker? sticker,
-  }) => MessageGiftedPremium(
-    currency: currency ?? this.currency,
-    amount: amount ?? this.amount,
-    monthCount: monthCount ?? this.monthCount,
-    sticker: sticker ?? this.sticker,
-  );
+  }) =>
+      MessageGiftedPremium(
+        currency: currency ?? this.currency,
+        amount: amount ?? this.amount,
+        monthCount: monthCount ?? this.monthCount,
+        sticker: sticker ?? this.sticker,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageGiftedPremium';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageContactRegistered extends MessageContent {
-
   /// A contact has registered with Telegram
   const MessageContactRegistered();
-  
+
   /// Parse from a json
-  factory MessageContactRegistered.fromJson(Map<String, dynamic> json) => const MessageContactRegistered();
-  
+  factory MessageContactRegistered.fromJson(Map<String, dynamic> json) =>
+      const MessageContactRegistered();
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-  }
+   "@type":"$CONSTRUCTOR",
+}
 	""";
   }
-  
+
   @override
   MessageContactRegistered copyWith() => const MessageContactRegistered();
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageContactRegistered';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageWebsiteConnected extends MessageContent {
-
   /// The current user has connected a website by logging in using Telegram Login Widget on it
   const MessageWebsiteConnected({
     required this.domainName,
   });
-  
+
   /// [domainName] Domain name of the connected website
   final String domainName;
-  
+
   /// Parse from a json
-  factory MessageWebsiteConnected.fromJson(Map<String, dynamic> json) => MessageWebsiteConnected(
-    domainName: json['domain_name'],
-  );
-  
-  
+  factory MessageWebsiteConnected.fromJson(Map<String, dynamic> json) =>
+      MessageWebsiteConnected(
+        domainName: json['domain_name'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "domain_name": "$domainName"
-  }
+   "@type":"$CONSTRUCTOR",
+   "domain_name":"$domainName"
+}
 	""";
   }
-  
+
   @override
   MessageWebsiteConnected copyWith({
     String? domainName,
-  }) => MessageWebsiteConnected(
-    domainName: domainName ?? this.domainName,
-  );
+  }) =>
+      MessageWebsiteConnected(
+        domainName: domainName ?? this.domainName,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageWebsiteConnected';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageWebAppDataSent extends MessageContent {
-
   /// Data from a Web App has been sent to a bot
   const MessageWebAppDataSent({
     required this.buttonText,
   });
-  
+
   /// [buttonText] Text of the keyboardButtonTypeWebApp button, which opened the Web App
   final String buttonText;
-  
+
   /// Parse from a json
-  factory MessageWebAppDataSent.fromJson(Map<String, dynamic> json) => MessageWebAppDataSent(
-    buttonText: json['button_text'],
-  );
-  
-  
+  factory MessageWebAppDataSent.fromJson(Map<String, dynamic> json) =>
+      MessageWebAppDataSent(
+        buttonText: json['button_text'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "button_text": "$buttonText"
-  }
+   "@type":"$CONSTRUCTOR",
+   "button_text":"$buttonText"
+}
 	""";
   }
-  
+
   @override
   MessageWebAppDataSent copyWith({
     String? buttonText,
-  }) => MessageWebAppDataSent(
-    buttonText: buttonText ?? this.buttonText,
-  );
+  }) =>
+      MessageWebAppDataSent(
+        buttonText: buttonText ?? this.buttonText,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageWebAppDataSent';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageWebAppDataReceived extends MessageContent {
-
   /// Data from a Web App has been received; for bots only
   const MessageWebAppDataReceived({
     required this.buttonText,
     required this.data,
   });
-  
-  /// [buttonText] Text of the keyboardButtonTypeWebApp button, which opened the Web App 
+
+  /// [buttonText] Text of the keyboardButtonTypeWebApp button, which opened the Web App
   final String buttonText;
 
   /// [data] Received data
   final String data;
-  
+
   /// Parse from a json
-  factory MessageWebAppDataReceived.fromJson(Map<String, dynamic> json) => MessageWebAppDataReceived(
-    buttonText: json['button_text'],
-    data: json['data'],
-  );
-  
-  
+  factory MessageWebAppDataReceived.fromJson(Map<String, dynamic> json) =>
+      MessageWebAppDataReceived(
+        buttonText: json['button_text'],
+        data: json['data'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "button_text": "$buttonText",
-    "data": "$data"
-  }
+   "@type":"$CONSTRUCTOR",
+   "button_text":"$buttonText",
+   "data":"$data"
+}
 	""";
   }
-  
+
   @override
   MessageWebAppDataReceived copyWith({
     String? buttonText,
     String? data,
-  }) => MessageWebAppDataReceived(
-    buttonText: buttonText ?? this.buttonText,
-    data: data ?? this.data,
-  );
+  }) =>
+      MessageWebAppDataReceived(
+        buttonText: buttonText ?? this.buttonText,
+        data: data ?? this.data,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageWebAppDataReceived';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessagePassportDataSent extends MessageContent {
-
   /// Telegram Passport data has been sent to a bot
   const MessagePassportDataSent({
     required this.types,
   });
-  
+
   /// [types] List of Telegram Passport element types sent
   final List<PassportElementType> types;
-  
+
   /// Parse from a json
-  factory MessagePassportDataSent.fromJson(Map<String, dynamic> json) => MessagePassportDataSent(
-    types: List<PassportElementType>.from((json['types'] ?? []).map((item) => PassportElementType.fromJson(item)).toList()),
-  );
-  
-  
+  factory MessagePassportDataSent.fromJson(Map<String, dynamic> json) =>
+      MessagePassportDataSent(
+        types: List<PassportElementType>.from((json['types'] ?? [])
+            .map((item) => PassportElementType.fromJson(item))
+            .toList()),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "types": "${types.map((i) => i.toJson()).toList()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "types":"${types.map((i) => i.toJson()).toList()}"
+}
 	""";
   }
-  
+
   @override
   MessagePassportDataSent copyWith({
     List<PassportElementType>? types,
-  }) => MessagePassportDataSent(
-    types: types ?? this.types,
-  );
+  }) =>
+      MessagePassportDataSent(
+        types: types ?? this.types,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messagePassportDataSent';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessagePassportDataReceived extends MessageContent {
-
   /// Telegram Passport data has been received; for bots only
   const MessagePassportDataReceived({
     required this.elements,
     required this.credentials,
   });
-  
-  /// [elements] List of received Telegram Passport elements 
+
+  /// [elements] List of received Telegram Passport elements
   final List<EncryptedPassportElement> elements;
 
   /// [credentials] Encrypted data credentials
   final EncryptedCredentials credentials;
-  
+
   /// Parse from a json
-  factory MessagePassportDataReceived.fromJson(Map<String, dynamic> json) => MessagePassportDataReceived(
-    elements: List<EncryptedPassportElement>.from((json['elements'] ?? []).map((item) => EncryptedPassportElement.fromJson(item)).toList()),
-    credentials: EncryptedCredentials.fromJson(json['credentials']),
-  );
-  
-  
+  factory MessagePassportDataReceived.fromJson(Map<String, dynamic> json) =>
+      MessagePassportDataReceived(
+        elements: List<EncryptedPassportElement>.from((json['elements'] ?? [])
+            .map((item) => EncryptedPassportElement.fromJson(item))
+            .toList()),
+        credentials: EncryptedCredentials.fromJson(json['credentials']),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "elements": "${elements.map((i) => i.toJson()).toList()}",
-    "credentials": "${credentials.toJson()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "elements":"${elements.map((i) => i.toJson()).toList()}",
+   "credentials":"${credentials.toJson()}"
+}
 	""";
   }
-  
+
   @override
   MessagePassportDataReceived copyWith({
     List<EncryptedPassportElement>? elements,
     EncryptedCredentials? credentials,
-  }) => MessagePassportDataReceived(
-    elements: elements ?? this.elements,
-    credentials: credentials ?? this.credentials,
-  );
+  }) =>
+      MessagePassportDataReceived(
+        elements: elements ?? this.elements,
+        credentials: credentials ?? this.credentials,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messagePassportDataReceived';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageProximityAlertTriggered extends MessageContent {
-
   /// A user in the chat came within proximity alert range
   const MessageProximityAlertTriggered({
     required this.travelerId,
     required this.watcherId,
     required this.distance,
   });
-  
-  /// [travelerId] The identifier of a user or chat that triggered the proximity alert 
+
+  /// [travelerId] The identifier of a user or chat that triggered the proximity alert
   final MessageSender travelerId;
 
-  /// [watcherId] The identifier of a user or chat that subscribed for the proximity alert 
+  /// [watcherId] The identifier of a user or chat that subscribed for the proximity alert
   final MessageSender watcherId;
 
   /// [distance] The distance between the users
   final int distance;
-  
+
   /// Parse from a json
-  factory MessageProximityAlertTriggered.fromJson(Map<String, dynamic> json) => MessageProximityAlertTriggered(
-    travelerId: MessageSender.fromJson(json['traveler_id']),
-    watcherId: MessageSender.fromJson(json['watcher_id']),
-    distance: json['distance'],
-  );
-  
-  
+  factory MessageProximityAlertTriggered.fromJson(Map<String, dynamic> json) =>
+      MessageProximityAlertTriggered(
+        travelerId: MessageSender.fromJson(json['traveler_id']),
+        watcherId: MessageSender.fromJson(json['watcher_id']),
+        distance: json['distance'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "traveler_id": "${travelerId.toJson()}",
-    "watcher_id": "${watcherId.toJson()}",
-    "distance": "$distance"
-  }
+   "@type":"$CONSTRUCTOR",
+   "traveler_id":"${travelerId.toJson()}",
+   "watcher_id":"${watcherId.toJson()}",
+   "distance":$distance
+}
 	""";
   }
-  
+
   @override
   MessageProximityAlertTriggered copyWith({
     MessageSender? travelerId,
     MessageSender? watcherId,
     int? distance,
-  }) => MessageProximityAlertTriggered(
-    travelerId: travelerId ?? this.travelerId,
-    watcherId: watcherId ?? this.watcherId,
-    distance: distance ?? this.distance,
-  );
+  }) =>
+      MessageProximityAlertTriggered(
+        travelerId: travelerId ?? this.travelerId,
+        watcherId: watcherId ?? this.watcherId,
+        distance: distance ?? this.distance,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageProximityAlertTriggered';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageUnsupported extends MessageContent {
-
   /// Message content that is not supported in the current TDLib version
   const MessageUnsupported();
-  
+
   /// Parse from a json
-  factory MessageUnsupported.fromJson(Map<String, dynamic> json) => const MessageUnsupported();
-  
+  factory MessageUnsupported.fromJson(Map<String, dynamic> json) =>
+      const MessageUnsupported();
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-  }
+   "@type":"$CONSTRUCTOR",
+}
 	""";
   }
-  
+
   @override
   MessageUnsupported copyWith() => const MessageUnsupported();
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageUnsupported';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class UserSupportInfo extends TdObject {
-
   /// Contains custom information about the user
   const UserSupportInfo({
     required this.message,
@@ -10,11 +9,11 @@ class UserSupportInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [message] Information message 
+
+  /// [message] Information message
   final FormattedText message;
 
-  /// [author] Information author 
+  /// [author] Information author
   final String author;
 
   /// [date] Information change date
@@ -27,48 +26,47 @@ class UserSupportInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory UserSupportInfo.fromJson(Map<String, dynamic> json) => UserSupportInfo(
-    message: FormattedText.fromJson(json['message']),
-    author: json['author'],
-    date: json['date'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory UserSupportInfo.fromJson(Map<String, dynamic> json) =>
+      UserSupportInfo(
+        message: FormattedText.fromJson(json['message']),
+        author: json['author'],
+        date: json['date'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "message": "${message.toJson()}",
-    "author": "$author",
-    "date": "$date"
-  }
+   "@type":"$CONSTRUCTOR",
+   "message":"${message.toJson()}",
+   "author":"$author",
+   "date":$date
+}
 	""";
   }
-  
+
   UserSupportInfo copyWith({
     FormattedText? message,
     String? author,
     int? date,
     dynamic extra,
     int? clientId,
-  }) => UserSupportInfo(
-    message: message ?? this.message,
-    author: author ?? this.author,
-    date: date ?? this.date,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UserSupportInfo(
+        message: message ?? this.message,
+        author: author ?? this.author,
+        date: date ?? this.date,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'userSupportInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

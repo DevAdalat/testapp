@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class GetMessageThreadHistory extends TdFunction {
-
   /// Returns messages in a message thread of a message. Can be used only if message.can_get_message_thread == true. Message thread of a channel message is in the channel's linked supergroup.. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id). For optimal performance, the number of returned messages is chosen by TDLib
   const GetMessageThreadHistory({
     required this.chatId,
@@ -10,7 +9,7 @@ class GetMessageThreadHistory extends TdFunction {
     required this.offset,
     required this.limit,
   });
-  
+
   /// [chatId] Chat identifier
   final int chatId;
 
@@ -25,40 +24,39 @@ class GetMessageThreadHistory extends TdFunction {
 
   /// [limit] The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
   final int limit;
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "chat_id": "$chatId",
-    "message_id": "$messageId",
-    "from_message_id": "$fromMessageId",
-    "offset": "$offset",
-    "limit": "$limit"
-  }
+   "@type":"$CONSTRUCTOR",
+   "chat_id":$chatId,
+   "message_id":$messageId,
+   "from_message_id":$fromMessageId,
+   "offset":$offset,
+   "limit":$limit
+}
 	""";
   }
-  
+
   GetMessageThreadHistory copyWith({
     int? chatId,
     int? messageId,
     int? fromMessageId,
     int? offset,
     int? limit,
-  }) => GetMessageThreadHistory(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    fromMessageId: fromMessageId ?? this.fromMessageId,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      GetMessageThreadHistory(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        fromMessageId: fromMessageId ?? this.fromMessageId,
+        offset: offset ?? this.offset,
+        limit: limit ?? this.limit,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'getMessageThreadHistory';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

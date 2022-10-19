@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class SearchFileDownloads extends TdFunction {
-
   /// Searches for files in the file download list or recently downloaded files from the list
   const SearchFileDownloads({
     required this.query,
@@ -10,7 +9,7 @@ class SearchFileDownloads extends TdFunction {
     required this.offset,
     required this.limit,
   });
-  
+
   /// [query] Query to search for; may be empty to return all downloaded files
   final String query;
 
@@ -25,40 +24,39 @@ class SearchFileDownloads extends TdFunction {
 
   /// [limit] The maximum number of files to be returned
   final int limit;
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "query": "$query",
-    "only_active": $onlyActive,
-    "only_completed": $onlyCompleted,
-    "offset": "$offset",
-    "limit": "$limit"
-  }
+   "@type":"$CONSTRUCTOR",
+   "query":"$query",
+   "only_active":$onlyActive,
+   "only_completed":$onlyCompleted,
+   "offset":"$offset",
+   "limit":$limit
+}
 	""";
   }
-  
+
   SearchFileDownloads copyWith({
     String? query,
     bool? onlyActive,
     bool? onlyCompleted,
     String? offset,
     int? limit,
-  }) => SearchFileDownloads(
-    query: query ?? this.query,
-    onlyActive: onlyActive ?? this.onlyActive,
-    onlyCompleted: onlyCompleted ?? this.onlyCompleted,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      SearchFileDownloads(
+        query: query ?? this.query,
+        onlyActive: onlyActive ?? this.onlyActive,
+        onlyCompleted: onlyCompleted ?? this.onlyCompleted,
+        offset: offset ?? this.offset,
+        limit: limit ?? this.limit,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'searchFileDownloads';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

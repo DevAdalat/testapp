@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class GetLanguagePackString extends TdFunction {
-
   /// Returns a string stored in the local database from the specified localization target and language pack by its key. Returns a 404 error if the string is not found. Can be called synchronously
   const GetLanguagePackString({
     required this.languagePackDatabasePath,
@@ -9,49 +8,49 @@ class GetLanguagePackString extends TdFunction {
     required this.languagePackId,
     required this.key,
   });
-  
+
   /// [languagePackDatabasePath] Path to the language pack database in which strings are stored
   final String languagePackDatabasePath;
 
-  /// [localizationTarget] Localization target to which the language pack belongs 
+  /// [localizationTarget] Localization target to which the language pack belongs
   final String localizationTarget;
 
-  /// [languagePackId] Language pack identifier 
+  /// [languagePackId] Language pack identifier
   final String languagePackId;
 
   /// [key] Language pack key of the string to be returned
   final String key;
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "language_pack_database_path": "$languagePackDatabasePath",
-    "localization_target": "$localizationTarget",
-    "language_pack_id": "$languagePackId",
-    "key": "$key"
-  }
+   "@type":"$CONSTRUCTOR",
+   "language_pack_database_path":"$languagePackDatabasePath",
+   "localization_target":"$localizationTarget",
+   "language_pack_id":"$languagePackId",
+   "key":"$key"
+}
 	""";
   }
-  
+
   GetLanguagePackString copyWith({
     String? languagePackDatabasePath,
     String? localizationTarget,
     String? languagePackId,
     String? key,
-  }) => GetLanguagePackString(
-    languagePackDatabasePath: languagePackDatabasePath ?? this.languagePackDatabasePath,
-    localizationTarget: localizationTarget ?? this.localizationTarget,
-    languagePackId: languagePackId ?? this.languagePackId,
-    key: key ?? this.key,
-  );
+  }) =>
+      GetLanguagePackString(
+        languagePackDatabasePath:
+            languagePackDatabasePath ?? this.languagePackDatabasePath,
+        localizationTarget: localizationTarget ?? this.localizationTarget,
+        languagePackId: languagePackId ?? this.languagePackId,
+        key: key ?? this.key,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'getLanguagePackString';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

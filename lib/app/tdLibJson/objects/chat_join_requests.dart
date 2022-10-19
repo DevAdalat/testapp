@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class ChatJoinRequests extends TdObject {
-
   /// Contains a list of requests to join a chat
   const ChatJoinRequests({
     required this.totalCount,
@@ -9,8 +8,8 @@ class ChatJoinRequests extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [totalCount] Approximate total number of requests found 
+
+  /// [totalCount] Approximate total number of requests found
   final int totalCount;
 
   /// [requests] List of the requests
@@ -23,44 +22,45 @@ class ChatJoinRequests extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory ChatJoinRequests.fromJson(Map<String, dynamic> json) => ChatJoinRequests(
-    totalCount: json['total_count'],
-    requests: List<ChatJoinRequest>.from((json['requests'] ?? []).map((item) => ChatJoinRequest.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory ChatJoinRequests.fromJson(Map<String, dynamic> json) =>
+      ChatJoinRequests(
+        totalCount: json['total_count'],
+        requests: List<ChatJoinRequest>.from((json['requests'] ?? [])
+            .map((item) => ChatJoinRequest.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "total_count": "$totalCount",
-    "requests": "${requests.map((i) => i.toJson()).toList()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "total_count":$totalCount,
+   "requests":"${requests.map((i) => i.toJson()).toList()}"
+}
 	""";
   }
-  
+
   ChatJoinRequests copyWith({
     int? totalCount,
     List<ChatJoinRequest>? requests,
     dynamic extra,
     int? clientId,
-  }) => ChatJoinRequests(
-    totalCount: totalCount ?? this.totalCount,
-    requests: requests ?? this.requests,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ChatJoinRequests(
+        totalCount: totalCount ?? this.totalCount,
+        requests: requests ?? this.requests,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'chatJoinRequests';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

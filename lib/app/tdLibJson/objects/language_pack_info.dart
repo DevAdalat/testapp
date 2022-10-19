@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class LanguagePackInfo extends TdObject {
-
   /// Contains information about a language pack
   const LanguagePackInfo({
     required this.id,
@@ -20,7 +19,7 @@ class LanguagePackInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [id] Unique language pack identifier
   final String id;
 
@@ -39,7 +38,7 @@ class LanguagePackInfo extends TdObject {
   /// [isOfficial] True, if the language pack is official
   final bool isOfficial;
 
-  /// [isRtl] True, if the language pack strings are RTL 
+  /// [isRtl] True, if the language pack strings are RTL
   final bool isRtl;
 
   /// [isBeta] True, if the language pack is a beta language pack
@@ -67,50 +66,49 @@ class LanguagePackInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory LanguagePackInfo.fromJson(Map<String, dynamic> json) => LanguagePackInfo(
-    id: json['id'],
-    baseLanguagePackId: json['base_language_pack_id'],
-    name: json['name'],
-    nativeName: json['native_name'],
-    pluralCode: json['plural_code'],
-    isOfficial: json['is_official'],
-    isRtl: json['is_rtl'],
-    isBeta: json['is_beta'],
-    isInstalled: json['is_installed'],
-    totalStringCount: json['total_string_count'],
-    translatedStringCount: json['translated_string_count'],
-    localStringCount: json['local_string_count'],
-    translationUrl: json['translation_url'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory LanguagePackInfo.fromJson(Map<String, dynamic> json) =>
+      LanguagePackInfo(
+        id: json['id'],
+        baseLanguagePackId: json['base_language_pack_id'],
+        name: json['name'],
+        nativeName: json['native_name'],
+        pluralCode: json['plural_code'],
+        isOfficial: json['is_official'],
+        isRtl: json['is_rtl'],
+        isBeta: json['is_beta'],
+        isInstalled: json['is_installed'],
+        totalStringCount: json['total_string_count'],
+        translatedStringCount: json['translated_string_count'],
+        localStringCount: json['local_string_count'],
+        translationUrl: json['translation_url'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "id": "$id",
-    "base_language_pack_id": "$baseLanguagePackId",
-    "name": "$name",
-    "native_name": "$nativeName",
-    "plural_code": "$pluralCode",
-    "is_official": $isOfficial,
-    "is_rtl": $isRtl,
-    "is_beta": $isBeta,
-    "is_installed": $isInstalled,
-    "total_string_count": "$totalStringCount",
-    "translated_string_count": "$translatedStringCount",
-    "local_string_count": "$localStringCount",
-    "translation_url": "$translationUrl"
-  }
+   "@type":"$CONSTRUCTOR",
+   "id":"$id",
+   "base_language_pack_id":"$baseLanguagePackId",
+   "name":"$name",
+   "native_name":"$nativeName",
+   "plural_code":"$pluralCode",
+   "is_official":$isOfficial,
+   "is_rtl":$isRtl,
+   "is_beta":$isBeta,
+   "is_installed":$isInstalled,
+   "total_string_count":$totalStringCount,
+   "translated_string_count":$translatedStringCount,
+   "local_string_count":$localStringCount,
+   "translation_url":"$translationUrl"
+}
 	""";
   }
-  
+
   LanguagePackInfo copyWith({
     String? id,
     String? baseLanguagePackId,
@@ -127,28 +125,29 @@ class LanguagePackInfo extends TdObject {
     String? translationUrl,
     dynamic extra,
     int? clientId,
-  }) => LanguagePackInfo(
-    id: id ?? this.id,
-    baseLanguagePackId: baseLanguagePackId ?? this.baseLanguagePackId,
-    name: name ?? this.name,
-    nativeName: nativeName ?? this.nativeName,
-    pluralCode: pluralCode ?? this.pluralCode,
-    isOfficial: isOfficial ?? this.isOfficial,
-    isRtl: isRtl ?? this.isRtl,
-    isBeta: isBeta ?? this.isBeta,
-    isInstalled: isInstalled ?? this.isInstalled,
-    totalStringCount: totalStringCount ?? this.totalStringCount,
-    translatedStringCount: translatedStringCount ?? this.translatedStringCount,
-    localStringCount: localStringCount ?? this.localStringCount,
-    translationUrl: translationUrl ?? this.translationUrl,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      LanguagePackInfo(
+        id: id ?? this.id,
+        baseLanguagePackId: baseLanguagePackId ?? this.baseLanguagePackId,
+        name: name ?? this.name,
+        nativeName: nativeName ?? this.nativeName,
+        pluralCode: pluralCode ?? this.pluralCode,
+        isOfficial: isOfficial ?? this.isOfficial,
+        isRtl: isRtl ?? this.isRtl,
+        isBeta: isBeta ?? this.isBeta,
+        isInstalled: isInstalled ?? this.isInstalled,
+        totalStringCount: totalStringCount ?? this.totalStringCount,
+        translatedStringCount:
+            translatedStringCount ?? this.translatedStringCount,
+        localStringCount: localStringCount ?? this.localStringCount,
+        translationUrl: translationUrl ?? this.translationUrl,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'languagePackInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

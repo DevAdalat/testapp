@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class AddedReactions extends TdObject {
-
   /// Represents a list of reactions added to a message
   const AddedReactions({
     required this.totalCount,
@@ -10,11 +9,11 @@ class AddedReactions extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [totalCount] The total number of found reactions 
+
+  /// [totalCount] The total number of found reactions
   final int totalCount;
 
-  /// [reactions] The list of added reactions 
+  /// [reactions] The list of added reactions
   final List<AddedReaction> reactions;
 
   /// [nextOffset] The offset for the next request. If empty, there are no more results
@@ -27,48 +26,48 @@ class AddedReactions extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory AddedReactions.fromJson(Map<String, dynamic> json) => AddedReactions(
-    totalCount: json['total_count'],
-    reactions: List<AddedReaction>.from((json['reactions'] ?? []).map((item) => AddedReaction.fromJson(item)).toList()),
-    nextOffset: json['next_offset'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        totalCount: json['total_count'],
+        reactions: List<AddedReaction>.from((json['reactions'] ?? [])
+            .map((item) => AddedReaction.fromJson(item))
+            .toList()),
+        nextOffset: json['next_offset'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "total_count": "$totalCount",
-    "reactions": "${reactions.map((i) => i.toJson()).toList()}",
-    "next_offset": "$nextOffset"
-  }
+   "@type":"$CONSTRUCTOR",
+   "total_count":$totalCount,
+   "reactions":"${reactions.map((i) => i.toJson()).toList()}",
+   "next_offset":"$nextOffset"
+}
 	""";
   }
-  
+
   AddedReactions copyWith({
     int? totalCount,
     List<AddedReaction>? reactions,
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) => AddedReactions(
-    totalCount: totalCount ?? this.totalCount,
-    reactions: reactions ?? this.reactions,
-    nextOffset: nextOffset ?? this.nextOffset,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      AddedReactions(
+        totalCount: totalCount ?? this.totalCount,
+        reactions: reactions ?? this.reactions,
+        nextOffset: nextOffset ?? this.nextOffset,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'addedReactions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

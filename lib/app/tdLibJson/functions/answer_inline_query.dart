@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class AnswerInlineQuery extends TdFunction {
-
   /// Sets the result of an inline query; for bots only
   const AnswerInlineQuery({
     required this.inlineQueryId,
@@ -12,7 +11,7 @@ class AnswerInlineQuery extends TdFunction {
     required this.switchPmText,
     required this.switchPmParameter,
   });
-  
+
   /// [inlineQueryId] Identifier of the inline query
   final int inlineQueryId;
 
@@ -33,24 +32,23 @@ class AnswerInlineQuery extends TdFunction {
 
   /// [switchPmParameter] The parameter for the bot start message
   final String switchPmParameter;
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "inline_query_id": "$inlineQueryId",
-    "is_personal": $isPersonal,
-    "results": "${results.map((i) => i.toJson()).toList()}",
-    "cache_time": "$cacheTime",
-    "next_offset": "$nextOffset",
-    "switch_pm_text": "$switchPmText",
-    "switch_pm_parameter": "$switchPmParameter"
-  }
+   "@type":"$CONSTRUCTOR",
+   "inline_query_id":$inlineQueryId,
+   "is_personal":$isPersonal,
+   "results":"${results.map((i) => i.toJson()).toList()}",
+   "cache_time":$cacheTime,
+   "next_offset":"$nextOffset",
+   "switch_pm_text":"$switchPmText",
+   "switch_pm_parameter":"$switchPmParameter"
+}
 	""";
   }
-  
+
   AnswerInlineQuery copyWith({
     int? inlineQueryId,
     bool? isPersonal,
@@ -59,20 +57,20 @@ class AnswerInlineQuery extends TdFunction {
     String? nextOffset,
     String? switchPmText,
     String? switchPmParameter,
-  }) => AnswerInlineQuery(
-    inlineQueryId: inlineQueryId ?? this.inlineQueryId,
-    isPersonal: isPersonal ?? this.isPersonal,
-    results: results ?? this.results,
-    cacheTime: cacheTime ?? this.cacheTime,
-    nextOffset: nextOffset ?? this.nextOffset,
-    switchPmText: switchPmText ?? this.switchPmText,
-    switchPmParameter: switchPmParameter ?? this.switchPmParameter,
-  );
+  }) =>
+      AnswerInlineQuery(
+        inlineQueryId: inlineQueryId ?? this.inlineQueryId,
+        isPersonal: isPersonal ?? this.isPersonal,
+        results: results ?? this.results,
+        cacheTime: cacheTime ?? this.cacheTime,
+        nextOffset: nextOffset ?? this.nextOffset,
+        switchPmText: switchPmText ?? this.switchPmText,
+        switchPmParameter: switchPmParameter ?? this.switchPmParameter,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'answerInlineQuery';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

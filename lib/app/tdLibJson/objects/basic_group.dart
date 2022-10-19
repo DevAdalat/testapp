@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class BasicGroup extends TdObject {
-
   /// Represents a basic group of 0-200 users (must be upgraded to a supergroup to accommodate more than 200 users)
   const BasicGroup({
     required this.id,
@@ -12,7 +11,7 @@ class BasicGroup extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [id] Group identifier
   final int id;
 
@@ -35,34 +34,32 @@ class BasicGroup extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory BasicGroup.fromJson(Map<String, dynamic> json) => BasicGroup(
-    id: json['id'],
-    memberCount: json['member_count'],
-    status: ChatMemberStatus.fromJson(json['status']),
-    isActive: json['is_active'],
-    upgradedToSupergroupId: json['upgraded_to_supergroup_id'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: json['id'],
+        memberCount: json['member_count'],
+        status: ChatMemberStatus.fromJson(json['status']),
+        isActive: json['is_active'],
+        upgradedToSupergroupId: json['upgraded_to_supergroup_id'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "id": "$id",
-    "member_count": "$memberCount",
-    "status": "${status.toJson()}",
-    "is_active": $isActive,
-    "upgraded_to_supergroup_id": "$upgradedToSupergroupId"
-  }
+   "@type":"$CONSTRUCTOR",
+   "id":$id,
+   "member_count":$memberCount,
+   "status":"${status.toJson()}",
+   "is_active":$isActive,
+   "upgraded_to_supergroup_id":$upgradedToSupergroupId
+}
 	""";
   }
-  
+
   BasicGroup copyWith({
     int? id,
     int? memberCount,
@@ -71,20 +68,21 @@ class BasicGroup extends TdObject {
     int? upgradedToSupergroupId,
     dynamic extra,
     int? clientId,
-  }) => BasicGroup(
-    id: id ?? this.id,
-    memberCount: memberCount ?? this.memberCount,
-    status: status ?? this.status,
-    isActive: isActive ?? this.isActive,
-    upgradedToSupergroupId: upgradedToSupergroupId ?? this.upgradedToSupergroupId,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      BasicGroup(
+        id: id ?? this.id,
+        memberCount: memberCount ?? this.memberCount,
+        status: status ?? this.status,
+        isActive: isActive ?? this.isActive,
+        upgradedToSupergroupId:
+            upgradedToSupergroupId ?? this.upgradedToSupergroupId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'basicGroup';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

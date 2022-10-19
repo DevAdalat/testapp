@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class Session extends TdObject {
-
   /// Contains information about one session in a Telegram application used by the current user. Sessions must be shown to the user in the returned order
   const Session({
     required this.id,
@@ -25,7 +24,7 @@ class Session extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [id] Session identifier
   final int id;
 
@@ -87,60 +86,58 @@ class Session extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory Session.fromJson(Map<String, dynamic> json) => Session(
-    id: int.parse(json['id']),
-    isCurrent: json['is_current'],
-    isPasswordPending: json['is_password_pending'],
-    canAcceptSecretChats: json['can_accept_secret_chats'],
-    canAcceptCalls: json['can_accept_calls'],
-    type: SessionType.fromJson(json['type']),
-    apiId: json['api_id'],
-    applicationName: json['application_name'],
-    applicationVersion: json['application_version'],
-    isOfficialApplication: json['is_official_application'],
-    deviceModel: json['device_model'],
-    platform: json['platform'],
-    systemVersion: json['system_version'],
-    logInDate: json['log_in_date'],
-    lastActiveDate: json['last_active_date'],
-    ip: json['ip'],
-    country: json['country'],
-    region: json['region'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: int.parse(json['id']),
+        isCurrent: json['is_current'],
+        isPasswordPending: json['is_password_pending'],
+        canAcceptSecretChats: json['can_accept_secret_chats'],
+        canAcceptCalls: json['can_accept_calls'],
+        type: SessionType.fromJson(json['type']),
+        apiId: json['api_id'],
+        applicationName: json['application_name'],
+        applicationVersion: json['application_version'],
+        isOfficialApplication: json['is_official_application'],
+        deviceModel: json['device_model'],
+        platform: json['platform'],
+        systemVersion: json['system_version'],
+        logInDate: json['log_in_date'],
+        lastActiveDate: json['last_active_date'],
+        ip: json['ip'],
+        country: json['country'],
+        region: json['region'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "id": "$id",
-    "is_current": $isCurrent,
-    "is_password_pending": $isPasswordPending,
-    "can_accept_secret_chats": $canAcceptSecretChats,
-    "can_accept_calls": $canAcceptCalls,
-    "type": "${type.toJson()}",
-    "api_id": "$apiId",
-    "application_name": "$applicationName",
-    "application_version": "$applicationVersion",
-    "is_official_application": $isOfficialApplication,
-    "device_model": "$deviceModel",
-    "platform": "$platform",
-    "system_version": "$systemVersion",
-    "log_in_date": "$logInDate",
-    "last_active_date": "$lastActiveDate",
-    "ip": "$ip",
-    "country": "$country",
-    "region": "$region"
-  }
+   "@type":"$CONSTRUCTOR",
+   "id":$id,
+   "is_current":$isCurrent,
+   "is_password_pending":$isPasswordPending,
+   "can_accept_secret_chats":$canAcceptSecretChats,
+   "can_accept_calls":$canAcceptCalls,
+   "type":"${type.toJson()}",
+   "api_id":$apiId,
+   "application_name":"$applicationName",
+   "application_version":"$applicationVersion",
+   "is_official_application":$isOfficialApplication,
+   "device_model":"$deviceModel",
+   "platform":"$platform",
+   "system_version":"$systemVersion",
+   "log_in_date":$logInDate,
+   "last_active_date":$lastActiveDate,
+   "ip":"$ip",
+   "country":"$country",
+   "region":"$region"
+}
 	""";
   }
-  
+
   Session copyWith({
     int? id,
     bool? isCurrent,
@@ -162,33 +159,34 @@ class Session extends TdObject {
     String? region,
     dynamic extra,
     int? clientId,
-  }) => Session(
-    id: id ?? this.id,
-    isCurrent: isCurrent ?? this.isCurrent,
-    isPasswordPending: isPasswordPending ?? this.isPasswordPending,
-    canAcceptSecretChats: canAcceptSecretChats ?? this.canAcceptSecretChats,
-    canAcceptCalls: canAcceptCalls ?? this.canAcceptCalls,
-    type: type ?? this.type,
-    apiId: apiId ?? this.apiId,
-    applicationName: applicationName ?? this.applicationName,
-    applicationVersion: applicationVersion ?? this.applicationVersion,
-    isOfficialApplication: isOfficialApplication ?? this.isOfficialApplication,
-    deviceModel: deviceModel ?? this.deviceModel,
-    platform: platform ?? this.platform,
-    systemVersion: systemVersion ?? this.systemVersion,
-    logInDate: logInDate ?? this.logInDate,
-    lastActiveDate: lastActiveDate ?? this.lastActiveDate,
-    ip: ip ?? this.ip,
-    country: country ?? this.country,
-    region: region ?? this.region,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      Session(
+        id: id ?? this.id,
+        isCurrent: isCurrent ?? this.isCurrent,
+        isPasswordPending: isPasswordPending ?? this.isPasswordPending,
+        canAcceptSecretChats: canAcceptSecretChats ?? this.canAcceptSecretChats,
+        canAcceptCalls: canAcceptCalls ?? this.canAcceptCalls,
+        type: type ?? this.type,
+        apiId: apiId ?? this.apiId,
+        applicationName: applicationName ?? this.applicationName,
+        applicationVersion: applicationVersion ?? this.applicationVersion,
+        isOfficialApplication:
+            isOfficialApplication ?? this.isOfficialApplication,
+        deviceModel: deviceModel ?? this.deviceModel,
+        platform: platform ?? this.platform,
+        systemVersion: systemVersion ?? this.systemVersion,
+        logInDate: logInDate ?? this.logInDate,
+        lastActiveDate: lastActiveDate ?? this.lastActiveDate,
+        ip: ip ?? this.ip,
+        country: country ?? this.country,
+        region: region ?? this.region,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'session';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

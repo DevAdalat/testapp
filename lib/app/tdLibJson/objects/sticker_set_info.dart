@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class StickerSetInfo extends TdObject {
-
   /// Represents short information about a sticker set
   const StickerSetInfo({
     required this.id,
@@ -18,14 +17,14 @@ class StickerSetInfo extends TdObject {
     required this.size,
     required this.covers,
   });
-  
+
   /// [id] Identifier of the sticker set
   final int id;
 
-  /// [title] Title of the sticker set 
+  /// [title] Title of the sticker set
   final String title;
 
-  /// [name] Name of the sticker set 
+  /// [name] Name of the sticker set
   final String name;
 
   /// [thumbnail] Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null
@@ -43,10 +42,10 @@ class StickerSetInfo extends TdObject {
   /// [isOfficial] True, if the sticker set is official
   final bool isOfficial;
 
-  /// [stickerFormat] Format of the stickers in the set 
+  /// [stickerFormat] Format of the stickers in the set
   final StickerFormat stickerFormat;
 
-  /// [stickerType] Type of the stickers in the set 
+  /// [stickerType] Type of the stickers in the set
   final StickerType stickerType;
 
   /// [isViewed] True for already viewed trending sticker sets
@@ -57,48 +56,53 @@ class StickerSetInfo extends TdObject {
 
   /// [covers] Up to the first 5 stickers from the set, depending on the context. If the application needs more stickers the full sticker set needs to be requested
   final List<Sticker> covers;
-  
+
   /// Parse from a json
   factory StickerSetInfo.fromJson(Map<String, dynamic> json) => StickerSetInfo(
-    id: int.parse(json['id']),
-    title: json['title'],
-    name: json['name'],
-    thumbnail: json['thumbnail'] == null ? null : Thumbnail.fromJson(json['thumbnail']),
-    thumbnailOutline: List<ClosedVectorPath>.from((json['thumbnail_outline'] ?? []).map((item) => ClosedVectorPath.fromJson(item)).toList()),
-    isInstalled: json['is_installed'],
-    isArchived: json['is_archived'],
-    isOfficial: json['is_official'],
-    stickerFormat: StickerFormat.fromJson(json['sticker_format']),
-    stickerType: StickerType.fromJson(json['sticker_type']),
-    isViewed: json['is_viewed'],
-    size: json['size'],
-    covers: List<Sticker>.from((json['covers'] ?? []).map((item) => Sticker.fromJson(item)).toList()),
-  );
-  
-  
+        id: int.parse(json['id']),
+        title: json['title'],
+        name: json['name'],
+        thumbnail: json['thumbnail'] == null
+            ? null
+            : Thumbnail.fromJson(json['thumbnail']),
+        thumbnailOutline: List<ClosedVectorPath>.from(
+            (json['thumbnail_outline'] ?? [])
+                .map((item) => ClosedVectorPath.fromJson(item))
+                .toList()),
+        isInstalled: json['is_installed'],
+        isArchived: json['is_archived'],
+        isOfficial: json['is_official'],
+        stickerFormat: StickerFormat.fromJson(json['sticker_format']),
+        stickerType: StickerType.fromJson(json['sticker_type']),
+        isViewed: json['is_viewed'],
+        size: json['size'],
+        covers: List<Sticker>.from((json['covers'] ?? [])
+            .map((item) => Sticker.fromJson(item))
+            .toList()),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "id": "$id",
-    "title": "$title",
-    "name": "$name",
-    "thumbnail": "${thumbnail?.toJson()}",
-    "thumbnail_outline": "${thumbnailOutline.map((i) => i.toJson()).toList()}",
-    "is_installed": $isInstalled,
-    "is_archived": $isArchived,
-    "is_official": $isOfficial,
-    "sticker_format": "${stickerFormat.toJson()}",
-    "sticker_type": "${stickerType.toJson()}",
-    "is_viewed": $isViewed,
-    "size": "$size",
-    "covers": "${covers.map((i) => i.toJson()).toList()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "id":$id,
+   "title":"$title",
+   "name":"$name",
+   "thumbnail":"${thumbnail?.toJson()}",
+   "thumbnail_outline":"${thumbnailOutline.map((i) => i.toJson()).toList()}",
+   "is_installed":$isInstalled,
+   "is_archived":$isArchived,
+   "is_official":$isOfficial,
+   "sticker_format":"${stickerFormat.toJson()}",
+   "sticker_type":"${stickerType.toJson()}",
+   "is_viewed":$isViewed,
+   "size":$size,
+   "covers":"${covers.map((i) => i.toJson()).toList()}"
+}
 	""";
   }
-  
+
   StickerSetInfo copyWith({
     int? id,
     String? title,
@@ -113,26 +117,26 @@ class StickerSetInfo extends TdObject {
     bool? isViewed,
     int? size,
     List<Sticker>? covers,
-  }) => StickerSetInfo(
-    id: id ?? this.id,
-    title: title ?? this.title,
-    name: name ?? this.name,
-    thumbnail: thumbnail ?? this.thumbnail,
-    thumbnailOutline: thumbnailOutline ?? this.thumbnailOutline,
-    isInstalled: isInstalled ?? this.isInstalled,
-    isArchived: isArchived ?? this.isArchived,
-    isOfficial: isOfficial ?? this.isOfficial,
-    stickerFormat: stickerFormat ?? this.stickerFormat,
-    stickerType: stickerType ?? this.stickerType,
-    isViewed: isViewed ?? this.isViewed,
-    size: size ?? this.size,
-    covers: covers ?? this.covers,
-  );
+  }) =>
+      StickerSetInfo(
+        id: id ?? this.id,
+        title: title ?? this.title,
+        name: name ?? this.name,
+        thumbnail: thumbnail ?? this.thumbnail,
+        thumbnailOutline: thumbnailOutline ?? this.thumbnailOutline,
+        isInstalled: isInstalled ?? this.isInstalled,
+        isArchived: isArchived ?? this.isArchived,
+        isOfficial: isOfficial ?? this.isOfficial,
+        stickerFormat: stickerFormat ?? this.stickerFormat,
+        stickerType: stickerType ?? this.stickerType,
+        isViewed: isViewed ?? this.isViewed,
+        size: size ?? this.size,
+        covers: covers ?? this.covers,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'stickerSetInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class GetPollVoters extends TdFunction {
-
   /// Returns users voted for the specified option in a non-anonymous polls. For optimal performance, the number of returned users is chosen by TDLib
   const GetPollVoters({
     required this.chatId,
@@ -10,7 +9,7 @@ class GetPollVoters extends TdFunction {
     required this.offset,
     required this.limit,
   });
-  
+
   /// [chatId] Identifier of the chat to which the poll belongs
   final int chatId;
 
@@ -25,40 +24,39 @@ class GetPollVoters extends TdFunction {
 
   /// [limit] The maximum number of users to be returned; must be positive and can't be greater than 50. For optimal performance, the number of returned users is chosen by TDLib and can be smaller than the specified limit, even if the end of the voter list has not been reached
   final int limit;
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "chat_id": "$chatId",
-    "message_id": "$messageId",
-    "option_id": "$optionId",
-    "offset": "$offset",
-    "limit": "$limit"
-  }
+   "@type":"$CONSTRUCTOR",
+   "chat_id":$chatId,
+   "message_id":$messageId,
+   "option_id":$optionId,
+   "offset":$offset,
+   "limit":$limit
+}
 	""";
   }
-  
+
   GetPollVoters copyWith({
     int? chatId,
     int? messageId,
     int? optionId,
     int? offset,
     int? limit,
-  }) => GetPollVoters(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    optionId: optionId ?? this.optionId,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      GetPollVoters(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        optionId: optionId ?? this.optionId,
+        offset: offset ?? this.offset,
+        limit: limit ?? this.limit,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'getPollVoters';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

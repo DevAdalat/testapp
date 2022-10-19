@@ -1,58 +1,56 @@
 part of '../tdlibjson_api.dart';
 
 class PassportElementError extends TdObject {
-
   /// Contains the description of an error in a Telegram Passport element
   const PassportElementError({
     required this.type,
     required this.message,
     required this.source,
   });
-  
-  /// [type] Type of the Telegram Passport element which has the error 
+
+  /// [type] Type of the Telegram Passport element which has the error
   final PassportElementType type;
 
-  /// [message] Error message 
+  /// [message] Error message
   final String message;
 
   /// [source] Error source
   final PassportElementErrorSource source;
-  
+
   /// Parse from a json
-  factory PassportElementError.fromJson(Map<String, dynamic> json) => PassportElementError(
-    type: PassportElementType.fromJson(json['type']),
-    message: json['message'],
-    source: PassportElementErrorSource.fromJson(json['source']),
-  );
-  
-  
+  factory PassportElementError.fromJson(Map<String, dynamic> json) =>
+      PassportElementError(
+        type: PassportElementType.fromJson(json['type']),
+        message: json['message'],
+        source: PassportElementErrorSource.fromJson(json['source']),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "type": "${type.toJson()}",
-    "message": "$message",
-    "source": "${source.toJson()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "type":"${type.toJson()}",
+   "message":"$message",
+   "source":"${source.toJson()}"
+}
 	""";
   }
-  
+
   PassportElementError copyWith({
     PassportElementType? type,
     String? message,
     PassportElementErrorSource? source,
-  }) => PassportElementError(
-    type: type ?? this.type,
-    message: message ?? this.message,
-    source: source ?? this.source,
-  );
+  }) =>
+      PassportElementError(
+        type: type ?? this.type,
+        message: message ?? this.message,
+        source: source ?? this.source,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'passportElementError';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,14 +1,13 @@
 part of '../tdlibjson_api.dart';
 
 class CustomRequestResult extends TdObject {
-
   /// Contains the result of a custom request
   const CustomRequestResult({
     required this.result,
     this.extra,
     this.clientId,
   });
-  
+
   /// [result] A JSON-serialized result
   final String result;
 
@@ -19,40 +18,39 @@ class CustomRequestResult extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory CustomRequestResult.fromJson(Map<String, dynamic> json) => CustomRequestResult(
-    result: json['result'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory CustomRequestResult.fromJson(Map<String, dynamic> json) =>
+      CustomRequestResult(
+        result: json['result'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "result": "$result"
-  }
+   "@type":"$CONSTRUCTOR",
+   "result":"$result"
+}
 	""";
   }
-  
+
   CustomRequestResult copyWith({
     String? result,
     dynamic extra,
     int? clientId,
-  }) => CustomRequestResult(
-    result: result ?? this.result,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      CustomRequestResult(
+        result: result ?? this.result,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'customRequestResult';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

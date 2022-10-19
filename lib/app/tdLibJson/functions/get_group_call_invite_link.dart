@@ -1,43 +1,41 @@
 part of '../tdlibjson_api.dart';
 
 class GetGroupCallInviteLink extends TdFunction {
-
   /// Returns invite link to a video chat in a public chat
   const GetGroupCallInviteLink({
     required this.groupCallId,
     required this.canSelfUnmute,
   });
-  
+
   /// [groupCallId] Group call identifier
   final int groupCallId;
 
   /// [canSelfUnmute] Pass true if the invite link needs to contain an invite hash, passing which to joinGroupCall would allow the invited user to unmute themselves. Requires groupCall.can_be_managed group call flag
   final bool canSelfUnmute;
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "group_call_id": "$groupCallId",
-    "can_self_unmute": $canSelfUnmute
-  }
+   "@type":"$CONSTRUCTOR",
+   "group_call_id":$groupCallId,
+   "can_self_unmute":$canSelfUnmute
+}
 	""";
   }
-  
+
   GetGroupCallInviteLink copyWith({
     int? groupCallId,
     bool? canSelfUnmute,
-  }) => GetGroupCallInviteLink(
-    groupCallId: groupCallId ?? this.groupCallId,
-    canSelfUnmute: canSelfUnmute ?? this.canSelfUnmute,
-  );
+  }) =>
+      GetGroupCallInviteLink(
+        groupCallId: groupCallId ?? this.groupCallId,
+        canSelfUnmute: canSelfUnmute ?? this.canSelfUnmute,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'getGroupCallInviteLink';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

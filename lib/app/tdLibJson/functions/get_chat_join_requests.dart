@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class GetChatJoinRequests extends TdFunction {
-
   /// Returns pending join requests in a chat
   const GetChatJoinRequests({
     required this.chatId,
@@ -10,7 +9,7 @@ class GetChatJoinRequests extends TdFunction {
     this.offsetRequest,
     required this.limit,
   });
-  
+
   /// [chatId] Chat identifier
   final int chatId;
 
@@ -25,40 +24,39 @@ class GetChatJoinRequests extends TdFunction {
 
   /// [limit] The maximum number of requests to join the chat to return
   final int limit;
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "chat_id": "$chatId",
-    "invite_link": "$inviteLink",
-    "query": "$query",
-    "offset_request": "${offsetRequest?.toJson()}",
-    "limit": "$limit"
-  }
+   "@type":"$CONSTRUCTOR",
+   "chat_id":$chatId,
+   "invite_link":"$inviteLink",
+   "query":"$query",
+   "offset_request":"${offsetRequest?.toJson()}",
+   "limit":$limit
+}
 	""";
   }
-  
+
   GetChatJoinRequests copyWith({
     int? chatId,
     String? inviteLink,
     String? query,
     ChatJoinRequest? offsetRequest,
     int? limit,
-  }) => GetChatJoinRequests(
-    chatId: chatId ?? this.chatId,
-    inviteLink: inviteLink ?? this.inviteLink,
-    query: query ?? this.query,
-    offsetRequest: offsetRequest ?? this.offsetRequest,
-    limit: limit ?? this.limit,
-  );
+  }) =>
+      GetChatJoinRequests(
+        chatId: chatId ?? this.chatId,
+        inviteLink: inviteLink ?? this.inviteLink,
+        query: query ?? this.query,
+        offsetRequest: offsetRequest ?? this.offsetRequest,
+        limit: limit ?? this.limit,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'getChatJoinRequests';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

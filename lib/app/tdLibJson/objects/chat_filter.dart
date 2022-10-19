@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class ChatFilter extends TdObject {
-
   /// Represents a filter of user chats
   const ChatFilter({
     required this.title,
@@ -20,7 +19,7 @@ class ChatFilter extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [title] The title of the filter; 1-12 characters without line feeds
   final String title;
 
@@ -67,50 +66,51 @@ class ChatFilter extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory ChatFilter.fromJson(Map<String, dynamic> json) => ChatFilter(
-    title: json['title'],
-    iconName: json['icon_name'],
-    pinnedChatIds: List<int>.from((json['pinned_chat_ids'] ?? []).map((item) => item).toList()),
-    includedChatIds: List<int>.from((json['included_chat_ids'] ?? []).map((item) => item).toList()),
-    excludedChatIds: List<int>.from((json['excluded_chat_ids'] ?? []).map((item) => item).toList()),
-    excludeMuted: json['exclude_muted'],
-    excludeRead: json['exclude_read'],
-    excludeArchived: json['exclude_archived'],
-    includeContacts: json['include_contacts'],
-    includeNonContacts: json['include_non_contacts'],
-    includeBots: json['include_bots'],
-    includeGroups: json['include_groups'],
-    includeChannels: json['include_channels'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        title: json['title'],
+        iconName: json['icon_name'],
+        pinnedChatIds: List<int>.from(
+            (json['pinned_chat_ids'] ?? []).map((item) => item).toList()),
+        includedChatIds: List<int>.from(
+            (json['included_chat_ids'] ?? []).map((item) => item).toList()),
+        excludedChatIds: List<int>.from(
+            (json['excluded_chat_ids'] ?? []).map((item) => item).toList()),
+        excludeMuted: json['exclude_muted'],
+        excludeRead: json['exclude_read'],
+        excludeArchived: json['exclude_archived'],
+        includeContacts: json['include_contacts'],
+        includeNonContacts: json['include_non_contacts'],
+        includeBots: json['include_bots'],
+        includeGroups: json['include_groups'],
+        includeChannels: json['include_channels'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "title": "$title",
-    "icon_name": "$iconName",
-    "pinned_chat_ids": "${pinnedChatIds.map((i) => i).toList()}",
-    "included_chat_ids": "${includedChatIds.map((i) => i).toList()}",
-    "excluded_chat_ids": "${excludedChatIds.map((i) => i).toList()}",
-    "exclude_muted": $excludeMuted,
-    "exclude_read": $excludeRead,
-    "exclude_archived": $excludeArchived,
-    "include_contacts": $includeContacts,
-    "include_non_contacts": $includeNonContacts,
-    "include_bots": $includeBots,
-    "include_groups": $includeGroups,
-    "include_channels": $includeChannels
-  }
+   "@type":"$CONSTRUCTOR",
+   "title":"$title",
+   "icon_name":"$iconName",
+   "pinned_chat_ids":"${pinnedChatIds.map((i) => i).toList()}",
+   "included_chat_ids":"${includedChatIds.map((i) => i).toList()}",
+   "excluded_chat_ids":"${excludedChatIds.map((i) => i).toList()}",
+   "exclude_muted":$excludeMuted,
+   "exclude_read":$excludeRead,
+   "exclude_archived":$excludeArchived,
+   "include_contacts":$includeContacts,
+   "include_non_contacts":$includeNonContacts,
+   "include_bots":$includeBots,
+   "include_groups":$includeGroups,
+   "include_channels":$includeChannels
+}
 	""";
   }
-  
+
   ChatFilter copyWith({
     String? title,
     String? iconName,
@@ -127,28 +127,28 @@ class ChatFilter extends TdObject {
     bool? includeChannels,
     dynamic extra,
     int? clientId,
-  }) => ChatFilter(
-    title: title ?? this.title,
-    iconName: iconName ?? this.iconName,
-    pinnedChatIds: pinnedChatIds ?? this.pinnedChatIds,
-    includedChatIds: includedChatIds ?? this.includedChatIds,
-    excludedChatIds: excludedChatIds ?? this.excludedChatIds,
-    excludeMuted: excludeMuted ?? this.excludeMuted,
-    excludeRead: excludeRead ?? this.excludeRead,
-    excludeArchived: excludeArchived ?? this.excludeArchived,
-    includeContacts: includeContacts ?? this.includeContacts,
-    includeNonContacts: includeNonContacts ?? this.includeNonContacts,
-    includeBots: includeBots ?? this.includeBots,
-    includeGroups: includeGroups ?? this.includeGroups,
-    includeChannels: includeChannels ?? this.includeChannels,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ChatFilter(
+        title: title ?? this.title,
+        iconName: iconName ?? this.iconName,
+        pinnedChatIds: pinnedChatIds ?? this.pinnedChatIds,
+        includedChatIds: includedChatIds ?? this.includedChatIds,
+        excludedChatIds: excludedChatIds ?? this.excludedChatIds,
+        excludeMuted: excludeMuted ?? this.excludeMuted,
+        excludeRead: excludeRead ?? this.excludeRead,
+        excludeArchived: excludeArchived ?? this.excludeArchived,
+        includeContacts: includeContacts ?? this.includeContacts,
+        includeNonContacts: includeNonContacts ?? this.includeNonContacts,
+        includeBots: includeBots ?? this.includeBots,
+        includeGroups: includeGroups ?? this.includeGroups,
+        includeChannels: includeChannels ?? this.includeChannels,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'chatFilter';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

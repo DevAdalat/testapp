@@ -1,10 +1,9 @@
 part of '../tdlibjson_api.dart';
 
 class JsonValue extends TdObject {
-
   /// Represents a JSON value
   const JsonValue();
-  
+
   /// a JsonValue return type can be :
   /// * [JsonValueNull]
   /// * [JsonValueBoolean]
@@ -12,8 +11,8 @@ class JsonValue extends TdObject {
   /// * [JsonValueString]
   /// * [JsonValueArray]
   /// * [JsonValueObject]
-  factory JsonValue.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory JsonValue.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case JsonValueNull.CONSTRUCTOR:
         return JsonValueNull.fromJson(json);
       case JsonValueBoolean.CONSTRUCTOR:
@@ -30,36 +29,32 @@ class JsonValue extends TdObject {
         return const JsonValue();
     }
   }
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
   
-  }
+}
 	""";
   }
-  
+
   JsonValue copyWith() => const JsonValue();
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'jsonValue';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class JsonValueNull extends JsonValue {
-
   /// Represents a null JSON value
   const JsonValueNull({
     this.extra,
     this.clientId,
   });
-  
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -67,51 +62,47 @@ class JsonValueNull extends JsonValue {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory JsonValueNull.fromJson(Map<String, dynamic> json) => JsonValueNull(
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-  }
+   "@type":"$CONSTRUCTOR",
+}
 	""";
   }
-  
+
   @override
   JsonValueNull copyWith({
     dynamic extra,
     int? clientId,
-  }) => JsonValueNull(
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      JsonValueNull(
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'jsonValueNull';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class JsonValueBoolean extends JsonValue {
-
   /// Represents a boolean JSON value
   const JsonValueBoolean({
     required this.value,
     this.extra,
     this.clientId,
   });
-  
+
   /// [value] The value
   final bool value;
 
@@ -122,55 +113,52 @@ class JsonValueBoolean extends JsonValue {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory JsonValueBoolean.fromJson(Map<String, dynamic> json) => JsonValueBoolean(
-    value: json['value'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory JsonValueBoolean.fromJson(Map<String, dynamic> json) =>
+      JsonValueBoolean(
+        value: json['value'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "value": $value
-  }
+   "@type":"$CONSTRUCTOR",
+   "value":$value
+}
 	""";
   }
-  
+
   @override
   JsonValueBoolean copyWith({
     bool? value,
     dynamic extra,
     int? clientId,
-  }) => JsonValueBoolean(
-    value: value ?? this.value,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      JsonValueBoolean(
+        value: value ?? this.value,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'jsonValueBoolean';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class JsonValueNumber extends JsonValue {
-
   /// Represents a numeric JSON value
   const JsonValueNumber({
     required this.value,
     this.extra,
     this.clientId,
   });
-  
+
   /// [value] The value
   final double value;
 
@@ -181,55 +169,52 @@ class JsonValueNumber extends JsonValue {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory JsonValueNumber.fromJson(Map<String, dynamic> json) => JsonValueNumber(
-    value: json['value'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory JsonValueNumber.fromJson(Map<String, dynamic> json) =>
+      JsonValueNumber(
+        value: json['value'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "value": "$value"
-  }
+   "@type":"$CONSTRUCTOR",
+   "value":$value
+}
 	""";
   }
-  
+
   @override
   JsonValueNumber copyWith({
     double? value,
     dynamic extra,
     int? clientId,
-  }) => JsonValueNumber(
-    value: value ?? this.value,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      JsonValueNumber(
+        value: value ?? this.value,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'jsonValueNumber';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class JsonValueString extends JsonValue {
-
   /// Represents a string JSON value
   const JsonValueString({
     required this.value,
     this.extra,
     this.clientId,
   });
-  
+
   /// [value] The value
   final String value;
 
@@ -240,55 +225,52 @@ class JsonValueString extends JsonValue {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory JsonValueString.fromJson(Map<String, dynamic> json) => JsonValueString(
-    value: json['value'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory JsonValueString.fromJson(Map<String, dynamic> json) =>
+      JsonValueString(
+        value: json['value'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "value": "$value"
-  }
+   "@type":"$CONSTRUCTOR",
+   "value":"$value"
+}
 	""";
   }
-  
+
   @override
   JsonValueString copyWith({
     String? value,
     dynamic extra,
     int? clientId,
-  }) => JsonValueString(
-    value: value ?? this.value,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      JsonValueString(
+        value: value ?? this.value,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'jsonValueString';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class JsonValueArray extends JsonValue {
-
   /// Represents a JSON array
   const JsonValueArray({
     required this.values,
     this.extra,
     this.clientId,
   });
-  
+
   /// [values] The list of array elements
   final List<JsonValue> values;
 
@@ -299,55 +281,53 @@ class JsonValueArray extends JsonValue {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory JsonValueArray.fromJson(Map<String, dynamic> json) => JsonValueArray(
-    values: List<JsonValue>.from((json['values'] ?? []).map((item) => JsonValue.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        values: List<JsonValue>.from((json['values'] ?? [])
+            .map((item) => JsonValue.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "values": "${values.map((i) => i.toJson()).toList()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "values":"${values.map((i) => i.toJson()).toList()}"
+}
 	""";
   }
-  
+
   @override
   JsonValueArray copyWith({
     List<JsonValue>? values,
     dynamic extra,
     int? clientId,
-  }) => JsonValueArray(
-    values: values ?? this.values,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      JsonValueArray(
+        values: values ?? this.values,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'jsonValueArray';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class JsonValueObject extends JsonValue {
-
   /// Represents a JSON object
   const JsonValueObject({
     required this.members,
     this.extra,
     this.clientId,
   });
-  
+
   /// [members] The list of object members
   final List<JsonObjectMember> members;
 
@@ -358,41 +338,42 @@ class JsonValueObject extends JsonValue {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory JsonValueObject.fromJson(Map<String, dynamic> json) => JsonValueObject(
-    members: List<JsonObjectMember>.from((json['members'] ?? []).map((item) => JsonObjectMember.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory JsonValueObject.fromJson(Map<String, dynamic> json) =>
+      JsonValueObject(
+        members: List<JsonObjectMember>.from((json['members'] ?? [])
+            .map((item) => JsonObjectMember.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "members": "${members.map((i) => i.toJson()).toList()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "members":"${members.map((i) => i.toJson()).toList()}"
+}
 	""";
   }
-  
+
   @override
   JsonValueObject copyWith({
     List<JsonObjectMember>? members,
     dynamic extra,
     int? clientId,
-  }) => JsonValueObject(
-    members: members ?? this.members,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      JsonValueObject(
+        members: members ?? this.members,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'jsonValueObject';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

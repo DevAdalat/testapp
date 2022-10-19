@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class StartGroupCallRecording extends TdFunction {
-
   /// Starts recording of an active group call. Requires groupCall.can_be_managed group call flag
   const StartGroupCallRecording({
     required this.groupCallId,
@@ -9,8 +8,8 @@ class StartGroupCallRecording extends TdFunction {
     required this.recordVideo,
     required this.usePortraitOrientation,
   });
-  
-  /// [groupCallId] Group call identifier 
+
+  /// [groupCallId] Group call identifier
   final int groupCallId;
 
   /// [title] Group call recording title; 0-64 characters
@@ -21,37 +20,37 @@ class StartGroupCallRecording extends TdFunction {
 
   /// [usePortraitOrientation] Pass true to use portrait orientation for video instead of landscape one
   final bool usePortraitOrientation;
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "group_call_id": "$groupCallId",
-    "title": "$title",
-    "record_video": $recordVideo,
-    "use_portrait_orientation": $usePortraitOrientation
-  }
+   "@type":"$CONSTRUCTOR",
+   "group_call_id":$groupCallId,
+   "title":"$title",
+   "record_video":$recordVideo,
+   "use_portrait_orientation":$usePortraitOrientation
+}
 	""";
   }
-  
+
   StartGroupCallRecording copyWith({
     int? groupCallId,
     String? title,
     bool? recordVideo,
     bool? usePortraitOrientation,
-  }) => StartGroupCallRecording(
-    groupCallId: groupCallId ?? this.groupCallId,
-    title: title ?? this.title,
-    recordVideo: recordVideo ?? this.recordVideo,
-    usePortraitOrientation: usePortraitOrientation ?? this.usePortraitOrientation,
-  );
+  }) =>
+      StartGroupCallRecording(
+        groupCallId: groupCallId ?? this.groupCallId,
+        title: title ?? this.title,
+        recordVideo: recordVideo ?? this.recordVideo,
+        usePortraitOrientation:
+            usePortraitOrientation ?? this.usePortraitOrientation,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'startGroupCallRecording';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

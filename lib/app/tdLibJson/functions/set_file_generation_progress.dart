@@ -1,14 +1,13 @@
 part of '../tdlibjson_api.dart';
 
 class SetFileGenerationProgress extends TdFunction {
-
   /// Informs TDLib on a file generation progress
   const SetFileGenerationProgress({
     required this.generationId,
     required this.expectedSize,
     required this.localPrefixSize,
   });
-  
+
   /// [generationId] The identifier of the generation process
   final int generationId;
 
@@ -17,34 +16,33 @@ class SetFileGenerationProgress extends TdFunction {
 
   /// [localPrefixSize] The number of bytes already generated
   final int localPrefixSize;
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "generation_id": "$generationId",
-    "expected_size": "$expectedSize",
-    "local_prefix_size": "$localPrefixSize"
-  }
+   "@type":"$CONSTRUCTOR",
+   "generation_id":$generationId,
+   "expected_size":$expectedSize,
+   "local_prefix_size":$localPrefixSize
+}
 	""";
   }
-  
+
   SetFileGenerationProgress copyWith({
     int? generationId,
     int? expectedSize,
     int? localPrefixSize,
-  }) => SetFileGenerationProgress(
-    generationId: generationId ?? this.generationId,
-    expectedSize: expectedSize ?? this.expectedSize,
-    localPrefixSize: localPrefixSize ?? this.localPrefixSize,
-  );
+  }) =>
+      SetFileGenerationProgress(
+        generationId: generationId ?? this.generationId,
+        expectedSize: expectedSize ?? this.expectedSize,
+        localPrefixSize: localPrefixSize ?? this.localPrefixSize,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'setFileGenerationProgress';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

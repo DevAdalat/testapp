@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class BasicGroupFullInfo extends TdObject {
-
   /// Contains full information about a basic group
   const BasicGroupFullInfo({
     this.photo,
@@ -13,7 +12,7 @@ class BasicGroupFullInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [photo] Chat photo; may be null
   final ChatPhoto? photo;
 
@@ -39,36 +38,41 @@ class BasicGroupFullInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory BasicGroupFullInfo.fromJson(Map<String, dynamic> json) => BasicGroupFullInfo(
-    photo: json['photo'] == null ? null : ChatPhoto.fromJson(json['photo']),
-    description: json['description'],
-    creatorUserId: json['creator_user_id'],
-    members: List<ChatMember>.from((json['members'] ?? []).map((item) => ChatMember.fromJson(item)).toList()),
-    inviteLink: json['invite_link'] == null ? null : ChatInviteLink.fromJson(json['invite_link']),
-    botCommands: List<BotCommands>.from((json['bot_commands'] ?? []).map((item) => BotCommands.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory BasicGroupFullInfo.fromJson(Map<String, dynamic> json) =>
+      BasicGroupFullInfo(
+        photo: json['photo'] == null ? null : ChatPhoto.fromJson(json['photo']),
+        description: json['description'],
+        creatorUserId: json['creator_user_id'],
+        members: List<ChatMember>.from((json['members'] ?? [])
+            .map((item) => ChatMember.fromJson(item))
+            .toList()),
+        inviteLink: json['invite_link'] == null
+            ? null
+            : ChatInviteLink.fromJson(json['invite_link']),
+        botCommands: List<BotCommands>.from((json['bot_commands'] ?? [])
+            .map((item) => BotCommands.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "photo": "${photo?.toJson()}",
-    "description": "$description",
-    "creator_user_id": "$creatorUserId",
-    "members": "${members.map((i) => i.toJson()).toList()}",
-    "invite_link": "${inviteLink?.toJson()}",
-    "bot_commands": "${botCommands.map((i) => i.toJson()).toList()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "photo":"${photo?.toJson()}",
+   "description":"$description",
+   "creator_user_id":$creatorUserId,
+   "members":"${members.map((i) => i.toJson()).toList()}",
+   "invite_link":"${inviteLink?.toJson()}",
+   "bot_commands":"${botCommands.map((i) => i.toJson()).toList()}"
+}
 	""";
   }
-  
+
   BasicGroupFullInfo copyWith({
     ChatPhoto? photo,
     String? description,
@@ -78,21 +82,21 @@ class BasicGroupFullInfo extends TdObject {
     List<BotCommands>? botCommands,
     dynamic extra,
     int? clientId,
-  }) => BasicGroupFullInfo(
-    photo: photo ?? this.photo,
-    description: description ?? this.description,
-    creatorUserId: creatorUserId ?? this.creatorUserId,
-    members: members ?? this.members,
-    inviteLink: inviteLink ?? this.inviteLink,
-    botCommands: botCommands ?? this.botCommands,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      BasicGroupFullInfo(
+        photo: photo ?? this.photo,
+        description: description ?? this.description,
+        creatorUserId: creatorUserId ?? this.creatorUserId,
+        members: members ?? this.members,
+        inviteLink: inviteLink ?? this.inviteLink,
+        botCommands: botCommands ?? this.botCommands,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'basicGroupFullInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

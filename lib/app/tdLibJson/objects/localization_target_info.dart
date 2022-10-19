@@ -1,14 +1,13 @@
 part of '../tdlibjson_api.dart';
 
 class LocalizationTargetInfo extends TdObject {
-
   /// Contains information about the current localization target
   const LocalizationTargetInfo({
     required this.languagePacks,
     this.extra,
     this.clientId,
   });
-  
+
   /// [languagePacks] List of available language packs for this application
   final List<LanguagePackInfo> languagePacks;
 
@@ -19,40 +18,42 @@ class LocalizationTargetInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory LocalizationTargetInfo.fromJson(Map<String, dynamic> json) => LocalizationTargetInfo(
-    languagePacks: List<LanguagePackInfo>.from((json['language_packs'] ?? []).map((item) => LanguagePackInfo.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory LocalizationTargetInfo.fromJson(Map<String, dynamic> json) =>
+      LocalizationTargetInfo(
+        languagePacks: List<LanguagePackInfo>.from(
+            (json['language_packs'] ?? [])
+                .map((item) => LanguagePackInfo.fromJson(item))
+                .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "language_packs": "${languagePacks.map((i) => i.toJson()).toList()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "language_packs":"${languagePacks.map((i) => i.toJson()).toList()}"
+}
 	""";
   }
-  
+
   LocalizationTargetInfo copyWith({
     List<LanguagePackInfo>? languagePacks,
     dynamic extra,
     int? clientId,
-  }) => LocalizationTargetInfo(
-    languagePacks: languagePacks ?? this.languagePacks,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      LocalizationTargetInfo(
+        languagePacks: languagePacks ?? this.languagePacks,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'localizationTargetInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

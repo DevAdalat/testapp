@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class SendMessage extends TdFunction {
-
   /// Sends a message. Returns the sent message
   const SendMessage({
     required this.chatId,
@@ -11,7 +10,7 @@ class SendMessage extends TdFunction {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-  
+
   /// [chatId] Target chat
   final int chatId;
 
@@ -29,23 +28,22 @@ class SendMessage extends TdFunction {
 
   /// [inputMessageContent] The content of the message to be sent
   final InputMessageContent inputMessageContent;
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "chat_id": "$chatId",
-    "message_thread_id": "$messageThreadId",
-    "reply_to_message_id": "$replyToMessageId",
-    "options": "${options?.toJson()}",
-    "reply_markup": "${replyMarkup?.toJson()}",
-    "input_message_content": "${inputMessageContent.toJson()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "chat_id":$chatId,
+   "message_thread_id":$messageThreadId,
+   "reply_to_message_id":$replyToMessageId,
+   "options":"${options?.toJson()}",
+   "reply_markup":"${replyMarkup?.toJson()}",
+   "input_message_content":"${inputMessageContent.toJson()}"
+}
 	""";
   }
-  
+
   SendMessage copyWith({
     int? chatId,
     int? messageThreadId,
@@ -53,19 +51,19 @@ class SendMessage extends TdFunction {
     MessageSendOptions? options,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) => SendMessage(
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    replyToMessageId: replyToMessageId ?? this.replyToMessageId,
-    options: options ?? this.options,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-  );
+  }) =>
+      SendMessage(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+        replyToMessageId: replyToMessageId ?? this.replyToMessageId,
+        options: options ?? this.options,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'sendMessage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -214,7 +214,7 @@ class DartTdDocumentationGenerator {
         fromJsonFields.add('    return const ${obj.name}();');
         fromJsonFields.add('}');
       } else {
-        toJsonFields.add('   "@type": "\$CONSTRUCTOR",');
+        toJsonFields.add(' "@type":"\$CONSTRUCTOR",');
         for (var variable in obj.variables) {
           variables.add(
               '/// [${variable.argName}] ${variable.description}\n  final ${variable.optional ? "${variable.type}?" : variable.type} ${variable.argName};');
@@ -222,7 +222,7 @@ class DartTdDocumentationGenerator {
               '${variable.optional ? '' : 'required '}this.${variable.argName}');
           fromJsonFields.add('${variable.argName}: ${variable.read},');
           toJsonFields.add(
-              '\n    "${variable.name}": ${(variable.type == "bool") ? "\$${variable.write}" : "\"${(!variable.write.contains(".") ? "\$${variable.write}" : "\${${variable.write}}" )}\""}${(variable.write == obj.variables.last.write) ? "" :","}');
+              '\n   "${variable.name}":${(variable.type == "bool" || variable.type == "int" || variable.type == "double") ? "\$${variable.write}" :  "\"${(!variable.write.contains(".") ? "\$${variable.write}" : "\${${variable.write}}")}\""}${(variable.write == obj.variables.last.write) ? "" : ","}');
           copyWithFields.add('${variable.type}? ${variable.argName},');
           copyWithReturnFields.add(
               '${variable.argName}: ${variable.argName} ?? this.${variable.argName},');

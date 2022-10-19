@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class CreateChatInviteLink extends TdFunction {
-
   /// Creates a new invite link for a chat. Available for basic groups, supergroups, and channels. Requires administrator privileges and can_invite_users right in the chat
   const CreateChatInviteLink({
     required this.chatId,
@@ -10,7 +9,7 @@ class CreateChatInviteLink extends TdFunction {
     required this.memberLimit,
     required this.createsJoinRequest,
   });
-  
+
   /// [chatId] Chat identifier
   final int chatId;
 
@@ -25,40 +24,39 @@ class CreateChatInviteLink extends TdFunction {
 
   /// [createsJoinRequest] Pass true if users joining the chat via the link need to be approved by chat administrators. In this case, member_limit must be 0
   final bool createsJoinRequest;
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "chat_id": "$chatId",
-    "name": "$name",
-    "expiration_date": "$expirationDate",
-    "member_limit": "$memberLimit",
-    "creates_join_request": $createsJoinRequest
-  }
+   "@type":"$CONSTRUCTOR",
+   "chat_id":$chatId,
+   "name":"$name",
+   "expiration_date":$expirationDate,
+   "member_limit":$memberLimit,
+   "creates_join_request":$createsJoinRequest
+}
 	""";
   }
-  
+
   CreateChatInviteLink copyWith({
     int? chatId,
     String? name,
     int? expirationDate,
     int? memberLimit,
     bool? createsJoinRequest,
-  }) => CreateChatInviteLink(
-    chatId: chatId ?? this.chatId,
-    name: name ?? this.name,
-    expirationDate: expirationDate ?? this.expirationDate,
-    memberLimit: memberLimit ?? this.memberLimit,
-    createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
-  );
+  }) =>
+      CreateChatInviteLink(
+        chatId: chatId ?? this.chatId,
+        name: name ?? this.name,
+        expirationDate: expirationDate ?? this.expirationDate,
+        memberLimit: memberLimit ?? this.memberLimit,
+        createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'createChatInviteLink';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

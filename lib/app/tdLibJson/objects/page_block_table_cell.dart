@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class PageBlockTableCell extends TdObject {
-
   /// Represents a cell of a table
   const PageBlockTableCell({
     this.text,
@@ -11,8 +10,8 @@ class PageBlockTableCell extends TdObject {
     required this.align,
     required this.valign,
   });
-  
-  /// [text] Cell text; may be null. If the text is null, then the cell must be invisible 
+
+  /// [text] Cell text; may be null. If the text is null, then the cell must be invisible
   final RichText? text;
 
   /// [isHeader] True, if it is a header cell
@@ -29,34 +28,33 @@ class PageBlockTableCell extends TdObject {
 
   /// [valign] Vertical cell content alignment
   final PageBlockVerticalAlignment valign;
-  
+
   /// Parse from a json
-  factory PageBlockTableCell.fromJson(Map<String, dynamic> json) => PageBlockTableCell(
-    text: json['text'] == null ? null : RichText.fromJson(json['text']),
-    isHeader: json['is_header'],
-    colspan: json['colspan'],
-    rowspan: json['rowspan'],
-    align: PageBlockHorizontalAlignment.fromJson(json['align']),
-    valign: PageBlockVerticalAlignment.fromJson(json['valign']),
-  );
-  
-  
+  factory PageBlockTableCell.fromJson(Map<String, dynamic> json) =>
+      PageBlockTableCell(
+        text: json['text'] == null ? null : RichText.fromJson(json['text']),
+        isHeader: json['is_header'],
+        colspan: json['colspan'],
+        rowspan: json['rowspan'],
+        align: PageBlockHorizontalAlignment.fromJson(json['align']),
+        valign: PageBlockVerticalAlignment.fromJson(json['valign']),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "text": "${text?.toJson()}",
-    "is_header": $isHeader,
-    "colspan": "$colspan",
-    "rowspan": "$rowspan",
-    "align": "${align.toJson()}",
-    "valign": "${valign.toJson()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "text":"${text?.toJson()}",
+   "is_header":$isHeader,
+   "colspan":$colspan,
+   "rowspan":$rowspan,
+   "align":"${align.toJson()}",
+   "valign":"${valign.toJson()}"
+}
 	""";
   }
-  
+
   PageBlockTableCell copyWith({
     RichText? text,
     bool? isHeader,
@@ -64,19 +62,19 @@ class PageBlockTableCell extends TdObject {
     int? rowspan,
     PageBlockHorizontalAlignment? align,
     PageBlockVerticalAlignment? valign,
-  }) => PageBlockTableCell(
-    text: text ?? this.text,
-    isHeader: isHeader ?? this.isHeader,
-    colspan: colspan ?? this.colspan,
-    rowspan: rowspan ?? this.rowspan,
-    align: align ?? this.align,
-    valign: valign ?? this.valign,
-  );
+  }) =>
+      PageBlockTableCell(
+        text: text ?? this.text,
+        isHeader: isHeader ?? this.isHeader,
+        colspan: colspan ?? this.colspan,
+        rowspan: rowspan ?? this.rowspan,
+        align: align ?? this.align,
+        valign: valign ?? this.valign,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'pageBlockTableCell';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

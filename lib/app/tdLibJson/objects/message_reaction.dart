@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class MessageReaction extends TdObject {
-
   /// Contains information about a reaction to a message
   const MessageReaction({
     required this.type,
@@ -9,7 +8,7 @@ class MessageReaction extends TdObject {
     required this.isChosen,
     required this.recentSenderIds,
   });
-  
+
   /// [type] Type of the reaction
   final ReactionType type;
 
@@ -21,46 +20,48 @@ class MessageReaction extends TdObject {
 
   /// [recentSenderIds] Identifiers of at most 3 recent message senders, added the reaction; available in private, basic group and supergroup chats
   final List<MessageSender> recentSenderIds;
-  
+
   /// Parse from a json
-  factory MessageReaction.fromJson(Map<String, dynamic> json) => MessageReaction(
-    type: ReactionType.fromJson(json['type']),
-    totalCount: json['total_count'],
-    isChosen: json['is_chosen'],
-    recentSenderIds: List<MessageSender>.from((json['recent_sender_ids'] ?? []).map((item) => MessageSender.fromJson(item)).toList()),
-  );
-  
-  
+  factory MessageReaction.fromJson(Map<String, dynamic> json) =>
+      MessageReaction(
+        type: ReactionType.fromJson(json['type']),
+        totalCount: json['total_count'],
+        isChosen: json['is_chosen'],
+        recentSenderIds: List<MessageSender>.from(
+            (json['recent_sender_ids'] ?? [])
+                .map((item) => MessageSender.fromJson(item))
+                .toList()),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "type": "${type.toJson()}",
-    "total_count": "$totalCount",
-    "is_chosen": $isChosen,
-    "recent_sender_ids": "${recentSenderIds.map((i) => i.toJson()).toList()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "type":"${type.toJson()}",
+   "total_count":$totalCount,
+   "is_chosen":$isChosen,
+   "recent_sender_ids":"${recentSenderIds.map((i) => i.toJson()).toList()}"
+}
 	""";
   }
-  
+
   MessageReaction copyWith({
     ReactionType? type,
     int? totalCount,
     bool? isChosen,
     List<MessageSender>? recentSenderIds,
-  }) => MessageReaction(
-    type: type ?? this.type,
-    totalCount: totalCount ?? this.totalCount,
-    isChosen: isChosen ?? this.isChosen,
-    recentSenderIds: recentSenderIds ?? this.recentSenderIds,
-  );
+  }) =>
+      MessageReaction(
+        type: type ?? this.type,
+        totalCount: totalCount ?? this.totalCount,
+        isChosen: isChosen ?? this.isChosen,
+        recentSenderIds: recentSenderIds ?? this.recentSenderIds,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'messageReaction';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

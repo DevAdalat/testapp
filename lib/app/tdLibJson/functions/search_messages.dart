@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class SearchMessages extends TdFunction {
-
   /// Searches for messages in all chats except secret chats. Returns the results in reverse chronological order (i.e., in order of decreasing (date, chat_id, message_id)).. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
   const SearchMessages({
     this.chatList,
@@ -14,7 +13,7 @@ class SearchMessages extends TdFunction {
     required this.minDate,
     required this.maxDate,
   });
-  
+
   /// [chatList] Chat list in which to search messages; pass null to search in all chats regardless of their chat list. Only Main and Archive chat lists are supported
   final ChatList? chatList;
 
@@ -41,26 +40,25 @@ class SearchMessages extends TdFunction {
 
   /// [maxDate] If not 0, the maximum date of the messages to return
   final int maxDate;
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "chat_list": "${chatList?.toJson()}",
-    "query": "$query",
-    "offset_date": "$offsetDate",
-    "offset_chat_id": "$offsetChatId",
-    "offset_message_id": "$offsetMessageId",
-    "limit": "$limit",
-    "filter": "${filter?.toJson()}",
-    "min_date": "$minDate",
-    "max_date": "$maxDate"
-  }
+   "@type":"$CONSTRUCTOR",
+   "chat_list":"${chatList?.toJson()}",
+   "query":"$query",
+   "offset_date":$offsetDate,
+   "offset_chat_id":$offsetChatId,
+   "offset_message_id":$offsetMessageId,
+   "limit":$limit,
+   "filter":"${filter?.toJson()}",
+   "min_date":$minDate,
+   "max_date":$maxDate
+}
 	""";
   }
-  
+
   SearchMessages copyWith({
     ChatList? chatList,
     String? query,
@@ -71,22 +69,22 @@ class SearchMessages extends TdFunction {
     SearchMessagesFilter? filter,
     int? minDate,
     int? maxDate,
-  }) => SearchMessages(
-    chatList: chatList ?? this.chatList,
-    query: query ?? this.query,
-    offsetDate: offsetDate ?? this.offsetDate,
-    offsetChatId: offsetChatId ?? this.offsetChatId,
-    offsetMessageId: offsetMessageId ?? this.offsetMessageId,
-    limit: limit ?? this.limit,
-    filter: filter ?? this.filter,
-    minDate: minDate ?? this.minDate,
-    maxDate: maxDate ?? this.maxDate,
-  );
+  }) =>
+      SearchMessages(
+        chatList: chatList ?? this.chatList,
+        query: query ?? this.query,
+        offsetDate: offsetDate ?? this.offsetDate,
+        offsetChatId: offsetChatId ?? this.offsetChatId,
+        offsetMessageId: offsetMessageId ?? this.offsetMessageId,
+        limit: limit ?? this.limit,
+        filter: filter ?? this.filter,
+        minDate: minDate ?? this.minDate,
+        maxDate: maxDate ?? this.maxDate,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'searchMessages';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

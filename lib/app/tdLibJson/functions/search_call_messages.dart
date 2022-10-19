@@ -1,14 +1,13 @@
 part of '../tdlibjson_api.dart';
 
 class SearchCallMessages extends TdFunction {
-
   /// Searches for call messages. Returns the results in reverse chronological order (i.e., in order of decreasing message_id). For optimal performance, the number of returned messages is chosen by TDLib
   const SearchCallMessages({
     required this.fromMessageId,
     required this.limit,
     required this.onlyMissed,
   });
-  
+
   /// [fromMessageId] Identifier of the message from which to search; use 0 to get results from the last message
   final int fromMessageId;
 
@@ -17,34 +16,33 @@ class SearchCallMessages extends TdFunction {
 
   /// [onlyMissed] Pass true to search only for messages with missed/declined calls
   final bool onlyMissed;
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "from_message_id": "$fromMessageId",
-    "limit": "$limit",
-    "only_missed": $onlyMissed
-  }
+   "@type":"$CONSTRUCTOR",
+   "from_message_id":$fromMessageId,
+   "limit":$limit,
+   "only_missed":$onlyMissed
+}
 	""";
   }
-  
+
   SearchCallMessages copyWith({
     int? fromMessageId,
     int? limit,
     bool? onlyMissed,
-  }) => SearchCallMessages(
-    fromMessageId: fromMessageId ?? this.fromMessageId,
-    limit: limit ?? this.limit,
-    onlyMissed: onlyMissed ?? this.onlyMissed,
-  );
+  }) =>
+      SearchCallMessages(
+        fromMessageId: fromMessageId ?? this.fromMessageId,
+        limit: limit ?? this.limit,
+        onlyMissed: onlyMissed ?? this.onlyMissed,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'searchCallMessages';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

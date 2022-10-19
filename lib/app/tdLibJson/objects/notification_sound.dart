@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class NotificationSound extends TdObject {
-
   /// Describes a notification sound in MP3 format
   const NotificationSound({
     required this.id,
@@ -13,7 +12,7 @@ class NotificationSound extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [id] Unique identifier of the notification sound
   final int id;
 
@@ -39,36 +38,35 @@ class NotificationSound extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory NotificationSound.fromJson(Map<String, dynamic> json) => NotificationSound(
-    id: int.parse(json['id']),
-    duration: json['duration'],
-    date: json['date'],
-    title: json['title'],
-    data: json['data'],
-    sound: File.fromJson(json['sound']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory NotificationSound.fromJson(Map<String, dynamic> json) =>
+      NotificationSound(
+        id: int.parse(json['id']),
+        duration: json['duration'],
+        date: json['date'],
+        title: json['title'],
+        data: json['data'],
+        sound: File.fromJson(json['sound']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "id": "$id",
-    "duration": "$duration",
-    "date": "$date",
-    "title": "$title",
-    "data": "$data",
-    "sound": "${sound.toJson()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "id":$id,
+   "duration":$duration,
+   "date":$date,
+   "title":"$title",
+   "data":"$data",
+   "sound":"${sound.toJson()}"
+}
 	""";
   }
-  
+
   NotificationSound copyWith({
     int? id,
     int? duration,
@@ -78,21 +76,21 @@ class NotificationSound extends TdObject {
     File? sound,
     dynamic extra,
     int? clientId,
-  }) => NotificationSound(
-    id: id ?? this.id,
-    duration: duration ?? this.duration,
-    date: date ?? this.date,
-    title: title ?? this.title,
-    data: data ?? this.data,
-    sound: sound ?? this.sound,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      NotificationSound(
+        id: id ?? this.id,
+        duration: duration ?? this.duration,
+        date: date ?? this.date,
+        title: title ?? this.title,
+        data: data ?? this.data,
+        sound: sound ?? this.sound,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'notificationSound';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

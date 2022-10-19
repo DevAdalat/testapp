@@ -1,11 +1,5 @@
-import 'dart:ffi';
-import 'dart:ffi' as ffi;
-import 'package:ffi/ffi.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:testapp/generated_bindings.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -13,35 +7,39 @@ class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeController>(builder: (((controller) {
+    return GetBuilder<HomeController>(builder: (controller) {
       return Scaffold(
         appBar: AppBar(title: const Text("Test App")),
-        body: Center(
-            child: SizedBox(
-          height: 150,
-          child: Column(
-            children: [
+        body: Column(children: [
+          Expanded(
+            child: Wrap(children: [
               TextButton(
-                onPressed: (() async {
-                  await Permission.manageExternalStorage.request();
-                  await Permission.storage.request();
-                }),
-                child: const Text("Request"),
-              ),
-              TextField(
-                controller: controller.valController,
-                decoration: const InputDecoration(
-                  hintText: "Enter data",
-                ),
+                onPressed: (() => controller.requestPermission()),
+                child: const Text("Request Permission"),
               ),
               TextButton(
-                  onPressed: ((() =>
-                      controller.startService(controller.valController.text))),
-                  child: const Text("Run")),
-            ],
+                onPressed: (() => controller.startReceiver()),
+                child: const Text("Send auth state data"),
+              ),
+            ]),
           ),
-        )),
+          Expanded(
+            flex: 2,
+            child: ListView.separated(
+              itemBuilder: ((_, index) => Text(
+                    "${DateTime.now()}:  ${controller.logs[index]}",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                    textAlign: TextAlign.center,
+                  )),
+              itemCount: controller.logs.length,
+              separatorBuilder: ((context, index) => const Divider()),
+            ),
+          ),
+        ]),
       );
-    })));
+    });
   }
 }

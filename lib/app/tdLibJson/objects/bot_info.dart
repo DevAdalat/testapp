@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class BotInfo extends TdObject {
-
   /// Contains information about a bot
   const BotInfo({
     required this.shareText,
@@ -13,7 +12,7 @@ class BotInfo extends TdObject {
     this.defaultGroupAdministratorRights,
     this.defaultChannelAdministratorRights,
   });
-  
+
   /// [shareText] The text that is shown on the bot's profile page and is sent together with the link when users share the bot
   final String shareText;
 
@@ -37,38 +36,50 @@ class BotInfo extends TdObject {
 
   /// [defaultChannelAdministratorRights] Default administrator rights for adding the bot to channels; may be null
   final ChatAdministratorRights? defaultChannelAdministratorRights;
-  
+
   /// Parse from a json
   factory BotInfo.fromJson(Map<String, dynamic> json) => BotInfo(
-    shareText: json['share_text'],
-    description: json['description'],
-    photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
-    animation: json['animation'] == null ? null : Animation.fromJson(json['animation']),
-    menuButton: json['menu_button'] == null ? null : BotMenuButton.fromJson(json['menu_button']),
-    commands: List<BotCommand>.from((json['commands'] ?? []).map((item) => BotCommand.fromJson(item)).toList()),
-    defaultGroupAdministratorRights: json['default_group_administrator_rights'] == null ? null : ChatAdministratorRights.fromJson(json['default_group_administrator_rights']),
-    defaultChannelAdministratorRights: json['default_channel_administrator_rights'] == null ? null : ChatAdministratorRights.fromJson(json['default_channel_administrator_rights']),
-  );
-  
-  
+        shareText: json['share_text'],
+        description: json['description'],
+        photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
+        animation: json['animation'] == null
+            ? null
+            : Animation.fromJson(json['animation']),
+        menuButton: json['menu_button'] == null
+            ? null
+            : BotMenuButton.fromJson(json['menu_button']),
+        commands: List<BotCommand>.from((json['commands'] ?? [])
+            .map((item) => BotCommand.fromJson(item))
+            .toList()),
+        defaultGroupAdministratorRights:
+            json['default_group_administrator_rights'] == null
+                ? null
+                : ChatAdministratorRights.fromJson(
+                    json['default_group_administrator_rights']),
+        defaultChannelAdministratorRights:
+            json['default_channel_administrator_rights'] == null
+                ? null
+                : ChatAdministratorRights.fromJson(
+                    json['default_channel_administrator_rights']),
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "share_text": "$shareText",
-    "description": "$description",
-    "photo": "${photo?.toJson()}",
-    "animation": "${animation?.toJson()}",
-    "menu_button": "${menuButton?.toJson()}",
-    "commands": "${commands.map((i) => i.toJson()).toList()}",
-    "default_group_administrator_rights": "${defaultGroupAdministratorRights?.toJson()}",
-    "default_channel_administrator_rights": "${defaultChannelAdministratorRights?.toJson()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "share_text":"$shareText",
+   "description":"$description",
+   "photo":"${photo?.toJson()}",
+   "animation":"${animation?.toJson()}",
+   "menu_button":"${menuButton?.toJson()}",
+   "commands":"${commands.map((i) => i.toJson()).toList()}",
+   "default_group_administrator_rights":"${defaultGroupAdministratorRights?.toJson()}",
+   "default_channel_administrator_rights":"${defaultChannelAdministratorRights?.toJson()}"
+}
 	""";
   }
-  
+
   BotInfo copyWith({
     String? shareText,
     String? description,
@@ -78,21 +89,23 @@ class BotInfo extends TdObject {
     List<BotCommand>? commands,
     ChatAdministratorRights? defaultGroupAdministratorRights,
     ChatAdministratorRights? defaultChannelAdministratorRights,
-  }) => BotInfo(
-    shareText: shareText ?? this.shareText,
-    description: description ?? this.description,
-    photo: photo ?? this.photo,
-    animation: animation ?? this.animation,
-    menuButton: menuButton ?? this.menuButton,
-    commands: commands ?? this.commands,
-    defaultGroupAdministratorRights: defaultGroupAdministratorRights ?? this.defaultGroupAdministratorRights,
-    defaultChannelAdministratorRights: defaultChannelAdministratorRights ?? this.defaultChannelAdministratorRights,
-  );
+  }) =>
+      BotInfo(
+        shareText: shareText ?? this.shareText,
+        description: description ?? this.description,
+        photo: photo ?? this.photo,
+        animation: animation ?? this.animation,
+        menuButton: menuButton ?? this.menuButton,
+        commands: commands ?? this.commands,
+        defaultGroupAdministratorRights: defaultGroupAdministratorRights ??
+            this.defaultGroupAdministratorRights,
+        defaultChannelAdministratorRights: defaultChannelAdministratorRights ??
+            this.defaultChannelAdministratorRights,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'botInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

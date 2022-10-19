@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class JoinGroupCall extends TdFunction {
-
   /// Joins an active group call. Returns join response payload for tgcalls
   const JoinGroupCall({
     required this.groupCallId,
@@ -12,7 +11,7 @@ class JoinGroupCall extends TdFunction {
     required this.isMyVideoEnabled,
     required this.inviteHash,
   });
-  
+
   /// [groupCallId] Group call identifier
   final int groupCallId;
 
@@ -33,24 +32,23 @@ class JoinGroupCall extends TdFunction {
 
   /// [inviteHash] If non-empty, invite hash to be used to join the group call without being muted by administrators
   final String inviteHash;
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "group_call_id": "$groupCallId",
-    "participant_id": "${participantId?.toJson()}",
-    "audio_source_id": "$audioSourceId",
-    "payload": "$payload",
-    "is_muted": $isMuted,
-    "is_my_video_enabled": $isMyVideoEnabled,
-    "invite_hash": "$inviteHash"
-  }
+   "@type":"$CONSTRUCTOR",
+   "group_call_id":$groupCallId,
+   "participant_id":"${participantId?.toJson()}",
+   "audio_source_id":$audioSourceId,
+   "payload":"$payload",
+   "is_muted":$isMuted,
+   "is_my_video_enabled":$isMyVideoEnabled,
+   "invite_hash":"$inviteHash"
+}
 	""";
   }
-  
+
   JoinGroupCall copyWith({
     int? groupCallId,
     MessageSender? participantId,
@@ -59,20 +57,20 @@ class JoinGroupCall extends TdFunction {
     bool? isMuted,
     bool? isMyVideoEnabled,
     String? inviteHash,
-  }) => JoinGroupCall(
-    groupCallId: groupCallId ?? this.groupCallId,
-    participantId: participantId ?? this.participantId,
-    audioSourceId: audioSourceId ?? this.audioSourceId,
-    payload: payload ?? this.payload,
-    isMuted: isMuted ?? this.isMuted,
-    isMyVideoEnabled: isMyVideoEnabled ?? this.isMyVideoEnabled,
-    inviteHash: inviteHash ?? this.inviteHash,
-  );
+  }) =>
+      JoinGroupCall(
+        groupCallId: groupCallId ?? this.groupCallId,
+        participantId: participantId ?? this.participantId,
+        audioSourceId: audioSourceId ?? this.audioSourceId,
+        payload: payload ?? this.payload,
+        isMuted: isMuted ?? this.isMuted,
+        isMyVideoEnabled: isMyVideoEnabled ?? this.isMyVideoEnabled,
+        inviteHash: inviteHash ?? this.inviteHash,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'joinGroupCall';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

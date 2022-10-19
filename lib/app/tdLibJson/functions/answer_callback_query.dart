@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class AnswerCallbackQuery extends TdFunction {
-
   /// Sets the result of a callback query; for bots only
   const AnswerCallbackQuery({
     required this.callbackQueryId,
@@ -10,55 +9,54 @@ class AnswerCallbackQuery extends TdFunction {
     required this.url,
     required this.cacheTime,
   });
-  
-  /// [callbackQueryId] Identifier of the callback query 
+
+  /// [callbackQueryId] Identifier of the callback query
   final int callbackQueryId;
 
-  /// [text] Text of the answer 
+  /// [text] Text of the answer
   final String text;
 
-  /// [showAlert] Pass true to show an alert to the user instead of a toast notification 
+  /// [showAlert] Pass true to show an alert to the user instead of a toast notification
   final bool showAlert;
 
-  /// [url] URL to be opened 
+  /// [url] URL to be opened
   final String url;
 
   /// [cacheTime] Time during which the result of the query can be cached, in seconds
   final int cacheTime;
-  
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "callback_query_id": "$callbackQueryId",
-    "text": "$text",
-    "show_alert": $showAlert,
-    "url": "$url",
-    "cache_time": "$cacheTime"
-  }
+   "@type":"$CONSTRUCTOR",
+   "callback_query_id":$callbackQueryId,
+   "text":"$text",
+   "show_alert":$showAlert,
+   "url":"$url",
+   "cache_time":$cacheTime
+}
 	""";
   }
-  
+
   AnswerCallbackQuery copyWith({
     int? callbackQueryId,
     String? text,
     bool? showAlert,
     String? url,
     int? cacheTime,
-  }) => AnswerCallbackQuery(
-    callbackQueryId: callbackQueryId ?? this.callbackQueryId,
-    text: text ?? this.text,
-    showAlert: showAlert ?? this.showAlert,
-    url: url ?? this.url,
-    cacheTime: cacheTime ?? this.cacheTime,
-  );
+  }) =>
+      AnswerCallbackQuery(
+        callbackQueryId: callbackQueryId ?? this.callbackQueryId,
+        text: text ?? this.text,
+        showAlert: showAlert ?? this.showAlert,
+        url: url ?? this.url,
+        cacheTime: cacheTime ?? this.cacheTime,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'answerCallbackQuery';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

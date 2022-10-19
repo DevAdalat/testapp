@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class ChatAdministratorRights extends TdObject {
-
   /// Describes rights of the administrator
   const ChatAdministratorRights({
     required this.canManageChat,
@@ -16,7 +15,7 @@ class ChatAdministratorRights extends TdObject {
     required this.canManageVideoChats,
     required this.isAnonymous,
   });
-  
+
   /// [canManageChat] True, if the administrator can get chat event log, get chat statistics, get message statistics in channels, get channel members, see anonymous administrators in supergroups and ignore slow mode. Implied by any other privilege; applicable to supergroups and channels only
   final bool canManageChat;
 
@@ -49,44 +48,43 @@ class ChatAdministratorRights extends TdObject {
 
   /// [isAnonymous] True, if the administrator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only
   final bool isAnonymous;
-  
+
   /// Parse from a json
-  factory ChatAdministratorRights.fromJson(Map<String, dynamic> json) => ChatAdministratorRights(
-    canManageChat: json['can_manage_chat'],
-    canChangeInfo: json['can_change_info'],
-    canPostMessages: json['can_post_messages'],
-    canEditMessages: json['can_edit_messages'],
-    canDeleteMessages: json['can_delete_messages'],
-    canInviteUsers: json['can_invite_users'],
-    canRestrictMembers: json['can_restrict_members'],
-    canPinMessages: json['can_pin_messages'],
-    canPromoteMembers: json['can_promote_members'],
-    canManageVideoChats: json['can_manage_video_chats'],
-    isAnonymous: json['is_anonymous'],
-  );
-  
-  
+  factory ChatAdministratorRights.fromJson(Map<String, dynamic> json) =>
+      ChatAdministratorRights(
+        canManageChat: json['can_manage_chat'],
+        canChangeInfo: json['can_change_info'],
+        canPostMessages: json['can_post_messages'],
+        canEditMessages: json['can_edit_messages'],
+        canDeleteMessages: json['can_delete_messages'],
+        canInviteUsers: json['can_invite_users'],
+        canRestrictMembers: json['can_restrict_members'],
+        canPinMessages: json['can_pin_messages'],
+        canPromoteMembers: json['can_promote_members'],
+        canManageVideoChats: json['can_manage_video_chats'],
+        isAnonymous: json['is_anonymous'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "can_manage_chat": $canManageChat,
-    "can_change_info": $canChangeInfo,
-    "can_post_messages": $canPostMessages,
-    "can_edit_messages": $canEditMessages,
-    "can_delete_messages": $canDeleteMessages,
-    "can_invite_users": $canInviteUsers,
-    "can_restrict_members": $canRestrictMembers,
-    "can_pin_messages": $canPinMessages,
-    "can_promote_members": $canPromoteMembers,
-    "can_manage_video_chats": $canManageVideoChats,
-    "is_anonymous": $isAnonymous
-  }
+   "@type":"$CONSTRUCTOR",
+   "can_manage_chat":$canManageChat,
+   "can_change_info":$canChangeInfo,
+   "can_post_messages":$canPostMessages,
+   "can_edit_messages":$canEditMessages,
+   "can_delete_messages":$canDeleteMessages,
+   "can_invite_users":$canInviteUsers,
+   "can_restrict_members":$canRestrictMembers,
+   "can_pin_messages":$canPinMessages,
+   "can_promote_members":$canPromoteMembers,
+   "can_manage_video_chats":$canManageVideoChats,
+   "is_anonymous":$isAnonymous
+}
 	""";
   }
-  
+
   ChatAdministratorRights copyWith({
     bool? canManageChat,
     bool? canChangeInfo,
@@ -99,24 +97,24 @@ class ChatAdministratorRights extends TdObject {
     bool? canPromoteMembers,
     bool? canManageVideoChats,
     bool? isAnonymous,
-  }) => ChatAdministratorRights(
-    canManageChat: canManageChat ?? this.canManageChat,
-    canChangeInfo: canChangeInfo ?? this.canChangeInfo,
-    canPostMessages: canPostMessages ?? this.canPostMessages,
-    canEditMessages: canEditMessages ?? this.canEditMessages,
-    canDeleteMessages: canDeleteMessages ?? this.canDeleteMessages,
-    canInviteUsers: canInviteUsers ?? this.canInviteUsers,
-    canRestrictMembers: canRestrictMembers ?? this.canRestrictMembers,
-    canPinMessages: canPinMessages ?? this.canPinMessages,
-    canPromoteMembers: canPromoteMembers ?? this.canPromoteMembers,
-    canManageVideoChats: canManageVideoChats ?? this.canManageVideoChats,
-    isAnonymous: isAnonymous ?? this.isAnonymous,
-  );
+  }) =>
+      ChatAdministratorRights(
+        canManageChat: canManageChat ?? this.canManageChat,
+        canChangeInfo: canChangeInfo ?? this.canChangeInfo,
+        canPostMessages: canPostMessages ?? this.canPostMessages,
+        canEditMessages: canEditMessages ?? this.canEditMessages,
+        canDeleteMessages: canDeleteMessages ?? this.canDeleteMessages,
+        canInviteUsers: canInviteUsers ?? this.canInviteUsers,
+        canRestrictMembers: canRestrictMembers ?? this.canRestrictMembers,
+        canPinMessages: canPinMessages ?? this.canPinMessages,
+        canPromoteMembers: canPromoteMembers ?? this.canPromoteMembers,
+        canManageVideoChats: canManageVideoChats ?? this.canManageVideoChats,
+        isAnonymous: isAnonymous ?? this.isAnonymous,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'chatAdministratorRights';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

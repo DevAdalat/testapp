@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class Supergroup extends TdObject {
-
   /// Represents a supergroup or channel with zero or more members (subscribers in the case of channels). From the point of view of the system, a channel is a special kind of a supergroup: only administrators can post and see the list of members, and posts from all administrators use the name and photo of the channel instead of individual names and profile photos. Unlike supergroups, channels can have an unlimited number of subscribers
   const Supergroup({
     required this.id,
@@ -24,7 +23,7 @@ class Supergroup extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [id] Supergroup or channel identifier
   final int id;
 
@@ -83,58 +82,56 @@ class Supergroup extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory Supergroup.fromJson(Map<String, dynamic> json) => Supergroup(
-    id: json['id'],
-    username: json['username'],
-    date: json['date'],
-    status: ChatMemberStatus.fromJson(json['status']),
-    memberCount: json['member_count'],
-    hasLinkedChat: json['has_linked_chat'],
-    hasLocation: json['has_location'],
-    signMessages: json['sign_messages'],
-    joinToSendMessages: json['join_to_send_messages'],
-    joinByRequest: json['join_by_request'],
-    isSlowModeEnabled: json['is_slow_mode_enabled'],
-    isChannel: json['is_channel'],
-    isBroadcastGroup: json['is_broadcast_group'],
-    isVerified: json['is_verified'],
-    restrictionReason: json['restriction_reason'],
-    isScam: json['is_scam'],
-    isFake: json['is_fake'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: json['id'],
+        username: json['username'],
+        date: json['date'],
+        status: ChatMemberStatus.fromJson(json['status']),
+        memberCount: json['member_count'],
+        hasLinkedChat: json['has_linked_chat'],
+        hasLocation: json['has_location'],
+        signMessages: json['sign_messages'],
+        joinToSendMessages: json['join_to_send_messages'],
+        joinByRequest: json['join_by_request'],
+        isSlowModeEnabled: json['is_slow_mode_enabled'],
+        isChannel: json['is_channel'],
+        isBroadcastGroup: json['is_broadcast_group'],
+        isVerified: json['is_verified'],
+        restrictionReason: json['restriction_reason'],
+        isScam: json['is_scam'],
+        isFake: json['is_fake'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "id": "$id",
-    "username": "$username",
-    "date": "$date",
-    "status": "${status.toJson()}",
-    "member_count": "$memberCount",
-    "has_linked_chat": $hasLinkedChat,
-    "has_location": $hasLocation,
-    "sign_messages": $signMessages,
-    "join_to_send_messages": $joinToSendMessages,
-    "join_by_request": $joinByRequest,
-    "is_slow_mode_enabled": $isSlowModeEnabled,
-    "is_channel": $isChannel,
-    "is_broadcast_group": $isBroadcastGroup,
-    "is_verified": $isVerified,
-    "restriction_reason": "$restrictionReason",
-    "is_scam": $isScam,
-    "is_fake": $isFake
-  }
+   "@type":"$CONSTRUCTOR",
+   "id":$id,
+   "username":"$username",
+   "date":$date,
+   "status":"${status.toJson()}",
+   "member_count":$memberCount,
+   "has_linked_chat":$hasLinkedChat,
+   "has_location":$hasLocation,
+   "sign_messages":$signMessages,
+   "join_to_send_messages":$joinToSendMessages,
+   "join_by_request":$joinByRequest,
+   "is_slow_mode_enabled":$isSlowModeEnabled,
+   "is_channel":$isChannel,
+   "is_broadcast_group":$isBroadcastGroup,
+   "is_verified":$isVerified,
+   "restriction_reason":"$restrictionReason",
+   "is_scam":$isScam,
+   "is_fake":$isFake
+}
 	""";
   }
-  
+
   Supergroup copyWith({
     int? id,
     String? username,
@@ -155,32 +152,32 @@ class Supergroup extends TdObject {
     bool? isFake,
     dynamic extra,
     int? clientId,
-  }) => Supergroup(
-    id: id ?? this.id,
-    username: username ?? this.username,
-    date: date ?? this.date,
-    status: status ?? this.status,
-    memberCount: memberCount ?? this.memberCount,
-    hasLinkedChat: hasLinkedChat ?? this.hasLinkedChat,
-    hasLocation: hasLocation ?? this.hasLocation,
-    signMessages: signMessages ?? this.signMessages,
-    joinToSendMessages: joinToSendMessages ?? this.joinToSendMessages,
-    joinByRequest: joinByRequest ?? this.joinByRequest,
-    isSlowModeEnabled: isSlowModeEnabled ?? this.isSlowModeEnabled,
-    isChannel: isChannel ?? this.isChannel,
-    isBroadcastGroup: isBroadcastGroup ?? this.isBroadcastGroup,
-    isVerified: isVerified ?? this.isVerified,
-    restrictionReason: restrictionReason ?? this.restrictionReason,
-    isScam: isScam ?? this.isScam,
-    isFake: isFake ?? this.isFake,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      Supergroup(
+        id: id ?? this.id,
+        username: username ?? this.username,
+        date: date ?? this.date,
+        status: status ?? this.status,
+        memberCount: memberCount ?? this.memberCount,
+        hasLinkedChat: hasLinkedChat ?? this.hasLinkedChat,
+        hasLocation: hasLocation ?? this.hasLocation,
+        signMessages: signMessages ?? this.signMessages,
+        joinToSendMessages: joinToSendMessages ?? this.joinToSendMessages,
+        joinByRequest: joinByRequest ?? this.joinByRequest,
+        isSlowModeEnabled: isSlowModeEnabled ?? this.isSlowModeEnabled,
+        isChannel: isChannel ?? this.isChannel,
+        isBroadcastGroup: isBroadcastGroup ?? this.isBroadcastGroup,
+        isVerified: isVerified ?? this.isVerified,
+        restrictionReason: restrictionReason ?? this.restrictionReason,
+        isScam: isScam ?? this.isScam,
+        isFake: isFake ?? this.isFake,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'supergroup';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

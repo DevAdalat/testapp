@@ -1,7 +1,6 @@
 part of '../tdlibjson_api.dart';
 
 class ChatInviteLinkMembers extends TdObject {
-
   /// Contains a list of chat members joined a chat via an invite link
   const ChatInviteLinkMembers({
     required this.totalCount,
@@ -9,8 +8,8 @@ class ChatInviteLinkMembers extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [totalCount] Approximate total number of chat members found 
+
+  /// [totalCount] Approximate total number of chat members found
   final int totalCount;
 
   /// [members] List of chat members, joined a chat via an invite link
@@ -23,44 +22,45 @@ class ChatInviteLinkMembers extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory ChatInviteLinkMembers.fromJson(Map<String, dynamic> json) => ChatInviteLinkMembers(
-    totalCount: json['total_count'],
-    members: List<ChatInviteLinkMember>.from((json['members'] ?? []).map((item) => ChatInviteLinkMember.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory ChatInviteLinkMembers.fromJson(Map<String, dynamic> json) =>
+      ChatInviteLinkMembers(
+        totalCount: json['total_count'],
+        members: List<ChatInviteLinkMember>.from((json['members'] ?? [])
+            .map((item) => ChatInviteLinkMember.fromJson(item))
+            .toList()),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "total_count": "$totalCount",
-    "members": "${members.map((i) => i.toJson()).toList()}"
-  }
+   "@type":"$CONSTRUCTOR",
+   "total_count":$totalCount,
+   "members":"${members.map((i) => i.toJson()).toList()}"
+}
 	""";
   }
-  
+
   ChatInviteLinkMembers copyWith({
     int? totalCount,
     List<ChatInviteLinkMember>? members,
     dynamic extra,
     int? clientId,
-  }) => ChatInviteLinkMembers(
-    totalCount: totalCount ?? this.totalCount,
-    members: members ?? this.members,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ChatInviteLinkMembers(
+        totalCount: totalCount ?? this.totalCount,
+        members: members ?? this.members,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'chatInviteLinkMembers';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

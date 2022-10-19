@@ -1,58 +1,55 @@
 part of '../tdlibjson_api.dart';
 
 class TermsOfService extends TdObject {
-
   /// Contains Telegram terms of service
   const TermsOfService({
     required this.text,
     required this.minUserAge,
     required this.showPopup,
   });
-  
-  /// [text] Text of the terms of service 
+
+  /// [text] Text of the terms of service
   final FormattedText text;
 
-  /// [minUserAge] The minimum age of a user to be able to accept the terms; 0 if age isn't restricted 
+  /// [minUserAge] The minimum age of a user to be able to accept the terms; 0 if age isn't restricted
   final int minUserAge;
 
   /// [showPopup] True, if a blocking popup with terms of service must be shown to the user
   final bool showPopup;
-  
+
   /// Parse from a json
   factory TermsOfService.fromJson(Map<String, dynamic> json) => TermsOfService(
-    text: FormattedText.fromJson(json['text']),
-    minUserAge: json['min_user_age'],
-    showPopup: json['show_popup'],
-  );
-  
-  
+        text: FormattedText.fromJson(json['text']),
+        minUserAge: json['min_user_age'],
+        showPopup: json['show_popup'],
+      );
+
   @override
   String toJson() {
-	return 
-	"""
+    return """
   {
-     "@type": "$CONSTRUCTOR",
-    "text": "${text.toJson()}",
-    "min_user_age": "$minUserAge",
-    "show_popup": $showPopup
-  }
+   "@type":"$CONSTRUCTOR",
+   "text":"${text.toJson()}",
+   "min_user_age":$minUserAge,
+   "show_popup":$showPopup
+}
 	""";
   }
-  
+
   TermsOfService copyWith({
     FormattedText? text,
     int? minUserAge,
     bool? showPopup,
-  }) => TermsOfService(
-    text: text ?? this.text,
-    minUserAge: minUserAge ?? this.minUserAge,
-    showPopup: showPopup ?? this.showPopup,
-  );
+  }) =>
+      TermsOfService(
+        text: text ?? this.text,
+        minUserAge: minUserAge ?? this.minUserAge,
+        showPopup: showPopup ?? this.showPopup,
+      );
 
-// ignore: constant_identifier_names	
 // ignore: constant_identifier_names
   static const CONSTRUCTOR = 'termsOfService';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
