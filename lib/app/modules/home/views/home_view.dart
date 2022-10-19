@@ -27,10 +27,10 @@ class HomeView extends StatelessWidget {
             flex: 2,
             child: ListView.separated(
               itemBuilder: ((_, index) => Text(
-                    "${DateTime.now()}:  ${controller.logs[index]}",
+                    controller.logs[index],
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 20,
+                      fontSize: 18,
                     ),
                     textAlign: TextAlign.center,
                   )),
