@@ -10,35 +10,29 @@ class HomeView extends StatelessWidget {
     return GetBuilder<HomeController>(builder: (controller) {
       return Scaffold(
         appBar: AppBar(title: const Text("Test App")),
-        body: Column(children: [
-          Expanded(
-            child: Wrap(children: [
-              TextButton(
-                onPressed: (() => controller.requestPermission()),
-                child: const Text("Request Permission"),
-              ),
-              TextButton(
-                onPressed: (() => controller.startReceiver()),
-                child: const Text("Send auth state data"),
+        body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                  "getApplicationDocumentsDirectory: ${controller.agetApplicationDocumentsDirectory}"),
+              Text(
+                  "getTemporaryDirectory: ${controller.agetTemporaryDirectory}"),
+              Text(
+                  "getExternalStorageDirectories: ${controller.agetExternalStorageDirectories}"),
+              Text(
+                  "getExternalStorageDirectory: ${controller.agetExternalStorageDirectory}"),
+              Text(
+                  "getExternalCacheDirectories: ${controller.agetExternalCacheDirectories}"),
+              Text(
+                  "getApplicationSupportDirectory: ${controller.agetApplicationSupportDirectory}"),
+              Center(
+                child: TextButton(
+                  onPressed: ((() => controller.agetDirs())),
+                  child: const Text("Get dirs"),
+                ),
               ),
             ]),
-          ),
-          Expanded(
-            flex: 2,
-            child: ListView.separated(
-              itemBuilder: ((_, index) => Text(
-                    controller.logs[index],
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                    textAlign: TextAlign.center,
-                  )),
-              itemCount: controller.logs.length,
-              separatorBuilder: ((context, index) => const Divider()),
-            ),
-          ),
-        ]),
       );
     });
   }
