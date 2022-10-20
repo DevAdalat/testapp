@@ -24,5 +24,6 @@ class HomeController extends GetxController {
         cacheDir!.map(((e) => e.path)).toList().toString();
     final supportDir = await getApplicationSupportDirectory();
     agetApplicationSupportDirectory = supportDir.path;
+		update();
   }
 }
