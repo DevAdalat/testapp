@@ -49,7 +49,12 @@ class TdlibInterface {
 
     while (true) {
       await Future.delayed(100.milliseconds);
+			try {
+				
 			isolateTdlib.isolateTdlib();
+			} catch(e, st) {
+				isolateTdlib.port.send(e.toString());
+			}
 //    final tdResData = tg.td_json_client_receive(
 //        Pointer.fromAddress(isolateTdlib.client).cast<ffi.Void>(),
 //        isolateTdlib.timeOut);
