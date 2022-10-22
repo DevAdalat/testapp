@@ -8,6 +8,7 @@ import 'package:tfile/app/views/widgets/custom_snackbar.dart';
 import 'package:tfile/generated_bindings.dart';
 
 class SplashController extends GetxController {
+	var aaaa = "".obs;
   getAuthState() async {
 		NativeLibrary lib = NativeLibrary(DynamicLibrary.open("libtdjson.so"));
 		final client = lib.td_json_client_create();
@@ -15,7 +16,7 @@ class SplashController extends GetxController {
 		lib.td_json_client_send(client, authState.toJson().toCString());
 		final adalat = Adalat(client: client.address);
 		adalat.tdReceive().listen(((message) {
-			CustomSnackbar.customSnackbar(message);
+			aaaa.value = message.toString();
 		}));
  }
 }

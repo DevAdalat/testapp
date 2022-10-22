@@ -1,10 +1,17 @@
+import 'dart:ffi' show DynamicLibrary;
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:introduction_screen/introduction_screen.dart';
-import 'package:lottie/lottie.dart';
+import 'package:introduction_screen/introduction_screen.dart'
+    show DotsDecorator, IntroductionScreen, PageViewModel;
+import 'package:lottie/lottie.dart' show Lottie;
+import 'package:tfile/app/tdLibJson/tdlib_interface.dart';
+import 'package:tfile/app/views/widgets/custom_snackbar.dart'
+    show CustomSnackbar;
+import 'package:tfile/generated_bindings.dart' show NativeLibrary;
 
-import '../controllers/splash_controller.dart';
+import '../controllers/splash_controller.dart' show SplashController;
 
 class SplashView extends GetView<SplashController> {
   const SplashView({Key? key}) : super(key: key);
@@ -42,7 +49,20 @@ class SplashView extends GetView<SplashController> {
           ),
         ],
         done: const Text("Login"),
-        onDone: (() => controller.getAuthState()),
+        onDone: (() {
+          try {
+            CustomSnackbar.customSnackbar("Started");
+            NativeLibrary lib =
+                NativeLibrary(DynamicLibrary.open("libtdjson.so"));
+            final client = lib.td_json_client_create();
+            Adalat aaa = Adalat(client: client.address);
+            aaa.tdReceive().listen(((message) {
+              CustomSnackbar.customSnackbar(message.toString());
+            }));
+          } catch (e) {
+            CustomSnackbar.customSnackbar(e.toString());
+          }
+        }),
         next: const Text("Next"),
         dotsDecorator: DotsDecorator(
           size: const Size.square(10.0),
