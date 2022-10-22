@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'dart:ffi' as ffi;
 import 'dart:ffi' show nullptr;
+import 'dart:isolate';
 import 'package:tfile/generated_bindings.dart';
 import 'package:get/get.dart';
 import 'package:ffi/ffi.dart';
@@ -11,28 +13,26 @@ class TdlibInterface {
   void sendData(String request) {
     final requestPtr = request.toCString();
     tdJsonNative.td_json_client_send(tdlibClient, requestPtr);
+    malloc.free(requestPtr);
   }
 
-  String receiveData() {
-    final rawData = tdJsonNative.td_json_client_receive(tdlibClient, 10);
-    if (rawData == nullptr) {
-      return "{\"@type\": \"error\", \"message\":\"Null data Received\"}";
-    } else {
-      final data = rawData.toDString();
-			malloc.free(rawData);
-      return data;
-    }
+   ReceivePort receiveData() {
+    ReceivePort receivePort = ReceivePort();
+		final isoData = IsolateTdlib(lib: tdJsonNative, client: tdlibClient, port: receivePort.sendPort, timeOut: 10);
+    Isolate.spawn(_isolatetdReceive, isoData);
+		return receivePort;
   }
 
   String tdExecute(String request) {
     final rawRequest = request.toCString();
     final rawData =
         tdJsonNative.td_json_client_execute(tdlibClient, rawRequest);
-    if (rawData == ffi.Pointer.fromAddress(0)) {
-      return "{\"@type\": \"error\", \"message\":\"Null data Received\"}";
+    if (rawData == nullptr) {
+      return "empty_data";
     } else {
       final data = rawData.toDString();
-			malloc.free(rawData);
+      malloc.free(rawRequest);
+      malloc.free(rawData);
       return data;
     }
   }
@@ -41,6 +41,20 @@ class TdlibInterface {
     tdJsonNative.td_json_client_destroy(tdlibClient);
     malloc.free(tdlibClient);
     Get.delete<ffi.Pointer<ffi.Void>>(tag: "tdlibClient");
+  }
+
+  void _isolatetdReceive(IsolateTdlib isolateTdlib) async {
+    NativeLibrary tg = isolateTdlib.lib;
+    while (true) {
+      await Future.delayed(100.milliseconds);
+      final tdResData =
+          tg.td_json_client_receive(isolateTdlib.client, isolateTdlib.timeOut);
+      if (tdResData == nullptr) {
+        isolateTdlib.port.send("Empty data");
+      } else {
+        isolateTdlib.port.send(tdResData.toDString());
+      }
+    }
   }
 }
 
@@ -54,4 +68,20 @@ extension ToDString on ffi.Pointer<ffi.Char> {
   String toDString() {
     return cast<Utf8>().toDartString();
   }
+}
+
+class IsolateTdlib {
+  NativeLibrary lib;
+
+  ffi.Pointer<ffi.Void> client;
+
+  SendPort port;
+
+  double timeOut;
+
+  IsolateTdlib(
+      {required this.lib,
+      required this.client,
+      required this.port,
+      required this.timeOut,});
 }
