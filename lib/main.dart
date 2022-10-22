@@ -29,20 +29,22 @@ class BodyWidget extends StatelessWidget {
             onPressed: () async {
               //ReceivePort is to listen for the isolate to finish job
               final receivePort = ReceivePort();
+              final isoData =
+                  IsolateParam(port: receivePort.sendPort, data: 1000000000);
               // here we are passing method name and sendPort instance from ReceivePort as listener
-              await Isolate.spawn(
-                  computationallyExpensiveTask, receivePort.sendPort);
+              await Isolate.spawn(computationallyExpensiveTask, isoData);
               //It will listen for isolate function to finish
               receivePort.listen((sum) {
-								Get.snackbar("Isolate sum", sum.toString());
+                Get.snackbar("Isolate sum", sum.toString());
               });
             },
           ),
-					ElevatedButton(onPressed: (() {
-						int sum = computationallyExpensiveTask1(1000000000);
-						Get.snackbar("Sum", "$sum");
-
-					}), child: const Text("Start without isolate"))
+          ElevatedButton(
+              onPressed: (() {
+                int sum = computationallyExpensiveTask1(1000000000);
+                Get.snackbar("Sum", "$sum");
+              }),
+              child: const Text("Start without isolate"))
         ],
       ),
     );
@@ -58,10 +60,19 @@ int computationallyExpensiveTask1(int value) {
 }
 
 // this function should be either top level(outside class) or static method
-void computationallyExpensiveTask(SendPort sendPort) {
+void computationallyExpensiveTask(IsolateParam param) {
   var sum = 0;
-  for (var i = 0; i <= 1000000000; i++) {
+  for (var i = 0; i <= param.data; i++) {
     sum += i;
   }
-  sendPort.send(sum);
+  //Remember there is no return, we are sending sum to listener defined defore.
+  param.port.send(sum);
+}
+
+class IsolateParam {
+  SendPort port;
+
+  int data;
+
+  IsolateParam({required this.port, required this.data});
 }
