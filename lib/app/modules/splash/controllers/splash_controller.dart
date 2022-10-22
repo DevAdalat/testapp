@@ -13,14 +13,17 @@ class SplashController extends GetxController {
     const authState = GetAuthorizationState();
     tg.sendData(authState.toJson());
 		ReceivePort port = ReceivePort();
-		final isoData = IsolateTdlib(lib: tg.tdJsonNative, client: tg.tdlibClient, port: port.sendPort, timeOut: 10);
-		Isolate.spawn(isolateTdReceive, isoData);
+		Isolate.spawn(isolateCount, port.sendPort);
 		port.listen((message) {
 			CustomSnackbar.customSnackbar(message.toString());
 		});
-		
  }
+}
 
+isolateCount(SendPort port){
+	Timer.periodic(3.seconds, (timer) {
+		port.send("Hello from multithread");
+	});
 }
 
 isolateTdReceive(IsolateTdlib isolateTdlib) {
