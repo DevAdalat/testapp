@@ -19,7 +19,8 @@ class SplashController extends GetxController {
       while (true) {
         await Future.delayed(100.milliseconds);
         final tdData = tg.receiveData();
-        final jsonTdData = json.decode(tdData);
+        if (tdData != "empty_data") {
+        	final jsonTdData = json.decode(tdData);
         final tdEvent = jsonTdData["@type"];
         if (tdEvent == "updateAuthorizationState") {
           final authState = jsonTdData["authorization_state"];
@@ -28,7 +29,7 @@ class SplashController extends GetxController {
               useTestDc: true,
               databaseDirectory: TFileConfig.tdDatabasePath,
               filesDirectory: TFileConfig.tdFilesPath,
-              databaseEncryptionKey: base64.encode(utf8.encode("Ysuben")),
+              databaseEncryptionKey: base64.encode(utf8.encode("Adalat")),
               useFileDatabase: true,
               useChatInfoDatabase: true,
               useMessageDatabase: true,
@@ -57,6 +58,9 @@ class SplashController extends GetxController {
             CustomSnackbar.customSnackbar(tdEvent.toString());
           }
         }
+        } else {
+					CustomSnackbar.customSnackbar(tdData);
+				}
       }
     } catch (e) {
       CustomSnackbar.customSnackbar(e.toString());

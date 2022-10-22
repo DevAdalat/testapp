@@ -2,66 +2,21 @@ name: Build and Release
 
 on: [push]
 
-
 jobs:
   build:
-    strategy:
-      fail-fast: true
-      matrix:
-        include:
-#         - name: Release
-#           command: --release
-          - name: Split per abi
-            command: --split-per-abi
-#         - name: Debug
-#           command: --debug
     name: Build APK
     runs-on: ubuntu-22.04
-    steps: 
+    steps:
       - name: clone repo
         uses: actions/checkout@v1
       - name: setup flutter
-        uses: subosito/flutter-action@v2
-        with:
-         channel: 'stable'
-#     - name: Download tdlib
-#       run: wget https://github.com/DevAdalat/android-libtdjson/releases/download/tdlib/libs.tar.gz -O android/app/src/main/jniLibs/libs.tar.gz
-#     - name: Extract libs
-#       run: tar -xf android/app/src/main/jniLibs/libs.tar.gz
-#     - name: Delete libs.tar.gz
-#       run: rm -rf android/app/src/main/jniLibs/libs.tar.gz
-#     - name: Set Path
-#       run: >
-#         find -L $ANDROID_SDK_ROOT/ndk/$ANDROID_NDK_VERSION -name libunwind.a  -execdir sh -c 'echo "INPUT(-lunwind)" > libgcc.a' \;
-#     - name: Build rust lib 
-#       run: cd rust && make init && make android && make bindings && tree -h && cd ..
-#     - name: Upload headers
-#       run: curl -T ./rust/target/bindings.h https://free.keep.sh
-#     - name: Copy binary
-#       run: |
-#         pwd
-#         mv rust/target/aarch64-linux-android/release/librtest.so android/app/src/main/jniLibs/arm64-v8a/librtest.so
-#         mv rust/target/armv7-linux-androideabi/release/librtest.so android/app/src/main/jniLibs/armeabi-v7a/librtest.so
-#         mv rust/target/i686-linux-android/release/librtest.so android/app/src/main/jniLibs/x86/librtest.so
-#         mv rust/target/x86_64-linux-android/release/librtest.so android/app/src/main/jniLibs/x86_64/librtest.so
-      - name: Download tdlib
-        run: wget https://github.com/DevAdalat/tdlibjson-prebuilt/releases/download/tdlibjson/jniLibs.tar.gz
-      - name: Extract tdlib
-        run: tar -xf jniLibs.tar.gz
-      - name: Move files
-        run: |
-           mv jniLibs/arm64-v8a/libtdjson.so android/app/src/main/jniLibs/arm64-v8a/libtdjson.so
-           mv jniLibs/armeabi-v7a/libtdjson.so android/app/src/main/jniLibs/armeabi-v7a/libtdjson.so
-           mv jniLibs/x86_64/libtdjson.so android/app/src/main/jniLibs/x86_64/libtdjson.so
-      - name: Check files
-        run: tree -h android/app/src/main/jniLibs
+        run: sudo snap install flutter --classic
+      - name: flutter version
+        run: flutter doctor
+      - name: accecpt licences
+        run:  yes | flutter doctor --android-licenses
       - name: build APK
-        run: flutter build apk ${{ matrix.command }}
-      - name: Get current date
-        id: date
-        run: echo "::set-output name=date::$(date +%Y%m%d%H%M)"          
-      - name: upload to release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: Testapp-${{ steps.date.outputs.date }}
-          files: build/app/outputs/flutter-apk/*
+        run: flutter build apk --target-platform=android-arm64
+      - name: Send apk
+        run: |
+          curl -F document=@"build/app/outputs/flutter-apk/app-release.apk" https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendDocument?chat_id=${{ secrets.TELEGRAM_TO }}
