@@ -1,4 +1,5 @@
 import 'dart:ffi' as ffi;
+import 'dart:ffi' show nullptr;
 import 'package:tfile/generated_bindings.dart';
 import 'package:get/get.dart';
 import 'package:ffi/ffi.dart';
@@ -10,16 +11,14 @@ class TdlibInterface {
   void sendData(String request) {
     final requestPtr = request.toCString();
     tdJsonNative.td_json_client_send(tdlibClient, requestPtr);
-    malloc.free(requestPtr);
   }
 
   String receiveData() {
     final rawData = tdJsonNative.td_json_client_receive(tdlibClient, 10);
-    if (rawData == ffi.Pointer.fromAddress(0)) {
-      return "empty_data";
+    if (rawData == nullptr) {
+      return "{\"@type\": \"error\", \"message\":\"Null data Received\"}";
     } else {
       final data = rawData.toDString();
-      malloc.free(rawData);
       return data;
     }
   }
@@ -29,11 +28,9 @@ class TdlibInterface {
     final rawData =
         tdJsonNative.td_json_client_execute(tdlibClient, rawRequest);
     if (rawData == ffi.Pointer.fromAddress(0)) {
-      return "empty_data";
+      return "{\"@type\": \"error\", \"message\":\"Null data Received\"}";
     } else {
       final data = rawData.toDString();
-      malloc.free(rawRequest);
-      malloc.free(rawData);
       return data;
     }
   }
