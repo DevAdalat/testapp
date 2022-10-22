@@ -20,18 +20,18 @@ class SplashController extends GetxController {
         port: port.sendPort,
         client: tg.tdlibClient,
         timeOut: 10);
-    Isolate.spawn(isolateTdReceive, isoData);
+    Isolate.spawn(isolateCount, port.sendPort);
     port.listen((message) {
-      CustomSnackbar.customSnackbar(message.toString());
+      IsolateReceviveData data = message;
+      CustomSnackbar.customSnackbar(data.data);
     });
   }
 }
 
 isolateCount(SendPort port) {
-  int aa = 0;
   Timer.periodic(100.milliseconds, (timer) {
-    aa++;
-    port.send(aa.toString());
+    IsolateReceviveData data = IsolateReceviveData(data: "Hello");
+    port.send(data);
   });
 }
 
@@ -43,12 +43,14 @@ isolateTdReceive(IsolateTdlib isolateTdlib) async {
       await Future.delayed(100.milliseconds);
       final rawData = lib.td_json_client_receive(client, isolateTdlib.timeOut);
       if (rawData != nullptr) {
-        isolateTdlib.port.send(rawData.cast<Utf8>().toDartString());
-      } else {
-        isolateTdlib.port.send("Empty data");
-      }
+      } else {}
     }
   } catch (e) {
     CustomSnackbar.customSnackbar(e.toString());
   }
+}
+
+class IsolateReceviveData {
+  String data;
+  IsolateReceviveData({required this.data});
 }
