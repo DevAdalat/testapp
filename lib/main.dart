@@ -32,7 +32,8 @@ class BodyWidget extends StatelessWidget {
               final isoData =
                   IsolateParam(port: receivePort.sendPort, data: 1000000000);
               // here we are passing method name and sendPort instance from ReceivePort as listener
-              await Isolate.spawn(computationallyExpensiveTask, isoData);
+              Isolate.spawn(computationallyExpensiveTask, isoData);
+							Get.snackbar("Data","After isolate");
               //It will listen for isolate function to finish
               receivePort.listen((sum) {
                 Get.snackbar("Isolate sum", sum.toString());
