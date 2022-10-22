@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:isolate';
 
 import 'package:flutter/material.dart';
@@ -33,10 +34,10 @@ class BodyWidget extends StatelessWidget {
                   IsolateParam(port: receivePort.sendPort, data: 1000000000);
               // here we are passing method name and sendPort instance from ReceivePort as listener
               Isolate.spawn(computationallyExpensiveTask, isoData);
-							Get.snackbar("Data","After isolate");
+							Get.snackbar("Data","After isolate", duration: 1.seconds);
               //It will listen for isolate function to finish
               receivePort.listen((sum) {
-                Get.snackbar("Isolate sum", sum.toString());
+                Get.snackbar("Isolate sum", sum.toString(), duration: 1.seconds);
               });
             },
           ),
@@ -62,13 +63,12 @@ int computationallyExpensiveTask1(int value) {
 
 // this function should be either top level(outside class) or static method
 void computationallyExpensiveTask(IsolateParam param) {
-  var sum = 0;
-  for (var i = 0; i <= param.data; i++) {
-    sum += i;
-  }
-  //Remember there is no return, we are sending sum to listener defined defore.
-  param.port.send(sum);
-}
+	int data = 1;
+	Timer.periodic(3.seconds, (timer) {
+		data++;
+		param.port.send("Hello from dart multithread $data");
+	});
+ }
 
 class IsolateParam {
   SendPort port;
