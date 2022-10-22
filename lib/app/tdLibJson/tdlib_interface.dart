@@ -50,7 +50,6 @@ class TdlibInterface {
     while (true) {
       await Future.delayed(100.milliseconds);
 			try {
-				
 			isolateTdlib.isolateTdlib();
 			} catch(e, st) {
 				isolateTdlib.port.send(e.toString());
@@ -97,3 +96,34 @@ class IsolateTdlib {
 		port.send(ptrData.address);
 	}
 }
+
+class Adalat {
+      int client;
+      Adalat({required this.client});
+   
+      ReceivePort tdReceive() {
+        ReceivePort port = ReceivePort();
+        IsolateDataTransfer isoTransfer =
+            IsolateDataTransfer(client: client, port: port.sendPort);
+        Isolate.spawn(_isolateWork, isoTransfer);
+        return port;
+      }
+   
+      void _isolateWork(IsolateDataTransfer data) async {
+        final lib = NativeLibrary(DynamicLibrary.open(
+            "libtdjson.so"));
+   
+        while (true) {
+          await Future.delayed(Duration(milliseconds: 100));
+          final ptrdata = lib.td_json_client_receive(
+              Pointer.fromAddress(data.client).cast<Void>(), 10);
+          data.port.send(ptrdata.address);
+        }
+      }
+    }
+
+	 class IsolateDataTransfer {
+     int client;
+     SendPort port;
+     IsolateDataTransfer({required this.client, required this.port});
+   }
