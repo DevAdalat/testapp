@@ -37,8 +37,8 @@ class SendMessageAlbum extends TdFunction {
    "chat_id":$chatId,
    "message_thread_id":$messageThreadId,
    "reply_to_message_id":$replyToMessageId,
-   "options":"${options?.toJson()}",
-   "input_message_contents":"${inputMessageContents.map((i) => i.toJson()).toList()}",
+   "options":${options?.toJson()},
+   "input_message_contents":${inputMessageContents.map((i) => i.toJson()).toList()},
    "only_preview":$onlyPreview
 }
 	""";

@@ -32,7 +32,7 @@ class TMeUrls extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "urls":"${urls.map((i) => i.toJson()).toList()}"
+   "urls":${urls.map((i) => i.toJson()).toList()}
 }
 	""";
   }

@@ -19,7 +19,7 @@ class AddChatToList extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "chat_list":"${chatList.toJson()}"
+   "chat_list":${chatList.toJson()}
 }
 	""";
   }

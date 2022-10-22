@@ -19,7 +19,7 @@ class SetUserSupportInfo extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "user_id":$userId,
-   "message":"${message.toJson()}"
+   "message":${message.toJson()}
 }
 	""";
   }

@@ -34,7 +34,7 @@ class LanguagePackStrings extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "strings":"${strings.map((i) => i.toJson()).toList()}"
+   "strings":${strings.map((i) => i.toJson()).toList()}
 }
 	""";
   }

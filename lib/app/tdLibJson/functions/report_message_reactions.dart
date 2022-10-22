@@ -24,7 +24,7 @@ class ReportMessageReactions extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "message_id":$messageId,
-   "sender_id":"${senderId.toJson()}"
+   "sender_id":${senderId.toJson()}
 }
 	""";
   }

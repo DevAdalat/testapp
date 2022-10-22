@@ -50,9 +50,9 @@ class OptimizeStorage extends TdFunction {
    "ttl":$ttl,
    "count":$count,
    "immunity_delay":$immunityDelay,
-   "file_types":"${fileTypes.map((i) => i.toJson()).toList()}",
-   "chat_ids":"${chatIds.map((i) => i).toList()}",
-   "exclude_chat_ids":"${excludeChatIds.map((i) => i).toList()}",
+   "file_types":${fileTypes.map((i) => i.toJson()).toList()},
+   "chat_ids":${chatIds.map((i) => i).toList()},
+   "exclude_chat_ids":${excludeChatIds.map((i) => i).toList()},
    "return_deleted_file_statistics":$returnDeletedFileStatistics,
    "chat_limit":$chatLimit
 }

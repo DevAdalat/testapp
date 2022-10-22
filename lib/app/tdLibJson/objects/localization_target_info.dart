@@ -35,7 +35,7 @@ class LocalizationTargetInfo extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "language_packs":"${languagePacks.map((i) => i.toJson()).toList()}"
+   "language_packs":${languagePacks.map((i) => i.toJson()).toList()}
 }
 	""";
   }

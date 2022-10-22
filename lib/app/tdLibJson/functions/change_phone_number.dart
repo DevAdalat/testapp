@@ -19,7 +19,7 @@ class ChangePhoneNumber extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "phone_number":"$phoneNumber",
-   "settings":"${settings?.toJson()}"
+   "settings":${settings?.toJson()}
 }
 	""";
   }

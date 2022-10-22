@@ -19,7 +19,7 @@ class SetMenuButton extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "user_id":$userId,
-   "menu_button":"${menuButton.toJson()}"
+   "menu_button":${menuButton.toJson()}
 }
 	""";
   }

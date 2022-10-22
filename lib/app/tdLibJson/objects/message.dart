@@ -225,10 +225,10 @@ class Message extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "id":$id,
-   "sender_id":"${senderId.toJson()}",
+   "sender_id":${senderId.toJson()},
    "chat_id":$chatId,
-   "sending_state":"${sendingState?.toJson()}",
-   "scheduling_state":"${schedulingState?.toJson()}",
+   "sending_state":${sendingState?.toJson()},
+   "scheduling_state":${schedulingState?.toJson()},
    "is_outgoing":$isOutgoing,
    "is_pinned":$isPinned,
    "can_be_edited":$canBeEdited,
@@ -247,9 +247,9 @@ class Message extends TdObject {
    "contains_unread_mention":$containsUnreadMention,
    "date":$date,
    "edit_date":$editDate,
-   "forward_info":"${forwardInfo?.toJson()}",
-   "interaction_info":"${interactionInfo?.toJson()}",
-   "unread_reactions":"${unreadReactions.map((i) => i.toJson()).toList()}",
+   "forward_info":${forwardInfo?.toJson()},
+   "interaction_info":${interactionInfo?.toJson()},
+   "unread_reactions":${unreadReactions.map((i) => i.toJson()).toList()},
    "reply_in_chat_id":$replyInChatId,
    "reply_to_message_id":$replyToMessageId,
    "message_thread_id":$messageThreadId,
@@ -259,8 +259,8 @@ class Message extends TdObject {
    "author_signature":"$authorSignature",
    "media_album_id":$mediaAlbumId,
    "restriction_reason":"$restrictionReason",
-   "content":"${content.toJson()}",
-   "reply_markup":"${replyMarkup?.toJson()}"
+   "content":${content.toJson()},
+   "reply_markup":${replyMarkup?.toJson()}
 }
 	""";
   }

@@ -124,7 +124,7 @@ class OptionValueEmpty extends OptionValue {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

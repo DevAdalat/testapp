@@ -18,8 +18,8 @@ class SetAutoDownloadSettings extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "settings":"${settings.toJson()}",
-   "type":"${type.toJson()}"
+   "settings":${settings.toJson()},
+   "type":${type.toJson()}
 }
 	""";
   }

@@ -290,7 +290,7 @@ class InlineKeyboardButtonTypeCallbackGame extends InlineKeyboardButtonType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -367,7 +367,7 @@ class InlineKeyboardButtonTypeBuy extends InlineKeyboardButtonType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

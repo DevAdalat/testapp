@@ -48,7 +48,7 @@ class MessageSendingStatePending extends MessageSendingState {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

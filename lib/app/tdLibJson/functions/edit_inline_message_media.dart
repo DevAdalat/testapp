@@ -23,8 +23,8 @@ class EditInlineMessageMedia extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "inline_message_id":"$inlineMessageId",
-   "reply_markup":"${replyMarkup?.toJson()}",
-   "input_message_content":"${inputMessageContent.toJson()}"
+   "reply_markup":${replyMarkup?.toJson()},
+   "input_message_content":${inputMessageContent.toJson()}
 }
 	""";
   }

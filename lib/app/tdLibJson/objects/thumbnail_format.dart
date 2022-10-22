@@ -63,7 +63,7 @@ class ThumbnailFormatJpeg extends ThumbnailFormat {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -90,7 +90,7 @@ class ThumbnailFormatGif extends ThumbnailFormat {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -117,7 +117,7 @@ class ThumbnailFormatMpeg4 extends ThumbnailFormat {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -144,7 +144,7 @@ class ThumbnailFormatPng extends ThumbnailFormat {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -171,7 +171,7 @@ class ThumbnailFormatTgs extends ThumbnailFormat {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -198,7 +198,7 @@ class ThumbnailFormatWebm extends ThumbnailFormat {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -225,7 +225,7 @@ class ThumbnailFormatWebp extends ThumbnailFormat {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

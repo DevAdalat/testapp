@@ -25,8 +25,8 @@ class PageBlockCaption extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}",
-   "credit":"${credit.toJson()}"
+   "text":${text.toJson()},
+   "credit":${credit.toJson()}
 }
 	""";
   }

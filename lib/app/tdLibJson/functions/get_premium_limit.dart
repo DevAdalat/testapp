@@ -14,7 +14,7 @@ class GetPremiumLimit extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "limit_type":"${limitType.toJson()}"
+   "limit_type":${limitType.toJson()}
 }
 	""";
   }

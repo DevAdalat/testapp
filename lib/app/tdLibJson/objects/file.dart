@@ -54,8 +54,8 @@ class File extends TdObject {
    "id":$id,
    "size":$size,
    "expected_size":$expectedSize,
-   "local":"${local.toJson()}",
-   "remote":"${remote.toJson()}"
+   "local":${local.toJson()},
+   "remote":${remote.toJson()}
 }
 	""";
   }

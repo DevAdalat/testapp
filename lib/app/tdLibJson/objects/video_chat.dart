@@ -33,7 +33,7 @@ class VideoChat extends TdObject {
    "@type":"$CONSTRUCTOR",
    "group_call_id":$groupCallId,
    "has_participants":$hasParticipants,
-   "default_participant_id":"${defaultParticipantId?.toJson()}"
+   "default_participant_id":${defaultParticipantId?.toJson()}
 }
 	""";
   }

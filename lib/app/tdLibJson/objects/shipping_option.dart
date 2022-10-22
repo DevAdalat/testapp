@@ -33,7 +33,7 @@ class ShippingOption extends TdObject {
    "@type":"$CONSTRUCTOR",
    "id":"$id",
    "title":"$title",
-   "price_parts":"${priceParts.map((i) => i.toJson()).toList()}"
+   "price_parts":${priceParts.map((i) => i.toJson()).toList()}
 }
 	""";
   }

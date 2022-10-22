@@ -46,7 +46,7 @@ class PassportAuthorizationForm extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "id":$id,
-   "required_elements":"${requiredElements.map((i) => i.toJson()).toList()}",
+   "required_elements":${requiredElements.map((i) => i.toJson()).toList()},
    "privacy_policy_url":"$privacyPolicyUrl"
 }
 	""";

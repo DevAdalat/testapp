@@ -39,8 +39,8 @@ class ImportedContacts extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "user_ids":"${userIds.map((i) => i).toList()}",
-   "importer_count":"${importerCount.map((i) => i).toList()}"
+   "user_ids":${userIds.map((i) => i).toList()},
+   "importer_count":${importerCount.map((i) => i).toList()}
 }
 	""";
   }

@@ -34,11 +34,11 @@ class SendPaymentForm extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "input_invoice":"${inputInvoice.toJson()}",
+   "input_invoice":${inputInvoice.toJson()},
    "payment_form_id":$paymentFormId,
    "order_info_id":"$orderInfoId",
    "shipping_option_id":"$shippingOptionId",
-   "credentials":"${credentials.toJson()}",
+   "credentials":${credentials.toJson()},
    "tip_amount":$tipAmount
 }
 	""";

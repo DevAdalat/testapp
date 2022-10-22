@@ -148,8 +148,8 @@ class InputInlineQueryResultAnimation extends InputInlineQueryResult {
    "video_duration":$videoDuration,
    "video_width":$videoWidth,
    "video_height":$videoHeight,
-   "reply_markup":"${replyMarkup?.toJson()}",
-   "input_message_content":"${inputMessageContent.toJson()}"
+   "reply_markup":${replyMarkup?.toJson()},
+   "input_message_content":${inputMessageContent.toJson()}
 }
 	""";
   }
@@ -265,8 +265,8 @@ class InputInlineQueryResultArticle extends InputInlineQueryResult {
    "thumbnail_url":"$thumbnailUrl",
    "thumbnail_width":$thumbnailWidth,
    "thumbnail_height":$thumbnailHeight,
-   "reply_markup":"${replyMarkup?.toJson()}",
-   "input_message_content":"${inputMessageContent.toJson()}"
+   "reply_markup":${replyMarkup?.toJson()},
+   "input_message_content":${inputMessageContent.toJson()}
 }
 	""";
   }
@@ -362,8 +362,8 @@ class InputInlineQueryResultAudio extends InputInlineQueryResult {
    "performer":"$performer",
    "audio_url":"$audioUrl",
    "audio_duration":$audioDuration,
-   "reply_markup":"${replyMarkup?.toJson()}",
-   "input_message_content":"${inputMessageContent.toJson()}"
+   "reply_markup":${replyMarkup?.toJson()},
+   "input_message_content":${inputMessageContent.toJson()}
 }
 	""";
   }
@@ -449,12 +449,12 @@ class InputInlineQueryResultContact extends InputInlineQueryResult {
   {
    "@type":"$CONSTRUCTOR",
    "id":"$id",
-   "contact":"${contact.toJson()}",
+   "contact":${contact.toJson()},
    "thumbnail_url":"$thumbnailUrl",
    "thumbnail_width":$thumbnailWidth,
    "thumbnail_height":$thumbnailHeight,
-   "reply_markup":"${replyMarkup?.toJson()}",
-   "input_message_content":"${inputMessageContent.toJson()}"
+   "reply_markup":${replyMarkup?.toJson()},
+   "input_message_content":${inputMessageContent.toJson()}
 }
 	""";
   }
@@ -562,8 +562,8 @@ class InputInlineQueryResultDocument extends InputInlineQueryResult {
    "thumbnail_url":"$thumbnailUrl",
    "thumbnail_width":$thumbnailWidth,
    "thumbnail_height":$thumbnailHeight,
-   "reply_markup":"${replyMarkup?.toJson()}",
-   "input_message_content":"${inputMessageContent.toJson()}"
+   "reply_markup":${replyMarkup?.toJson()},
+   "input_message_content":${inputMessageContent.toJson()}
 }
 	""";
   }
@@ -635,7 +635,7 @@ class InputInlineQueryResultGame extends InputInlineQueryResult {
    "@type":"$CONSTRUCTOR",
    "id":"$id",
    "game_short_name":"$gameShortName",
-   "reply_markup":"${replyMarkup?.toJson()}"
+   "reply_markup":${replyMarkup?.toJson()}
 }
 	""";
   }
@@ -723,14 +723,14 @@ class InputInlineQueryResultLocation extends InputInlineQueryResult {
   {
    "@type":"$CONSTRUCTOR",
    "id":"$id",
-   "location":"${location.toJson()}",
+   "location":${location.toJson()},
    "live_period":$livePeriod,
    "title":"$title",
    "thumbnail_url":"$thumbnailUrl",
    "thumbnail_width":$thumbnailWidth,
    "thumbnail_height":$thumbnailHeight,
-   "reply_markup":"${replyMarkup?.toJson()}",
-   "input_message_content":"${inputMessageContent.toJson()}"
+   "reply_markup":${replyMarkup?.toJson()},
+   "input_message_content":${inputMessageContent.toJson()}
 }
 	""";
   }
@@ -836,8 +836,8 @@ class InputInlineQueryResultPhoto extends InputInlineQueryResult {
    "photo_url":"$photoUrl",
    "photo_width":$photoWidth,
    "photo_height":$photoHeight,
-   "reply_markup":"${replyMarkup?.toJson()}",
-   "input_message_content":"${inputMessageContent.toJson()}"
+   "reply_markup":${replyMarkup?.toJson()},
+   "input_message_content":${inputMessageContent.toJson()}
 }
 	""";
   }
@@ -931,8 +931,8 @@ class InputInlineQueryResultSticker extends InputInlineQueryResult {
    "sticker_url":"$stickerUrl",
    "sticker_width":$stickerWidth,
    "sticker_height":$stickerHeight,
-   "reply_markup":"${replyMarkup?.toJson()}",
-   "input_message_content":"${inputMessageContent.toJson()}"
+   "reply_markup":${replyMarkup?.toJson()},
+   "input_message_content":${inputMessageContent.toJson()}
 }
 	""";
   }
@@ -1018,12 +1018,12 @@ class InputInlineQueryResultVenue extends InputInlineQueryResult {
   {
    "@type":"$CONSTRUCTOR",
    "id":"$id",
-   "venue":"${venue.toJson()}",
+   "venue":${venue.toJson()},
    "thumbnail_url":"$thumbnailUrl",
    "thumbnail_width":$thumbnailWidth,
    "thumbnail_height":$thumbnailHeight,
-   "reply_markup":"${replyMarkup?.toJson()}",
-   "input_message_content":"${inputMessageContent.toJson()}"
+   "reply_markup":${replyMarkup?.toJson()},
+   "input_message_content":${inputMessageContent.toJson()}
 }
 	""";
   }
@@ -1137,8 +1137,8 @@ class InputInlineQueryResultVideo extends InputInlineQueryResult {
    "video_width":$videoWidth,
    "video_height":$videoHeight,
    "video_duration":$videoDuration,
-   "reply_markup":"${replyMarkup?.toJson()}",
-   "input_message_content":"${inputMessageContent.toJson()}"
+   "reply_markup":${replyMarkup?.toJson()},
+   "input_message_content":${inputMessageContent.toJson()}
 }
 	""";
   }
@@ -1230,8 +1230,8 @@ class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
    "title":"$title",
    "voice_note_url":"$voiceNoteUrl",
    "voice_note_duration":$voiceNoteDuration,
-   "reply_markup":"${replyMarkup?.toJson()}",
-   "input_message_content":"${inputMessageContent.toJson()}"
+   "reply_markup":${replyMarkup?.toJson()},
+   "input_message_content":${inputMessageContent.toJson()}
 }
 	""";
   }

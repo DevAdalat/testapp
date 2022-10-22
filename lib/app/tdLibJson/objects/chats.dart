@@ -38,7 +38,7 @@ class Chats extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "total_count":$totalCount,
-   "chat_ids":"${chatIds.map((i) => i).toList()}"
+   "chat_ids":${chatIds.map((i) => i).toList()}
 }
 	""";
   }

@@ -47,9 +47,9 @@ class PremiumState extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "state":"${state.toJson()}",
-   "payment_options":"${paymentOptions.map((i) => i.toJson()).toList()}",
-   "animations":"${animations.map((i) => i.toJson()).toList()}"
+   "state":${state.toJson()},
+   "payment_options":${paymentOptions.map((i) => i.toJson()).toList()},
+   "animations":${animations.map((i) => i.toJson()).toList()}
 }
 	""";
   }

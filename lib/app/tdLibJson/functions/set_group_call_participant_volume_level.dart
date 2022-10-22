@@ -23,7 +23,7 @@ class SetGroupCallParticipantVolumeLevel extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "group_call_id":$groupCallId,
-   "participant_id":"${participantId.toJson()}",
+   "participant_id":${participantId.toJson()},
    "volume_level":$volumeLevel
 }
 	""";

@@ -58,7 +58,7 @@ class ConnectionStateWaitingForNetwork extends ConnectionState {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -87,7 +87,7 @@ class ConnectionStateConnectingToProxy extends ConnectionState {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -115,7 +115,7 @@ class ConnectionStateConnecting extends ConnectionState {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -142,7 +142,7 @@ class ConnectionStateUpdating extends ConnectionState {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -169,7 +169,7 @@ class ConnectionStateReady extends ConnectionState {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

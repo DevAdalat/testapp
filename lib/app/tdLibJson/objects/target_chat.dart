@@ -51,7 +51,7 @@ class TargetChatCurrent extends TargetChat {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -150,7 +150,7 @@ class TargetChatInternalLink extends TargetChat {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "link":"${link.toJson()}"
+   "link":${link.toJson()}
 }
 	""";
   }

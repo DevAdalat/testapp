@@ -38,8 +38,8 @@ class GetChatEventLog extends TdFunction {
    "query":"$query",
    "from_event_id":$fromEventId,
    "limit":$limit,
-   "filters":"${filters?.toJson()}",
-   "user_ids":"${userIds.map((i) => i).toList()}"
+   "filters":${filters?.toJson()},
+   "user_ids":${userIds.map((i) => i).toList()}
 }
 	""";
   }

@@ -22,7 +22,7 @@ class GetTrendingStickerSets extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "sticker_type":"${stickerType.toJson()}",
+   "sticker_type":${stickerType.toJson()},
    "offset":$offset,
    "limit":$limit
 }

@@ -110,11 +110,11 @@ class GroupCallParticipant extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "participant_id":"${participantId.toJson()}",
+   "participant_id":${participantId.toJson()},
    "audio_source_id":$audioSourceId,
    "screen_sharing_audio_source_id":$screenSharingAudioSourceId,
-   "video_info":"${videoInfo?.toJson()}",
-   "screen_sharing_video_info":"${screenSharingVideoInfo?.toJson()}",
+   "video_info":${videoInfo?.toJson()},
+   "screen_sharing_video_info":${screenSharingVideoInfo?.toJson()},
    "bio":"$bio",
    "is_current_user":$isCurrentUser,
    "is_speaking":$isSpeaking,

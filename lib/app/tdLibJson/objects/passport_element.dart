@@ -101,7 +101,7 @@ class PassportElementPersonalDetails extends PassportElement {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "personal_details":"${personalDetails.toJson()}"
+   "personal_details":${personalDetails.toJson()}
 }
 	""";
   }
@@ -157,7 +157,7 @@ class PassportElementPassport extends PassportElement {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "passport":"${passport.toJson()}"
+   "passport":${passport.toJson()}
 }
 	""";
   }
@@ -213,7 +213,7 @@ class PassportElementDriverLicense extends PassportElement {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "driver_license":"${driverLicense.toJson()}"
+   "driver_license":${driverLicense.toJson()}
 }
 	""";
   }
@@ -269,7 +269,7 @@ class PassportElementIdentityCard extends PassportElement {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "identity_card":"${identityCard.toJson()}"
+   "identity_card":${identityCard.toJson()}
 }
 	""";
   }
@@ -325,7 +325,7 @@ class PassportElementInternalPassport extends PassportElement {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "internal_passport":"${internalPassport.toJson()}"
+   "internal_passport":${internalPassport.toJson()}
 }
 	""";
   }
@@ -381,7 +381,7 @@ class PassportElementAddress extends PassportElement {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "address":"${address.toJson()}"
+   "address":${address.toJson()}
 }
 	""";
   }
@@ -437,7 +437,7 @@ class PassportElementUtilityBill extends PassportElement {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "utility_bill":"${utilityBill.toJson()}"
+   "utility_bill":${utilityBill.toJson()}
 }
 	""";
   }
@@ -493,7 +493,7 @@ class PassportElementBankStatement extends PassportElement {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "bank_statement":"${bankStatement.toJson()}"
+   "bank_statement":${bankStatement.toJson()}
 }
 	""";
   }
@@ -549,7 +549,7 @@ class PassportElementRentalAgreement extends PassportElement {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "rental_agreement":"${rentalAgreement.toJson()}"
+   "rental_agreement":${rentalAgreement.toJson()}
 }
 	""";
   }
@@ -607,7 +607,7 @@ class PassportElementPassportRegistration extends PassportElement {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "passport_registration":"${passportRegistration.toJson()}"
+   "passport_registration":${passportRegistration.toJson()}
 }
 	""";
   }
@@ -665,7 +665,7 @@ class PassportElementTemporaryRegistration extends PassportElement {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "temporary_registration":"${temporaryRegistration.toJson()}"
+   "temporary_registration":${temporaryRegistration.toJson()}
 }
 	""";
   }

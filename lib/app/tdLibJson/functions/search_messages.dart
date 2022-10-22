@@ -46,13 +46,13 @@ class SearchMessages extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "chat_list":"${chatList?.toJson()}",
+   "chat_list":${chatList?.toJson()},
    "query":"$query",
    "offset_date":$offsetDate,
    "offset_chat_id":$offsetChatId,
    "offset_message_id":$offsetMessageId,
    "limit":$limit,
-   "filter":"${filter?.toJson()}",
+   "filter":${filter?.toJson()},
    "min_date":$minDate,
    "max_date":$maxDate
 }

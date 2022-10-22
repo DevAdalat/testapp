@@ -19,7 +19,7 @@ class GetBackgroundUrl extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "name":"$name",
-   "type":"${type.toJson()}"
+   "type":${type.toJson()}
 }
 	""";
   }

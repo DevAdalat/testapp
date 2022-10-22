@@ -35,7 +35,7 @@ class ChatAdministrators extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "administrators":"${administrators.map((i) => i.toJson()).toList()}"
+   "administrators":${administrators.map((i) => i.toJson()).toList()}
 }
 	""";
   }

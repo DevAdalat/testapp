@@ -33,7 +33,7 @@ class CreateNewSupergroupChat extends TdFunction {
    "title":"$title",
    "is_channel":$isChannel,
    "description":"$description",
-   "location":"${location?.toJson()}",
+   "location":${location?.toJson()},
    "for_import":$forImport
 }
 	""";

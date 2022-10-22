@@ -19,7 +19,7 @@ class AcceptCall extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "call_id":$callId,
-   "protocol":"${protocol.toJson()}"
+   "protocol":${protocol.toJson()}
 }
 	""";
   }

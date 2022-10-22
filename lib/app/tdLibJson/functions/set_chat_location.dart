@@ -19,7 +19,7 @@ class SetChatLocation extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "location":"${location.toJson()}"
+   "location":${location.toJson()}
 }
 	""";
   }

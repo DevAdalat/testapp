@@ -99,7 +99,7 @@ class InputChatPhotoStatic extends InputChatPhoto {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "photo":"${photo.toJson()}"
+   "photo":${photo.toJson()}
 }
 	""";
   }
@@ -144,7 +144,7 @@ class InputChatPhotoAnimation extends InputChatPhoto {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "animation":"${animation.toJson()}",
+   "animation":${animation.toJson()},
    "main_frame_timestamp":$mainFrameTimestamp
 }
 	""";

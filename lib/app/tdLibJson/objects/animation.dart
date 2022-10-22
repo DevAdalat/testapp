@@ -69,9 +69,9 @@ class Animation extends TdObject {
    "file_name":"$fileName",
    "mime_type":"$mimeType",
    "has_stickers":$hasStickers,
-   "minithumbnail":"${minithumbnail?.toJson()}",
-   "thumbnail":"${thumbnail?.toJson()}",
-   "animation":"${animation.toJson()}"
+   "minithumbnail":${minithumbnail?.toJson()},
+   "thumbnail":${thumbnail?.toJson()},
+   "animation":${animation.toJson()}
 }
 	""";
   }

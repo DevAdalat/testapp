@@ -83,13 +83,13 @@ class EmojiReaction extends TdObject {
    "emoji":"$emoji",
    "title":"$title",
    "is_active":$isActive,
-   "static_icon":"${staticIcon.toJson()}",
-   "appear_animation":"${appearAnimation.toJson()}",
-   "select_animation":"${selectAnimation.toJson()}",
-   "activate_animation":"${activateAnimation.toJson()}",
-   "effect_animation":"${effectAnimation.toJson()}",
-   "around_animation":"${aroundAnimation?.toJson()}",
-   "center_animation":"${centerAnimation?.toJson()}"
+   "static_icon":${staticIcon.toJson()},
+   "appear_animation":${appearAnimation.toJson()},
+   "select_animation":${selectAnimation.toJson()},
+   "activate_animation":${activateAnimation.toJson()},
+   "effect_animation":${effectAnimation.toJson()},
+   "around_animation":${aroundAnimation?.toJson()},
+   "center_animation":${centerAnimation?.toJson()}
 }
 	""";
   }

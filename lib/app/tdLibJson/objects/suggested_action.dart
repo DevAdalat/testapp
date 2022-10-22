@@ -61,7 +61,7 @@ class SuggestedActionEnableArchiveAndMuteNewChats extends SuggestedAction {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -89,7 +89,7 @@ class SuggestedActionCheckPassword extends SuggestedAction {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -117,7 +117,7 @@ class SuggestedActionCheckPhoneNumber extends SuggestedAction {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -145,7 +145,7 @@ class SuggestedActionViewChecksHint extends SuggestedAction {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

@@ -155,7 +155,7 @@ class InternalLinkTypeActiveSessions extends InternalLinkType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -220,7 +220,7 @@ class InternalLinkTypeAttachmentMenuBot extends InternalLinkType {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "target_chat":"${targetChat.toJson()}",
+   "target_chat":${targetChat.toJson()},
    "bot_username":"$botUsername",
    "url":"$url"
 }
@@ -481,7 +481,7 @@ class InternalLinkTypeBotStartInGroup extends InternalLinkType {
    "@type":"$CONSTRUCTOR",
    "bot_username":"$botUsername",
    "start_parameter":"$startParameter",
-   "administrator_rights":"${administratorRights?.toJson()}"
+   "administrator_rights":${administratorRights?.toJson()}
 }
 	""";
   }
@@ -548,7 +548,7 @@ class InternalLinkTypeBotAddToChannel extends InternalLinkType {
   {
    "@type":"$CONSTRUCTOR",
    "bot_username":"$botUsername",
-   "administrator_rights":"${administratorRights.toJson()}"
+   "administrator_rights":${administratorRights.toJson()}
 }
 	""";
   }
@@ -601,7 +601,7 @@ class InternalLinkTypeChangePhoneNumber extends InternalLinkType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -705,7 +705,7 @@ class InternalLinkTypeFilterSettings extends InternalLinkType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -994,7 +994,7 @@ class InternalLinkTypeLanguageSettings extends InternalLinkType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -1109,7 +1109,7 @@ class InternalLinkTypeMessageDraft extends InternalLinkType {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}",
+   "text":${text.toJson()},
    "contains_link":$containsLink
 }
 	""";
@@ -1373,7 +1373,7 @@ class InternalLinkTypePrivacyAndSecuritySettings extends InternalLinkType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -1439,7 +1439,7 @@ class InternalLinkTypeProxy extends InternalLinkType {
    "@type":"$CONSTRUCTOR",
    "server":"$server",
    "port":$port,
-   "type":"${type.toJson()}"
+   "type":${type.toJson()}
 }
 	""";
   }
@@ -1550,7 +1550,7 @@ class InternalLinkTypeQrCodeAuthentication extends InternalLinkType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -1599,7 +1599,7 @@ class InternalLinkTypeRestorePurchases extends InternalLinkType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -1647,7 +1647,7 @@ class InternalLinkTypeSettings extends InternalLinkType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -1807,7 +1807,7 @@ class InternalLinkTypeThemeSettings extends InternalLinkType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -1912,7 +1912,7 @@ class InternalLinkTypeUnsupportedProxy extends InternalLinkType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

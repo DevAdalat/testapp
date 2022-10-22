@@ -33,7 +33,7 @@ class TestVectorString extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "value":"${value.map((i) => i).toList()}"
+   "value":${value.map((i) => i).toList()}
 }
 	""";
   }

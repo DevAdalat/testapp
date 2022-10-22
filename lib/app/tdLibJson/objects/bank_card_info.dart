@@ -39,7 +39,7 @@ class BankCardInfo extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "title":"$title",
-   "actions":"${actions.map((i) => i.toJson()).toList()}"
+   "actions":${actions.map((i) => i.toJson()).toList()}
 }
 	""";
   }

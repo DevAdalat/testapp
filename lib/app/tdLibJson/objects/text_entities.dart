@@ -33,7 +33,7 @@ class TextEntities extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "entities":"${entities.map((i) => i.toJson()).toList()}"
+   "entities":${entities.map((i) => i.toJson()).toList()}
 }
 	""";
   }

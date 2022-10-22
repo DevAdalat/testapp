@@ -44,7 +44,7 @@ class AddedReactions extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "total_count":$totalCount,
-   "reactions":"${reactions.map((i) => i.toJson()).toList()}",
+   "reactions":${reactions.map((i) => i.toJson()).toList()},
    "next_offset":"$nextOffset"
 }
 	""";

@@ -71,7 +71,7 @@ class CheckChatUsernameResultOk extends CheckChatUsernameResult {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -120,7 +120,7 @@ class CheckChatUsernameResultUsernameInvalid extends CheckChatUsernameResult {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -169,7 +169,7 @@ class CheckChatUsernameResultUsernameOccupied extends CheckChatUsernameResult {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -219,7 +219,7 @@ class CheckChatUsernameResultPublicChatsTooMuch
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -269,7 +269,7 @@ class CheckChatUsernameResultPublicGroupsUnavailable
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

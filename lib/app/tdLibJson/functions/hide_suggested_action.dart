@@ -14,7 +14,7 @@ class HideSuggestedAction extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "action":"${action.toJson()}"
+   "action":${action.toJson()}
 }
 	""";
   }

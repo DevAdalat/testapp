@@ -48,7 +48,7 @@ class ChatAvailableReactionsAll extends ChatAvailableReactions {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -85,7 +85,7 @@ class ChatAvailableReactionsSome extends ChatAvailableReactions {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "reactions":"${reactions.map((i) => i.toJson()).toList()}"
+   "reactions":${reactions.map((i) => i.toJson()).toList()}
 }
 	""";
   }

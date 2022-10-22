@@ -34,7 +34,7 @@ class UserPrivacySettingRules extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "rules":"${rules.map((i) => i.toJson()).toList()}"
+   "rules":${rules.map((i) => i.toJson()).toList()}
 }
 	""";
   }

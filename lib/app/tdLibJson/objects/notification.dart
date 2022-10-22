@@ -37,7 +37,7 @@ class Notification extends TdObject {
    "id":$id,
    "date":$date,
    "is_silent":$isSilent,
-   "type":"${type.toJson()}"
+   "type":${type.toJson()}
 }
 	""";
   }

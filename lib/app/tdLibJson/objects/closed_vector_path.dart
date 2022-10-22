@@ -22,7 +22,7 @@ class ClosedVectorPath extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "commands":"${commands.map((i) => i.toJson()).toList()}"
+   "commands":${commands.map((i) => i.toJson()).toList()}
 }
 	""";
   }

@@ -65,7 +65,7 @@ class LogStreamDefault extends LogStream {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -183,7 +183,7 @@ class LogStreamEmpty extends LogStream {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

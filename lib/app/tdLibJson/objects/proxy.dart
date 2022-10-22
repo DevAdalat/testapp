@@ -61,7 +61,7 @@ class Proxy extends TdObject {
    "port":$port,
    "last_used_date":$lastUsedDate,
    "is_enabled":$isEnabled,
-   "type":"${type.toJson()}"
+   "type":${type.toJson()}
 }
 	""";
   }

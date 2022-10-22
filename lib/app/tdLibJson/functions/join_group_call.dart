@@ -39,7 +39,7 @@ class JoinGroupCall extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "group_call_id":$groupCallId,
-   "participant_id":"${participantId?.toJson()}",
+   "participant_id":${participantId?.toJson()},
    "audio_source_id":$audioSourceId,
    "payload":"$payload",
    "is_muted":$isMuted,

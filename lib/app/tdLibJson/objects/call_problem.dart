@@ -69,7 +69,7 @@ class CallProblemEcho extends CallProblem {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -96,7 +96,7 @@ class CallProblemNoise extends CallProblem {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -123,7 +123,7 @@ class CallProblemInterruptions extends CallProblem {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -150,7 +150,7 @@ class CallProblemDistortedSpeech extends CallProblem {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -177,7 +177,7 @@ class CallProblemSilentLocal extends CallProblem {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -204,7 +204,7 @@ class CallProblemSilentRemote extends CallProblem {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -231,7 +231,7 @@ class CallProblemDropped extends CallProblem {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -258,7 +258,7 @@ class CallProblemDistortedVideo extends CallProblem {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -285,7 +285,7 @@ class CallProblemPixelatedVideo extends CallProblem {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

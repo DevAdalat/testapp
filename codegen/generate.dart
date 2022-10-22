@@ -214,15 +214,30 @@ class DartTdDocumentationGenerator {
         fromJsonFields.add('    return const ${obj.name}();');
         fromJsonFields.add('}');
       } else {
-        toJsonFields.add(' "@type":"\$CONSTRUCTOR",');
+        String args = "";
+				final isNoArgs = obj.variables.isEmpty;
+        toJsonFields.add(' "@type":"\$CONSTRUCTOR"${isNoArgs?"":","}');
         for (var variable in obj.variables) {
           variables.add(
               '/// [${variable.argName}] ${variable.description}\n  final ${variable.optional ? "${variable.type}?" : variable.type} ${variable.argName};');
           arguments.add(
               '${variable.optional ? '' : 'required '}this.${variable.argName}');
           fromJsonFields.add('${variable.argName}: ${variable.read},');
-          toJsonFields.add(
-              '\n   "${variable.name}":${(variable.type == "bool" || variable.type == "int" || variable.type == "double") ? "\$${variable.write}" :  "\"${(!variable.write.contains(".") ? "\$${variable.write}" : "\${${variable.write}}")}\""}${(variable.write == obj.variables.last.write) ? "" : ","}');
+					final isLastArg = variable.write == obj.variables.last.write;
+          if (variable.type == "String") {
+            args = "\"\$${variable.write}\"${isLastArg ? "" : ","}";
+          } else {
+            if (variable.type == "bool" ||
+                variable.type == "int" ||
+                variable.type == "double") {
+              args = "\$${variable.write}${isLastArg ? "" : ","}";
+            } else {
+              args = "\${${variable.write}}${isLastArg ? "" : ","}";
+            }
+          }
+          toJsonFields.add('\n   "${variable.name}":$args');
+//        toJsonFields.add(
+//            '\n   "${variable.name}":${(variable.type == "bool" || variable.type == "int" || variable.type == "double" || variable.optional) ? variable.optional ? "\${${variable.write}}" : "\$${variable.write}" : variable.type == "String" ? "\${${variable.write}}" : "\"${(!variable.write.contains(".") ? "\$${variable.write}" : "\${${variable.write}}")}\""}${(variable.write == obj.variables.last.write) ? "" : ","}');
           copyWithFields.add('${variable.type}? ${variable.argName},');
           copyWithReturnFields.add(
               '${variable.argName}: ${variable.argName} ?? this.${variable.argName},');

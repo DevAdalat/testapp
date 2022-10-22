@@ -67,7 +67,7 @@ class NotificationTypeNewMessage extends NotificationType {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "message":"${message.toJson()}",
+   "message":${message.toJson()},
    "show_preview":$showPreview
 }
 	""";
@@ -102,7 +102,7 @@ class NotificationTypeNewSecretChat extends NotificationType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -199,10 +199,10 @@ class NotificationTypeNewPushMessage extends NotificationType {
   {
    "@type":"$CONSTRUCTOR",
    "message_id":$messageId,
-   "sender_id":"${senderId.toJson()}",
+   "sender_id":${senderId.toJson()},
    "sender_name":"$senderName",
    "is_outgoing":$isOutgoing,
-   "content":"${content.toJson()}"
+   "content":${content.toJson()}
 }
 	""";
   }

@@ -24,7 +24,7 @@ class SendChatAction extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "message_thread_id":$messageThreadId,
-   "action":"${action?.toJson()}"
+   "action":${action?.toJson()}
 }
 	""";
   }

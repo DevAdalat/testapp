@@ -14,7 +14,7 @@ class SetAccountTtl extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "ttl":"${ttl.toJson()}"
+   "ttl":${ttl.toJson()}
 }
 	""";
   }

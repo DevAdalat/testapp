@@ -102,18 +102,18 @@ class PaymentForm extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "id":$id,
-   "invoice":"${invoice.toJson()}",
+   "invoice":${invoice.toJson()},
    "seller_bot_user_id":$sellerBotUserId,
    "payment_provider_user_id":$paymentProviderUserId,
-   "payment_provider":"${paymentProvider.toJson()}",
-   "additional_payment_options":"${additionalPaymentOptions.map((i) => i.toJson()).toList()}",
-   "saved_order_info":"${savedOrderInfo?.toJson()}",
-   "saved_credentials":"${savedCredentials.map((i) => i.toJson()).toList()}",
+   "payment_provider":${paymentProvider.toJson()},
+   "additional_payment_options":${additionalPaymentOptions.map((i) => i.toJson()).toList()},
+   "saved_order_info":${savedOrderInfo?.toJson()},
+   "saved_credentials":${savedCredentials.map((i) => i.toJson()).toList()},
    "can_save_credentials":$canSaveCredentials,
    "need_password":$needPassword,
    "product_title":"$productTitle",
-   "product_description":"${productDescription.toJson()}",
-   "product_photo":"${productPhoto?.toJson()}"
+   "product_description":${productDescription.toJson()},
+   "product_photo":${productPhoto?.toJson()}
 }
 	""";
   }

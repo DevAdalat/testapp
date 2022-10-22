@@ -26,7 +26,7 @@ class InlineKeyboardButton extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "text":"$text",
-   "type":"${type.toJson()}"
+   "type":${type.toJson()}
 }
 	""";
   }

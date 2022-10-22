@@ -30,9 +30,9 @@ class InputPassportElementError extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "type":"${type.toJson()}",
+   "type":${type.toJson()},
    "message":"$message",
-   "source":"${source.toJson()}"
+   "source":${source.toJson()}
 }
 	""";
   }

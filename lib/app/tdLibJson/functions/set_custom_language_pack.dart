@@ -18,8 +18,8 @@ class SetCustomLanguagePack extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "info":"${info.toJson()}",
-   "strings":"${strings.map((i) => i.toJson()).toList()}"
+   "info":${info.toJson()},
+   "strings":${strings.map((i) => i.toJson()).toList()}
 }
 	""";
   }

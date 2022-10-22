@@ -19,7 +19,7 @@ class SetChatPermissions extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "permissions":"${permissions.toJson()}"
+   "permissions":${permissions.toJson()}
 }
 	""";
   }

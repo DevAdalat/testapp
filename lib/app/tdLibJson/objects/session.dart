@@ -121,7 +121,7 @@ class Session extends TdObject {
    "is_password_pending":$isPasswordPending,
    "can_accept_secret_chats":$canAcceptSecretChats,
    "can_accept_calls":$canAcceptCalls,
-   "type":"${type.toJson()}",
+   "type":${type.toJson()},
    "api_id":$apiId,
    "application_name":"$applicationName",
    "application_version":"$applicationVersion",

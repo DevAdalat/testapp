@@ -14,7 +14,7 @@ class CreateChatFilter extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "filter":"${filter.toJson()}"
+   "filter":${filter.toJson()}
 }
 	""";
   }

@@ -65,7 +65,7 @@ class ResetPasswordResultOk extends ResetPasswordResult {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

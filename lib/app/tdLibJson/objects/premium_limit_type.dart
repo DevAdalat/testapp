@@ -72,7 +72,7 @@ class PremiumLimitTypeSupergroupCount extends PremiumLimitType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -100,7 +100,7 @@ class PremiumLimitTypePinnedChatCount extends PremiumLimitType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -129,7 +129,7 @@ class PremiumLimitTypeCreatedPublicChatCount extends PremiumLimitType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -158,7 +158,7 @@ class PremiumLimitTypeSavedAnimationCount extends PremiumLimitType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -187,7 +187,7 @@ class PremiumLimitTypeFavoriteStickerCount extends PremiumLimitType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -215,7 +215,7 @@ class PremiumLimitTypeChatFilterCount extends PremiumLimitType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -244,7 +244,7 @@ class PremiumLimitTypeChatFilterChosenChatCount extends PremiumLimitType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -273,7 +273,7 @@ class PremiumLimitTypePinnedArchivedChatCount extends PremiumLimitType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -301,7 +301,7 @@ class PremiumLimitTypeCaptionLength extends PremiumLimitType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -329,7 +329,7 @@ class PremiumLimitTypeBioLength extends PremiumLimitType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

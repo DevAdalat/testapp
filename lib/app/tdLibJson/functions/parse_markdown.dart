@@ -14,7 +14,7 @@ class ParseMarkdown extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}"
+   "text":${text.toJson()}
 }
 	""";
   }

@@ -104,7 +104,7 @@ class ChatActionBarReportUnrelatedLocation extends ChatActionBar {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -132,7 +132,7 @@ class ChatActionBarInviteMembers extends ChatActionBar {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -207,7 +207,7 @@ class ChatActionBarAddContact extends ChatActionBar {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -234,7 +234,7 @@ class ChatActionBarSharePhoneNumber extends ChatActionBar {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

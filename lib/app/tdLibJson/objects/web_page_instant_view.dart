@@ -59,12 +59,12 @@ class WebPageInstantView extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "page_blocks":"${pageBlocks.map((i) => i.toJson()).toList()}",
+   "page_blocks":${pageBlocks.map((i) => i.toJson()).toList()},
    "view_count":$viewCount,
    "version":$version,
    "is_rtl":$isRtl,
    "is_full":$isFull,
-   "feedback_link":"${feedbackLink.toJson()}"
+   "feedback_link":${feedbackLink.toJson()}
 }
 	""";
   }

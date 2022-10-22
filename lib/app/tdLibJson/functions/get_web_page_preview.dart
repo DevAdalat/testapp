@@ -14,7 +14,7 @@ class GetWebPagePreview extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}"
+   "text":${text.toJson()}
 }
 	""";
   }

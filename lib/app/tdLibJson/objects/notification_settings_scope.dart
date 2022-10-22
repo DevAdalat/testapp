@@ -52,7 +52,7 @@ class NotificationSettingsScopePrivateChats extends NotificationSettingsScope {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -81,7 +81,7 @@ class NotificationSettingsScopeGroupChats extends NotificationSettingsScope {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -110,7 +110,7 @@ class NotificationSettingsScopeChannelChats extends NotificationSettingsScope {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

@@ -18,7 +18,7 @@ class SetEmojiStatus extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "emoji_status":"${emojiStatus?.toJson()}",
+   "emoji_status":${emojiStatus?.toJson()},
    "duration":$duration
 }
 	""";

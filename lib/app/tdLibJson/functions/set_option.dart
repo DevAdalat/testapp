@@ -19,7 +19,7 @@ class SetOption extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "name":"$name",
-   "value":"${value?.toJson()}"
+   "value":${value?.toJson()}
 }
 	""";
   }

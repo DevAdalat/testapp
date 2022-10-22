@@ -29,8 +29,8 @@ class InputPersonalDocument extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "files":"${files.map((i) => i.toJson()).toList()}",
-   "translation":"${translation.map((i) => i.toJson()).toList()}"
+   "files":${files.map((i) => i.toJson()).toList()},
+   "translation":${translation.map((i) => i.toJson()).toList()}
 }
 	""";
   }

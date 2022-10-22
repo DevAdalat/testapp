@@ -35,7 +35,7 @@ class PassportSuitableElement extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "type":"${type.toJson()}",
+   "type":${type.toJson()},
    "is_selfie_required":$isSelfieRequired,
    "is_translation_required":$isTranslationRequired,
    "is_native_name_required":$isNativeNameRequired

@@ -33,7 +33,7 @@ class Animations extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "animations":"${animations.map((i) => i.toJson()).toList()}"
+   "animations":${animations.map((i) => i.toJson()).toList()}
 }
 	""";
   }

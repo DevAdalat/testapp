@@ -14,7 +14,7 @@ class SetDefaultChannelAdministratorRights extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "default_channel_administrator_rights":"${defaultChannelAdministratorRights?.toJson()}"
+   "default_channel_administrator_rights":${defaultChannelAdministratorRights?.toJson()}
 }
 	""";
   }

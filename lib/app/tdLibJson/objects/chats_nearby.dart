@@ -41,8 +41,8 @@ class ChatsNearby extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "users_nearby":"${usersNearby.map((i) => i.toJson()).toList()}",
-   "supergroups_nearby":"${supergroupsNearby.map((i) => i.toJson()).toList()}"
+   "users_nearby":${usersNearby.map((i) => i.toJson()).toList()},
+   "supergroups_nearby":${supergroupsNearby.map((i) => i.toJson()).toList()}
 }
 	""";
   }

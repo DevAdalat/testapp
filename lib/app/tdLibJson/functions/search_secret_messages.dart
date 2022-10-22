@@ -34,7 +34,7 @@ class SearchSecretMessages extends TdFunction {
    "query":"$query",
    "offset":"$offset",
    "limit":$limit,
-   "filter":"${filter?.toJson()}"
+   "filter":${filter?.toJson()}
 }
 	""";
   }

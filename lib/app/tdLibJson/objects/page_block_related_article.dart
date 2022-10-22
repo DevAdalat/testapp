@@ -48,7 +48,7 @@ class PageBlockRelatedArticle extends TdObject {
    "url":"$url",
    "title":"$title",
    "description":"$description",
-   "photo":"${photo?.toJson()}",
+   "photo":${photo?.toJson()},
    "author":"$author",
    "publish_date":$publishDate
 }

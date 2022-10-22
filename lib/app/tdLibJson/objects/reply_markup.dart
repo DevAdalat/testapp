@@ -175,7 +175,7 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "rows":"${rows.map((i) => i.map((ii) => ii.toJson()).toList()).toList()}",
+   "rows":${rows.map((i) => i.map((ii) => ii.toJson()).toList()).toList()},
    "resize_keyboard":$resizeKeyboard,
    "one_time":$oneTime,
    "is_personal":$isPersonal,
@@ -232,7 +232,7 @@ class ReplyMarkupInlineKeyboard extends ReplyMarkup {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "rows":"${rows.map((i) => i.map((ii) => ii.toJson()).toList()).toList()}"
+   "rows":${rows.map((i) => i.map((ii) => ii.toJson()).toList()).toList()}
 }
 	""";
   }

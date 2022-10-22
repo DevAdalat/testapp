@@ -23,7 +23,7 @@ class CreateCall extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "user_id":$userId,
-   "protocol":"${protocol.toJson()}",
+   "protocol":${protocol.toJson()},
    "is_video":$isVideo
 }
 	""";

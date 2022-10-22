@@ -63,7 +63,7 @@ class ChatMembersFilterContacts extends ChatMembersFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -90,7 +90,7 @@ class ChatMembersFilterAdministrators extends ChatMembersFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -118,7 +118,7 @@ class ChatMembersFilterMembers extends ChatMembersFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -185,7 +185,7 @@ class ChatMembersFilterRestricted extends ChatMembersFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -212,7 +212,7 @@ class ChatMembersFilterBanned extends ChatMembersFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -239,7 +239,7 @@ class ChatMembersFilterBots extends ChatMembersFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

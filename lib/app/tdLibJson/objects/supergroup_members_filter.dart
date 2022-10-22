@@ -66,7 +66,7 @@ class SupergroupMembersFilterRecent extends SupergroupMembersFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -135,7 +135,7 @@ class SupergroupMembersFilterAdministrators extends SupergroupMembersFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -332,7 +332,7 @@ class SupergroupMembersFilterBots extends SupergroupMembersFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

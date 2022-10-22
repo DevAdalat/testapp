@@ -34,7 +34,7 @@ class GroupCallStreams extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "streams":"${streams.map((i) => i.toJson()).toList()}"
+   "streams":${streams.map((i) => i.toJson()).toList()}
 }
 	""";
   }

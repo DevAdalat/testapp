@@ -212,8 +212,8 @@ class MessageText extends MessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}",
-   "web_page":"${webPage?.toJson()}"
+   "text":${text.toJson()},
+   "web_page":${webPage?.toJson()}
 }
 	""";
   }
@@ -265,8 +265,8 @@ class MessageAnimation extends MessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "animation":"${animation.toJson()}",
-   "caption":"${caption.toJson()}",
+   "animation":${animation.toJson()},
+   "caption":${caption.toJson()},
    "is_secret":$isSecret
 }
 	""";
@@ -315,8 +315,8 @@ class MessageAudio extends MessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "audio":"${audio.toJson()}",
-   "caption":"${caption.toJson()}"
+   "audio":${audio.toJson()},
+   "caption":${caption.toJson()}
 }
 	""";
   }
@@ -363,8 +363,8 @@ class MessageDocument extends MessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "document":"${document.toJson()}",
-   "caption":"${caption.toJson()}"
+   "document":${document.toJson()},
+   "caption":${caption.toJson()}
 }
 	""";
   }
@@ -415,8 +415,8 @@ class MessagePhoto extends MessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "photo":"${photo.toJson()}",
-   "caption":"${caption.toJson()}",
+   "photo":${photo.toJson()},
+   "caption":${caption.toJson()},
    "is_secret":$isSecret
 }
 	""";
@@ -453,7 +453,7 @@ class MessageExpiredPhoto extends MessageContent {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -492,7 +492,7 @@ class MessageSticker extends MessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "sticker":"${sticker.toJson()}",
+   "sticker":${sticker.toJson()},
    "is_premium":$isPremium
 }
 	""";
@@ -544,8 +544,8 @@ class MessageVideo extends MessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "video":"${video.toJson()}",
-   "caption":"${caption.toJson()}",
+   "video":${video.toJson()},
+   "caption":${caption.toJson()},
    "is_secret":$isSecret
 }
 	""";
@@ -582,7 +582,7 @@ class MessageExpiredVideo extends MessageContent {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -627,7 +627,7 @@ class MessageVideoNote extends MessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "video_note":"${videoNote.toJson()}",
+   "video_note":${videoNote.toJson()},
    "is_viewed":$isViewed,
    "is_secret":$isSecret
 }
@@ -683,8 +683,8 @@ class MessageVoiceNote extends MessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "voice_note":"${voiceNote.toJson()}",
-   "caption":"${caption.toJson()}",
+   "voice_note":${voiceNote.toJson()},
+   "caption":${caption.toJson()},
    "is_listened":$isListened
 }
 	""";
@@ -749,7 +749,7 @@ class MessageLocation extends MessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "location":"${location.toJson()}",
+   "location":${location.toJson()},
    "live_period":$livePeriod,
    "expires_in":$expiresIn,
    "heading":$heading,
@@ -800,7 +800,7 @@ class MessageVenue extends MessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "venue":"${venue.toJson()}"
+   "venue":${venue.toJson()}
 }
 	""";
   }
@@ -839,7 +839,7 @@ class MessageContact extends MessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "contact":"${contact.toJson()}"
+   "contact":${contact.toJson()}
 }
 	""";
   }
@@ -884,7 +884,7 @@ class MessageAnimatedEmoji extends MessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "animated_emoji":"${animatedEmoji.toJson()}",
+   "animated_emoji":${animatedEmoji.toJson()},
    "emoji":"$emoji"
 }
 	""";
@@ -950,8 +950,8 @@ class MessageDice extends MessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "initial_state":"${initialState?.toJson()}",
-   "final_state":"${finalState?.toJson()}",
+   "initial_state":${initialState?.toJson()},
+   "final_state":${finalState?.toJson()},
    "emoji":"$emoji",
    "value":$value,
    "success_animation_frame_number":$successAnimationFrameNumber
@@ -1002,7 +1002,7 @@ class MessageGame extends MessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "game":"${game.toJson()}"
+   "game":${game.toJson()}
 }
 	""";
   }
@@ -1041,7 +1041,7 @@ class MessagePoll extends MessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "poll":"${poll.toJson()}"
+   "poll":${poll.toJson()}
 }
 	""";
   }
@@ -1128,15 +1128,15 @@ class MessageInvoice extends MessageContent {
   {
    "@type":"$CONSTRUCTOR",
    "title":"$title",
-   "description":"${description.toJson()}",
-   "photo":"${photo?.toJson()}",
+   "description":${description.toJson()},
+   "photo":${photo?.toJson()},
    "currency":"$currency",
    "total_amount":$totalAmount,
    "start_parameter":"$startParameter",
    "is_test":$isTest,
    "need_shipping_address":$needShippingAddress,
    "receipt_message_id":$receiptMessageId,
-   "extended_media":"${extendedMedia?.toJson()}"
+   "extended_media":${extendedMedia?.toJson()}
 }
 	""";
   }
@@ -1204,7 +1204,7 @@ class MessageCall extends MessageContent {
   {
    "@type":"$CONSTRUCTOR",
    "is_video":$isVideo,
-   "discard_reason":"${discardReason.toJson()}",
+   "discard_reason":${discardReason.toJson()},
    "duration":$duration
 }
 	""";
@@ -1385,7 +1385,7 @@ class MessageInviteVideoChatParticipants extends MessageContent {
   {
    "@type":"$CONSTRUCTOR",
    "group_call_id":$groupCallId,
-   "user_ids":"${userIds.map((i) => i).toList()}"
+   "user_ids":${userIds.map((i) => i).toList()}
 }
 	""";
   }
@@ -1434,7 +1434,7 @@ class MessageBasicGroupChatCreate extends MessageContent {
   {
    "@type":"$CONSTRUCTOR",
    "title":"$title",
-   "member_user_ids":"${memberUserIds.map((i) => i).toList()}"
+   "member_user_ids":${memberUserIds.map((i) => i).toList()}
 }
 	""";
   }
@@ -1556,7 +1556,7 @@ class MessageChatChangePhoto extends MessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "photo":"${photo.toJson()}"
+   "photo":${photo.toJson()}
 }
 	""";
   }
@@ -1588,7 +1588,7 @@ class MessageChatDeletePhoto extends MessageContent {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -1624,7 +1624,7 @@ class MessageChatAddMembers extends MessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "member_user_ids":"${memberUserIds.map((i) => i).toList()}"
+   "member_user_ids":${memberUserIds.map((i) => i).toList()}
 }
 	""";
   }
@@ -1656,7 +1656,7 @@ class MessageChatJoinByLink extends MessageContent {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -1683,7 +1683,7 @@ class MessageChatJoinByRequest extends MessageContent {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -1878,7 +1878,7 @@ class MessageScreenshotTaken extends MessageContent {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -2225,7 +2225,7 @@ class MessagePaymentSuccessfulBot extends MessageContent {
    "is_first_recurring":$isFirstRecurring,
    "invoice_payload":"$invoicePayload",
    "shipping_option_id":"$shippingOptionId",
-   "order_info":"${orderInfo?.toJson()}",
+   "order_info":${orderInfo?.toJson()},
    "telegram_payment_charge_id":"$telegramPaymentChargeId",
    "provider_payment_charge_id":"$providerPaymentChargeId"
 }
@@ -2304,7 +2304,7 @@ class MessageGiftedPremium extends MessageContent {
    "currency":"$currency",
    "amount":$amount,
    "month_count":$monthCount,
-   "sticker":"${sticker?.toJson()}"
+   "sticker":${sticker?.toJson()}
 }
 	""";
   }
@@ -2342,7 +2342,7 @@ class MessageContactRegistered extends MessageContent {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -2507,7 +2507,7 @@ class MessagePassportDataSent extends MessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "types":"${types.map((i) => i.toJson()).toList()}"
+   "types":${types.map((i) => i.toJson()).toList()}
 }
 	""";
   }
@@ -2554,8 +2554,8 @@ class MessagePassportDataReceived extends MessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "elements":"${elements.map((i) => i.toJson()).toList()}",
-   "credentials":"${credentials.toJson()}"
+   "elements":${elements.map((i) => i.toJson()).toList()},
+   "credentials":${credentials.toJson()}
 }
 	""";
   }
@@ -2607,8 +2607,8 @@ class MessageProximityAlertTriggered extends MessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "traveler_id":"${travelerId.toJson()}",
-   "watcher_id":"${watcherId.toJson()}",
+   "traveler_id":${travelerId.toJson()},
+   "watcher_id":${watcherId.toJson()},
    "distance":$distance
 }
 	""";
@@ -2645,7 +2645,7 @@ class MessageUnsupported extends MessageContent {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

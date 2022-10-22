@@ -34,7 +34,7 @@ class ConnectedWebsites extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "websites":"${websites.map((i) => i.toJson()).toList()}"
+   "websites":${websites.map((i) => i.toJson()).toList()}
 }
 	""";
   }

@@ -14,7 +14,7 @@ class SetProfilePhoto extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "photo":"${photo.toJson()}"
+   "photo":${photo.toJson()}
 }
 	""";
   }

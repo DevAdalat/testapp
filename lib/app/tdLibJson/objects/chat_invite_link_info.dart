@@ -82,12 +82,12 @@ class ChatInviteLinkInfo extends TdObject {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "accessible_for":$accessibleFor,
-   "type":"${type.toJson()}",
+   "type":${type.toJson()},
    "title":"$title",
-   "photo":"${photo?.toJson()}",
+   "photo":${photo?.toJson()},
    "description":"$description",
    "member_count":$memberCount,
-   "member_user_ids":"${memberUserIds.map((i) => i).toList()}",
+   "member_user_ids":${memberUserIds.map((i) => i).toList()},
    "creates_join_request":$createsJoinRequest,
    "is_public":$isPublic
 }

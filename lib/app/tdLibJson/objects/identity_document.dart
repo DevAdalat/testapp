@@ -53,11 +53,11 @@ class IdentityDocument extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "number":"$number",
-   "expiry_date":"${expiryDate?.toJson()}",
-   "front_side":"${frontSide.toJson()}",
-   "reverse_side":"${reverseSide?.toJson()}",
-   "selfie":"${selfie?.toJson()}",
-   "translation":"${translation.map((i) => i.toJson()).toList()}"
+   "expiry_date":${expiryDate?.toJson()},
+   "front_side":${frontSide.toJson()},
+   "reverse_side":${reverseSide?.toJson()},
+   "selfie":${selfie?.toJson()},
+   "translation":${translation.map((i) => i.toJson()).toList()}
 }
 	""";
   }

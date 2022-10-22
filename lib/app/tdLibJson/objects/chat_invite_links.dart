@@ -40,7 +40,7 @@ class ChatInviteLinks extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "total_count":$totalCount,
-   "invite_links":"${inviteLinks.map((i) => i.toJson()).toList()}"
+   "invite_links":${inviteLinks.map((i) => i.toJson()).toList()}
 }
 	""";
   }

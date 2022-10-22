@@ -44,8 +44,8 @@ class FoundFileDownloads extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "total_counts":"${totalCounts.toJson()}",
-   "files":"${files.map((i) => i.toJson()).toList()}",
+   "total_counts":${totalCounts.toJson()},
+   "files":${files.map((i) => i.toJson()).toList()},
    "next_offset":"$nextOffset"
 }
 	""";

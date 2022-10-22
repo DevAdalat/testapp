@@ -46,10 +46,10 @@ class ChatMember extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "member_id":"${memberId.toJson()}",
+   "member_id":${memberId.toJson()},
    "inviter_user_id":$inviterUserId,
    "joined_chat_date":$joinedChatDate,
-   "status":"${status.toJson()}"
+   "status":${status.toJson()}
 }
 	""";
   }

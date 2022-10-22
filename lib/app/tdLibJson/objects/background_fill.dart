@@ -156,7 +156,7 @@ class BackgroundFillFreeformGradient extends BackgroundFill {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "colors":"${colors.map((i) => i).toList()}"
+   "colors":${colors.map((i) => i).toList()}
 }
 	""";
   }

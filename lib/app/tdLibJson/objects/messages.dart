@@ -39,7 +39,7 @@ class Messages extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "total_count":$totalCount,
-   "messages":"${messages.map((i) => i.toJson()).toList()}"
+   "messages":${messages.map((i) => i.toJson()).toList()}
 }
 	""";
   }

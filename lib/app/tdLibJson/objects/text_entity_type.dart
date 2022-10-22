@@ -102,7 +102,7 @@ class TextEntityTypeMention extends TextEntityType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -129,7 +129,7 @@ class TextEntityTypeHashtag extends TextEntityType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -156,7 +156,7 @@ class TextEntityTypeCashtag extends TextEntityType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -183,7 +183,7 @@ class TextEntityTypeBotCommand extends TextEntityType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -210,7 +210,7 @@ class TextEntityTypeUrl extends TextEntityType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -237,7 +237,7 @@ class TextEntityTypeEmailAddress extends TextEntityType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -264,7 +264,7 @@ class TextEntityTypePhoneNumber extends TextEntityType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -291,7 +291,7 @@ class TextEntityTypeBankCardNumber extends TextEntityType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -319,7 +319,7 @@ class TextEntityTypeBold extends TextEntityType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -346,7 +346,7 @@ class TextEntityTypeItalic extends TextEntityType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -373,7 +373,7 @@ class TextEntityTypeUnderline extends TextEntityType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -400,7 +400,7 @@ class TextEntityTypeStrikethrough extends TextEntityType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -427,7 +427,7 @@ class TextEntityTypeSpoiler extends TextEntityType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -454,7 +454,7 @@ class TextEntityTypeCode extends TextEntityType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -481,7 +481,7 @@ class TextEntityTypePre extends TextEntityType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

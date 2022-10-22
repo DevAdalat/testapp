@@ -22,9 +22,9 @@ class SetCommands extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "scope":"${scope?.toJson()}",
+   "scope":${scope?.toJson()},
    "language_code":"$languageCode",
-   "commands":"${commands.map((i) => i.toJson()).toList()}"
+   "commands":${commands.map((i) => i.toJson()).toList()}
 }
 	""";
   }

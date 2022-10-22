@@ -28,7 +28,7 @@ class GetChatInviteLinkMembers extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "invite_link":"$inviteLink",
-   "offset_member":"${offsetMember?.toJson()}",
+   "offset_member":${offsetMember?.toJson()},
    "limit":$limit
 }
 	""";

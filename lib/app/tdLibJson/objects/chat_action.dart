@@ -87,7 +87,7 @@ class ChatActionTyping extends ChatAction {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -114,7 +114,7 @@ class ChatActionRecordingVideo extends ChatAction {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -181,7 +181,7 @@ class ChatActionRecordingVoiceNote extends ChatAction {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -329,7 +329,7 @@ class ChatActionChoosingSticker extends ChatAction {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -356,7 +356,7 @@ class ChatActionChoosingLocation extends ChatAction {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -383,7 +383,7 @@ class ChatActionChoosingContact extends ChatAction {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -410,7 +410,7 @@ class ChatActionStartPlayingGame extends ChatAction {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -437,7 +437,7 @@ class ChatActionRecordingVideoNote extends ChatAction {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -545,7 +545,7 @@ class ChatActionCancel extends ChatAction {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

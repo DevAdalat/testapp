@@ -41,8 +41,8 @@ class PassportElementsWithErrors extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "elements":"${elements.map((i) => i.toJson()).toList()}",
-   "errors":"${errors.map((i) => i.toJson()).toList()}"
+   "elements":${elements.map((i) => i.toJson()).toList()},
+   "errors":${errors.map((i) => i.toJson()).toList()}
 }
 	""";
   }

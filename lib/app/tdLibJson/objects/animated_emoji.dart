@@ -52,11 +52,11 @@ class AnimatedEmoji extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "sticker":"${sticker?.toJson()}",
+   "sticker":${sticker?.toJson()},
    "sticker_width":$stickerWidth,
    "sticker_height":$stickerHeight,
    "fitzpatrick_type":$fitzpatrickType,
-   "sound":"${sound?.toJson()}"
+   "sound":${sound?.toJson()}
 }
 	""";
   }

@@ -18,7 +18,7 @@ class GetCommands extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "scope":"${scope?.toJson()}",
+   "scope":${scope?.toJson()},
    "language_code":"$languageCode"
 }
 	""";

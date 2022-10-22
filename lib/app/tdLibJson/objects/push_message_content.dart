@@ -189,7 +189,7 @@ class PushMessageContentAnimation extends PushMessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "animation":"${animation?.toJson()}",
+   "animation":${animation?.toJson()},
    "caption":"$caption",
    "is_pinned":$isPinned
 }
@@ -240,7 +240,7 @@ class PushMessageContentAudio extends PushMessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "audio":"${audio?.toJson()}",
+   "audio":${audio?.toJson()},
    "is_pinned":$isPinned
 }
 	""";
@@ -324,7 +324,7 @@ class PushMessageContentContactRegistered extends PushMessageContent {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -367,7 +367,7 @@ class PushMessageContentDocument extends PushMessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "document":"${document?.toJson()}",
+   "document":${document?.toJson()},
    "is_pinned":$isPinned
 }
 	""";
@@ -625,7 +625,7 @@ class PushMessageContentPhoto extends PushMessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "photo":"${photo?.toJson()}",
+   "photo":${photo?.toJson()},
    "caption":"$caption",
    "is_secret":$isSecret,
    "is_pinned":$isPinned
@@ -723,7 +723,7 @@ class PushMessageContentScreenshotTaken extends PushMessageContent {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -770,7 +770,7 @@ class PushMessageContentSticker extends PushMessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "sticker":"${sticker?.toJson()}",
+   "sticker":${sticker?.toJson()},
    "emoji":"$emoji",
    "is_pinned":$isPinned
 }
@@ -879,7 +879,7 @@ class PushMessageContentVideo extends PushMessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "video":"${video?.toJson()}",
+   "video":${video?.toJson()},
    "caption":"$caption",
    "is_secret":$isSecret,
    "is_pinned":$isPinned
@@ -935,7 +935,7 @@ class PushMessageContentVideoNote extends PushMessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "video_note":"${videoNote?.toJson()}",
+   "video_note":${videoNote?.toJson()},
    "is_pinned":$isPinned
 }
 	""";
@@ -985,7 +985,7 @@ class PushMessageContentVoiceNote extends PushMessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "voice_note":"${voiceNote?.toJson()}",
+   "voice_note":${voiceNote?.toJson()},
    "is_pinned":$isPinned
 }
 	""";
@@ -1021,7 +1021,7 @@ class PushMessageContentBasicGroupChatCreate extends PushMessageContent {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -1107,7 +1107,7 @@ class PushMessageContentChatChangePhoto extends PushMessageContent {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -1274,7 +1274,7 @@ class PushMessageContentChatJoinByLink extends PushMessageContent {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -1303,7 +1303,7 @@ class PushMessageContentChatJoinByRequest extends PushMessageContent {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

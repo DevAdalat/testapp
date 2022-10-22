@@ -23,7 +23,7 @@ class ToggleGroupCallParticipantIsMuted extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "group_call_id":$groupCallId,
-   "participant_id":"${participantId.toJson()}",
+   "participant_id":${participantId.toJson()},
    "is_muted":$isMuted
 }
 	""";

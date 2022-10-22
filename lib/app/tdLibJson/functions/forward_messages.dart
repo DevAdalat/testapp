@@ -40,8 +40,8 @@ class ForwardMessages extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "from_chat_id":$fromChatId,
-   "message_ids":"${messageIds.map((i) => i).toList()}",
-   "options":"${options?.toJson()}",
+   "message_ids":${messageIds.map((i) => i).toList()},
+   "options":${options?.toJson()},
    "send_copy":$sendCopy,
    "remove_caption":$removeCaption,
    "only_preview":$onlyPreview

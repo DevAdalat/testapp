@@ -52,7 +52,7 @@ class PremiumPaymentOption extends TdObject {
    "discount_percentage":$discountPercentage,
    "month_count":$monthCount,
    "store_product_id":"$storeProductId",
-   "payment_link":"${paymentLink?.toJson()}"
+   "payment_link":${paymentLink?.toJson()}
 }
 	""";
   }

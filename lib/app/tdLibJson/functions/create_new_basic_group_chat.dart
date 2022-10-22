@@ -18,7 +18,7 @@ class CreateNewBasicGroupChat extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "user_ids":"${userIds.map((i) => i).toList()}",
+   "user_ids":${userIds.map((i) => i).toList()},
    "title":"$title"
 }
 	""";

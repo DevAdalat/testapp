@@ -14,7 +14,7 @@ class GetPremiumFeatures extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "source":"${source?.toJson()}"
+   "source":${source?.toJson()}
 }
 	""";
   }

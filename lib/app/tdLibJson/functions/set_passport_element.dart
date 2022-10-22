@@ -18,7 +18,7 @@ class SetPassportElement extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "element":"${element.toJson()}",
+   "element":${element.toJson()},
    "password":"$password"
 }
 	""";

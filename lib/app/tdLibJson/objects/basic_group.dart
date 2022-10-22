@@ -53,7 +53,7 @@ class BasicGroup extends TdObject {
    "@type":"$CONSTRUCTOR",
    "id":$id,
    "member_count":$memberCount,
-   "status":"${status.toJson()}",
+   "status":${status.toJson()},
    "is_active":$isActive,
    "upgraded_to_supergroup_id":$upgradedToSupergroupId
 }

@@ -19,7 +19,7 @@ class SetCustomLanguagePackString extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "language_pack_id":"$languagePackId",
-   "new_string":"${newString.toJson()}"
+   "new_string":${newString.toJson()}
 }
 	""";
   }

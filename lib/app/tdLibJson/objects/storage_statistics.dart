@@ -46,7 +46,7 @@ class StorageStatistics extends TdObject {
    "@type":"$CONSTRUCTOR",
    "size":$size,
    "count":$count,
-   "by_chat":"${byChat.map((i) => i.toJson()).toList()}"
+   "by_chat":${byChat.map((i) => i.toJson()).toList()}
 }
 	""";
   }

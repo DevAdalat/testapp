@@ -24,7 +24,7 @@ class SaveApplicationLogEvent extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "type":"$type",
    "chat_id":$chatId,
-   "data":"${data.toJson()}"
+   "data":${data.toJson()}
 }
 	""";
   }

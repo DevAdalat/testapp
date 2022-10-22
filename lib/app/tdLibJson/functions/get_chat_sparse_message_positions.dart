@@ -27,7 +27,7 @@ class GetChatSparseMessagePositions extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "filter":"${filter.toJson()}",
+   "filter":${filter.toJson()},
    "from_message_id":$fromMessageId,
    "limit":$limit
 }

@@ -14,7 +14,7 @@ class SetLogStream extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "log_stream":"${logStream.toJson()}"
+   "log_stream":${logStream.toJson()}
 }
 	""";
   }

@@ -33,7 +33,7 @@ class GroupCallParticipantVideoInfo extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "source_groups":"${sourceGroups.map((i) => i.toJson()).toList()}",
+   "source_groups":${sourceGroups.map((i) => i.toJson()).toList()},
    "endpoint_id":"$endpointId",
    "is_paused":$isPaused
 }

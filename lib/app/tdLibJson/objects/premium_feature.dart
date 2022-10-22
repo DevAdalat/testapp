@@ -81,7 +81,7 @@ class PremiumFeatureIncreasedLimits extends PremiumFeature {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -110,7 +110,7 @@ class PremiumFeatureIncreasedUploadFileSize extends PremiumFeature {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -139,7 +139,7 @@ class PremiumFeatureImprovedDownloadSpeed extends PremiumFeature {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -167,7 +167,7 @@ class PremiumFeatureVoiceRecognition extends PremiumFeature {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -195,7 +195,7 @@ class PremiumFeatureDisabledAds extends PremiumFeature {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -222,7 +222,7 @@ class PremiumFeatureUniqueReactions extends PremiumFeature {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -250,7 +250,7 @@ class PremiumFeatureUniqueStickers extends PremiumFeature {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -278,7 +278,7 @@ class PremiumFeatureCustomEmoji extends PremiumFeature {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -306,7 +306,7 @@ class PremiumFeatureAdvancedChatManagement extends PremiumFeature {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -334,7 +334,7 @@ class PremiumFeatureProfileBadge extends PremiumFeature {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -361,7 +361,7 @@ class PremiumFeatureEmojiStatus extends PremiumFeature {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -389,7 +389,7 @@ class PremiumFeatureAnimatedProfilePhoto extends PremiumFeature {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -417,7 +417,7 @@ class PremiumFeatureAppIcons extends PremiumFeature {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

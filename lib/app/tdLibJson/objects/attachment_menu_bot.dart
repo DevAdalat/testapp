@@ -131,14 +131,14 @@ class AttachmentMenuBot extends TdObject {
    "supports_channel_chats":$supportsChannelChats,
    "supports_settings":$supportsSettings,
    "name":"$name",
-   "name_color":"${nameColor?.toJson()}",
-   "default_icon":"${defaultIcon?.toJson()}",
-   "ios_static_icon":"${iosStaticIcon?.toJson()}",
-   "ios_animated_icon":"${iosAnimatedIcon?.toJson()}",
-   "android_icon":"${androidIcon?.toJson()}",
-   "macos_icon":"${macosIcon?.toJson()}",
-   "icon_color":"${iconColor?.toJson()}",
-   "web_app_placeholder":"${webAppPlaceholder?.toJson()}"
+   "name_color":${nameColor?.toJson()},
+   "default_icon":${defaultIcon?.toJson()},
+   "ios_static_icon":${iosStaticIcon?.toJson()},
+   "ios_animated_icon":${iosAnimatedIcon?.toJson()},
+   "android_icon":${androidIcon?.toJson()},
+   "macos_icon":${macosIcon?.toJson()},
+   "icon_color":${iconColor?.toJson()},
+   "web_app_placeholder":${webAppPlaceholder?.toJson()}
 }
 	""";
   }

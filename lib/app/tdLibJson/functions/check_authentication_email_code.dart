@@ -14,7 +14,7 @@ class CheckAuthenticationEmailCode extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "code":"${code.toJson()}"
+   "code":${code.toJson()}
 }
 	""";
   }

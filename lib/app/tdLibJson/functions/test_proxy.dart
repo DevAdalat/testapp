@@ -32,7 +32,7 @@ class TestProxy extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "server":"$server",
    "port":$port,
-   "type":"${type.toJson()}",
+   "type":${type.toJson()},
    "dc_id":$dcId,
    "timeout":$timeout
 }

@@ -26,7 +26,7 @@ class JsonObjectMember extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "key":"$key",
-   "value":"${value.toJson()}"
+   "value":${value.toJson()}
 }
 	""";
   }

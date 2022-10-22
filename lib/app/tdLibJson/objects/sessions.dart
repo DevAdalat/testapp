@@ -38,7 +38,7 @@ class Sessions extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "sessions":"${sessions.map((i) => i.toJson()).toList()}",
+   "sessions":${sessions.map((i) => i.toJson()).toList()},
    "inactive_session_ttl_days":$inactiveSessionTtlDays
 }
 	""";

@@ -19,7 +19,7 @@ class AnswerWebAppQuery extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "web_app_query_id":"$webAppQueryId",
-   "result":"${result.toJson()}"
+   "result":${result.toJson()}
 }
 	""";
   }

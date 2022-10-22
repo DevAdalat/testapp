@@ -24,7 +24,7 @@ class SearchEmojis extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "text":"$text",
    "exact_match":$exactMatch,
-   "input_language_codes":"${inputLanguageCodes.map((i) => i).toList()}"
+   "input_language_codes":${inputLanguageCodes.map((i) => i).toList()}
 }
 	""";
   }

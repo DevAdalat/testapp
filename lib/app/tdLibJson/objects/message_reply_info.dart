@@ -44,7 +44,7 @@ class MessageReplyInfo extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "reply_count":$replyCount,
-   "recent_replier_ids":"${recentReplierIds.map((i) => i.toJson()).toList()}",
+   "recent_replier_ids":${recentReplierIds.map((i) => i.toJson()).toList()},
    "last_read_inbox_message_id":$lastReadInboxMessageId,
    "last_read_outbox_message_id":$lastReadOutboxMessageId,
    "last_message_id":$lastMessageId

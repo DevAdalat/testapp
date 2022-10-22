@@ -48,9 +48,9 @@ class PremiumFeatures extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "features":"${features.map((i) => i.toJson()).toList()}",
-   "limits":"${limits.map((i) => i.toJson()).toList()}",
-   "payment_link":"${paymentLink?.toJson()}"
+   "features":${features.map((i) => i.toJson()).toList()},
+   "limits":${limits.map((i) => i.toJson()).toList()},
+   "payment_link":${paymentLink?.toJson()}
 }
 	""";
   }

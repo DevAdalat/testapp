@@ -30,8 +30,8 @@ class ChatTheme extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "name":"$name",
-   "light_settings":"${lightSettings.toJson()}",
-   "dark_settings":"${darkSettings.toJson()}"
+   "light_settings":${lightSettings.toJson()},
+   "dark_settings":${darkSettings.toJson()}
 }
 	""";
   }

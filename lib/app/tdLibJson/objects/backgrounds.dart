@@ -33,7 +33,7 @@ class Backgrounds extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "backgrounds":"${backgrounds.map((i) => i.toJson()).toList()}"
+   "backgrounds":${backgrounds.map((i) => i.toJson()).toList()}
 }
 	""";
   }

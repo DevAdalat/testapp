@@ -31,7 +31,7 @@ class TextEntity extends TdObject {
    "@type":"$CONSTRUCTOR",
    "offset":$offset,
    "length":$length,
-   "type":"${type.toJson()}"
+   "type":${type.toJson()}
 }
 	""";
   }

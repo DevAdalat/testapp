@@ -57,7 +57,7 @@ class CallDiscardReasonEmpty extends CallDiscardReason {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -84,7 +84,7 @@ class CallDiscardReasonMissed extends CallDiscardReason {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -111,7 +111,7 @@ class CallDiscardReasonDeclined extends CallDiscardReason {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -138,7 +138,7 @@ class CallDiscardReasonDisconnected extends CallDiscardReason {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -166,7 +166,7 @@ class CallDiscardReasonHungUp extends CallDiscardReason {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

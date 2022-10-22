@@ -29,7 +29,7 @@ class InputThumbnail extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "thumbnail":"${thumbnail.toJson()}",
+   "thumbnail":${thumbnail.toJson()},
    "width":$width,
    "height":$height
 }

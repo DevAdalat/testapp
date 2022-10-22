@@ -45,8 +45,8 @@ class VoiceNote extends TdObject {
    "duration":$duration,
    "waveform":"$waveform",
    "mime_type":"$mimeType",
-   "speech_recognition_result":"${speechRecognitionResult?.toJson()}",
-   "voice":"${voice.toJson()}"
+   "speech_recognition_result":${speechRecognitionResult?.toJson()},
+   "voice":${voice.toJson()}
 }
 	""";
   }

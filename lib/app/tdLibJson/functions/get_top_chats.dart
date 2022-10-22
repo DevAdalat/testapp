@@ -18,7 +18,7 @@ class GetTopChats extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "category":"${category.toJson()}",
+   "category":${category.toJson()},
    "limit":$limit
 }
 	""";

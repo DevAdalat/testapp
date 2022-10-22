@@ -51,7 +51,7 @@ class PageBlockVerticalAlignmentTop extends PageBlockVerticalAlignment {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -80,7 +80,7 @@ class PageBlockVerticalAlignmentMiddle extends PageBlockVerticalAlignment {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -109,7 +109,7 @@ class PageBlockVerticalAlignmentBottom extends PageBlockVerticalAlignment {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

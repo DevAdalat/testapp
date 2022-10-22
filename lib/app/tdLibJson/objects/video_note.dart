@@ -45,9 +45,9 @@ class VideoNote extends TdObject {
    "@type":"$CONSTRUCTOR",
    "duration":$duration,
    "length":$length,
-   "minithumbnail":"${minithumbnail?.toJson()}",
-   "thumbnail":"${thumbnail?.toJson()}",
-   "video":"${video.toJson()}"
+   "minithumbnail":${minithumbnail?.toJson()},
+   "thumbnail":${thumbnail?.toJson()},
+   "video":${video.toJson()}
 }
 	""";
   }

@@ -23,7 +23,7 @@ class PassportRequiredElement extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "suitable_elements":"${suitableElements.map((i) => i.toJson()).toList()}"
+   "suitable_elements":${suitableElements.map((i) => i.toJson()).toList()}
 }
 	""";
   }

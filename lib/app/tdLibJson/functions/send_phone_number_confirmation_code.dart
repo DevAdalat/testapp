@@ -24,7 +24,7 @@ class SendPhoneNumberConfirmationCode extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "hash":"$hash",
    "phone_number":"$phoneNumber",
-   "settings":"${settings?.toJson()}"
+   "settings":${settings?.toJson()}
 }
 	""";
   }

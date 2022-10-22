@@ -41,7 +41,7 @@ class StorageStatisticsByChat extends TdObject {
    "chat_id":$chatId,
    "size":$size,
    "count":$count,
-   "by_file_type":"${byFileType.map((i) => i.toJson()).toList()}"
+   "by_file_type":${byFileType.map((i) => i.toJson()).toList()}
 }
 	""";
   }

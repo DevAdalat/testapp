@@ -51,7 +51,7 @@ class GroupCallVideoQualityThumbnail extends GroupCallVideoQuality {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -79,7 +79,7 @@ class GroupCallVideoQualityMedium extends GroupCallVideoQuality {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -106,7 +106,7 @@ class GroupCallVideoQualityFull extends GroupCallVideoQuality {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

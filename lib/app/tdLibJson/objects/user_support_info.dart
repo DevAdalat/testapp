@@ -42,7 +42,7 @@ class UserSupportInfo extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "message":"${message.toJson()}",
+   "message":${message.toJson()},
    "author":"$author",
    "date":$date
 }

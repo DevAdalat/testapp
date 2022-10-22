@@ -62,7 +62,7 @@ class NotificationSound extends TdObject {
    "date":$date,
    "title":"$title",
    "data":"$data",
-   "sound":"${sound.toJson()}"
+   "sound":${sound.toJson()}
 }
 	""";
   }

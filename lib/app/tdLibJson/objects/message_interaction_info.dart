@@ -41,8 +41,8 @@ class MessageInteractionInfo extends TdObject {
    "@type":"$CONSTRUCTOR",
    "view_count":$viewCount,
    "forward_count":$forwardCount,
-   "reply_info":"${replyInfo?.toJson()}",
-   "reactions":"${reactions.map((i) => i.toJson()).toList()}"
+   "reply_info":${replyInfo?.toJson()},
+   "reactions":${reactions.map((i) => i.toJson()).toList()}
 }
 	""";
   }

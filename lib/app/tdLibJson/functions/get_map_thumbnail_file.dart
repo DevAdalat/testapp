@@ -34,7 +34,7 @@ class GetMapThumbnailFile extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "location":"${location.toJson()}",
+   "location":${location.toJson()},
    "zoom":$zoom,
    "width":$width,
    "height":$height,

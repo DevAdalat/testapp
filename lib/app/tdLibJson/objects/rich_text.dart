@@ -139,7 +139,7 @@ class RichTextBold extends RichText {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}"
+   "text":${text.toJson()}
 }
 	""";
   }
@@ -178,7 +178,7 @@ class RichTextItalic extends RichText {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}"
+   "text":${text.toJson()}
 }
 	""";
   }
@@ -218,7 +218,7 @@ class RichTextUnderline extends RichText {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}"
+   "text":${text.toJson()}
 }
 	""";
   }
@@ -258,7 +258,7 @@ class RichTextStrikethrough extends RichText {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}"
+   "text":${text.toJson()}
 }
 	""";
   }
@@ -297,7 +297,7 @@ class RichTextFixed extends RichText {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}"
+   "text":${text.toJson()}
 }
 	""";
   }
@@ -346,7 +346,7 @@ class RichTextUrl extends RichText {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}",
+   "text":${text.toJson()},
    "url":"$url",
    "is_cached":$isCached
 }
@@ -397,7 +397,7 @@ class RichTextEmailAddress extends RichText {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}",
+   "text":${text.toJson()},
    "email_address":"$emailAddress"
 }
 	""";
@@ -440,7 +440,7 @@ class RichTextSubscript extends RichText {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}"
+   "text":${text.toJson()}
 }
 	""";
   }
@@ -480,7 +480,7 @@ class RichTextSuperscript extends RichText {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}"
+   "text":${text.toJson()}
 }
 	""";
   }
@@ -519,7 +519,7 @@ class RichTextMarked extends RichText {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}"
+   "text":${text.toJson()}
 }
 	""";
   }
@@ -564,7 +564,7 @@ class RichTextPhoneNumber extends RichText {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}",
+   "text":${text.toJson()},
    "phone_number":"$phoneNumber"
 }
 	""";
@@ -616,7 +616,7 @@ class RichTextIcon extends RichText {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "document":"${document.toJson()}",
+   "document":${document.toJson()},
    "width":$width,
    "height":$height
 }
@@ -672,7 +672,7 @@ class RichTextReference extends RichText {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}",
+   "text":${text.toJson()},
    "anchor_name":"$anchorName",
    "url":"$url"
 }
@@ -767,7 +767,7 @@ class RichTextAnchorLink extends RichText {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}",
+   "text":${text.toJson()},
    "anchor_name":"$anchorName",
    "url":"$url"
 }
@@ -814,7 +814,7 @@ class RichTexts extends RichText {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "texts":"${texts.map((i) => i.toJson()).toList()}"
+   "texts":${texts.map((i) => i.toJson()).toList()}
 }
 	""";
   }

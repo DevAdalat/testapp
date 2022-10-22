@@ -55,9 +55,9 @@ class AvailableReactions extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "top_reactions":"${topReactions.map((i) => i.toJson()).toList()}",
-   "recent_reactions":"${recentReactions.map((i) => i.toJson()).toList()}",
-   "popular_reactions":"${popularReactions.map((i) => i.toJson()).toList()}",
+   "top_reactions":${topReactions.map((i) => i.toJson()).toList()},
+   "recent_reactions":${recentReactions.map((i) => i.toJson()).toList()},
+   "popular_reactions":${popularReactions.map((i) => i.toJson()).toList()},
    "allow_custom_emoji":$allowCustomEmoji
 }
 	""";

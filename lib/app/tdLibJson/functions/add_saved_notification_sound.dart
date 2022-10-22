@@ -14,7 +14,7 @@ class AddSavedNotificationSound extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "sound":"${sound.toJson()}"
+   "sound":${sound.toJson()}
 }
 	""";
   }

@@ -54,7 +54,7 @@ class NotificationGroupTypeMessages extends NotificationGroupType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -82,7 +82,7 @@ class NotificationGroupTypeMentions extends NotificationGroupType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -110,7 +110,7 @@ class NotificationGroupTypeSecretChat extends NotificationGroupType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -138,7 +138,7 @@ class NotificationGroupTypeCalls extends NotificationGroupType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

@@ -65,7 +65,7 @@ class CheckStickerSetNameResultOk extends CheckStickerSetNameResult {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -114,7 +114,7 @@ class CheckStickerSetNameResultNameInvalid extends CheckStickerSetNameResult {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -163,7 +163,7 @@ class CheckStickerSetNameResultNameOccupied extends CheckStickerSetNameResult {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

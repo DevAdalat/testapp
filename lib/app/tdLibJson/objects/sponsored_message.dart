@@ -64,9 +64,9 @@ class SponsoredMessage extends TdObject {
    "message_id":$messageId,
    "is_recommended":$isRecommended,
    "sponsor_chat_id":$sponsorChatId,
-   "sponsor_chat_info":"${sponsorChatInfo?.toJson()}",
-   "link":"${link?.toJson()}",
-   "content":"${content.toJson()}"
+   "sponsor_chat_info":${sponsorChatInfo?.toJson()},
+   "link":${link?.toJson()},
+   "content":${content.toJson()}
 }
 	""";
   }

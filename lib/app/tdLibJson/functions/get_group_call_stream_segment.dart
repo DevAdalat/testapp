@@ -34,7 +34,7 @@ class GetGroupCallStreamSegment extends TdFunction {
    "time_offset":$timeOffset,
    "scale":$scale,
    "channel_id":$channelId,
-   "video_quality":"${videoQuality?.toJson()}"
+   "video_quality":${videoQuality?.toJson()}
 }
 	""";
   }

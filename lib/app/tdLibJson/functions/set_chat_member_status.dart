@@ -23,8 +23,8 @@ class SetChatMemberStatus extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "member_id":"${memberId.toJson()}",
-   "status":"${status.toJson()}"
+   "member_id":${memberId.toJson()},
+   "status":${status.toJson()}
 }
 	""";
   }

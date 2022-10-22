@@ -37,7 +37,7 @@ class OpenWebApp extends TdFunction {
    "chat_id":$chatId,
    "bot_user_id":$botUserId,
    "url":"$url",
-   "theme":"${theme?.toJson()}",
+   "theme":${theme?.toJson()},
    "application_name":"$applicationName",
    "reply_to_message_id":$replyToMessageId
 }

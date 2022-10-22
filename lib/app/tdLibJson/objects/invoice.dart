@@ -84,9 +84,9 @@ class Invoice extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "currency":"$currency",
-   "price_parts":"${priceParts.map((i) => i.toJson()).toList()}",
+   "price_parts":${priceParts.map((i) => i.toJson()).toList()},
    "max_tip_amount":$maxTipAmount,
-   "suggested_tip_amounts":"${suggestedTipAmounts.map((i) => i).toList()}",
+   "suggested_tip_amounts":${suggestedTipAmounts.map((i) => i).toList()},
    "recurring_payment_terms_of_service_url":"$recurringPaymentTermsOfServiceUrl",
    "is_test":$isTest,
    "need_name":$needName,

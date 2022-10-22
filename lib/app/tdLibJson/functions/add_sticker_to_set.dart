@@ -24,7 +24,7 @@ class AddStickerToSet extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "user_id":$userId,
    "name":"$name",
-   "sticker":"${sticker.toJson()}"
+   "sticker":${sticker.toJson()}
 }
 	""";
   }

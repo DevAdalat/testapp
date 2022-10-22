@@ -44,7 +44,7 @@ class FoundMessages extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "total_count":$totalCount,
-   "messages":"${messages.map((i) => i.toJson()).toList()}",
+   "messages":${messages.map((i) => i.toJson()).toList()},
    "next_offset":"$nextOffset"
 }
 	""";

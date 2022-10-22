@@ -66,7 +66,7 @@ class UserPrivacySettingRuleAllowAll extends UserPrivacySettingRule {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -95,7 +95,7 @@ class UserPrivacySettingRuleAllowContacts extends UserPrivacySettingRule {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -133,7 +133,7 @@ class UserPrivacySettingRuleAllowUsers extends UserPrivacySettingRule {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "user_ids":"${userIds.map((i) => i).toList()}"
+   "user_ids":${userIds.map((i) => i).toList()}
 }
 	""";
   }
@@ -175,7 +175,7 @@ class UserPrivacySettingRuleAllowChatMembers extends UserPrivacySettingRule {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "chat_ids":"${chatIds.map((i) => i).toList()}"
+   "chat_ids":${chatIds.map((i) => i).toList()}
 }
 	""";
   }
@@ -208,7 +208,7 @@ class UserPrivacySettingRuleRestrictAll extends UserPrivacySettingRule {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -237,7 +237,7 @@ class UserPrivacySettingRuleRestrictContacts extends UserPrivacySettingRule {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -275,7 +275,7 @@ class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "user_ids":"${userIds.map((i) => i).toList()}"
+   "user_ids":${userIds.map((i) => i).toList()}
 }
 	""";
   }
@@ -317,7 +317,7 @@ class UserPrivacySettingRuleRestrictChatMembers extends UserPrivacySettingRule {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "chat_ids":"${chatIds.map((i) => i).toList()}"
+   "chat_ids":${chatIds.map((i) => i).toList()}
 }
 	""";
   }

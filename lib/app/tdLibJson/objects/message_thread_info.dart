@@ -63,10 +63,10 @@ class MessageThreadInfo extends TdObject {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "message_thread_id":$messageThreadId,
-   "reply_info":"${replyInfo.toJson()}",
+   "reply_info":${replyInfo.toJson()},
    "unread_message_count":$unreadMessageCount,
-   "messages":"${messages.map((i) => i.toJson()).toList()}",
-   "draft_message":"${draftMessage?.toJson()}"
+   "messages":${messages.map((i) => i.toJson()).toList()},
+   "draft_message":${draftMessage?.toJson()}
 }
 	""";
   }

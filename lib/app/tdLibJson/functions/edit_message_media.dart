@@ -28,8 +28,8 @@ class EditMessageMedia extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "message_id":$messageId,
-   "reply_markup":"${replyMarkup?.toJson()}",
-   "input_message_content":"${inputMessageContent.toJson()}"
+   "reply_markup":${replyMarkup?.toJson()},
+   "input_message_content":${inputMessageContent.toJson()}
 }
 	""";
   }

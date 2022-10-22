@@ -19,7 +19,7 @@ class GetRemoteFile extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "remote_file_id":"$remoteFileId",
-   "file_type":"${fileType?.toJson()}"
+   "file_type":${fileType?.toJson()}
 }
 	""";
   }

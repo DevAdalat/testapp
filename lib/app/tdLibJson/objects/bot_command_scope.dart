@@ -63,7 +63,7 @@ class BotCommandScopeDefault extends BotCommandScope {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -90,7 +90,7 @@ class BotCommandScopeAllPrivateChats extends BotCommandScope {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -118,7 +118,7 @@ class BotCommandScopeAllGroupChats extends BotCommandScope {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -147,7 +147,7 @@ class BotCommandScopeAllChatAdministrators extends BotCommandScope {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

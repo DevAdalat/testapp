@@ -32,7 +32,7 @@ class LogTags extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "tags":"${tags.map((i) => i).toList()}"
+   "tags":${tags.map((i) => i).toList()}
 }
 	""";
   }

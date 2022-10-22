@@ -27,7 +27,7 @@ class GroupCallVideoSourceGroup extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "semantics":"$semantics",
-   "source_ids":"${sourceIds.map((i) => i).toList()}"
+   "source_ids":${sourceIds.map((i) => i).toList()}
 }
 	""";
   }

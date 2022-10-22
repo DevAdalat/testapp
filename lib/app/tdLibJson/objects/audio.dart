@@ -71,10 +71,10 @@ class Audio extends TdObject {
    "performer":"$performer",
    "file_name":"$fileName",
    "mime_type":"$mimeType",
-   "album_cover_minithumbnail":"${albumCoverMinithumbnail?.toJson()}",
-   "album_cover_thumbnail":"${albumCoverThumbnail?.toJson()}",
-   "external_album_covers":"${externalAlbumCovers.map((i) => i.toJson()).toList()}",
-   "audio":"${audio.toJson()}"
+   "album_cover_minithumbnail":${albumCoverMinithumbnail?.toJson()},
+   "album_cover_thumbnail":${albumCoverThumbnail?.toJson()},
+   "external_album_covers":${externalAlbumCovers.map((i) => i.toJson()).toList()},
+   "audio":${audio.toJson()}
 }
 	""";
   }

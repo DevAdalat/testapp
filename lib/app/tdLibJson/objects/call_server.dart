@@ -43,7 +43,7 @@ class CallServer extends TdObject {
    "ip_address":"$ipAddress",
    "ipv6_address":"$ipv6Address",
    "port":$port,
-   "type":"${type.toJson()}"
+   "type":${type.toJson()}
 }
 	""";
   }

@@ -37,9 +37,9 @@ class SendMessage extends TdFunction {
    "chat_id":$chatId,
    "message_thread_id":$messageThreadId,
    "reply_to_message_id":$replyToMessageId,
-   "options":"${options?.toJson()}",
-   "reply_markup":"${replyMarkup?.toJson()}",
-   "input_message_content":"${inputMessageContent.toJson()}"
+   "options":${options?.toJson()},
+   "reply_markup":${replyMarkup?.toJson()},
+   "input_message_content":${inputMessageContent.toJson()}
 }
 	""";
   }

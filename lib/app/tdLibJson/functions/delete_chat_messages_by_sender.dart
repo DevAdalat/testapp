@@ -19,7 +19,7 @@ class DeleteChatMessagesBySender extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "sender_id":"${senderId.toJson()}"
+   "sender_id":${senderId.toJson()}
 }
 	""";
   }

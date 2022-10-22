@@ -44,7 +44,7 @@ class CountryInfo extends TdObject {
    "name":"$name",
    "english_name":"$englishName",
    "is_hidden":$isHidden,
-   "calling_codes":"${callingCodes.map((i) => i).toList()}"
+   "calling_codes":${callingCodes.map((i) => i).toList()}
 }
 	""";
   }

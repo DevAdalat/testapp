@@ -24,7 +24,7 @@ class EditMessageSchedulingState extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "message_id":$messageId,
-   "scheduling_state":"${schedulingState?.toJson()}"
+   "scheduling_state":${schedulingState?.toJson()}
 }
 	""";
   }

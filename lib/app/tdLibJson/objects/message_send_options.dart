@@ -47,7 +47,7 @@ class MessageSendOptions extends TdObject {
    "from_background":$fromBackground,
    "protect_content":$protectContent,
    "update_order_of_installed_sticker_sets":$updateOrderOfInstalledStickerSets,
-   "scheduling_state":"${schedulingState?.toJson()}"
+   "scheduling_state":${schedulingState?.toJson()}
 }
 	""";
   }

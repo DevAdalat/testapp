@@ -43,10 +43,10 @@ class NotificationGroup extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "id":$id,
-   "type":"${type.toJson()}",
+   "type":${type.toJson()},
    "chat_id":$chatId,
    "total_count":$totalCount,
-   "notifications":"${notifications.map((i) => i.toJson()).toList()}"
+   "notifications":${notifications.map((i) => i.toJson()).toList()}
 }
 	""";
   }

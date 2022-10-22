@@ -160,8 +160,8 @@ class ChatEventMessageEdited extends ChatEventAction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "old_message":"${oldMessage.toJson()}",
-   "new_message":"${newMessage.toJson()}"
+   "old_message":${oldMessage.toJson()},
+   "new_message":${newMessage.toJson()}
 }
 	""";
   }
@@ -203,7 +203,7 @@ class ChatEventMessageDeleted extends ChatEventAction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "message":"${message.toJson()}"
+   "message":${message.toJson()}
 }
 	""";
   }
@@ -243,7 +243,7 @@ class ChatEventMessagePinned extends ChatEventAction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "message":"${message.toJson()}"
+   "message":${message.toJson()}
 }
 	""";
   }
@@ -283,7 +283,7 @@ class ChatEventMessageUnpinned extends ChatEventAction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "message":"${message.toJson()}"
+   "message":${message.toJson()}
 }
 	""";
   }
@@ -323,7 +323,7 @@ class ChatEventPollStopped extends ChatEventAction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "message":"${message.toJson()}"
+   "message":${message.toJson()}
 }
 	""";
   }
@@ -355,7 +355,7 @@ class ChatEventMemberJoined extends ChatEventAction {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -391,7 +391,7 @@ class ChatEventMemberJoinedByInviteLink extends ChatEventAction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "invite_link":"${inviteLink.toJson()}"
+   "invite_link":${inviteLink.toJson()}
 }
 	""";
   }
@@ -439,7 +439,7 @@ class ChatEventMemberJoinedByRequest extends ChatEventAction {
   {
    "@type":"$CONSTRUCTOR",
    "approver_user_id":$approverUserId,
-   "invite_link":"${inviteLink?.toJson()}"
+   "invite_link":${inviteLink?.toJson()}
 }
 	""";
   }
@@ -487,7 +487,7 @@ class ChatEventMemberInvited extends ChatEventAction {
   {
    "@type":"$CONSTRUCTOR",
    "user_id":$userId,
-   "status":"${status.toJson()}"
+   "status":${status.toJson()}
 }
 	""";
   }
@@ -521,7 +521,7 @@ class ChatEventMemberLeft extends ChatEventAction {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -567,8 +567,8 @@ class ChatEventMemberPromoted extends ChatEventAction {
   {
    "@type":"$CONSTRUCTOR",
    "user_id":$userId,
-   "old_status":"${oldStatus.toJson()}",
-   "new_status":"${newStatus.toJson()}"
+   "old_status":${oldStatus.toJson()},
+   "new_status":${newStatus.toJson()}
 }
 	""";
   }
@@ -622,9 +622,9 @@ class ChatEventMemberRestricted extends ChatEventAction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "member_id":"${memberId.toJson()}",
-   "old_status":"${oldStatus.toJson()}",
-   "new_status":"${newStatus.toJson()}"
+   "member_id":${memberId.toJson()},
+   "old_status":${oldStatus.toJson()},
+   "new_status":${newStatus.toJson()}
 }
 	""";
   }
@@ -676,8 +676,8 @@ class ChatEventAvailableReactionsChanged extends ChatEventAction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "old_available_reactions":"${oldAvailableReactions.toJson()}",
-   "new_available_reactions":"${newAvailableReactions.toJson()}"
+   "old_available_reactions":${oldAvailableReactions.toJson()},
+   "new_available_reactions":${newAvailableReactions.toJson()}
 }
 	""";
   }
@@ -826,8 +826,8 @@ class ChatEventLocationChanged extends ChatEventAction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "old_location":"${oldLocation?.toJson()}",
-   "new_location":"${newLocation?.toJson()}"
+   "old_location":${oldLocation?.toJson()},
+   "new_location":${newLocation?.toJson()}
 }
 	""";
   }
@@ -922,8 +922,8 @@ class ChatEventPermissionsChanged extends ChatEventAction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "old_permissions":"${oldPermissions.toJson()}",
-   "new_permissions":"${newPermissions.toJson()}"
+   "old_permissions":${oldPermissions.toJson()},
+   "new_permissions":${newPermissions.toJson()}
 }
 	""";
   }
@@ -974,8 +974,8 @@ class ChatEventPhotoChanged extends ChatEventAction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "old_photo":"${oldPhoto?.toJson()}",
-   "new_photo":"${newPhoto?.toJson()}"
+   "old_photo":${oldPhoto?.toJson()},
+   "new_photo":${newPhoto?.toJson()}
 }
 	""";
   }
@@ -1377,8 +1377,8 @@ class ChatEventInviteLinkEdited extends ChatEventAction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "old_invite_link":"${oldInviteLink.toJson()}",
-   "new_invite_link":"${newInviteLink.toJson()}"
+   "old_invite_link":${oldInviteLink.toJson()},
+   "new_invite_link":${newInviteLink.toJson()}
 }
 	""";
   }
@@ -1420,7 +1420,7 @@ class ChatEventInviteLinkRevoked extends ChatEventAction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "invite_link":"${inviteLink.toJson()}"
+   "invite_link":${inviteLink.toJson()}
 }
 	""";
   }
@@ -1460,7 +1460,7 @@ class ChatEventInviteLinkDeleted extends ChatEventAction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "invite_link":"${inviteLink.toJson()}"
+   "invite_link":${inviteLink.toJson()}
 }
 	""";
   }
@@ -1627,7 +1627,7 @@ class ChatEventVideoChatParticipantIsMutedToggled extends ChatEventAction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "participant_id":"${participantId.toJson()}",
+   "participant_id":${participantId.toJson()},
    "is_muted":$isMuted
 }
 	""";
@@ -1676,7 +1676,7 @@ class ChatEventVideoChatParticipantVolumeLevelChanged extends ChatEventAction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "participant_id":"${participantId.toJson()}",
+   "participant_id":${participantId.toJson()},
    "volume_level":$volumeLevel
 }
 	""";

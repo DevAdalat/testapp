@@ -44,7 +44,7 @@ class PhoneNumberInfo extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "country":"${country?.toJson()}",
+   "country":${country?.toJson()},
    "country_calling_code":"$countryCallingCode",
    "formatted_phone_number":"$formattedPhoneNumber"
 }

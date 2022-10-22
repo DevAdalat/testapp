@@ -51,7 +51,7 @@ class SecretChatStatePending extends SecretChatState {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -78,7 +78,7 @@ class SecretChatStateReady extends SecretChatState {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -105,7 +105,7 @@ class SecretChatStateClosed extends SecretChatState {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

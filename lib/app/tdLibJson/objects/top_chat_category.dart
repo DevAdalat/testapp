@@ -63,7 +63,7 @@ class TopChatCategoryUsers extends TopChatCategory {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -90,7 +90,7 @@ class TopChatCategoryBots extends TopChatCategory {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -117,7 +117,7 @@ class TopChatCategoryGroups extends TopChatCategory {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -144,7 +144,7 @@ class TopChatCategoryChannels extends TopChatCategory {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -171,7 +171,7 @@ class TopChatCategoryInlineBots extends TopChatCategory {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -198,7 +198,7 @@ class TopChatCategoryCalls extends TopChatCategory {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -225,7 +225,7 @@ class TopChatCategoryForwardChats extends TopChatCategory {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

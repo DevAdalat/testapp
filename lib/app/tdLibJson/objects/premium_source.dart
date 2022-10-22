@@ -62,7 +62,7 @@ class PremiumSourceLimitExceeded extends PremiumSource {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "limit_type":"${limitType.toJson()}"
+   "limit_type":${limitType.toJson()}
 }
 	""";
   }
@@ -102,7 +102,7 @@ class PremiumSourceFeature extends PremiumSource {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "feature":"${feature.toJson()}"
+   "feature":${feature.toJson()}
 }
 	""";
   }
@@ -174,7 +174,7 @@ class PremiumSourceSettings extends PremiumSource {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

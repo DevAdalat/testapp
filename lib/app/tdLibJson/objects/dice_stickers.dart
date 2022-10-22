@@ -56,7 +56,7 @@ class DiceStickersRegular extends DiceStickers {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "sticker":"${sticker.toJson()}"
+   "sticker":${sticker.toJson()}
 }
 	""";
   }
@@ -116,11 +116,11 @@ class DiceStickersSlotMachine extends DiceStickers {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "background":"${background.toJson()}",
-   "lever":"${lever.toJson()}",
-   "left_reel":"${leftReel.toJson()}",
-   "center_reel":"${centerReel.toJson()}",
-   "right_reel":"${rightReel.toJson()}"
+   "background":${background.toJson()},
+   "lever":${lever.toJson()},
+   "left_reel":${leftReel.toJson()},
+   "center_reel":${centerReel.toJson()},
+   "right_reel":${rightReel.toJson()}
 }
 	""";
   }

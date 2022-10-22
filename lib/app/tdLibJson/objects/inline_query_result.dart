@@ -118,7 +118,7 @@ class InlineQueryResultArticle extends InlineQueryResult {
    "hide_url":$hideUrl,
    "title":"$title",
    "description":"$description",
-   "thumbnail":"${thumbnail?.toJson()}"
+   "thumbnail":${thumbnail?.toJson()}
 }
 	""";
   }
@@ -181,8 +181,8 @@ class InlineQueryResultContact extends InlineQueryResult {
   {
    "@type":"$CONSTRUCTOR",
    "id":"$id",
-   "contact":"${contact.toJson()}",
-   "thumbnail":"${thumbnail?.toJson()}"
+   "contact":${contact.toJson()},
+   "thumbnail":${thumbnail?.toJson()}
 }
 	""";
   }
@@ -244,9 +244,9 @@ class InlineQueryResultLocation extends InlineQueryResult {
   {
    "@type":"$CONSTRUCTOR",
    "id":"$id",
-   "location":"${location.toJson()}",
+   "location":${location.toJson()},
    "title":"$title",
-   "thumbnail":"${thumbnail?.toJson()}"
+   "thumbnail":${thumbnail?.toJson()}
 }
 	""";
   }
@@ -305,8 +305,8 @@ class InlineQueryResultVenue extends InlineQueryResult {
   {
    "@type":"$CONSTRUCTOR",
    "id":"$id",
-   "venue":"${venue.toJson()}",
-   "thumbnail":"${thumbnail?.toJson()}"
+   "venue":${venue.toJson()},
+   "thumbnail":${thumbnail?.toJson()}
 }
 	""";
   }
@@ -356,7 +356,7 @@ class InlineQueryResultGame extends InlineQueryResult {
   {
    "@type":"$CONSTRUCTOR",
    "id":"$id",
-   "game":"${game.toJson()}"
+   "game":${game.toJson()}
 }
 	""";
   }
@@ -409,7 +409,7 @@ class InlineQueryResultAnimation extends InlineQueryResult {
   {
    "@type":"$CONSTRUCTOR",
    "id":"$id",
-   "animation":"${animation.toJson()}",
+   "animation":${animation.toJson()},
    "title":"$title"
 }
 	""";
@@ -460,7 +460,7 @@ class InlineQueryResultAudio extends InlineQueryResult {
   {
    "@type":"$CONSTRUCTOR",
    "id":"$id",
-   "audio":"${audio.toJson()}"
+   "audio":${audio.toJson()}
 }
 	""";
   }
@@ -518,7 +518,7 @@ class InlineQueryResultDocument extends InlineQueryResult {
   {
    "@type":"$CONSTRUCTOR",
    "id":"$id",
-   "document":"${document.toJson()}",
+   "document":${document.toJson()},
    "title":"$title",
    "description":"$description"
 }
@@ -582,7 +582,7 @@ class InlineQueryResultPhoto extends InlineQueryResult {
   {
    "@type":"$CONSTRUCTOR",
    "id":"$id",
-   "photo":"${photo.toJson()}",
+   "photo":${photo.toJson()},
    "title":"$title",
    "description":"$description"
 }
@@ -636,7 +636,7 @@ class InlineQueryResultSticker extends InlineQueryResult {
   {
    "@type":"$CONSTRUCTOR",
    "id":"$id",
-   "sticker":"${sticker.toJson()}"
+   "sticker":${sticker.toJson()}
 }
 	""";
   }
@@ -694,7 +694,7 @@ class InlineQueryResultVideo extends InlineQueryResult {
   {
    "@type":"$CONSTRUCTOR",
    "id":"$id",
-   "video":"${video.toJson()}",
+   "video":${video.toJson()},
    "title":"$title",
    "description":"$description"
 }
@@ -753,7 +753,7 @@ class InlineQueryResultVoiceNote extends InlineQueryResult {
   {
    "@type":"$CONSTRUCTOR",
    "id":"$id",
-   "voice_note":"${voiceNote.toJson()}",
+   "voice_note":${voiceNote.toJson()},
    "title":"$title"
 }
 	""";

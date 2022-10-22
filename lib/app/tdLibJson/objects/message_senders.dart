@@ -39,7 +39,7 @@ class MessageSenders extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "total_count":$totalCount,
-   "senders":"${senders.map((i) => i.toJson()).toList()}"
+   "senders":${senders.map((i) => i.toJson()).toList()}
 }
 	""";
   }

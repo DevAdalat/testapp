@@ -72,7 +72,7 @@ class ChatReportReasonSpam extends ChatReportReason {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -99,7 +99,7 @@ class ChatReportReasonViolence extends ChatReportReason {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -126,7 +126,7 @@ class ChatReportReasonPornography extends ChatReportReason {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -153,7 +153,7 @@ class ChatReportReasonChildAbuse extends ChatReportReason {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -180,7 +180,7 @@ class ChatReportReasonCopyright extends ChatReportReason {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -208,7 +208,7 @@ class ChatReportReasonUnrelatedLocation extends ChatReportReason {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -236,7 +236,7 @@ class ChatReportReasonFake extends ChatReportReason {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -263,7 +263,7 @@ class ChatReportReasonIllegalDrugs extends ChatReportReason {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -291,7 +291,7 @@ class ChatReportReasonPersonalDetails extends ChatReportReason {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -319,7 +319,7 @@ class ChatReportReasonCustom extends ChatReportReason {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

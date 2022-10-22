@@ -51,7 +51,7 @@ class OrderInfo extends TdObject {
    "name":"$name",
    "phone_number":"$phoneNumber",
    "email_address":"$emailAddress",
-   "shipping_address":"${shippingAddress?.toJson()}"
+   "shipping_address":${shippingAddress?.toJson()}
 }
 	""";
   }

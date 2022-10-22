@@ -39,7 +39,7 @@ class ChatMembers extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "total_count":$totalCount,
-   "members":"${members.map((i) => i.toJson()).toList()}"
+   "members":${members.map((i) => i.toJson()).toList()}
 }
 	""";
   }

@@ -88,7 +88,7 @@ class TextParseModeHTML extends TextParseMode {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

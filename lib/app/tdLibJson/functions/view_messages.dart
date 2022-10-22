@@ -28,7 +28,7 @@ class ViewMessages extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "message_thread_id":$messageThreadId,
-   "message_ids":"${messageIds.map((i) => i).toList()}",
+   "message_ids":${messageIds.map((i) => i).toList()},
    "force_read":$forceRead
 }
 	""";

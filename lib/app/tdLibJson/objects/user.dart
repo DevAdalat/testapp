@@ -135,9 +135,9 @@ class User extends TdObject {
    "last_name":"$lastName",
    "username":"$username",
    "phone_number":"$phoneNumber",
-   "status":"${status.toJson()}",
-   "profile_photo":"${profilePhoto?.toJson()}",
-   "emoji_status":"${emojiStatus?.toJson()}",
+   "status":${status.toJson()},
+   "profile_photo":${profilePhoto?.toJson()},
+   "emoji_status":${emojiStatus?.toJson()},
    "is_contact":$isContact,
    "is_mutual_contact":$isMutualContact,
    "is_verified":$isVerified,
@@ -147,7 +147,7 @@ class User extends TdObject {
    "is_scam":$isScam,
    "is_fake":$isFake,
    "have_access":$haveAccess,
-   "type":"${type.toJson()}",
+   "type":${type.toJson()},
    "language_code":"$languageCode",
    "added_to_attachment_menu":$addedToAttachmentMenu
 }

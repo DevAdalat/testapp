@@ -58,7 +58,7 @@ class SecretChat extends TdObject {
    "@type":"$CONSTRUCTOR",
    "id":$id,
    "user_id":$userId,
-   "state":"${state.toJson()}",
+   "state":${state.toJson()},
    "is_outbound":$isOutbound,
    "key_hash":"$keyHash",
    "layer":$layer

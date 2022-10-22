@@ -22,8 +22,8 @@ class PreliminaryUploadFile extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "file":"${file.toJson()}",
-   "file_type":"${fileType?.toJson()}",
+   "file":${file.toJson()},
+   "file_type":${fileType?.toJson()},
    "priority":$priority
 }
 	""";

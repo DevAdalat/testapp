@@ -22,8 +22,8 @@ class SetBackground extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "background":"${background?.toJson()}",
-   "type":"${type?.toJson()}",
+   "background":${background?.toJson()},
+   "type":${type?.toJson()},
    "for_dark_theme":$forDarkTheme
 }
 	""";

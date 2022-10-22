@@ -22,8 +22,8 @@ class ValidateOrderInfo extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "input_invoice":"${inputInvoice.toJson()}",
-   "order_info":"${orderInfo?.toJson()}",
+   "input_invoice":${inputInvoice.toJson()},
+   "order_info":${orderInfo?.toJson()},
    "allow_save":$allowSave
 }
 	""";

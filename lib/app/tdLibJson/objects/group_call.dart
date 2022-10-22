@@ -146,7 +146,7 @@ class GroupCall extends TdObject {
    "participant_count":$participantCount,
    "has_hidden_listeners":$hasHiddenListeners,
    "loaded_all_participants":$loadedAllParticipants,
-   "recent_speakers":"${recentSpeakers.map((i) => i.toJson()).toList()}",
+   "recent_speakers":${recentSpeakers.map((i) => i.toJson()).toList()},
    "is_my_video_enabled":$isMyVideoEnabled,
    "is_my_video_paused":$isMyVideoPaused,
    "can_enable_video":$canEnableVideo,

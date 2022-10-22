@@ -31,7 +31,7 @@ class AnimatedChatPhoto extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "length":$length,
-   "file":"${file.toJson()}",
+   "file":${file.toJson()},
    "main_frame_timestamp":$mainFrameTimestamp
 }
 	""";

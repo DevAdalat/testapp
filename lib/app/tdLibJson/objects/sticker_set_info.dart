@@ -89,16 +89,16 @@ class StickerSetInfo extends TdObject {
    "id":$id,
    "title":"$title",
    "name":"$name",
-   "thumbnail":"${thumbnail?.toJson()}",
-   "thumbnail_outline":"${thumbnailOutline.map((i) => i.toJson()).toList()}",
+   "thumbnail":${thumbnail?.toJson()},
+   "thumbnail_outline":${thumbnailOutline.map((i) => i.toJson()).toList()},
    "is_installed":$isInstalled,
    "is_archived":$isArchived,
    "is_official":$isOfficial,
-   "sticker_format":"${stickerFormat.toJson()}",
-   "sticker_type":"${stickerType.toJson()}",
+   "sticker_format":${stickerFormat.toJson()},
+   "sticker_type":${stickerType.toJson()},
    "is_viewed":$isViewed,
    "size":$size,
-   "covers":"${covers.map((i) => i.toJson()).toList()}"
+   "covers":${covers.map((i) => i.toJson()).toList()}
 }
 	""";
   }

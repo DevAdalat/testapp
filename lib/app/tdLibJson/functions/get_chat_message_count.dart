@@ -23,7 +23,7 @@ class GetChatMessageCount extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "filter":"${filter.toJson()}",
+   "filter":${filter.toJson()},
    "return_local":$returnLocal
 }
 	""";

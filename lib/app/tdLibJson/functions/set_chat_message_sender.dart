@@ -19,7 +19,7 @@ class SetChatMessageSender extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "message_sender_id":"${messageSenderId.toJson()}"
+   "message_sender_id":${messageSenderId.toJson()}
 }
 	""";
   }

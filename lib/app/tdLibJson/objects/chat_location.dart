@@ -24,7 +24,7 @@ class ChatLocation extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "location":"${location.toJson()}",
+   "location":${location.toJson()},
    "address":"$address"
 }
 	""";

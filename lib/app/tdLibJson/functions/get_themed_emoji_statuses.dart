@@ -8,7 +8,7 @@ class GetThemedEmojiStatuses extends TdFunction {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

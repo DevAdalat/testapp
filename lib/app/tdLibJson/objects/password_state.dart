@@ -69,7 +69,7 @@ class PasswordState extends TdObject {
    "password_hint":"$passwordHint",
    "has_recovery_email_address":$hasRecoveryEmailAddress,
    "has_passport_data":$hasPassportData,
-   "recovery_email_address_code_info":"${recoveryEmailAddressCodeInfo?.toJson()}",
+   "recovery_email_address_code_info":${recoveryEmailAddressCodeInfo?.toJson()},
    "login_email_address_pattern":"$loginEmailAddressPattern",
    "pending_reset_date":$pendingResetDate
 }

@@ -14,7 +14,7 @@ class CreateInvoiceLink extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "invoice":"${invoice.toJson()}"
+   "invoice":${invoice.toJson()}
 }
 	""";
   }

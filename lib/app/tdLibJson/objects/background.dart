@@ -62,8 +62,8 @@ class Background extends TdObject {
    "is_default":$isDefault,
    "is_dark":$isDark,
    "name":"$name",
-   "document":"${document?.toJson()}",
-   "type":"${type.toJson()}"
+   "document":${document?.toJson()},
+   "type":${type.toJson()}
 }
 	""";
   }

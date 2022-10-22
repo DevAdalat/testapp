@@ -39,7 +39,7 @@ class FormattedText extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "text":"$text",
-   "entities":"${entities.map((i) => i.toJson()).toList()}"
+   "entities":${entities.map((i) => i.toJson()).toList()}
 }
 	""";
   }

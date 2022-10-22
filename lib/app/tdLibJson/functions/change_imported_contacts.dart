@@ -14,7 +14,7 @@ class ChangeImportedContacts extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "contacts":"${contacts.map((i) => i.toJson()).toList()}"
+   "contacts":${contacts.map((i) => i.toJson()).toList()}
 }
 	""";
   }

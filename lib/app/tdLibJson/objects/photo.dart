@@ -34,8 +34,8 @@ class Photo extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "has_stickers":$hasStickers,
-   "minithumbnail":"${minithumbnail?.toJson()}",
-   "sizes":"${sizes.map((i) => i.toJson()).toList()}"
+   "minithumbnail":${minithumbnail?.toJson()},
+   "sizes":${sizes.map((i) => i.toJson()).toList()}
 }
 	""";
   }

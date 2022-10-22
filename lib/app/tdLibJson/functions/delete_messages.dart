@@ -23,7 +23,7 @@ class DeleteMessages extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "message_ids":"${messageIds.map((i) => i).toList()}",
+   "message_ids":${messageIds.map((i) => i).toList()},
    "revoke":$revoke
 }
 	""";

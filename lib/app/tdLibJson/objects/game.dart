@@ -54,10 +54,10 @@ class Game extends TdObject {
    "id":$id,
    "short_name":"$shortName",
    "title":"$title",
-   "text":"${text.toJson()}",
+   "text":${text.toJson()},
    "description":"$description",
-   "photo":"${photo.toJson()}",
-   "animation":"${animation?.toJson()}"
+   "photo":${photo.toJson()},
+   "animation":${animation?.toJson()}
 }
 	""";
   }

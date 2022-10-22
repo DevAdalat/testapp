@@ -36,10 +36,10 @@ class InputSticker extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "sticker":"${sticker.toJson()}",
+   "sticker":${sticker.toJson()},
    "emojis":"$emojis",
-   "format":"${format.toJson()}",
-   "mask_position":"${maskPosition?.toJson()}"
+   "format":${format.toJson()},
+   "mask_position":${maskPosition?.toJson()}
 }
 	""";
   }

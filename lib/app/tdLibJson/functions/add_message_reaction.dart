@@ -32,7 +32,7 @@ class AddMessageReaction extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "message_id":$messageId,
-   "reaction_type":"${reactionType.toJson()}",
+   "reaction_type":${reactionType.toJson()},
    "is_big":$isBig,
    "update_recent_reactions":$updateRecentReactions
 }

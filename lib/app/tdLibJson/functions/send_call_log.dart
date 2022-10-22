@@ -19,7 +19,7 @@ class SendCallLog extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "call_id":$callId,
-   "log_file":"${logFile.toJson()}"
+   "log_file":${logFile.toJson()}
 }
 	""";
   }

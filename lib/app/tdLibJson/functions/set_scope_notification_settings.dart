@@ -18,8 +18,8 @@ class SetScopeNotificationSettings extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "scope":"${scope.toJson()}",
-   "notification_settings":"${notificationSettings.toJson()}"
+   "scope":${scope.toJson()},
+   "notification_settings":${notificationSettings.toJson()}
 }
 	""";
   }

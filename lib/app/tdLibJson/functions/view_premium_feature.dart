@@ -14,7 +14,7 @@ class ViewPremiumFeature extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "feature":"${feature.toJson()}"
+   "feature":${feature.toJson()}
 }
 	""";
   }

@@ -27,7 +27,7 @@ class GetSupergroupMembers extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "supergroup_id":$supergroupId,
-   "filter":"${filter?.toJson()}",
+   "filter":${filter?.toJson()},
    "offset":$offset,
    "limit":$limit
 }

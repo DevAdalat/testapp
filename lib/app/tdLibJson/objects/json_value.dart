@@ -73,7 +73,7 @@ class JsonValueNull extends JsonValue {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -296,7 +296,7 @@ class JsonValueArray extends JsonValue {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "values":"${values.map((i) => i.toJson()).toList()}"
+   "values":${values.map((i) => i.toJson()).toList()}
 }
 	""";
   }
@@ -354,7 +354,7 @@ class JsonValueObject extends JsonValue {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "members":"${members.map((i) => i.toJson()).toList()}"
+   "members":${members.map((i) => i.toJson()).toList()}
 }
 	""";
   }

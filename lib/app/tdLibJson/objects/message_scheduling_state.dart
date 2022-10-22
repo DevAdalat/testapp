@@ -90,7 +90,7 @@ class MessageSchedulingStateSendWhenOnline extends MessageSchedulingState {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

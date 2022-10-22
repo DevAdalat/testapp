@@ -33,7 +33,7 @@ class Updates extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "updates":"${updates.map((i) => i.toJson()).toList()}"
+   "updates":${updates.map((i) => i.toJson()).toList()}
 }
 	""";
   }

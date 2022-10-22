@@ -27,7 +27,7 @@ class BanChatMember extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "member_id":"${memberId.toJson()}",
+   "member_id":${memberId.toJson()},
    "banned_until_date":$bannedUntilDate,
    "revoke_messages":$revokeMessages
 }

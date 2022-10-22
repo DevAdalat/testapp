@@ -93,7 +93,7 @@ class SearchMessagesFilterEmpty extends SearchMessagesFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -120,7 +120,7 @@ class SearchMessagesFilterAnimation extends SearchMessagesFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -148,7 +148,7 @@ class SearchMessagesFilterAudio extends SearchMessagesFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -175,7 +175,7 @@ class SearchMessagesFilterDocument extends SearchMessagesFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -203,7 +203,7 @@ class SearchMessagesFilterPhoto extends SearchMessagesFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -230,7 +230,7 @@ class SearchMessagesFilterVideo extends SearchMessagesFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -257,7 +257,7 @@ class SearchMessagesFilterVoiceNote extends SearchMessagesFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -286,7 +286,7 @@ class SearchMessagesFilterPhotoAndVideo extends SearchMessagesFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -314,7 +314,7 @@ class SearchMessagesFilterUrl extends SearchMessagesFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -341,7 +341,7 @@ class SearchMessagesFilterChatPhoto extends SearchMessagesFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -369,7 +369,7 @@ class SearchMessagesFilterVideoNote extends SearchMessagesFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -398,7 +398,7 @@ class SearchMessagesFilterVoiceAndVideoNote extends SearchMessagesFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -426,7 +426,7 @@ class SearchMessagesFilterMention extends SearchMessagesFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -454,7 +454,7 @@ class SearchMessagesFilterUnreadMention extends SearchMessagesFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -483,7 +483,7 @@ class SearchMessagesFilterUnreadReaction extends SearchMessagesFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -512,7 +512,7 @@ class SearchMessagesFilterFailedToSend extends SearchMessagesFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -540,7 +540,7 @@ class SearchMessagesFilterPinned extends SearchMessagesFilter {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

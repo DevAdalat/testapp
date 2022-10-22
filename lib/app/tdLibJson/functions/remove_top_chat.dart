@@ -18,7 +18,7 @@ class RemoveTopChat extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "category":"${category.toJson()}",
+   "category":${category.toJson()},
    "chat_id":$chatId
 }
 	""";

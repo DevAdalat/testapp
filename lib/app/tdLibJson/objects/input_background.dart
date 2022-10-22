@@ -56,7 +56,7 @@ class InputBackgroundLocal extends InputBackground {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "background":"${background.toJson()}"
+   "background":${background.toJson()}
 }
 	""";
   }

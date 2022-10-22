@@ -33,7 +33,7 @@ class Stickers extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "stickers":"${stickers.map((i) => i.toJson()).toList()}"
+   "stickers":${stickers.map((i) => i.toJson()).toList()}
 }
 	""";
   }

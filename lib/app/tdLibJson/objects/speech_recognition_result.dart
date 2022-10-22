@@ -139,7 +139,7 @@ class SpeechRecognitionResultError extends SpeechRecognitionResult {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "error":"${error.toJson()}"
+   "error":${error.toJson()}
 }
 	""";
   }

@@ -14,7 +14,7 @@ class RemoveSavedAnimation extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "animation":"${animation.toJson()}"
+   "animation":${animation.toJson()}
 }
 	""";
   }

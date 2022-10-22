@@ -33,7 +33,7 @@ class Countries extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "countries":"${countries.map((i) => i.toJson()).toList()}"
+   "countries":${countries.map((i) => i.toJson()).toList()}
 }
 	""";
   }

@@ -122,7 +122,7 @@ class BackgroundTypePattern extends BackgroundType {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "fill":"${fill.toJson()}",
+   "fill":${fill.toJson()},
    "intensity":$intensity,
    "is_inverted":$isInverted,
    "is_moving":$isMoving
@@ -171,7 +171,7 @@ class BackgroundTypeFill extends BackgroundType {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "fill":"${fill.toJson()}"
+   "fill":${fill.toJson()}
 }
 	""";
   }

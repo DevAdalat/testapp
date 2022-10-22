@@ -31,8 +31,8 @@ class EditInlineMessageLiveLocation extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "inline_message_id":"$inlineMessageId",
-   "reply_markup":"${replyMarkup?.toJson()}",
-   "location":"${location?.toJson()}",
+   "reply_markup":${replyMarkup?.toJson()},
+   "location":${location?.toJson()},
    "heading":$heading,
    "proximity_alert_radius":$proximityAlertRadius
 }

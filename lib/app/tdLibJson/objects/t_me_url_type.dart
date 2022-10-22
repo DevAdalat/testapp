@@ -141,7 +141,7 @@ class TMeUrlTypeChatInvite extends TMeUrlType {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "info":"${info.toJson()}"
+   "info":${info.toJson()}
 }
 	""";
   }

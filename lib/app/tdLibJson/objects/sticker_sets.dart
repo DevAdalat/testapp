@@ -39,7 +39,7 @@ class StickerSets extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "total_count":$totalCount,
-   "sets":"${sets.map((i) => i.toJson()).toList()}"
+   "sets":${sets.map((i) => i.toJson()).toList()}
 }
 	""";
   }

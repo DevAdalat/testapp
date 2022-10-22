@@ -50,8 +50,8 @@ class AuthenticationCodeInfo extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "phone_number":"$phoneNumber",
-   "type":"${type.toJson()}",
-   "next_type":"${nextType?.toJson()}",
+   "type":${type.toJson()},
+   "next_type":${nextType?.toJson()},
    "timeout":$timeout
 }
 	""";

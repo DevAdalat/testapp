@@ -22,7 +22,7 @@ class SearchInstalledStickerSets extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "sticker_type":"${stickerType.toJson()}",
+   "sticker_type":${stickerType.toJson()},
    "query":"$query",
    "limit":$limit
 }

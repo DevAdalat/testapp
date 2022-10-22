@@ -34,7 +34,7 @@ class MaskPosition extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "point":"${point.toJson()}",
+   "point":${point.toJson()},
    "x_shift":$xShift,
    "y_shift":$yShift,
    "scale":$scale

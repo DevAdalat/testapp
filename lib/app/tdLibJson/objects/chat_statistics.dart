@@ -155,22 +155,22 @@ class ChatStatisticsSupergroup extends ChatStatistics {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "period":"${period.toJson()}",
-   "member_count":"${memberCount.toJson()}",
-   "message_count":"${messageCount.toJson()}",
-   "viewer_count":"${viewerCount.toJson()}",
-   "sender_count":"${senderCount.toJson()}",
-   "member_count_graph":"${memberCountGraph.toJson()}",
-   "join_graph":"${joinGraph.toJson()}",
-   "join_by_source_graph":"${joinBySourceGraph.toJson()}",
-   "language_graph":"${languageGraph.toJson()}",
-   "message_content_graph":"${messageContentGraph.toJson()}",
-   "action_graph":"${actionGraph.toJson()}",
-   "day_graph":"${dayGraph.toJson()}",
-   "week_graph":"${weekGraph.toJson()}",
-   "top_senders":"${topSenders.map((i) => i.toJson()).toList()}",
-   "top_administrators":"${topAdministrators.map((i) => i.toJson()).toList()}",
-   "top_inviters":"${topInviters.map((i) => i.toJson()).toList()}"
+   "period":${period.toJson()},
+   "member_count":${memberCount.toJson()},
+   "message_count":${messageCount.toJson()},
+   "viewer_count":${viewerCount.toJson()},
+   "sender_count":${senderCount.toJson()},
+   "member_count_graph":${memberCountGraph.toJson()},
+   "join_graph":${joinGraph.toJson()},
+   "join_by_source_graph":${joinBySourceGraph.toJson()},
+   "language_graph":${languageGraph.toJson()},
+   "message_content_graph":${messageContentGraph.toJson()},
+   "action_graph":${actionGraph.toJson()},
+   "day_graph":${dayGraph.toJson()},
+   "week_graph":${weekGraph.toJson()},
+   "top_senders":${topSenders.map((i) => i.toJson()).toList()},
+   "top_administrators":${topAdministrators.map((i) => i.toJson()).toList()},
+   "top_inviters":${topInviters.map((i) => i.toJson()).toList()}
 }
 	""";
   }
@@ -337,21 +337,21 @@ class ChatStatisticsChannel extends ChatStatistics {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "period":"${period.toJson()}",
-   "member_count":"${memberCount.toJson()}",
-   "mean_view_count":"${meanViewCount.toJson()}",
-   "mean_share_count":"${meanShareCount.toJson()}",
+   "period":${period.toJson()},
+   "member_count":${memberCount.toJson()},
+   "mean_view_count":${meanViewCount.toJson()},
+   "mean_share_count":${meanShareCount.toJson()},
    "enabled_notifications_percentage":$enabledNotificationsPercentage,
-   "member_count_graph":"${memberCountGraph.toJson()}",
-   "join_graph":"${joinGraph.toJson()}",
-   "mute_graph":"${muteGraph.toJson()}",
-   "view_count_by_hour_graph":"${viewCountByHourGraph.toJson()}",
-   "view_count_by_source_graph":"${viewCountBySourceGraph.toJson()}",
-   "join_by_source_graph":"${joinBySourceGraph.toJson()}",
-   "language_graph":"${languageGraph.toJson()}",
-   "message_interaction_graph":"${messageInteractionGraph.toJson()}",
-   "instant_view_interaction_graph":"${instantViewInteractionGraph.toJson()}",
-   "recent_message_interactions":"${recentMessageInteractions.map((i) => i.toJson()).toList()}"
+   "member_count_graph":${memberCountGraph.toJson()},
+   "join_graph":${joinGraph.toJson()},
+   "mute_graph":${muteGraph.toJson()},
+   "view_count_by_hour_graph":${viewCountByHourGraph.toJson()},
+   "view_count_by_source_graph":${viewCountBySourceGraph.toJson()},
+   "join_by_source_graph":${joinBySourceGraph.toJson()},
+   "language_graph":${languageGraph.toJson()},
+   "message_interaction_graph":${messageInteractionGraph.toJson()},
+   "instant_view_interaction_graph":${instantViewInteractionGraph.toJson()},
+   "recent_message_interactions":${recentMessageInteractions.map((i) => i.toJson()).toList()}
 }
 	""";
   }

@@ -40,7 +40,7 @@ class NetworkStatistics extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "since_date":$sinceDate,
-   "entries":"${entries.map((i) => i.toJson()).toList()}"
+   "entries":${entries.map((i) => i.toJson()).toList()}
 }
 	""";
   }

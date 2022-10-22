@@ -28,7 +28,7 @@ class ReportChatPhoto extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "file_id":$fileId,
-   "reason":"${reason.toJson()}",
+   "reason":${reason.toJson()},
    "text":"$text"
 }
 	""";

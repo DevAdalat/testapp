@@ -51,7 +51,7 @@ class StickerFormatWebp extends StickerFormat {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -78,7 +78,7 @@ class StickerFormatTgs extends StickerFormat {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -105,7 +105,7 @@ class StickerFormatWebm extends StickerFormat {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

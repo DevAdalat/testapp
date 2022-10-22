@@ -18,7 +18,7 @@ class ToggleMessageSenderIsBlocked extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "sender_id":"${senderId.toJson()}",
+   "sender_id":${senderId.toJson()},
    "is_blocked":$isBlocked
 }
 	""";

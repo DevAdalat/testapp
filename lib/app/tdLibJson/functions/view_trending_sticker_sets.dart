@@ -14,7 +14,7 @@ class ViewTrendingStickerSets extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "sticker_set_ids":"${stickerSetIds.map((i) => i).toList()}"
+   "sticker_set_ids":${stickerSetIds.map((i) => i).toList()}
 }
 	""";
   }

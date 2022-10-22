@@ -33,7 +33,7 @@ class GameHighScores extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "scores":"${scores.map((i) => i.toJson()).toList()}"
+   "scores":${scores.map((i) => i.toJson()).toList()}
 }
 	""";
   }

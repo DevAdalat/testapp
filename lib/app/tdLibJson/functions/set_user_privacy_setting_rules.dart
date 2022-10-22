@@ -18,8 +18,8 @@ class SetUserPrivacySettingRules extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "setting":"${setting.toJson()}",
-   "rules":"${rules.toJson()}"
+   "setting":${setting.toJson()},
+   "rules":${rules.toJson()}
 }
 	""";
   }

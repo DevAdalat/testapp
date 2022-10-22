@@ -40,7 +40,7 @@ class FileDownload extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "file_id":$fileId,
-   "message":"${message.toJson()}",
+   "message":${message.toJson()},
    "add_date":$addDate,
    "complete_date":$completeDate,
    "is_paused":$isPaused

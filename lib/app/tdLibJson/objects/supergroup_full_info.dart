@@ -138,7 +138,7 @@ class SupergroupFullInfo extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "photo":"${photo?.toJson()}",
+   "photo":${photo?.toJson()},
    "description":"$description",
    "member_count":$memberCount,
    "administrator_count":$administratorCount,
@@ -154,9 +154,9 @@ class SupergroupFullInfo extends TdObject {
    "can_get_statistics":$canGetStatistics,
    "is_all_history_available":$isAllHistoryAvailable,
    "sticker_set_id":$stickerSetId,
-   "location":"${location?.toJson()}",
-   "invite_link":"${inviteLink?.toJson()}",
-   "bot_commands":"${botCommands.map((i) => i.toJson()).toList()}",
+   "location":${location?.toJson()},
+   "invite_link":${inviteLink?.toJson()},
+   "bot_commands":${botCommands.map((i) => i.toJson()).toList()},
    "upgraded_from_basic_group_id":$upgradedFromBasicGroupId,
    "upgraded_from_max_message_id":$upgradedFromMaxMessageId
 }

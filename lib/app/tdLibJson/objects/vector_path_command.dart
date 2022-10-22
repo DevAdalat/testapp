@@ -56,7 +56,7 @@ class VectorPathCommandLine extends VectorPathCommand {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "end_point":"${endPoint.toJson()}"
+   "end_point":${endPoint.toJson()}
 }
 	""";
   }
@@ -89,7 +89,7 @@ class VectorPathCommandCubicBezierCurve extends VectorPathCommand {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

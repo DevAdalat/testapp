@@ -82,7 +82,7 @@ class PassportElementTypePersonalDetails extends PassportElementType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -110,7 +110,7 @@ class PassportElementTypePassport extends PassportElementType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -138,7 +138,7 @@ class PassportElementTypeDriverLicense extends PassportElementType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -166,7 +166,7 @@ class PassportElementTypeIdentityCard extends PassportElementType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -195,7 +195,7 @@ class PassportElementTypeInternalPassport extends PassportElementType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -223,7 +223,7 @@ class PassportElementTypeAddress extends PassportElementType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -250,7 +250,7 @@ class PassportElementTypeUtilityBill extends PassportElementType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -279,7 +279,7 @@ class PassportElementTypeBankStatement extends PassportElementType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -308,7 +308,7 @@ class PassportElementTypeRentalAgreement extends PassportElementType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -337,7 +337,7 @@ class PassportElementTypePassportRegistration extends PassportElementType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -366,7 +366,7 @@ class PassportElementTypeTemporaryRegistration extends PassportElementType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -394,7 +394,7 @@ class PassportElementTypePhoneNumber extends PassportElementType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -422,7 +422,7 @@ class PassportElementTypeEmailAddress extends PassportElementType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

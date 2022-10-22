@@ -73,8 +73,8 @@ class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "file_type":"${fileType?.toJson()}",
-   "network_type":"${networkType.toJson()}",
+   "file_type":${fileType?.toJson()},
+   "network_type":${networkType.toJson()},
    "sent_bytes":$sentBytes,
    "received_bytes":$receivedBytes
 }
@@ -137,7 +137,7 @@ class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "network_type":"${networkType.toJson()}",
+   "network_type":${networkType.toJson()},
    "sent_bytes":$sentBytes,
    "received_bytes":$receivedBytes,
    "duration":$duration

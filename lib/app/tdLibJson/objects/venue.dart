@@ -44,7 +44,7 @@ class Venue extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "location":"${location.toJson()}",
+   "location":${location.toJson()},
    "title":"$title",
    "address":"$address",
    "provider":"$provider",

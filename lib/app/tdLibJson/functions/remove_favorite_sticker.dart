@@ -14,7 +14,7 @@ class RemoveFavoriteSticker extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "sticker":"${sticker.toJson()}"
+   "sticker":${sticker.toJson()}
 }
 	""";
   }

@@ -40,7 +40,7 @@ class MessagePositions extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "total_count":$totalCount,
-   "positions":"${positions.map((i) => i.toJson()).toList()}"
+   "positions":${positions.map((i) => i.toJson()).toList()}
 }
 	""";
   }

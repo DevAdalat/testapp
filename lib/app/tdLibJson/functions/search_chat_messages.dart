@@ -44,11 +44,11 @@ class SearchChatMessages extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "query":"$query",
-   "sender_id":"${senderId?.toJson()}",
+   "sender_id":${senderId?.toJson()},
    "from_message_id":$fromMessageId,
    "offset":$offset,
    "limit":$limit,
-   "filter":"${filter?.toJson()}",
+   "filter":${filter?.toJson()},
    "message_thread_id":$messageThreadId
 }
 	""";

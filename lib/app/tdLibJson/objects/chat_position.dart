@@ -35,10 +35,10 @@ class ChatPosition extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "list":"${list.toJson()}",
+   "list":${list.toJson()},
    "order":$order,
    "is_pinned":$isPinned,
-   "source":"${source?.toJson()}"
+   "source":${source?.toJson()}
 }
 	""";
   }

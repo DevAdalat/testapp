@@ -14,7 +14,7 @@ class GetStickerEmojis extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "sticker":"${sticker.toJson()}"
+   "sticker":${sticker.toJson()}
 }
 	""";
   }

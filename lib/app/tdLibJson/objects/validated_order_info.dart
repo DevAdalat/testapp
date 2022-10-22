@@ -41,7 +41,7 @@ class ValidatedOrderInfo extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "order_info_id":"$orderInfoId",
-   "shipping_options":"${shippingOptions.map((i) => i.toJson()).toList()}"
+   "shipping_options":${shippingOptions.map((i) => i.toJson()).toList()}
 }
 	""";
   }

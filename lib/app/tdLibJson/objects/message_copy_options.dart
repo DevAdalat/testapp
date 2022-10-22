@@ -34,7 +34,7 @@ class MessageCopyOptions extends TdObject {
    "@type":"$CONSTRUCTOR",
    "send_copy":$sendCopy,
    "replace_caption":$replaceCaption,
-   "new_caption":"${newCaption?.toJson()}"
+   "new_caption":${newCaption?.toJson()}
 }
 	""";
   }

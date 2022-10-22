@@ -35,7 +35,7 @@ class NotificationSounds extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "notification_sounds":"${notificationSounds.map((i) => i.toJson()).toList()}"
+   "notification_sounds":${notificationSounds.map((i) => i.toJson()).toList()}
 }
 	""";
   }

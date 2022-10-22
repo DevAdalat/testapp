@@ -36,7 +36,7 @@ class DeepLinkInfo extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}",
+   "text":${text.toJson()},
    "need_update_application":$needUpdateApplication
 }
 	""";

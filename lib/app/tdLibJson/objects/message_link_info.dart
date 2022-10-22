@@ -60,7 +60,7 @@ class MessageLinkInfo extends TdObject {
    "@type":"$CONSTRUCTOR",
    "is_public":$isPublic,
    "chat_id":$chatId,
-   "message":"${message?.toJson()}",
+   "message":${message?.toJson()},
    "media_timestamp":$mediaTimestamp,
    "for_album":$forAlbum,
    "for_comment":$forComment

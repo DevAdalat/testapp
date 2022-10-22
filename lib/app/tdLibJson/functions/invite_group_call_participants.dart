@@ -19,7 +19,7 @@ class InviteGroupCallParticipants extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "group_call_id":$groupCallId,
-   "user_ids":"${userIds.map((i) => i).toList()}"
+   "user_ids":${userIds.map((i) => i).toList()}
 }
 	""";
   }

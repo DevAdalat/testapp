@@ -111,7 +111,7 @@ class InputMessageText extends InputMessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}",
+   "text":${text.toJson()},
    "disable_web_page_preview":$disableWebPagePreview,
    "clear_draft":$clearDraft
 }
@@ -195,13 +195,13 @@ class InputMessageAnimation extends InputMessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "animation":"${animation.toJson()}",
-   "thumbnail":"${thumbnail?.toJson()}",
-   "added_sticker_file_ids":"${addedStickerFileIds.map((i) => i).toList()}",
+   "animation":${animation.toJson()},
+   "thumbnail":${thumbnail?.toJson()},
+   "added_sticker_file_ids":${addedStickerFileIds.map((i) => i).toList()},
    "duration":$duration,
    "width":$width,
    "height":$height,
-   "caption":"${caption?.toJson()}"
+   "caption":${caption?.toJson()}
 }
 	""";
   }
@@ -282,12 +282,12 @@ class InputMessageAudio extends InputMessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "audio":"${audio.toJson()}",
-   "album_cover_thumbnail":"${albumCoverThumbnail?.toJson()}",
+   "audio":${audio.toJson()},
+   "album_cover_thumbnail":${albumCoverThumbnail?.toJson()},
    "duration":$duration,
    "title":"$title",
    "performer":"$performer",
-   "caption":"${caption?.toJson()}"
+   "caption":${caption?.toJson()}
 }
 	""";
   }
@@ -356,10 +356,10 @@ class InputMessageDocument extends InputMessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "document":"${document.toJson()}",
-   "thumbnail":"${thumbnail?.toJson()}",
+   "document":${document.toJson()},
+   "thumbnail":${thumbnail?.toJson()},
    "disable_content_type_detection":$disableContentTypeDetection,
-   "caption":"${caption?.toJson()}"
+   "caption":${caption?.toJson()}
 }
 	""";
   }
@@ -443,12 +443,12 @@ class InputMessagePhoto extends InputMessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "photo":"${photo.toJson()}",
-   "thumbnail":"${thumbnail?.toJson()}",
-   "added_sticker_file_ids":"${addedStickerFileIds.map((i) => i).toList()}",
+   "photo":${photo.toJson()},
+   "thumbnail":${thumbnail?.toJson()},
+   "added_sticker_file_ids":${addedStickerFileIds.map((i) => i).toList()},
    "width":$width,
    "height":$height,
-   "caption":"${caption?.toJson()}",
+   "caption":${caption?.toJson()},
    "ttl":$ttl
 }
 	""";
@@ -523,8 +523,8 @@ class InputMessageSticker extends InputMessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "sticker":"${sticker.toJson()}",
-   "thumbnail":"${thumbnail?.toJson()}",
+   "sticker":${sticker.toJson()},
+   "thumbnail":${thumbnail?.toJson()},
    "width":$width,
    "height":$height,
    "emoji":"$emoji"
@@ -622,14 +622,14 @@ class InputMessageVideo extends InputMessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "video":"${video.toJson()}",
-   "thumbnail":"${thumbnail?.toJson()}",
-   "added_sticker_file_ids":"${addedStickerFileIds.map((i) => i).toList()}",
+   "video":${video.toJson()},
+   "thumbnail":${thumbnail?.toJson()},
+   "added_sticker_file_ids":${addedStickerFileIds.map((i) => i).toList()},
    "duration":$duration,
    "width":$width,
    "height":$height,
    "supports_streaming":$supportsStreaming,
-   "caption":"${caption?.toJson()}",
+   "caption":${caption?.toJson()},
    "ttl":$ttl
 }
 	""";
@@ -703,8 +703,8 @@ class InputMessageVideoNote extends InputMessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "video_note":"${videoNote.toJson()}",
-   "thumbnail":"${thumbnail?.toJson()}",
+   "video_note":${videoNote.toJson()},
+   "thumbnail":${thumbnail?.toJson()},
    "duration":$duration,
    "length":$length
 }
@@ -769,10 +769,10 @@ class InputMessageVoiceNote extends InputMessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "voice_note":"${voiceNote.toJson()}",
+   "voice_note":${voiceNote.toJson()},
    "duration":$duration,
    "waveform":"$waveform",
-   "caption":"${caption?.toJson()}"
+   "caption":${caption?.toJson()}
 }
 	""";
   }
@@ -833,7 +833,7 @@ class InputMessageLocation extends InputMessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "location":"${location.toJson()}",
+   "location":${location.toJson()},
    "live_period":$livePeriod,
    "heading":$heading,
    "proximity_alert_radius":$proximityAlertRadius
@@ -882,7 +882,7 @@ class InputMessageVenue extends InputMessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "venue":"${venue.toJson()}"
+   "venue":${venue.toJson()}
 }
 	""";
   }
@@ -922,7 +922,7 @@ class InputMessageContact extends InputMessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "contact":"${contact.toJson()}"
+   "contact":${contact.toJson()}
 }
 	""";
   }
@@ -1114,7 +1114,7 @@ class InputMessageInvoice extends InputMessageContent {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "invoice":"${invoice.toJson()}",
+   "invoice":${invoice.toJson()},
    "title":"$title",
    "description":"$description",
    "photo_url":"$photoUrl",
@@ -1125,7 +1125,7 @@ class InputMessageInvoice extends InputMessageContent {
    "provider_token":"$providerToken",
    "provider_data":"$providerData",
    "start_parameter":"$startParameter",
-   "extended_media_content":"${extendedMediaContent.toJson()}"
+   "extended_media_content":${extendedMediaContent.toJson()}
 }
 	""";
   }
@@ -1219,9 +1219,9 @@ class InputMessagePoll extends InputMessageContent {
   {
    "@type":"$CONSTRUCTOR",
    "question":"$question",
-   "options":"${options.map((i) => i).toList()}",
+   "options":${options.map((i) => i).toList()},
    "is_anonymous":$isAnonymous,
-   "type":"${type.toJson()}",
+   "type":${type.toJson()},
    "open_period":$openPeriod,
    "close_date":$closeDate,
    "is_closed":$isClosed
@@ -1296,7 +1296,7 @@ class InputMessageForwarded extends InputMessageContent {
    "from_chat_id":$fromChatId,
    "message_id":$messageId,
    "in_game_share":$inGameShare,
-   "copy_options":"${copyOptions?.toJson()}"
+   "copy_options":${copyOptions?.toJson()}
 }
 	""";
   }

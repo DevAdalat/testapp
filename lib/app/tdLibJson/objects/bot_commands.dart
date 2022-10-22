@@ -39,7 +39,7 @@ class BotCommands extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "bot_user_id":$botUserId,
-   "commands":"${commands.map((i) => i.toJson()).toList()}"
+   "commands":${commands.map((i) => i.toJson()).toList()}
 }
 	""";
   }

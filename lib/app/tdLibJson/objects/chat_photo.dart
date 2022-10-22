@@ -54,10 +54,10 @@ class ChatPhoto extends TdObject {
    "@type":"$CONSTRUCTOR",
    "id":$id,
    "added_date":$addedDate,
-   "minithumbnail":"${minithumbnail?.toJson()}",
-   "sizes":"${sizes.map((i) => i.toJson()).toList()}",
-   "animation":"${animation?.toJson()}",
-   "small_animation":"${smallAnimation?.toJson()}"
+   "minithumbnail":${minithumbnail?.toJson()},
+   "sizes":${sizes.map((i) => i.toJson()).toList()},
+   "animation":${animation?.toJson()},
+   "small_animation":${smallAnimation?.toJson()}
 }
 	""";
   }

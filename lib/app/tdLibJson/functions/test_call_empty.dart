@@ -8,7 +8,7 @@ class TestCallEmpty extends TdFunction {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

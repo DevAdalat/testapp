@@ -177,7 +177,7 @@ class MessageFileTypeUnknown extends MessageFileType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

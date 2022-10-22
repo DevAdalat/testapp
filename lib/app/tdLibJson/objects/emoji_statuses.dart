@@ -33,7 +33,7 @@ class EmojiStatuses extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "emoji_statuses":"${emojiStatuses.map((i) => i.toJson()).toList()}"
+   "emoji_statuses":${emojiStatuses.map((i) => i.toJson()).toList()}
 }
 	""";
   }

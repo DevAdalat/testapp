@@ -33,7 +33,7 @@ class ChatLists extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "chat_lists":"${chatLists.map((i) => i.toJson()).toList()}"
+   "chat_lists":${chatLists.map((i) => i.toJson()).toList()}
 }
 	""";
   }

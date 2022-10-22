@@ -29,8 +29,8 @@ class UnreadReaction extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "type":"${type.toJson()}",
-   "sender_id":"${senderId.toJson()}",
+   "type":${type.toJson()},
+   "sender_id":${senderId.toJson()},
    "is_big":$isBig
 }
 	""";

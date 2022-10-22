@@ -93,7 +93,7 @@ class UserFullInfo extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "photo":"${photo?.toJson()}",
+   "photo":${photo?.toJson()},
    "is_blocked":$isBlocked,
    "can_be_called":$canBeCalled,
    "supports_video_calls":$supportsVideoCalls,
@@ -101,10 +101,10 @@ class UserFullInfo extends TdObject {
    "has_private_forwards":$hasPrivateForwards,
    "has_restricted_voice_and_video_note_messages":$hasRestrictedVoiceAndVideoNoteMessages,
    "need_phone_number_privacy_exception":$needPhoneNumberPrivacyException,
-   "bio":"${bio?.toJson()}",
-   "premium_gift_options":"${premiumGiftOptions.map((i) => i.toJson()).toList()}",
+   "bio":${bio?.toJson()},
+   "premium_gift_options":${premiumGiftOptions.map((i) => i.toJson()).toList()},
    "group_in_common_count":$groupInCommonCount,
-   "bot_info":"${botInfo?.toJson()}"
+   "bot_info":${botInfo?.toJson()}
 }
 	""";
   }

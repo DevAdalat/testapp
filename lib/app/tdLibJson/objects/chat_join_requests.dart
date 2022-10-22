@@ -40,7 +40,7 @@ class ChatJoinRequests extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "total_count":$totalCount,
-   "requests":"${requests.map((i) => i.toJson()).toList()}"
+   "requests":${requests.map((i) => i.toJson()).toList()}
 }
 	""";
   }

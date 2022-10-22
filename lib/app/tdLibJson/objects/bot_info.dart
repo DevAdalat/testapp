@@ -70,12 +70,12 @@ class BotInfo extends TdObject {
    "@type":"$CONSTRUCTOR",
    "share_text":"$shareText",
    "description":"$description",
-   "photo":"${photo?.toJson()}",
-   "animation":"${animation?.toJson()}",
-   "menu_button":"${menuButton?.toJson()}",
-   "commands":"${commands.map((i) => i.toJson()).toList()}",
-   "default_group_administrator_rights":"${defaultGroupAdministratorRights?.toJson()}",
-   "default_channel_administrator_rights":"${defaultChannelAdministratorRights?.toJson()}"
+   "photo":${photo?.toJson()},
+   "animation":${animation?.toJson()},
+   "menu_button":${menuButton?.toJson()},
+   "commands":${commands.map((i) => i.toJson()).toList()},
+   "default_group_administrator_rights":${defaultGroupAdministratorRights?.toJson()},
+   "default_channel_administrator_rights":${defaultChannelAdministratorRights?.toJson()}
 }
 	""";
   }

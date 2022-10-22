@@ -14,7 +14,7 @@ class AddNetworkStatistics extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "entry":"${entry.toJson()}"
+   "entry":${entry.toJson()}
 }
 	""";
   }

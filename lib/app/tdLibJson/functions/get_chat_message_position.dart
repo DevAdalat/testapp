@@ -28,7 +28,7 @@ class GetChatMessagePosition extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "message_id":$messageId,
-   "filter":"${filter.toJson()}",
+   "filter":${filter.toJson()},
    "message_thread_id":$messageThreadId
 }
 	""";

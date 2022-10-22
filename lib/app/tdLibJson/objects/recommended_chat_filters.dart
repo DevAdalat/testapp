@@ -35,7 +35,7 @@ class RecommendedChatFilters extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "chat_filters":"${chatFilters.map((i) => i.toJson()).toList()}"
+   "chat_filters":${chatFilters.map((i) => i.toJson()).toList()}
 }
 	""";
   }

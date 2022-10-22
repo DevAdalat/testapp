@@ -45,9 +45,9 @@ class Document extends TdObject {
    "@type":"$CONSTRUCTOR",
    "file_name":"$fileName",
    "mime_type":"$mimeType",
-   "minithumbnail":"${minithumbnail?.toJson()}",
-   "thumbnail":"${thumbnail?.toJson()}",
-   "document":"${document.toJson()}"
+   "minithumbnail":${minithumbnail?.toJson()},
+   "thumbnail":${thumbnail?.toJson()},
+   "document":${document.toJson()}
 }
 	""";
   }

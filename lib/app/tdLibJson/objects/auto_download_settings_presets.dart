@@ -42,9 +42,9 @@ class AutoDownloadSettingsPresets extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "low":"${low.toJson()}",
-   "medium":"${medium.toJson()}",
-   "high":"${high.toJson()}"
+   "low":${low.toJson()},
+   "medium":${medium.toJson()},
+   "high":${high.toJson()}
 }
 	""";
   }

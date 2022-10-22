@@ -56,7 +56,7 @@ class InlineQueryResults extends TdObject {
    "@type":"$CONSTRUCTOR",
    "inline_query_id":$inlineQueryId,
    "next_offset":"$nextOffset",
-   "results":"${results.map((i) => i.toJson()).toList()}",
+   "results":${results.map((i) => i.toJson()).toList()},
    "switch_pm_text":"$switchPmText",
    "switch_pm_parameter":"$switchPmParameter"
 }

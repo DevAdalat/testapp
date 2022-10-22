@@ -33,7 +33,7 @@ class MessageStatistics extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "message_interaction_graph":"${messageInteractionGraph.toJson()}"
+   "message_interaction_graph":${messageInteractionGraph.toJson()}
 }
 	""";
   }

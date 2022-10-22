@@ -18,7 +18,7 @@ class GetChats extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "chat_list":"${chatList?.toJson()}",
+   "chat_list":${chatList?.toJson()},
    "limit":$limit
 }
 	""";

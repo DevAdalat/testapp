@@ -14,7 +14,7 @@ class GetThemeParametersJsonString extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "theme":"${theme.toJson()}"
+   "theme":${theme.toJson()}
 }
 	""";
   }

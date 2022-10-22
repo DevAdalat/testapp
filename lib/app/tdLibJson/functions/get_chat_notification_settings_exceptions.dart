@@ -18,7 +18,7 @@ class GetChatNotificationSettingsExceptions extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "scope":"${scope?.toJson()}",
+   "scope":${scope?.toJson()},
    "compare_sound":$compareSound
 }
 	""";

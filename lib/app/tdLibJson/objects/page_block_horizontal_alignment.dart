@@ -53,7 +53,7 @@ class PageBlockHorizontalAlignmentLeft extends PageBlockHorizontalAlignment {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -82,7 +82,7 @@ class PageBlockHorizontalAlignmentCenter extends PageBlockHorizontalAlignment {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -111,7 +111,7 @@ class PageBlockHorizontalAlignmentRight extends PageBlockHorizontalAlignment {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

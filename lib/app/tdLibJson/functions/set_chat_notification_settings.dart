@@ -19,7 +19,7 @@ class SetChatNotificationSettings extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "notification_settings":"${notificationSettings.toJson()}"
+   "notification_settings":${notificationSettings.toJson()}
 }
 	""";
   }

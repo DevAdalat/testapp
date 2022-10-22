@@ -136,7 +136,7 @@ class PageBlockTitle extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "title":"${title.toJson()}"
+   "title":${title.toJson()}
 }
 	""";
   }
@@ -176,7 +176,7 @@ class PageBlockSubtitle extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "subtitle":"${subtitle.toJson()}"
+   "subtitle":${subtitle.toJson()}
 }
 	""";
   }
@@ -221,7 +221,7 @@ class PageBlockAuthorDate extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "author":"${author.toJson()}",
+   "author":${author.toJson()},
    "publish_date":$publishDate
 }
 	""";
@@ -264,7 +264,7 @@ class PageBlockHeader extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "header":"${header.toJson()}"
+   "header":${header.toJson()}
 }
 	""";
   }
@@ -304,7 +304,7 @@ class PageBlockSubheader extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "subheader":"${subheader.toJson()}"
+   "subheader":${subheader.toJson()}
 }
 	""";
   }
@@ -344,7 +344,7 @@ class PageBlockKicker extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "kicker":"${kicker.toJson()}"
+   "kicker":${kicker.toJson()}
 }
 	""";
   }
@@ -384,7 +384,7 @@ class PageBlockParagraph extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}"
+   "text":${text.toJson()}
 }
 	""";
   }
@@ -429,7 +429,7 @@ class PageBlockPreformatted extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}",
+   "text":${text.toJson()},
    "language":"$language"
 }
 	""";
@@ -472,7 +472,7 @@ class PageBlockFooter extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "footer":"${footer.toJson()}"
+   "footer":${footer.toJson()}
 }
 	""";
   }
@@ -504,7 +504,7 @@ class PageBlockDivider extends PageBlock {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -580,7 +580,7 @@ class PageBlockList extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "items":"${items.map((i) => i.toJson()).toList()}"
+   "items":${items.map((i) => i.toJson()).toList()}
 }
 	""";
   }
@@ -625,8 +625,8 @@ class PageBlockBlockQuote extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}",
-   "credit":"${credit.toJson()}"
+   "text":${text.toJson()},
+   "credit":${credit.toJson()}
 }
 	""";
   }
@@ -673,8 +673,8 @@ class PageBlockPullQuote extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}",
-   "credit":"${credit.toJson()}"
+   "text":${text.toJson()},
+   "credit":${credit.toJson()}
 }
 	""";
   }
@@ -728,8 +728,8 @@ class PageBlockAnimation extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "animation":"${animation?.toJson()}",
-   "caption":"${caption.toJson()}",
+   "animation":${animation?.toJson()},
+   "caption":${caption.toJson()},
    "need_autoplay":$needAutoplay
 }
 	""";
@@ -778,8 +778,8 @@ class PageBlockAudio extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "audio":"${audio?.toJson()}",
-   "caption":"${caption.toJson()}"
+   "audio":${audio?.toJson()},
+   "caption":${caption.toJson()}
 }
 	""";
   }
@@ -830,8 +830,8 @@ class PageBlockPhoto extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "photo":"${photo?.toJson()}",
-   "caption":"${caption.toJson()}",
+   "photo":${photo?.toJson()},
+   "caption":${caption.toJson()},
    "url":"$url"
 }
 	""";
@@ -890,8 +890,8 @@ class PageBlockVideo extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "video":"${video?.toJson()}",
-   "caption":"${caption.toJson()}",
+   "video":${video?.toJson()},
+   "caption":${caption.toJson()},
    "need_autoplay":$needAutoplay,
    "is_looped":$isLooped
 }
@@ -946,8 +946,8 @@ class PageBlockVoiceNote extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "voice_note":"${voiceNote?.toJson()}",
-   "caption":"${caption.toJson()}"
+   "voice_note":${voiceNote?.toJson()},
+   "caption":${caption.toJson()}
 }
 	""";
   }
@@ -988,7 +988,7 @@ class PageBlockCover extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "cover":"${cover.toJson()}"
+   "cover":${cover.toJson()}
 }
 	""";
   }
@@ -1067,10 +1067,10 @@ class PageBlockEmbedded extends PageBlock {
    "@type":"$CONSTRUCTOR",
    "url":"$url",
    "html":"$html",
-   "poster_photo":"${posterPhoto?.toJson()}",
+   "poster_photo":${posterPhoto?.toJson()},
    "width":$width,
    "height":$height,
-   "caption":"${caption.toJson()}",
+   "caption":${caption.toJson()},
    "is_full_width":$isFullWidth,
    "allow_scrolling":$allowScrolling
 }
@@ -1157,10 +1157,10 @@ class PageBlockEmbeddedPost extends PageBlock {
    "@type":"$CONSTRUCTOR",
    "url":"$url",
    "author":"$author",
-   "author_photo":"${authorPhoto?.toJson()}",
+   "author_photo":${authorPhoto?.toJson()},
    "date":$date,
-   "page_blocks":"${pageBlocks.map((i) => i.toJson()).toList()}",
-   "caption":"${caption.toJson()}"
+   "page_blocks":${pageBlocks.map((i) => i.toJson()).toList()},
+   "caption":${caption.toJson()}
 }
 	""";
   }
@@ -1217,8 +1217,8 @@ class PageBlockCollage extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "page_blocks":"${pageBlocks.map((i) => i.toJson()).toList()}",
-   "caption":"${caption.toJson()}"
+   "page_blocks":${pageBlocks.map((i) => i.toJson()).toList()},
+   "caption":${caption.toJson()}
 }
 	""";
   }
@@ -1267,8 +1267,8 @@ class PageBlockSlideshow extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "page_blocks":"${pageBlocks.map((i) => i.toJson()).toList()}",
-   "caption":"${caption.toJson()}"
+   "page_blocks":${pageBlocks.map((i) => i.toJson()).toList()},
+   "caption":${caption.toJson()}
 }
 	""";
   }
@@ -1323,7 +1323,7 @@ class PageBlockChatLink extends PageBlock {
   {
    "@type":"$CONSTRUCTOR",
    "title":"$title",
-   "photo":"${photo?.toJson()}",
+   "photo":${photo?.toJson()},
    "username":"$username"
 }
 	""";
@@ -1386,8 +1386,8 @@ class PageBlockTable extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "caption":"${caption.toJson()}",
-   "cells":"${cells.map((i) => i.map((ii) => ii.toJson()).toList()).toList()}",
+   "caption":${caption.toJson()},
+   "cells":${cells.map((i) => i.map((ii) => ii.toJson()).toList()).toList()},
    "is_bordered":$isBordered,
    "is_striped":$isStriped
 }
@@ -1447,8 +1447,8 @@ class PageBlockDetails extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "header":"${header.toJson()}",
-   "page_blocks":"${pageBlocks.map((i) => i.toJson()).toList()}",
+   "header":${header.toJson()},
+   "page_blocks":${pageBlocks.map((i) => i.toJson()).toList()},
    "is_open":$isOpen
 }
 	""";
@@ -1500,8 +1500,8 @@ class PageBlockRelatedArticles extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "header":"${header.toJson()}",
-   "articles":"${articles.map((i) => i.toJson()).toList()}"
+   "header":${header.toJson()},
+   "articles":${articles.map((i) => i.toJson()).toList()}
 }
 	""";
   }
@@ -1562,11 +1562,11 @@ class PageBlockMap extends PageBlock {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "location":"${location.toJson()}",
+   "location":${location.toJson()},
    "zoom":$zoom,
    "width":$width,
    "height":$height,
-   "caption":"${caption.toJson()}"
+   "caption":${caption.toJson()}
 }
 	""";
   }

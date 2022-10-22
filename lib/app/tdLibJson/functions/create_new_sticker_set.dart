@@ -37,8 +37,8 @@ class CreateNewStickerSet extends TdFunction {
    "user_id":$userId,
    "title":"$title",
    "name":"$name",
-   "sticker_type":"${stickerType.toJson()}",
-   "stickers":"${stickers.map((i) => i.toJson()).toList()}",
+   "sticker_type":${stickerType.toJson()},
+   "stickers":${stickers.map((i) => i.toJson()).toList()},
    "source":"$source"
 }
 	""";

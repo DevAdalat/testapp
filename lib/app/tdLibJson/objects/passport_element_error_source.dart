@@ -70,7 +70,7 @@ class PassportElementErrorSourceUnspecified extends PassportElementErrorSource {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -140,7 +140,7 @@ class PassportElementErrorSourceFrontSide extends PassportElementErrorSource {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -169,7 +169,7 @@ class PassportElementErrorSourceReverseSide extends PassportElementErrorSource {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -198,7 +198,7 @@ class PassportElementErrorSourceSelfie extends PassportElementErrorSource {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -270,7 +270,7 @@ class PassportElementErrorSourceTranslationFiles
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -338,7 +338,7 @@ class PassportElementErrorSourceFiles extends PassportElementErrorSource {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

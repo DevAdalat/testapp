@@ -32,7 +32,7 @@ class DraftMessage extends TdObject {
    "@type":"$CONSTRUCTOR",
    "reply_to_message_id":$replyToMessageId,
    "date":$date,
-   "input_message_text":"${inputMessageText.toJson()}"
+   "input_message_text":${inputMessageText.toJson()}
 }
 	""";
   }

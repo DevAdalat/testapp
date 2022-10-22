@@ -23,8 +23,8 @@ class EditInlineMessageCaption extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "inline_message_id":"$inlineMessageId",
-   "reply_markup":"${replyMarkup?.toJson()}",
-   "caption":"${caption?.toJson()}"
+   "reply_markup":${replyMarkup?.toJson()},
+   "caption":${caption?.toJson()}
 }
 	""";
   }

@@ -38,10 +38,10 @@ class MessageReaction extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "type":"${type.toJson()}",
+   "type":${type.toJson()},
    "total_count":$totalCount,
    "is_chosen":$isChosen,
-   "recent_sender_ids":"${recentSenderIds.map((i) => i.toJson()).toList()}"
+   "recent_sender_ids":${recentSenderIds.map((i) => i.toJson()).toList()}
 }
 	""";
   }

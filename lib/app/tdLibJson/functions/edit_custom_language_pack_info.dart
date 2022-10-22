@@ -14,7 +14,7 @@ class EditCustomLanguagePackInfo extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "info":"${info.toJson()}"
+   "info":${info.toJson()}
 }
 	""";
   }

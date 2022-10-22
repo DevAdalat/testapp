@@ -33,7 +33,7 @@ class Proxies extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "proxies":"${proxies.map((i) => i.toJson()).toList()}"
+   "proxies":${proxies.map((i) => i.toJson()).toList()}
 }
 	""";
   }

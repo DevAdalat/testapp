@@ -19,7 +19,7 @@ class SetChatAvailableReactions extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "available_reactions":"${availableReactions.toJson()}"
+   "available_reactions":${availableReactions.toJson()}
 }
 	""";
   }

@@ -19,7 +19,7 @@ class UploadStickerFile extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "user_id":$userId,
-   "sticker":"${sticker.toJson()}"
+   "sticker":${sticker.toJson()}
 }
 	""";
   }

@@ -40,7 +40,7 @@ class AnswerInlineQuery extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "inline_query_id":$inlineQueryId,
    "is_personal":$isPersonal,
-   "results":"${results.map((i) => i.toJson()).toList()}",
+   "results":${results.map((i) => i.toJson()).toList()},
    "cache_time":$cacheTime,
    "next_offset":"$nextOffset",
    "switch_pm_text":"$switchPmText",

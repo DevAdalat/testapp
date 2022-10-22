@@ -29,7 +29,7 @@ class TermsOfService extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text.toJson()}",
+   "text":${text.toJson()},
    "min_user_age":$minUserAge,
    "show_popup":$showPopup
 }

@@ -29,7 +29,7 @@ class AssignGooglePlayTransaction extends TdFunction {
    "package_name":"$packageName",
    "store_product_id":"$storeProductId",
    "purchase_token":"$purchaseToken",
-   "purpose":"${purpose.toJson()}"
+   "purpose":${purpose.toJson()}
 }
 	""";
   }

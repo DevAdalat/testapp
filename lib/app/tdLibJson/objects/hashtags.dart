@@ -32,7 +32,7 @@ class Hashtags extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "hashtags":"${hashtags.map((i) => i).toList()}"
+   "hashtags":${hashtags.map((i) => i).toList()}
 }
 	""";
   }

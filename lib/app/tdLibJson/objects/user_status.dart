@@ -60,7 +60,7 @@ class UserStatusEmpty extends UserStatus {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -167,7 +167,7 @@ class UserStatusRecently extends UserStatus {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -194,7 +194,7 @@ class UserStatusLastWeek extends UserStatus {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -221,7 +221,7 @@ class UserStatusLastMonth extends UserStatus {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

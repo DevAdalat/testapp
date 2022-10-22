@@ -218,7 +218,7 @@ class LanguagePackStringValueDeleted extends LanguagePackStringValue {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

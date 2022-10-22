@@ -19,7 +19,7 @@ class AssignAppStoreTransaction extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "receipt":"$receipt",
-   "purpose":"${purpose.toJson()}"
+   "purpose":${purpose.toJson()}
 }
 	""";
   }

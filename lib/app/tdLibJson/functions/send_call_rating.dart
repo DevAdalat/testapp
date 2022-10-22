@@ -29,7 +29,7 @@ class SendCallRating extends TdFunction {
    "call_id":$callId,
    "rating":$rating,
    "comment":"$comment",
-   "problems":"${problems.map((i) => i.toJson()).toList()}"
+   "problems":${problems.map((i) => i.toJson()).toList()}
 }
 	""";
   }

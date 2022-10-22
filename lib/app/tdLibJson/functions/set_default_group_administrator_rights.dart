@@ -14,7 +14,7 @@ class SetDefaultGroupAdministratorRights extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "default_group_administrator_rights":"${defaultGroupAdministratorRights?.toJson()}"
+   "default_group_administrator_rights":${defaultGroupAdministratorRights?.toJson()}
 }
 	""";
   }

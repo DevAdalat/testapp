@@ -103,15 +103,15 @@ class Sticker extends TdObject {
    "width":$width,
    "height":$height,
    "emoji":"$emoji",
-   "format":"${format.toJson()}",
-   "type":"${type.toJson()}",
-   "mask_position":"${maskPosition?.toJson()}",
+   "format":${format.toJson()},
+   "type":${type.toJson()},
+   "mask_position":${maskPosition?.toJson()},
    "custom_emoji_id":$customEmojiId,
-   "outline":"${outline.map((i) => i.toJson()).toList()}",
-   "thumbnail":"${thumbnail?.toJson()}",
+   "outline":${outline.map((i) => i.toJson()).toList()},
+   "thumbnail":${thumbnail?.toJson()},
    "is_premium":$isPremium,
-   "premium_animation":"${premiumAnimation?.toJson()}",
-   "sticker":"${sticker.toJson()}"
+   "premium_animation":${premiumAnimation?.toJson()},
+   "sticker":${sticker.toJson()}
 }
 	""";
   }

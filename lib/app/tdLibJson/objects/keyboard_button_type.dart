@@ -57,7 +57,7 @@ class KeyboardButtonTypeText extends KeyboardButtonType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -85,7 +85,7 @@ class KeyboardButtonTypeRequestPhoneNumber extends KeyboardButtonType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -114,7 +114,7 @@ class KeyboardButtonTypeRequestLocation extends KeyboardButtonType {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

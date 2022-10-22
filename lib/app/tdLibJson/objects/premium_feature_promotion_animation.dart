@@ -26,8 +26,8 @@ class PremiumFeaturePromotionAnimation extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "feature":"${feature.toJson()}",
-   "animation":"${animation.toJson()}"
+   "feature":${feature.toJson()},
+   "animation":${animation.toJson()}
 }
 	""";
   }

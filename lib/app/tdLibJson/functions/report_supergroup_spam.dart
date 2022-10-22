@@ -19,7 +19,7 @@ class ReportSupergroupSpam extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "supergroup_id":$supergroupId,
-   "message_ids":"${messageIds.map((i) => i).toList()}"
+   "message_ids":${messageIds.map((i) => i).toList()}
 }
 	""";
   }

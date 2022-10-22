@@ -25,7 +25,7 @@ class TMeUrl extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "url":"$url",
-   "type":"${type.toJson()}"
+   "type":${type.toJson()}
 }
 	""";
   }

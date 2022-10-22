@@ -40,7 +40,7 @@ class MessageCalendar extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "total_count":$totalCount,
-   "days":"${days.map((i) => i.toJson()).toList()}"
+   "days":${days.map((i) => i.toJson()).toList()}
 }
 	""";
   }

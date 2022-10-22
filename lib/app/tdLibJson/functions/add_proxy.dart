@@ -29,7 +29,7 @@ class AddProxy extends TdFunction {
    "server":"$server",
    "port":$port,
    "enable":$enable,
-   "type":"${type.toJson()}"
+   "type":${type.toJson()}
 }
 	""";
   }

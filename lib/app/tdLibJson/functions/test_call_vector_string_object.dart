@@ -14,7 +14,7 @@ class TestCallVectorStringObject extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "x":"${x.map((i) => i.toJson()).toList()}"
+   "x":${x.map((i) => i.toJson()).toList()}
 }
 	""";
   }

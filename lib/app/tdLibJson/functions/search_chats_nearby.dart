@@ -14,7 +14,7 @@ class SearchChatsNearby extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "location":"${location.toJson()}"
+   "location":${location.toJson()}
 }
 	""";
   }

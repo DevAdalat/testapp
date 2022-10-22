@@ -24,7 +24,7 @@ class GetCallbackQueryAnswer extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "message_id":$messageId,
-   "payload":"${payload.toJson()}"
+   "payload":${payload.toJson()}
 }
 	""";
   }

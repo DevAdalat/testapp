@@ -68,7 +68,7 @@ class CanTransferOwnershipResultOk extends CanTransferOwnershipResult {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -118,7 +118,7 @@ class CanTransferOwnershipResultPasswordNeeded
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

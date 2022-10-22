@@ -86,14 +86,14 @@ class PaymentReceipt extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "title":"$title",
-   "description":"${description.toJson()}",
-   "photo":"${photo?.toJson()}",
+   "description":${description.toJson()},
+   "photo":${photo?.toJson()},
    "date":$date,
    "seller_bot_user_id":$sellerBotUserId,
    "payment_provider_user_id":$paymentProviderUserId,
-   "invoice":"${invoice.toJson()}",
-   "order_info":"${orderInfo?.toJson()}",
-   "shipping_option":"${shippingOption?.toJson()}",
+   "invoice":${invoice.toJson()},
+   "order_info":${orderInfo?.toJson()},
+   "shipping_option":${shippingOption?.toJson()},
    "credentials_title":"$credentialsTitle",
    "tip_amount":$tipAmount
 }

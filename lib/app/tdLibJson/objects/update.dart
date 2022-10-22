@@ -375,7 +375,7 @@ class UpdateAuthorizationState extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "authorization_state":"${authorizationState.toJson()}"
+   "authorization_state":${authorizationState.toJson()}
 }
 	""";
   }
@@ -431,7 +431,7 @@ class UpdateNewMessage extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "message":"${message.toJson()}"
+   "message":${message.toJson()}
 }
 	""";
   }
@@ -556,7 +556,7 @@ class UpdateMessageSendSucceeded extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "message":"${message.toJson()}",
+   "message":${message.toJson()},
    "old_message_id":$oldMessageId
 }
 	""";
@@ -630,7 +630,7 @@ class UpdateMessageSendFailed extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "message":"${message.toJson()}",
+   "message":${message.toJson()},
    "old_message_id":$oldMessageId,
    "error_code":$errorCode,
    "error_message":"$errorMessage"
@@ -707,7 +707,7 @@ class UpdateMessageContent extends Update {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "message_id":$messageId,
-   "new_content":"${newContent.toJson()}"
+   "new_content":${newContent.toJson()}
 }
 	""";
   }
@@ -787,7 +787,7 @@ class UpdateMessageEdited extends Update {
    "chat_id":$chatId,
    "message_id":$messageId,
    "edit_date":$editDate,
-   "reply_markup":"${replyMarkup?.toJson()}"
+   "reply_markup":${replyMarkup?.toJson()}
 }
 	""";
   }
@@ -935,7 +935,7 @@ class UpdateMessageInteractionInfo extends Update {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "message_id":$messageId,
-   "interaction_info":"${interactionInfo?.toJson()}"
+   "interaction_info":${interactionInfo?.toJson()}
 }
 	""";
   }
@@ -1151,7 +1151,7 @@ class UpdateMessageUnreadReactions extends Update {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "message_id":$messageId,
-   "unread_reactions":"${unreadReactions.map((i) => i.toJson()).toList()}",
+   "unread_reactions":${unreadReactions.map((i) => i.toJson()).toList()},
    "unread_reaction_count":$unreadReactionCount
 }
 	""";
@@ -1277,7 +1277,7 @@ class UpdateNewChat extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "chat":"${chat.toJson()}"
+   "chat":${chat.toJson()}
 }
 	""";
   }
@@ -1405,7 +1405,7 @@ class UpdateChatPhoto extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "photo":"${photo?.toJson()}"
+   "photo":${photo?.toJson()}
 }
 	""";
   }
@@ -1469,7 +1469,7 @@ class UpdateChatPermissions extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "permissions":"${permissions.toJson()}"
+   "permissions":${permissions.toJson()}
 }
 	""";
   }
@@ -1542,8 +1542,8 @@ class UpdateChatLastMessage extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "last_message":"${lastMessage?.toJson()}",
-   "positions":"${positions.map((i) => i.toJson()).toList()}"
+   "last_message":${lastMessage?.toJson()},
+   "positions":${positions.map((i) => i.toJson()).toList()}
 }
 	""";
   }
@@ -1609,7 +1609,7 @@ class UpdateChatPosition extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "position":"${position.toJson()}"
+   "position":${position.toJson()}
 }
 	""";
   }
@@ -1813,7 +1813,7 @@ class UpdateChatActionBar extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "action_bar":"${actionBar?.toJson()}"
+   "action_bar":${actionBar?.toJson()}
 }
 	""";
   }
@@ -1878,7 +1878,7 @@ class UpdateChatAvailableReactions extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "available_reactions":"${availableReactions.toJson()}"
+   "available_reactions":${availableReactions.toJson()}
 }
 	""";
   }
@@ -1951,8 +1951,8 @@ class UpdateChatDraftMessage extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "draft_message":"${draftMessage?.toJson()}",
-   "positions":"${positions.map((i) => i.toJson()).toList()}"
+   "draft_message":${draftMessage?.toJson()},
+   "positions":${positions.map((i) => i.toJson()).toList()}
 }
 	""";
   }
@@ -2020,7 +2020,7 @@ class UpdateChatMessageSender extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "message_sender_id":"${messageSenderId?.toJson()}"
+   "message_sender_id":${messageSenderId?.toJson()}
 }
 	""";
   }
@@ -2149,7 +2149,7 @@ class UpdateChatNotificationSettings extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "notification_settings":"${notificationSettings.toJson()}"
+   "notification_settings":${notificationSettings.toJson()}
 }
 	""";
   }
@@ -2215,7 +2215,7 @@ class UpdateChatPendingJoinRequests extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "pending_join_requests":"${pendingJoinRequests?.toJson()}"
+   "pending_join_requests":${pendingJoinRequests?.toJson()}
 }
 	""";
   }
@@ -2535,7 +2535,7 @@ class UpdateChatVideoChat extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "video_chat":"${videoChat.toJson()}"
+   "video_chat":${videoChat.toJson()}
 }
 	""";
   }
@@ -2922,7 +2922,7 @@ class UpdateChatFilters extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "chat_filters":"${chatFilters.map((i) => i.toJson()).toList()}",
+   "chat_filters":${chatFilters.map((i) => i.toJson()).toList()},
    "main_chat_list_position":$mainChatListPosition
 }
 	""";
@@ -3051,8 +3051,8 @@ class UpdateScopeNotificationSettings extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "scope":"${scope.toJson()}",
-   "notification_settings":"${notificationSettings.toJson()}"
+   "scope":${scope.toJson()},
+   "notification_settings":${notificationSettings.toJson()}
 }
 	""";
   }
@@ -3116,7 +3116,7 @@ class UpdateNotification extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "notification_group_id":$notificationGroupId,
-   "notification":"${notification.toJson()}"
+   "notification":${notification.toJson()}
 }
 	""";
   }
@@ -3216,13 +3216,13 @@ class UpdateNotificationGroup extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "notification_group_id":$notificationGroupId,
-   "type":"${type.toJson()}",
+   "type":${type.toJson()},
    "chat_id":$chatId,
    "notification_settings_chat_id":$notificationSettingsChatId,
    "notification_sound_id":$notificationSoundId,
    "total_count":$totalCount,
-   "added_notifications":"${addedNotifications.map((i) => i.toJson()).toList()}",
-   "removed_notification_ids":"${removedNotificationIds.map((i) => i).toList()}"
+   "added_notifications":${addedNotifications.map((i) => i.toJson()).toList()},
+   "removed_notification_ids":${removedNotificationIds.map((i) => i).toList()}
 }
 	""";
   }
@@ -3296,7 +3296,7 @@ class UpdateActiveNotifications extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "groups":"${groups.map((i) => i.toJson()).toList()}"
+   "groups":${groups.map((i) => i.toJson()).toList()}
 }
 	""";
   }
@@ -3435,7 +3435,7 @@ class UpdateDeleteMessages extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "message_ids":"${messageIds.map((i) => i).toList()}",
+   "message_ids":${messageIds.map((i) => i).toList()},
    "is_permanent":$isPermanent,
    "from_cache":$fromCache
 }
@@ -3516,8 +3516,8 @@ class UpdateChatAction extends Update {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "message_thread_id":$messageThreadId,
-   "sender_id":"${senderId.toJson()}",
-   "action":"${action.toJson()}"
+   "sender_id":${senderId.toJson()},
+   "action":${action.toJson()}
 }
 	""";
   }
@@ -3585,7 +3585,7 @@ class UpdateUserStatus extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "user_id":$userId,
-   "status":"${status.toJson()}"
+   "status":${status.toJson()}
 }
 	""";
   }
@@ -3642,7 +3642,7 @@ class UpdateUser extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "user":"${user.toJson()}"
+   "user":${user.toJson()}
 }
 	""";
   }
@@ -3698,7 +3698,7 @@ class UpdateBasicGroup extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "basic_group":"${basicGroup.toJson()}"
+   "basic_group":${basicGroup.toJson()}
 }
 	""";
   }
@@ -3754,7 +3754,7 @@ class UpdateSupergroup extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "supergroup":"${supergroup.toJson()}"
+   "supergroup":${supergroup.toJson()}
 }
 	""";
   }
@@ -3810,7 +3810,7 @@ class UpdateSecretChat extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "secret_chat":"${secretChat.toJson()}"
+   "secret_chat":${secretChat.toJson()}
 }
 	""";
   }
@@ -3872,7 +3872,7 @@ class UpdateUserFullInfo extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "user_id":$userId,
-   "user_full_info":"${userFullInfo.toJson()}"
+   "user_full_info":${userFullInfo.toJson()}
 }
 	""";
   }
@@ -3937,7 +3937,7 @@ class UpdateBasicGroupFullInfo extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "basic_group_id":$basicGroupId,
-   "basic_group_full_info":"${basicGroupFullInfo.toJson()}"
+   "basic_group_full_info":${basicGroupFullInfo.toJson()}
 }
 	""";
   }
@@ -4002,7 +4002,7 @@ class UpdateSupergroupFullInfo extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "supergroup_id":$supergroupId,
-   "supergroup_full_info":"${supergroupFullInfo.toJson()}"
+   "supergroup_full_info":${supergroupFullInfo.toJson()}
 }
 	""";
   }
@@ -4066,7 +4066,7 @@ class UpdateServiceNotification extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "type":"$type",
-   "content":"${content.toJson()}"
+   "content":${content.toJson()}
 }
 	""";
   }
@@ -4123,7 +4123,7 @@ class UpdateFile extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "file":"${file.toJson()}"
+   "file":${file.toJson()}
 }
 	""";
   }
@@ -4392,8 +4392,8 @@ class UpdateFileAddedToDownloads extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "file_download":"${fileDownload.toJson()}",
-   "counts":"${counts.toJson()}"
+   "file_download":${fileDownload.toJson()},
+   "counts":${counts.toJson()}
 }
 	""";
   }
@@ -4469,7 +4469,7 @@ class UpdateFileDownload extends Update {
    "file_id":$fileId,
    "complete_date":$completeDate,
    "is_paused":$isPaused,
-   "counts":"${counts.toJson()}"
+   "counts":${counts.toJson()}
 }
 	""";
   }
@@ -4537,7 +4537,7 @@ class UpdateFileRemovedFromDownloads extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "file_id":$fileId,
-   "counts":"${counts.toJson()}"
+   "counts":${counts.toJson()}
 }
 	""";
   }
@@ -4594,7 +4594,7 @@ class UpdateCall extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "call":"${call.toJson()}"
+   "call":${call.toJson()}
 }
 	""";
   }
@@ -4650,7 +4650,7 @@ class UpdateGroupCall extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "group_call":"${groupCall.toJson()}"
+   "group_call":${groupCall.toJson()}
 }
 	""";
   }
@@ -4712,7 +4712,7 @@ class UpdateGroupCallParticipant extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "group_call_id":$groupCallId,
-   "participant":"${participant.toJson()}"
+   "participant":${participant.toJson()}
 }
 	""";
   }
@@ -4839,8 +4839,8 @@ class UpdateUserPrivacySettingRules extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "setting":"${setting.toJson()}",
-   "rules":"${rules.toJson()}"
+   "setting":${setting.toJson()},
+   "rules":${rules.toJson()}
 }
 	""";
   }
@@ -4908,7 +4908,7 @@ class UpdateUnreadMessageCount extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "chat_list":"${chatList.toJson()}",
+   "chat_list":${chatList.toJson()},
    "unread_count":$unreadCount,
    "unread_unmuted_count":$unreadUnmutedCount
 }
@@ -4995,7 +4995,7 @@ class UpdateUnreadChatCount extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "chat_list":"${chatList.toJson()}",
+   "chat_list":${chatList.toJson()},
    "total_count":$totalCount,
    "unread_count":$unreadCount,
    "unread_unmuted_count":$unreadUnmutedCount,
@@ -5072,7 +5072,7 @@ class UpdateOption extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "name":"$name",
-   "value":"${value.toJson()}"
+   "value":${value.toJson()}
 }
 	""";
   }
@@ -5130,7 +5130,7 @@ class UpdateStickerSet extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "sticker_set":"${stickerSet.toJson()}"
+   "sticker_set":${stickerSet.toJson()}
 }
 	""";
   }
@@ -5192,8 +5192,8 @@ class UpdateInstalledStickerSets extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "sticker_type":"${stickerType.toJson()}",
-   "sticker_set_ids":"${stickerSetIds.map((i) => i).toList()}"
+   "sticker_type":${stickerType.toJson()},
+   "sticker_set_ids":${stickerSetIds.map((i) => i).toList()}
 }
 	""";
   }
@@ -5256,8 +5256,8 @@ class UpdateTrendingStickerSets extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "sticker_type":"${stickerType.toJson()}",
-   "sticker_sets":"${stickerSets.toJson()}"
+   "sticker_type":${stickerType.toJson()},
+   "sticker_sets":${stickerSets.toJson()}
 }
 	""";
   }
@@ -5322,7 +5322,7 @@ class UpdateRecentStickers extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "is_attached":$isAttached,
-   "sticker_ids":"${stickerIds.map((i) => i).toList()}"
+   "sticker_ids":${stickerIds.map((i) => i).toList()}
 }
 	""";
   }
@@ -5381,7 +5381,7 @@ class UpdateFavoriteStickers extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "sticker_ids":"${stickerIds.map((i) => i).toList()}"
+   "sticker_ids":${stickerIds.map((i) => i).toList()}
 }
 	""";
   }
@@ -5438,7 +5438,7 @@ class UpdateSavedAnimations extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "animation_ids":"${animationIds.map((i) => i).toList()}"
+   "animation_ids":${animationIds.map((i) => i).toList()}
 }
 	""";
   }
@@ -5497,7 +5497,7 @@ class UpdateSavedNotificationSounds extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "notification_sound_ids":"${notificationSoundIds.map((i) => i).toList()}"
+   "notification_sound_ids":${notificationSoundIds.map((i) => i).toList()}
 }
 	""";
   }
@@ -5561,7 +5561,7 @@ class UpdateSelectedBackground extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "for_dark_theme":$forDarkTheme,
-   "background":"${background?.toJson()}"
+   "background":${background?.toJson()}
 }
 	""";
   }
@@ -5621,7 +5621,7 @@ class UpdateChatThemes extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "chat_themes":"${chatThemes.map((i) => i.toJson()).toList()}"
+   "chat_themes":${chatThemes.map((i) => i.toJson()).toList()}
 }
 	""";
   }
@@ -5691,7 +5691,7 @@ class UpdateLanguagePackStrings extends Update {
    "@type":"$CONSTRUCTOR",
    "localization_target":"$localizationTarget",
    "language_pack_id":"$languagePackId",
-   "strings":"${strings.map((i) => i.toJson()).toList()}"
+   "strings":${strings.map((i) => i.toJson()).toList()}
 }
 	""";
   }
@@ -5751,7 +5751,7 @@ class UpdateConnectionState extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "state":"${state.toJson()}"
+   "state":${state.toJson()}
 }
 	""";
   }
@@ -5813,7 +5813,7 @@ class UpdateTermsOfService extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "terms_of_service_id":"$termsOfServiceId",
-   "terms_of_service":"${termsOfService.toJson()}"
+   "terms_of_service":${termsOfService.toJson()}
 }
 	""";
   }
@@ -5873,7 +5873,7 @@ class UpdateUsersNearby extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "users_nearby":"${usersNearby.map((i) => i.toJson()).toList()}"
+   "users_nearby":${usersNearby.map((i) => i.toJson()).toList()}
 }
 	""";
   }
@@ -5931,7 +5931,7 @@ class UpdateAttachmentMenuBots extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "bots":"${bots.map((i) => i.toJson()).toList()}"
+   "bots":${bots.map((i) => i.toJson()).toList()}
 }
 	""";
   }
@@ -6044,7 +6044,7 @@ class UpdateActiveEmojiReactions extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "emojis":"${emojis.map((i) => i).toList()}"
+   "emojis":${emojis.map((i) => i).toList()}
 }
 	""";
   }
@@ -6100,7 +6100,7 @@ class UpdateDefaultReactionType extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "reaction_type":"${reactionType.toJson()}"
+   "reaction_type":${reactionType.toJson()}
 }
 	""";
   }
@@ -6157,7 +6157,7 @@ class UpdateDiceEmojis extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "emojis":"${emojis.map((i) => i).toList()}"
+   "emojis":${emojis.map((i) => i).toList()}
 }
 	""";
   }
@@ -6226,7 +6226,7 @@ class UpdateAnimatedEmojiMessageClicked extends Update {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "message_id":$messageId,
-   "sticker":"${sticker.toJson()}"
+   "sticker":${sticker.toJson()}
 }
 	""";
   }
@@ -6293,7 +6293,7 @@ class UpdateAnimationSearchParameters extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "provider":"$provider",
-   "emojis":"${emojis.map((i) => i).toList()}"
+   "emojis":${emojis.map((i) => i).toList()}
 }
 	""";
   }
@@ -6361,8 +6361,8 @@ class UpdateSuggestedActions extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "added_actions":"${addedActions.map((i) => i.toJson()).toList()}",
-   "removed_actions":"${removedActions.map((i) => i.toJson()).toList()}"
+   "added_actions":${addedActions.map((i) => i.toJson()).toList()},
+   "removed_actions":${removedActions.map((i) => i.toJson()).toList()}
 }
 	""";
   }
@@ -6451,8 +6451,8 @@ class UpdateNewInlineQuery extends Update {
    "@type":"$CONSTRUCTOR",
    "id":$id,
    "sender_user_id":$senderUserId,
-   "user_location":"${userLocation?.toJson()}",
-   "chat_type":"${chatType?.toJson()}",
+   "user_location":${userLocation?.toJson()},
+   "chat_type":${chatType?.toJson()},
    "query":"$query",
    "offset":"$offset"
 }
@@ -6543,7 +6543,7 @@ class UpdateNewChosenInlineResult extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "sender_user_id":$senderUserId,
-   "user_location":"${userLocation?.toJson()}",
+   "user_location":${userLocation?.toJson()},
    "query":"$query",
    "result_id":"$resultId",
    "inline_message_id":"$inlineMessageId"
@@ -6640,7 +6640,7 @@ class UpdateNewCallbackQuery extends Update {
    "chat_id":$chatId,
    "message_id":$messageId,
    "chat_instance":$chatInstance,
-   "payload":"${payload.toJson()}"
+   "payload":${payload.toJson()}
 }
 	""";
   }
@@ -6730,7 +6730,7 @@ class UpdateNewInlineCallbackQuery extends Update {
    "sender_user_id":$senderUserId,
    "inline_message_id":"$inlineMessageId",
    "chat_instance":$chatInstance,
-   "payload":"${payload.toJson()}"
+   "payload":${payload.toJson()}
 }
 	""";
   }
@@ -6812,7 +6812,7 @@ class UpdateNewShippingQuery extends Update {
    "id":$id,
    "sender_user_id":$senderUserId,
    "invoice_payload":"$invoicePayload",
-   "shipping_address":"${shippingAddress.toJson()}"
+   "shipping_address":${shippingAddress.toJson()}
 }
 	""";
   }
@@ -6912,7 +6912,7 @@ class UpdateNewPreCheckoutQuery extends Update {
    "total_amount":$totalAmount,
    "invoice_payload":"$invoicePayload",
    "shipping_option_id":"$shippingOptionId",
-   "order_info":"${orderInfo?.toJson()}"
+   "order_info":${orderInfo?.toJson()}
 }
 	""";
   }
@@ -7107,7 +7107,7 @@ class UpdatePoll extends Update {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "poll":"${poll.toJson()}"
+   "poll":${poll.toJson()}
 }
 	""";
   }
@@ -7176,7 +7176,7 @@ class UpdatePollAnswer extends Update {
    "@type":"$CONSTRUCTOR",
    "poll_id":$pollId,
    "user_id":$userId,
-   "option_ids":"${optionIds.map((i) => i).toList()}"
+   "option_ids":${optionIds.map((i) => i).toList()}
 }
 	""";
   }
@@ -7266,9 +7266,9 @@ class UpdateChatMember extends Update {
    "chat_id":$chatId,
    "actor_user_id":$actorUserId,
    "date":$date,
-   "invite_link":"${inviteLink?.toJson()}",
-   "old_chat_member":"${oldChatMember.toJson()}",
-   "new_chat_member":"${newChatMember.toJson()}"
+   "invite_link":${inviteLink?.toJson()},
+   "old_chat_member":${oldChatMember.toJson()},
+   "new_chat_member":${newChatMember.toJson()}
 }
 	""";
   }
@@ -7347,8 +7347,8 @@ class UpdateNewChatJoinRequest extends Update {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "request":"${request.toJson()}",
-   "invite_link":"${inviteLink?.toJson()}"
+   "request":${request.toJson()},
+   "invite_link":${inviteLink?.toJson()}
 }
 	""";
   }

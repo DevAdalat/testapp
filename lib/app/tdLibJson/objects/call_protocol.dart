@@ -44,7 +44,7 @@ class CallProtocol extends TdObject {
    "udp_reflector":$udpReflector,
    "min_layer":$minLayer,
    "max_layer":$maxLayer,
-   "library_versions":"${libraryVersions.map((i) => i).toList()}"
+   "library_versions":${libraryVersions.map((i) => i).toList()}
 }
 	""";
   }

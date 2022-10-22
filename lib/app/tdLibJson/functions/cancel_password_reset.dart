@@ -8,7 +8,7 @@ class CancelPasswordReset extends TdFunction {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

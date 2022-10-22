@@ -14,7 +14,7 @@ class GetJsonString extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "json_value":"${jsonValue.toJson()}"
+   "json_value":${jsonValue.toJson()}
 }
 	""";
   }

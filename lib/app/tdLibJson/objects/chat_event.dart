@@ -36,8 +36,8 @@ class ChatEvent extends TdObject {
    "@type":"$CONSTRUCTOR",
    "id":$id,
    "date":$date,
-   "member_id":"${memberId.toJson()}",
-   "action":"${action.toJson()}"
+   "member_id":${memberId.toJson()},
+   "action":${action.toJson()}
 }
 	""";
   }

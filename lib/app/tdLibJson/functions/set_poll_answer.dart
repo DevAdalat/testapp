@@ -24,7 +24,7 @@ class SetPollAnswer extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "message_id":$messageId,
-   "option_ids":"${optionIds.map((i) => i).toList()}"
+   "option_ids":${optionIds.map((i) => i).toList()}
 }
 	""";
   }

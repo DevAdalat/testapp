@@ -14,7 +14,7 @@ class TestReturnError extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "error":"${error.toJson()}"
+   "error":${error.toJson()}
 }
 	""";
   }

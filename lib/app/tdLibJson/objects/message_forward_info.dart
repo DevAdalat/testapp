@@ -40,7 +40,7 @@ class MessageForwardInfo extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "origin":"${origin.toJson()}",
+   "origin":${origin.toJson()},
    "date":$date,
    "public_service_announcement_type":"$publicServiceAnnouncementType",
    "from_chat_id":$fromChatId,

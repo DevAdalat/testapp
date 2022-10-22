@@ -25,7 +25,7 @@ class GroupCallRecentSpeaker extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "participant_id":"${participantId.toJson()}",
+   "participant_id":${participantId.toJson()},
    "is_speaking":$isSpeaking
 }
 	""";

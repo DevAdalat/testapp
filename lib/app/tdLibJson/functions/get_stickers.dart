@@ -26,7 +26,7 @@ class GetStickers extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "sticker_type":"${stickerType.toJson()}",
+   "sticker_type":${stickerType.toJson()},
    "query":"$query",
    "limit":$limit,
    "chat_id":$chatId

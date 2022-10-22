@@ -19,7 +19,7 @@ class AddRecentSticker extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "is_attached":$isAttached,
-   "sticker":"${sticker.toJson()}"
+   "sticker":${sticker.toJson()}
 }
 	""";
   }

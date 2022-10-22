@@ -24,7 +24,7 @@ class SetChatDraftMessage extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "message_thread_id":$messageThreadId,
-   "draft_message":"${draftMessage?.toJson()}"
+   "draft_message":${draftMessage?.toJson()}
 }
 	""";
   }

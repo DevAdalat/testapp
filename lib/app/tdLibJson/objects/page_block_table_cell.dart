@@ -45,12 +45,12 @@ class PageBlockTableCell extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "text":"${text?.toJson()}",
+   "text":${text?.toJson()},
    "is_header":$isHeader,
    "colspan":$colspan,
    "rowspan":$rowspan,
-   "align":"${align.toJson()}",
-   "valign":"${valign.toJson()}"
+   "align":${align.toJson()},
+   "valign":${valign.toJson()}
 }
 	""";
   }

@@ -341,7 +341,7 @@ class InputPassportElementErrorSourceTranslationFiles
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "file_hashes":"${fileHashes.map((i) => i).toList()}"
+   "file_hashes":${fileHashes.map((i) => i).toList()}
 }
 	""";
   }
@@ -426,7 +426,7 @@ class InputPassportElementErrorSourceFiles
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "file_hashes":"${fileHashes.map((i) => i).toList()}"
+   "file_hashes":${fileHashes.map((i) => i).toList()}
 }
 	""";
   }

@@ -34,7 +34,7 @@ class ChatMessageSenders extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "senders":"${senders.map((i) => i.toJson()).toList()}"
+   "senders":${senders.map((i) => i.toJson()).toList()}
 }
 	""";
   }

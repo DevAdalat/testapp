@@ -24,7 +24,7 @@ class DatedFile extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "file":"${file.toJson()}",
+   "file":${file.toJson()},
    "date":$date
 }
 	""";

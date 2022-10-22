@@ -71,7 +71,7 @@ class PersonalDetails extends TdObject {
    "native_first_name":"$nativeFirstName",
    "native_middle_name":"$nativeMiddleName",
    "native_last_name":"$nativeLastName",
-   "birthdate":"${birthdate.toJson()}",
+   "birthdate":${birthdate.toJson()},
    "gender":"$gender",
    "country_code":"$countryCode",
    "residence_country_code":"$residenceCountryCode"

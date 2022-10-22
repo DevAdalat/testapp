@@ -33,7 +33,7 @@ class GetChatJoinRequests extends TdFunction {
    "chat_id":$chatId,
    "invite_link":"$inviteLink",
    "query":"$query",
-   "offset_request":"${offsetRequest?.toJson()}",
+   "offset_request":${offsetRequest?.toJson()},
    "limit":$limit
 }
 	""";

@@ -114,7 +114,7 @@ class Supergroup extends TdObject {
    "id":$id,
    "username":"$username",
    "date":$date,
-   "status":"${status.toJson()}",
+   "status":${status.toJson()},
    "member_count":$memberCount,
    "has_linked_chat":$hasLinkedChat,
    "has_location":$hasLocation,

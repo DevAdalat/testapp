@@ -14,7 +14,7 @@ class GetScopeNotificationSettings extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "scope":"${scope.toJson()}"
+   "scope":${scope.toJson()}
 }
 	""";
   }

@@ -1,11 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.testapp">
-<uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.INTERNET" />
+    package="com.tfile.telegram.unlimited.storage">
+   <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+   <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="testapp"
+        android:label="TFile"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

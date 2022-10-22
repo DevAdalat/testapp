@@ -18,7 +18,7 @@ class AddContact extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "contact":"${contact.toJson()}",
+   "contact":${contact.toJson()},
    "share_phone_number":$sharePhoneNumber
 }
 	""";

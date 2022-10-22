@@ -108,7 +108,7 @@ class CallStateExchangingKeys extends CallState {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -170,11 +170,11 @@ class CallStateReady extends CallState {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "protocol":"${protocol.toJson()}",
-   "servers":"${servers.map((i) => i.toJson()).toList()}",
+   "protocol":${protocol.toJson()},
+   "servers":${servers.map((i) => i.toJson()).toList()},
    "config":"$config",
    "encryption_key":"$encryptionKey",
-   "emojis":"${emojis.map((i) => i).toList()}",
+   "emojis":${emojis.map((i) => i).toList()},
    "allow_p2p":$allowP2p
 }
 	""";
@@ -217,7 +217,7 @@ class CallStateHangingUp extends CallState {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -267,7 +267,7 @@ class CallStateDiscarded extends CallState {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "reason":"${reason.toJson()}",
+   "reason":${reason.toJson()},
    "need_rating":$needRating,
    "need_debug_information":$needDebugInformation,
    "need_log":$needLog
@@ -315,7 +315,7 @@ class CallStateError extends CallState {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "error":"${error.toJson()}"
+   "error":${error.toJson()}
 }
 	""";
   }

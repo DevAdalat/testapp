@@ -19,7 +19,7 @@ class GetLanguagePackStrings extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "language_pack_id":"$languagePackId",
-   "keys":"${keys.map((i) => i).toList()}"
+   "keys":${keys.map((i) => i).toList()}
 }
 	""";
   }

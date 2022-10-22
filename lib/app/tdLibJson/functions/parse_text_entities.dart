@@ -19,7 +19,7 @@ class ParseTextEntities extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "text":"$text",
-   "parse_mode":"${parseMode.toJson()}"
+   "parse_mode":${parseMode.toJson()}
 }
 	""";
   }

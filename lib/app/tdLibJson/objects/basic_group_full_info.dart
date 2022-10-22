@@ -63,12 +63,12 @@ class BasicGroupFullInfo extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "photo":"${photo?.toJson()}",
+   "photo":${photo?.toJson()},
    "description":"$description",
    "creator_user_id":$creatorUserId,
-   "members":"${members.map((i) => i.toJson()).toList()}",
-   "invite_link":"${inviteLink?.toJson()}",
-   "bot_commands":"${botCommands.map((i) => i.toJson()).toList()}"
+   "members":${members.map((i) => i.toJson()).toList()},
+   "invite_link":${inviteLink?.toJson()},
+   "bot_commands":${botCommands.map((i) => i.toJson()).toList()}
 }
 	""";
   }

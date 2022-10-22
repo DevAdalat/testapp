@@ -70,7 +70,7 @@ class UserPrivacySettingShowStatus extends UserPrivacySetting {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -99,7 +99,7 @@ class UserPrivacySettingShowProfilePhoto extends UserPrivacySetting {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -128,7 +128,7 @@ class UserPrivacySettingShowLinkInForwardedMessages extends UserPrivacySetting {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -157,7 +157,7 @@ class UserPrivacySettingShowPhoneNumber extends UserPrivacySetting {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -186,7 +186,7 @@ class UserPrivacySettingAllowChatInvites extends UserPrivacySetting {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -214,7 +214,7 @@ class UserPrivacySettingAllowCalls extends UserPrivacySetting {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -243,7 +243,7 @@ class UserPrivacySettingAllowPeerToPeerCalls extends UserPrivacySetting {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -272,7 +272,7 @@ class UserPrivacySettingAllowFindingByPhoneNumber extends UserPrivacySetting {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -302,7 +302,7 @@ class UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

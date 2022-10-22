@@ -36,8 +36,8 @@ class EditMessageLiveLocation extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "message_id":$messageId,
-   "reply_markup":"${replyMarkup?.toJson()}",
-   "location":"${location?.toJson()}",
+   "reply_markup":${replyMarkup?.toJson()},
+   "location":${location?.toJson()},
    "heading":$heading,
    "proximity_alert_radius":$proximityAlertRadius
 }

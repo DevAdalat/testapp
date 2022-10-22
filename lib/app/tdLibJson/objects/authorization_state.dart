@@ -93,7 +93,7 @@ class AuthorizationStateWaitTdlibParameters extends AuthorizationState {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -142,7 +142,7 @@ class AuthorizationStateWaitPhoneNumber extends AuthorizationState {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -280,7 +280,7 @@ class AuthorizationStateWaitEmailCode extends AuthorizationState {
    "@type":"$CONSTRUCTOR",
    "allow_apple_id":$allowAppleId,
    "allow_google_id":$allowGoogleId,
-   "code_info":"${codeInfo.toJson()}",
+   "code_info":${codeInfo.toJson()},
    "next_phone_number_authorization_date":$nextPhoneNumberAuthorizationDate
 }
 	""";
@@ -344,7 +344,7 @@ class AuthorizationStateWaitCode extends AuthorizationState {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "code_info":"${codeInfo.toJson()}"
+   "code_info":${codeInfo.toJson()}
 }
 	""";
   }
@@ -458,7 +458,7 @@ class AuthorizationStateWaitRegistration extends AuthorizationState {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "terms_of_service":"${termsOfService.toJson()}"
+   "terms_of_service":${termsOfService.toJson()}
 }
 	""";
   }
@@ -582,7 +582,7 @@ class AuthorizationStateReady extends AuthorizationState {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -630,7 +630,7 @@ class AuthorizationStateLoggingOut extends AuthorizationState {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -678,7 +678,7 @@ class AuthorizationStateClosing extends AuthorizationState {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -726,7 +726,7 @@ class AuthorizationStateClosed extends AuthorizationState {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

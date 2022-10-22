@@ -25,7 +25,7 @@ class AvailableReaction extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "type":"${type.toJson()}",
+   "type":${type.toJson()},
    "needs_premium":$needsPremium
 }
 	""";

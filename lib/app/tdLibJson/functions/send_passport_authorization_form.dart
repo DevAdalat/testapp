@@ -19,7 +19,7 @@ class SendPassportAuthorizationForm extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "autorization_form_id":$autorizationFormId,
-   "types":"${types.map((i) => i.toJson()).toList()}"
+   "types":${types.map((i) => i.toJson()).toList()}
 }
 	""";
   }

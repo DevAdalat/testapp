@@ -31,10 +31,10 @@ class AddLocalMessage extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "sender_id":"${senderId.toJson()}",
+   "sender_id":${senderId.toJson()},
    "reply_to_message_id":$replyToMessageId,
    "disable_notification":$disableNotification,
-   "input_message_content":"${inputMessageContent.toJson()}"
+   "input_message_content":${inputMessageContent.toJson()}
 }
 	""";
   }

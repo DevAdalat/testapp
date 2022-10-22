@@ -136,7 +136,7 @@ class ChatMemberStatusAdministrator extends ChatMemberStatus {
    "@type":"$CONSTRUCTOR",
    "custom_title":"$customTitle",
    "can_be_edited":$canBeEdited,
-   "rights":"${rights.toJson()}"
+   "rights":${rights.toJson()}
 }
 	""";
   }
@@ -172,7 +172,7 @@ class ChatMemberStatusMember extends ChatMemberStatus {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }
@@ -219,7 +219,7 @@ class ChatMemberStatusRestricted extends ChatMemberStatus {
    "@type":"$CONSTRUCTOR",
    "is_member":$isMember,
    "restricted_until_date":$restrictedUntilDate,
-   "permissions":"${permissions.toJson()}"
+   "permissions":${permissions.toJson()}
 }
 	""";
   }
@@ -255,7 +255,7 @@ class ChatMemberStatusLeft extends ChatMemberStatus {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

@@ -14,7 +14,7 @@ class CheckCreatedPublicChatsLimit extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "type":"${type.toJson()}"
+   "type":${type.toJson()}
 }
 	""";
   }

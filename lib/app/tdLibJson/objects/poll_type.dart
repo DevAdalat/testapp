@@ -101,7 +101,7 @@ class PollTypeQuiz extends PollType {
   {
    "@type":"$CONSTRUCTOR",
    "correct_option_id":$correctOptionId,
-   "explanation":"${explanation.toJson()}"
+   "explanation":${explanation.toJson()}
 }
 	""";
   }

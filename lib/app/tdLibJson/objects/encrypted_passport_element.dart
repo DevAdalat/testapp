@@ -67,13 +67,13 @@ class EncryptedPassportElement extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "type":"${type.toJson()}",
+   "type":${type.toJson()},
    "data":"$data",
-   "front_side":"${frontSide.toJson()}",
-   "reverse_side":"${reverseSide?.toJson()}",
-   "selfie":"${selfie?.toJson()}",
-   "translation":"${translation.map((i) => i.toJson()).toList()}",
-   "files":"${files.map((i) => i.toJson()).toList()}",
+   "front_side":${frontSide.toJson()},
+   "reverse_side":${reverseSide?.toJson()},
+   "selfie":${selfie?.toJson()},
+   "translation":${translation.map((i) => i.toJson()).toList()},
+   "files":${files.map((i) => i.toJson()).toList()},
    "value":"$value",
    "hash":"$hash"
 }

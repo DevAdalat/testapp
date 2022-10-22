@@ -41,7 +41,7 @@ class SendInlineQueryResultMessage extends TdFunction {
    "chat_id":$chatId,
    "message_thread_id":$messageThreadId,
    "reply_to_message_id":$replyToMessageId,
-   "options":"${options?.toJson()}",
+   "options":${options?.toJson()},
    "query_id":$queryId,
    "result_id":"$resultId",
    "hide_via_bot":$hideViaBot

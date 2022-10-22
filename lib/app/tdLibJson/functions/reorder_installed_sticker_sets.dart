@@ -18,8 +18,8 @@ class ReorderInstalledStickerSets extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "sticker_type":"${stickerType.toJson()}",
-   "sticker_set_ids":"${stickerSetIds.map((i) => i).toList()}"
+   "sticker_type":${stickerType.toJson()},
+   "sticker_set_ids":${stickerSetIds.map((i) => i).toList()}
 }
 	""";
   }

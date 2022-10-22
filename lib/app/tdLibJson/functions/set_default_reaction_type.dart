@@ -14,7 +14,7 @@ class SetDefaultReactionType extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "reaction_type":"${reactionType.toJson()}"
+   "reaction_type":${reactionType.toJson()}
 }
 	""";
   }

@@ -24,7 +24,7 @@ class EditMessageReplyMarkup extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "message_id":$messageId,
-   "reply_markup":"${replyMarkup?.toJson()}"
+   "reply_markup":${replyMarkup?.toJson()}
 }
 	""";
   }

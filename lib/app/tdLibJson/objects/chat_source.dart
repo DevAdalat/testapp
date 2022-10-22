@@ -48,7 +48,7 @@ class ChatSourceMtprotoProxy extends ChatSource {
   String toJson() {
     return """
   {
-   "@type":"$CONSTRUCTOR",
+   "@type":"$CONSTRUCTOR"
 }
 	""";
   }

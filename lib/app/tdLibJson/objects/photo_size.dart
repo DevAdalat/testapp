@@ -41,10 +41,10 @@ class PhotoSize extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "type":"$type",
-   "photo":"${photo.toJson()}",
+   "photo":${photo.toJson()},
    "width":$width,
    "height":$height,
-   "progressive_sizes":"${progressiveSizes.map((i) => i).toList()}"
+   "progressive_sizes":${progressiveSizes.map((i) => i).toList()}
 }
 	""";
   }

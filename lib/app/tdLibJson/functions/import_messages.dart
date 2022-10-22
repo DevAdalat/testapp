@@ -23,8 +23,8 @@ class ImportMessages extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "message_file":"${messageFile.toJson()}",
-   "attached_files":"${attachedFiles.map((i) => i.toJson()).toList()}"
+   "message_file":${messageFile.toJson()},
+   "attached_files":${attachedFiles.map((i) => i.toJson()).toList()}
 }
 	""";
   }

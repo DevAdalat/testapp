@@ -14,7 +14,7 @@ class GetCustomEmojiStickers extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "custom_emoji_ids":"${customEmojiIds.map((i) => i).toList()}"
+   "custom_emoji_ids":${customEmojiIds.map((i) => i).toList()}
 }
 	""";
   }

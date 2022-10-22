@@ -18,8 +18,8 @@ class GetPaymentForm extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "input_invoice":"${inputInvoice.toJson()}",
-   "theme":"${theme?.toJson()}"
+   "input_invoice":${inputInvoice.toJson()},
+   "theme":${theme?.toJson()}
 }
 	""";
   }

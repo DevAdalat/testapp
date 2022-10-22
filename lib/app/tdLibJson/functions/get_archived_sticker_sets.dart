@@ -22,7 +22,7 @@ class GetArchivedStickerSets extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "sticker_type":"${stickerType.toJson()}",
+   "sticker_type":${stickerType.toJson()},
    "offset_sticker_set_id":$offsetStickerSetId,
    "limit":$limit
 }

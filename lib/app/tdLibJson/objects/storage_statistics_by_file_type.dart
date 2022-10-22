@@ -30,7 +30,7 @@ class StorageStatisticsByFileType extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "file_type":"${fileType.toJson()}",
+   "file_type":${fileType.toJson()},
    "size":$size,
    "count":$count
 }

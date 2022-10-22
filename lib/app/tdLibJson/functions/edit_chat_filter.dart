@@ -19,7 +19,7 @@ class EditChatFilter extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "chat_filter_id":$chatFilterId,
-   "filter":"${filter.toJson()}"
+   "filter":${filter.toJson()}
 }
 	""";
   }

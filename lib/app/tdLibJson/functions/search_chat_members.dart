@@ -29,7 +29,7 @@ class SearchChatMembers extends TdFunction {
    "chat_id":$chatId,
    "query":"$query",
    "limit":$limit,
-   "filter":"${filter?.toJson()}"
+   "filter":${filter?.toJson()}
 }
 	""";
   }

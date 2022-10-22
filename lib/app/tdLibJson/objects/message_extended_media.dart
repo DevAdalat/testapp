@@ -87,8 +87,8 @@ class MessageExtendedMediaPreview extends MessageExtendedMedia {
    "width":$width,
    "height":$height,
    "duration":$duration,
-   "minithumbnail":"${minithumbnail?.toJson()}",
-   "caption":"${caption.toJson()}"
+   "minithumbnail":${minithumbnail?.toJson()},
+   "caption":${caption.toJson()}
 }
 	""";
   }
@@ -141,8 +141,8 @@ class MessageExtendedMediaPhoto extends MessageExtendedMedia {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "photo":"${photo.toJson()}",
-   "caption":"${caption.toJson()}"
+   "photo":${photo.toJson()},
+   "caption":${caption.toJson()}
 }
 	""";
   }
@@ -189,8 +189,8 @@ class MessageExtendedMediaVideo extends MessageExtendedMedia {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "video":"${video.toJson()}",
-   "caption":"${caption.toJson()}"
+   "video":${video.toJson()},
+   "caption":${caption.toJson()}
 }
 	""";
   }
@@ -232,7 +232,7 @@ class MessageExtendedMediaUnsupported extends MessageExtendedMedia {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "caption":"${caption.toJson()}"
+   "caption":${caption.toJson()}
 }
 	""";
   }

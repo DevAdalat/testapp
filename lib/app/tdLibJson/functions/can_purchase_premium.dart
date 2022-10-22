@@ -14,7 +14,7 @@ class CanPurchasePremium extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "purpose":"${purpose.toJson()}"
+   "purpose":${purpose.toJson()}
 }
 	""";
   }

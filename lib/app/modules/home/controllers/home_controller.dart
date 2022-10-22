@@ -1,29 +1,80 @@
+import 'package:tfile/app/views/widgets/custom_snackbar.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:path_provider/path_provider.dart';
 
-class HomeController extends GetxController {
-  String agetApplicationDocumentsDirectory = "";
-  String agetTemporaryDirectory = "";
-  String agetExternalStorageDirectories = "";
-  String agetExternalStorageDirectory = "";
-  String agetExternalCacheDirectories = "";
-  String agetApplicationSupportDirectory = "";
+class HomeController extends GetxController
+    with GetSingleTickerProviderStateMixin {
+  late Animation<double> animation;
+  late AnimationController animationController;
+  TextEditingController editingController = TextEditingController();
 
-  agetDirs() async {
-    final docsDir = await getApplicationDocumentsDirectory();
-    agetApplicationDocumentsDirectory = docsDir.path;
-    final tempDir = await getTemporaryDirectory();
-    agetTemporaryDirectory = tempDir.path;
-    final extdirs = await getExternalStorageDirectories();
-    agetExternalCacheDirectories =
-        extdirs!.map(((e) => e.path)).toList().toString();
-    final extdir = await getExternalStorageDirectory();
-    agetExternalStorageDirectory = extdir!.path;
-    final cacheDir = await getExternalCacheDirectories();
-    agetExternalCacheDirectories =
-        cacheDir!.map(((e) => e.path)).toList().toString();
-    final supportDir = await getApplicationSupportDirectory();
-    agetApplicationSupportDirectory = supportDir.path;
-		update();
+  @override
+  onInit() {
+    animationController = AnimationController(
+      vsync: this,
+      duration: 200.milliseconds,
+    );
+    final curvedAnimation =
+        CurvedAnimation(curve: Curves.easeInOut, parent: animationController);
+    animation = Tween<double>(begin: 0, end: 1).animate(curvedAnimation);
+    super.onInit();
+  }
+
+  void importFromUrl() {
+    editingController.clear();
+    Get.dialog(
+      AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          title: const Text("Enter url"),
+          content: TextField(
+            controller: editingController,
+            decoration: InputDecoration(
+              hintText: "Enter Telegram file url",
+              label: const Text("Telegram file url"),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(color: Get.theme.primaryColor),
+              ),
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: (() {
+                Get.back();
+              }),
+              child: const Text("Cancel"),
+            ),
+            TextButton(
+              onPressed: (() {
+                Get.back();
+                if (editingController.text.isEmpty) {
+                  CustomSnackbar.customSnackbar("Please enter the url");
+                } else {
+                  if (Uri.parse(editingController.text).isAbsolute) {
+                    if (editingController.text
+                            .startsWith("https://telegram.me") ||
+                        editingController.text.startsWith("https://t.me")) {
+                      // do main link task
+                    } else {
+                      CustomSnackbar.customSnackbar(
+                          "Only Telegram url are accepted");
+                    }
+                  } else {
+                    CustomSnackbar.customSnackbar("Only URL are accepted");
+                  }
+                }
+              }),
+              child: const Text("Search"),
+            ),
+          ]),
+    );
+  }
+
+  @override
+  dispose() {
+    super.dispose();
+    editingController.dispose();
   }
 }

@@ -43,8 +43,8 @@ class ThemeSettings extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "accent_color":$accentColor,
-   "background":"${background?.toJson()}",
-   "outgoing_message_fill":"${outgoingMessageFill.toJson()}",
+   "background":${background?.toJson()},
+   "outgoing_message_fill":${outgoingMessageFill.toJson()},
    "animate_outgoing_message_fill":$animateOutgoingMessageFill,
    "outgoing_message_accent_color":$outgoingMessageAccentColor
 }

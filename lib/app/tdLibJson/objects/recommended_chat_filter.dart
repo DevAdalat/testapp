@@ -25,7 +25,7 @@ class RecommendedChatFilter extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "filter":"${filter.toJson()}",
+   "filter":${filter.toJson()},
    "description":"$description"
 }
 	""";

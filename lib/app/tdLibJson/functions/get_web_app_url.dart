@@ -28,7 +28,7 @@ class GetWebAppUrl extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "bot_user_id":$botUserId,
    "url":"$url",
-   "theme":"${theme?.toJson()}",
+   "theme":${theme?.toJson()},
    "application_name":"$applicationName"
 }
 	""";

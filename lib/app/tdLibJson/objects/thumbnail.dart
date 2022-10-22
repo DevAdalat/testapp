@@ -34,10 +34,10 @@ class Thumbnail extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "format":"${format.toJson()}",
+   "format":${format.toJson()},
    "width":$width,
    "height":$height,
-   "file":"${file.toJson()}"
+   "file":${file.toJson()}
 }
 	""";
   }

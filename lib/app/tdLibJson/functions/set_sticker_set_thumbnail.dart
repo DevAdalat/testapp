@@ -24,7 +24,7 @@ class SetStickerSetThumbnail extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "user_id":$userId,
    "name":"$name",
-   "thumbnail":"${thumbnail?.toJson()}"
+   "thumbnail":${thumbnail?.toJson()}
 }
 	""";
   }

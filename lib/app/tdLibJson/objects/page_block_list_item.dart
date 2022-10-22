@@ -28,7 +28,7 @@ class PageBlockListItem extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "label":"$label",
-   "page_blocks":"${pageBlocks.map((i) => i.toJson()).toList()}"
+   "page_blocks":${pageBlocks.map((i) => i.toJson()).toList()}
 }
 	""";
   }

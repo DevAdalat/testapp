@@ -19,7 +19,7 @@ class SetVideoChatDefaultParticipant extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "default_participant_id":"${defaultParticipantId.toJson()}"
+   "default_participant_id":${defaultParticipantId.toJson()}
 }
 	""";
   }

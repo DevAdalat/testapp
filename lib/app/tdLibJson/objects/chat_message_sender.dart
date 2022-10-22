@@ -25,7 +25,7 @@ class ChatMessageSender extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "sender":"${sender.toJson()}",
+   "sender":${sender.toJson()},
    "needs_premium":$needsPremium
 }
 	""";

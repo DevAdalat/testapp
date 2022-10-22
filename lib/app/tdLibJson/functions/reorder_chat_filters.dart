@@ -18,7 +18,7 @@ class ReorderChatFilters extends TdFunction {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "chat_filter_ids":"${chatFilterIds.map((i) => i).toList()}",
+   "chat_filter_ids":${chatFilterIds.map((i) => i).toList()},
    "main_chat_list_position":$mainChatListPosition
 }
 	""";

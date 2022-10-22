@@ -46,7 +46,7 @@ class PhoneNumberAuthenticationSettings extends TdObject {
    "allow_missed_call":$allowMissedCall,
    "is_current_phone_number":$isCurrentPhoneNumber,
    "allow_sms_retriever_api":$allowSmsRetrieverApi,
-   "authentication_tokens":"${authenticationTokens.map((i) => i).toList()}"
+   "authentication_tokens":${authenticationTokens.map((i) => i).toList()}
 }
 	""";
   }

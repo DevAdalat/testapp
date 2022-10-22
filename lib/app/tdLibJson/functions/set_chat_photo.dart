@@ -19,7 +19,7 @@ class SetChatPhoto extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
-   "photo":"${photo?.toJson()}"
+   "photo":${photo?.toJson()}
 }
 	""";
   }

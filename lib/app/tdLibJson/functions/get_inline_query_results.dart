@@ -32,7 +32,7 @@ class GetInlineQueryResults extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "bot_user_id":$botUserId,
    "chat_id":$chatId,
-   "user_location":"${userLocation?.toJson()}",
+   "user_location":${userLocation?.toJson()},
    "query":"$query",
    "offset":"$offset"
 }

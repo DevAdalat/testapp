@@ -35,7 +35,7 @@ class ChatInviteLinkCounts extends TdObject {
     return """
   {
    "@type":"$CONSTRUCTOR",
-   "invite_link_counts":"${inviteLinkCounts.map((i) => i.toJson()).toList()}"
+   "invite_link_counts":${inviteLinkCounts.map((i) => i.toJson()).toList()}
 }
 	""";
   }

@@ -26,7 +26,7 @@ class MessageCalendarDay extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "total_count":$totalCount,
-   "message":"${message.toJson()}"
+   "message":${message.toJson()}
 }
 	""";
   }

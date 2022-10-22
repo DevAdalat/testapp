@@ -43,7 +43,7 @@ class Call extends TdObject {
    "user_id":$userId,
    "is_outgoing":$isOutgoing,
    "is_video":$isVideo,
-   "state":"${state.toJson()}"
+   "state":${state.toJson()}
 }
 	""";
   }

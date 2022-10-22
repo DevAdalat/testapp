@@ -42,9 +42,9 @@ class ProfilePhoto extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "id":$id,
-   "small":"${small.toJson()}",
-   "big":"${big.toJson()}",
-   "minithumbnail":"${minithumbnail?.toJson()}",
+   "small":${small.toJson()},
+   "big":${big.toJson()},
+   "minithumbnail":${minithumbnail?.toJson()},
    "has_animation":$hasAnimation
 }
 	""";

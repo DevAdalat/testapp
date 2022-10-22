@@ -24,7 +24,7 @@ class RemoveMessageReaction extends TdFunction {
    "@type":"$CONSTRUCTOR",
    "chat_id":$chatId,
    "message_id":$messageId,
-   "reaction_type":"${reactionType.toJson()}"
+   "reaction_type":${reactionType.toJson()}
 }
 	""";
   }

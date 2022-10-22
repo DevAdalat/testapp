@@ -19,7 +19,7 @@ class FinishFileGeneration extends TdFunction {
   {
    "@type":"$CONSTRUCTOR",
    "generation_id":$generationId,
-   "error":"${error?.toJson()}"
+   "error":${error?.toJson()}
 }
 	""";
   }

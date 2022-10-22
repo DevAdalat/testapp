@@ -39,7 +39,7 @@ class ChatPhotos extends TdObject {
   {
    "@type":"$CONSTRUCTOR",
    "total_count":$totalCount,
-   "photos":"${photos.map((i) => i.toJson()).toList()}"
+   "photos":${photos.map((i) => i.toJson()).toList()}
 }
 	""";
   }
