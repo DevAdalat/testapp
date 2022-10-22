@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:ffi';
 import 'dart:isolate';
 
+import 'package:ffi/ffi.dart';
 import 'package:tfile/app/tdLibJson/tdlib_interface.dart';
 import 'package:tfile/app/tdLibJson/tdlibjson_api.dart';
 import 'package:get/get.dart';
-import 'package:tfile/app/views/widgets/custom_snackbar.dart';
 
 class SplashController extends GetxController {
   RxString count = "".obs;
@@ -35,7 +35,7 @@ isolateTdReceive(IsolateTdlib isolateTdlib) {
   Timer.periodic(100.milliseconds, (timer) {
     final rawData = lib.td_json_client_receive(client, isolateTdlib.timeOut);
     if (rawData != nullptr) {
-      isolateTdlib.port.send(rawData.toDString());
+      isolateTdlib.port.send(rawData.cast<Utf8>().toDartString());
     } else {
       isolateTdlib.port.send("Empty data");
     }
