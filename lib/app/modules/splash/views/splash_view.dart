@@ -41,8 +41,7 @@ class SplashView extends GetView<SplashController> {
             ),
           ),
         ],
-        done: Obx((() => Text(controller.count.value
-							))),
+        done: const Text("Login"),
         onDone: (() => controller.getAuthState()),
         next: const Text("Next"),
         dotsDecorator: DotsDecorator(

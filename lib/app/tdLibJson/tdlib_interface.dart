@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:ffi' as ffi;
-import 'dart:ffi' show nullptr;
+import 'dart:ffi';
 import 'dart:isolate';
 import 'package:tfile/generated_bindings.dart';
 import 'package:get/get.dart';
@@ -16,11 +16,13 @@ class TdlibInterface {
     malloc.free(requestPtr);
   }
 
-   ReceivePort receiveData() {
+  ReceivePort receiveData() {
     ReceivePort receivePort = ReceivePort();
-		final isoData = IsolateTdlib(lib: tdJsonNative, client: tdlibClient, port: receivePort.sendPort, timeOut: 10);
+    final isoData = IsolateTdlib(
+			libname: "libtdjson.so",
+        client: tdlibClient.address, port: receivePort.sendPort, timeOut: 10);
     Isolate.spawn(_isolatetdReceive, isoData);
-		return receivePort;
+    return receivePort;
   }
 
   String tdExecute(String request) {
@@ -44,17 +46,15 @@ class TdlibInterface {
   }
 
   void _isolatetdReceive(IsolateTdlib isolateTdlib) async {
-    NativeLibrary tg = isolateTdlib.lib;
+
     while (true) {
       await Future.delayed(100.milliseconds);
-      final tdResData =
-          tg.td_json_client_receive(isolateTdlib.client, isolateTdlib.timeOut);
-      if (tdResData == nullptr) {
-        isolateTdlib.port.send("Empty data");
-      } else {
-        isolateTdlib.port.send(tdResData.toDString());
-      }
-    }
+			isolateTdlib.isolateTdlib();
+//    final tdResData = tg.td_json_client_receive(
+//        Pointer.fromAddress(isolateTdlib.client).cast<ffi.Void>(),
+//        isolateTdlib.timeOut);
+//		isolateTdlib.port.send(tdResData.address);
+   }
   }
 }
 
@@ -71,17 +71,24 @@ extension ToDString on ffi.Pointer<ffi.Char> {
 }
 
 class IsolateTdlib {
-  NativeLibrary lib;
+  int client;
 
-  ffi.Pointer<ffi.Void> client;
+	String libname;
 
   SendPort port;
 
   double timeOut;
 
-  IsolateTdlib(
-      {required this.lib,
-      required this.client,
-      required this.port,
-      required this.timeOut,});
+  IsolateTdlib({
+    required this.client,
+    required this.port,
+		required this.libname, 
+    required this.timeOut,
+  });
+
+	void isolateTdlib(){
+		NativeLibrary lib = NativeLibrary(DynamicLibrary.open(libname));
+		final ptrData = lib.td_json_client_receive(Pointer.fromAddress(client).cast<ffi.Void>(), timeOut);
+		port.send(ptrData.address);
+	}
 }
