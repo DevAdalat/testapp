@@ -9,12 +9,10 @@ jobs:
     steps:
       - name: clone repo
         uses: actions/checkout@v1
-      - name: setup flutter
-        run: sudo snap install flutter --classic
-      - name: flutter version
-        run: flutter doctor
-      - name: accecpt licences
-        run:  yes | flutter doctor --android-licenses
+      - name: Setup flutter
+        uses: subosito/flutter-action@v2
+        with:
+         channel: 'stable'
       - name: build APK
         run: flutter build apk --target-platform=android-arm64
       - name: Send apk

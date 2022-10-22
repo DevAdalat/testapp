@@ -19,6 +19,7 @@ class TdlibInterface {
       return "{\"@type\": \"error\", \"message\":\"Null data Received\"}";
     } else {
       final data = rawData.toDString();
+			malloc.free(rawData);
       return data;
     }
   }
@@ -31,6 +32,7 @@ class TdlibInterface {
       return "{\"@type\": \"error\", \"message\":\"Null data Received\"}";
     } else {
       final data = rawData.toDString();
+			malloc.free(rawData);
       return data;
     }
   }
