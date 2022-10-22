@@ -8,33 +8,36 @@ import 'package:get/get.dart';
 import 'package:tfile/app/views/widgets/custom_snackbar.dart';
 
 class SplashController extends GetxController {
+  RxString count = "".obs;
   getAuthState() async {
     final tg = TdlibInterface();
     const authState = GetAuthorizationState();
     tg.sendData(authState.toJson());
-		ReceivePort port = ReceivePort();
-		Isolate.spawn(isolateCount, port.sendPort);
-		port.listen((message) {
-			CustomSnackbar.customSnackbar(message.toString());
-		});
- }
+    ReceivePort port = ReceivePort();
+    Isolate.spawn(isolateCount, port.sendPort);
+    port.listen((message) {
+			count.value = message;
+    });
+  }
 }
 
-isolateCount(SendPort port){
-	Timer.periodic(3.seconds, (timer) {
-		port.send("Hello from multithread");
-	});
+isolateCount(SendPort port) {
+  int aa = 0;
+  Timer.periodic(100.milliseconds, (timer) {
+    aa++;
+    port.send(aa.toString());
+  });
 }
 
 isolateTdReceive(IsolateTdlib isolateTdlib) {
-		final lib = isolateTdlib.lib;
-		final client = isolateTdlib.client;
-		Timer.periodic(100.milliseconds, (timer) {
-			final rawData =  lib.td_json_client_receive(client, isolateTdlib.timeOut);
-			if (rawData != nullptr) {
-				isolateTdlib.port.send(rawData.toDString());
-			} else {
-				isolateTdlib.port.send("Empty data");
-			}
-	});
+  final lib = isolateTdlib.lib;
+  final client = isolateTdlib.client;
+  Timer.periodic(100.milliseconds, (timer) {
+    final rawData = lib.td_json_client_receive(client, isolateTdlib.timeOut);
+    if (rawData != nullptr) {
+      isolateTdlib.port.send(rawData.toDString());
+    } else {
+      isolateTdlib.port.send("Empty data");
+    }
+  });
 }
