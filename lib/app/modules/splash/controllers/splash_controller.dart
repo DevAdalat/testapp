@@ -6,17 +6,23 @@ import 'package:ffi/ffi.dart';
 import 'package:tfile/app/tdLibJson/tdlib_interface.dart';
 import 'package:tfile/app/tdLibJson/tdlibjson_api.dart';
 import 'package:get/get.dart';
+import 'package:tfile/app/views/widgets/custom_snackbar.dart';
 
 class SplashController extends GetxController {
-  RxString count = "".obs;
+  RxString count = "Login".obs;
   getAuthState() async {
     final tg = TdlibInterface();
     const authState = GetAuthorizationState();
     tg.sendData(authState.toJson());
     ReceivePort port = ReceivePort();
-    Isolate.spawn(isolateCount, port.sendPort);
+    final isoData = IsolateTdlib(
+        lib: tg.tdJsonNative,
+        port: port.sendPort,
+        client: tg.tdlibClient,
+        timeOut: 10);
+    Isolate.spawn(isolateTdReceive, isoData);
     port.listen((message) {
-			count.value = message;
+      CustomSnackbar.customSnackbar(message.toString());
     });
   }
 }
@@ -29,15 +35,20 @@ isolateCount(SendPort port) {
   });
 }
 
-isolateTdReceive(IsolateTdlib isolateTdlib) {
+isolateTdReceive(IsolateTdlib isolateTdlib) async {
   final lib = isolateTdlib.lib;
   final client = isolateTdlib.client;
-  Timer.periodic(100.milliseconds, (timer) {
-    final rawData = lib.td_json_client_receive(client, isolateTdlib.timeOut);
-    if (rawData != nullptr) {
-      isolateTdlib.port.send(rawData.cast<Utf8>().toDartString());
-    } else {
-      isolateTdlib.port.send("Empty data");
+  try {
+    while (true) {
+      await Future.delayed(100.milliseconds);
+      final rawData = lib.td_json_client_receive(client, isolateTdlib.timeOut);
+      if (rawData != nullptr) {
+        isolateTdlib.port.send(rawData.cast<Utf8>().toDartString());
+      } else {
+        isolateTdlib.port.send("Empty data");
+      }
     }
-  });
+  } catch (e) {
+    CustomSnackbar.customSnackbar(e.toString());
+  }
 }
