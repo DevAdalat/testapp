@@ -20,7 +20,7 @@ class TdlibInterface {
   ReceivePort receiveData() {
     ReceivePort receivePort = ReceivePort();
     try {
-      IsolateTdlib isolateTdlib = IsolateTdlib(
+      IsolateTdTransfer isolateTdlib = IsolateTdTransfer(
           libname: "libtdjson.so",
           client: tdlibClient.address,
           sendPort: receivePort.sendPort,
@@ -51,21 +51,21 @@ class TdlibInterface {
     malloc.free(tdlibClient);
     Get.delete<ffi.Pointer<ffi.Void>>(tag: "tdlibClient");
   }
+}
 
-  void _isolatetdReceive(IsolateTdlib isolateTdlib) async {
-    try {
-      NativeLibrary lib =
-          NativeLibrary(DynamicLibrary.open(isolateTdlib.libname));
-      while (true) {
-        await Future.delayed(100.milliseconds);
-        final ptrData = lib.td_json_client_receive(
-            Pointer.fromAddress(isolateTdlib.client).cast<Void>(),
-            isolateTdlib.timeout);
-        isolateTdlib.sendPort.send(ptrData.address);
-      }
-    } catch (e) {
-      isolateTdlib.sendPort.send(e.toString().toNativeUtf8().address);
+void _isolatetdReceive(IsolateTdTransfer isolateTdlib) async {
+  try {
+    NativeLibrary lib =
+        NativeLibrary(DynamicLibrary.open(isolateTdlib.libname));
+    while (true) {
+      await Future.delayed(100.milliseconds);
+      final ptrData = lib.td_json_client_receive(
+          Pointer.fromAddress(isolateTdlib.client).cast<Void>(),
+          isolateTdlib.timeout);
+      isolateTdlib.sendPort.send(ptrData.address);
     }
+  } catch (e) {
+    isolateTdlib.sendPort.send(e.toString().toNativeUtf8().address);
   }
 }
 
@@ -81,12 +81,12 @@ extension ToDString on ffi.Pointer<ffi.Char> {
   }
 }
 
-class IsolateTdlib {
+class IsolateTdTransfer {
   String libname;
   int client;
   double timeout;
   SendPort sendPort;
-  IsolateTdlib(
+  IsolateTdTransfer(
       {required this.libname,
       required this.client,
       required this.sendPort,
