@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -45,8 +44,8 @@ class SplashView extends GetView<SplashController> {
         ],
         done: const Text("Login"),
         onDone: (() {
-					controller.getAuthState();
-       }),
+          controller.getAuthState();
+        }),
         next: const Text("Next"),
         dotsDecorator: DotsDecorator(
           size: const Size.square(10.0),

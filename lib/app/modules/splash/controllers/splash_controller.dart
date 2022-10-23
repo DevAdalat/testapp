@@ -10,10 +10,8 @@ class SplashController extends GetxController {
   getAuthState() async {
     try {
       CustomSnackbar.customSnackbar("Started");
-			final tdlib = TdlibInterface();
-			final client = tdlib.tdlibClient;
-      Adalat aaa = Adalat(client: client.address);
-      aaa.tdReceive().listen(((message) {
+      final tdlib = TdlibInterface();
+      tdlib.receiveData().listen(((message) {
         final data = Pointer.fromAddress(message).cast<Utf8>().toDartString();
         CustomSnackbar.customSnackbar(data);
       }));
