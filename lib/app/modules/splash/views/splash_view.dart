@@ -1,7 +1,8 @@
-import 'dart:ffi' show DynamicLibrary;
+import 'dart:ffi' show DynamicLibrary, Pointer, Char , Void;
 
 import 'package:flutter/material.dart';
 
+import 'package:ffi/ffi.dart';
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart'
     show DotsDecorator, IntroductionScreen, PageViewModel;
@@ -57,7 +58,8 @@ class SplashView extends GetView<SplashController> {
             final client = lib.td_json_client_create();
             Adalat aaa = Adalat(client: client.address);
             aaa.tdReceive().listen(((message) {
-              CustomSnackbar.customSnackbar(message.toString());
+							final data = Pointer.fromAddress(message).cast<Utf8>().toDartString();
+							CustomSnackbar.customSnackbar(data);
             }));
           } catch (e) {
             CustomSnackbar.customSnackbar(e.toString());
