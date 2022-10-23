@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:ffi' as ffi;
 import 'dart:ffi';
 import 'dart:isolate';
+import 'package:tfile/app/views/widgets/custom_snackbar.dart';
 import 'package:tfile/generated_bindings.dart';
 import 'package:get/get.dart';
 import 'package:ffi/ffi.dart';
@@ -18,12 +19,16 @@ class TdlibInterface {
 
   ReceivePort receiveData() {
     ReceivePort receivePort = ReceivePort();
-    IsolateTdlib isolateTdlib = IsolateTdlib(
-        libname: "libtdjson.so",
-        client: tdlibClient.address,
-        sendPort: receivePort.sendPort,
-        timeout: 10);
-    Isolate.spawn(_isolatetdReceive, isolateTdlib);
+    try {
+      IsolateTdlib isolateTdlib = IsolateTdlib(
+          libname: "libtdjson.so",
+          client: tdlibClient.address,
+          sendPort: receivePort.sendPort,
+          timeout: 10);
+      Isolate.spawn(_isolatetdReceive, isolateTdlib);
+    } catch (e) {
+      CustomSnackbar.customSnackbar(e.toString());
+    }
     return receivePort;
   }
 
