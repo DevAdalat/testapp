@@ -1,16 +1,10 @@
-import 'package:tfile/app/config/config.dart';
-import 'package:tfile/app/tdLibJson/tdlibjson.dart';
-import 'package:dynamic_color/dynamic_color.dart';
-import 'package:flutter/foundation.dart';
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+import 'package:tfile/bindings.dart';
 
-import 'app/routes/app_pages.dart';
-
-void main() async {
-  await TFileConfig.initDatabases();
-  !kIsWeb ? TdlibJson.initialize() : null;
+void main() {
   runApp(const MyApp());
 }
 
@@ -19,31 +13,50 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return !kIsWeb
-        ? DynamicColorBuilder(
-            builder: ((lightDynamic, darkDynamic) {
-              return GetMaterialApp(
-                title: "TFile",
-                initialRoute: AppPages.INITIAL,
-                getPages: AppPages.routes,
-                themeMode: ThemeMode.system,
-                theme: ThemeData.from(
-                  colorScheme: lightDynamic!,
-                  useMaterial3: true,
-                ),
-                darkTheme: ThemeData.from(
-                    colorScheme: darkDynamic!, useMaterial3: true),
-              );
-            }),
-          )
-        : GetMaterialApp(
-            title: "TFile",
-            initialRoute: AppPages.INITIAL,
-            getPages: AppPages.routes,
-            theme: ThemeData(
-              useMaterial3: true,
-              primarySwatch: Colors.purple,
-            ),
-          );
+    return GetMaterialApp(
+      title: "Test App",
+      home: const Home(),
+      theme: ThemeData(
+        primarySwatch: Colors.deepOrange,
+        useMaterial3: true,
+      ),
+    );
+  }
+}
+
+class Home extends GetView<HomeController> {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Testapp"),
+      ),
+      body: Column(children: [
+        TextButton(
+          onPressed: ((() => controller.getList())),
+          child: const Text("List"),
+        ),
+        TextButton(
+          onPressed: ((() => controller.greet())),
+          child: const Text("Greet"),
+        ),
+      ]),
+    );
+  }
+}
+
+class HomeController extends GetxController {
+  greet() async {
+    final lib = RtestImpl(DynamicLibrary.open("librtest.so"));
+    final data = await lib.greet(name: "Adalat");
+    Get.snackbar("Greet", data);
+  }
+
+  getList() async {
+    final lib = RtestImpl(DynamicLibrary.open("librtest.so"));
+    final data = await lib.listData();
+    Get.snackbar("List", data.toString());
   }
 }
