@@ -29,7 +29,7 @@ class Home extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-		Get.put(HomeController());
+    Get.put(HomeController());
     return Scaffold(
       appBar: AppBar(
         title: const Text("Testapp"),
@@ -50,14 +50,22 @@ class Home extends GetView<HomeController> {
 
 class HomeController extends GetxController {
   greet() async {
-    final lib = RtestImpl(DynamicLibrary.open("librtest.so"));
-    final data = await lib.greet(name: "Adalat");
-    Get.snackbar("Greet", data);
+    try {
+      final lib = RtestImpl(DynamicLibrary.open("librtest.so"));
+      final data = await lib.greet(name: "Adalat");
+      Get.snackbar("Greet", data);
+    } catch (e) {
+      Get.snackbar("Error", e.toString());
+    }
   }
 
   getList() async {
-    final lib = RtestImpl(DynamicLibrary.open("librtest.so"));
-    final data = await lib.listData();
-    Get.snackbar("List", data.toString());
+    try {
+      final lib = RtestImpl(DynamicLibrary.open("librtest.so"));
+      final data = await lib.listData();
+      Get.snackbar("List", data.toString());
+    } catch (e) {
+      Get.snackbar("Error", e.toString());
+    }
   }
 }
