@@ -30,33 +30,41 @@ class HomeView extends GetView<HomeController> {
           ),
           SliverList(
             delegate: SliverChildListDelegate([
-              GridView(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2),
-                children: List.generate(
-                  10,
-                  ((index) => Card(
-                        child: GridTile(
-                            footer: Row(children: [
-                              const Spacer(),
-                              const Icon(Icons.picture_as_pdf),
-                              const SizedBox(width: 10),
-                              Text(
-                                "Folder $index",
-                                style: const TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.w300),
-                              ),
-                              const Spacer(),
-                              IconButton(
-                                  onPressed: (() {}),
-                                  icon: const Icon(Icons.more_vert)),
-                            ]),
-                            child: const Icon(Icons.folder_rounded, size: 100)),
-                      )),
-                ),
-              )
+							TextButton(onPressed: controller.greet(),
+								child: const Text("Greet"),
+								),
+							TextButton(
+								onPressed: controller.list(),
+								child: const Text("Get list"),
+								),
+							
+//            GridView(
+//              shrinkWrap: true,
+//              physics: const NeverScrollableScrollPhysics(),
+//              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+//                  crossAxisCount: 2),
+//              children: List.generate(
+//                10,
+//                ((index) => Card(
+//                      child: GridTile(
+//                          footer: Row(children: [
+//                            const Spacer(),
+//                            const Icon(Icons.picture_as_pdf),
+//                            const SizedBox(width: 10),
+//                            Text(
+//                              "Folder $index",
+//                              style: const TextStyle(
+//                                  fontSize: 15, fontWeight: FontWeight.w300),
+//                            ),
+//                            const Spacer(),
+//                            IconButton(
+//                                onPressed: (() {}),
+//                                icon: const Icon(Icons.more_vert)),
+//                          ]),
+//                          child: const Icon(Icons.folder_rounded, size: 100)),
+//                    )),
+//              ),
+//            )
             ]),
           )
         ],

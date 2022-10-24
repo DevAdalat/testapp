@@ -1,12 +1,28 @@
+import 'dart:ffi';
+
 import 'package:tfile/app/views/widgets/custom_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tfile/bindings.dart';
 
 class HomeController extends GetxController
     with GetSingleTickerProviderStateMixin {
   late Animation<double> animation;
   late AnimationController animationController;
   TextEditingController editingController = TextEditingController();
+
+	greet() async {
+		RtestImpl lib = RtestImpl(DynamicLibrary.open("librtest.so"));
+		 final data = await lib.greet(name: "Adalat");
+		CustomSnackbar.customSnackbar(data);
+	}
+
+	list() async {
+		RtestImpl lib = RtestImpl(DynamicLibrary.open("librtest.so"));
+		final data = await lib.listData();
+		CustomSnackbar.customSnackbar(data.toString());
+	}
+
 
   @override
   onInit() {

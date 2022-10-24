@@ -1,6 +1,7 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:get/get.dart';
 
-import '../database/user_database.dart';
 import '../modules/emailAuth/bindings/email_auth_binding.dart';
 import '../modules/emailAuth/views/email_auth_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -23,8 +24,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static final INITIAL =
-      UserDatabase.isUserLoggedIn() ? Routes.HOME : Routes.SPLASH;
+  static const INITIAL = Routes.HOME;
 
   static final routes = [
     GetPage(
