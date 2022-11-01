@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 void main() async {
   await Future.delayed(10.milliseconds);
-	openDB();
+	await openDB();
 //await EFileStorage().initEFileStorage();
 //await AppSettings.init();
   runApp(const MyApp());
