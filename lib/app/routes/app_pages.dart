@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, constant_identifier_names
 
 import 'package:get/get.dart';
 
@@ -32,7 +32,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static get INITIAL => Routes.HOME;
+  static const INITIAL = Routes.HOME;
 
   static final routes = [
     GetPage(

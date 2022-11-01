@@ -5,7 +5,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
   await Future.delayed(10.milliseconds);
-	WidgetsFlutterBinding.ensureInitialized();
 	await Hive.initFlutter();
 	await Hive.openBox("EFileStorage");
 	await Hive.openBox("EFileSettings");
