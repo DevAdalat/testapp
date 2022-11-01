@@ -4,7 +4,6 @@ import 'dart:math';
 
 import 'package:external_path/external_path.dart';
 import 'package:flutter/foundation.dart';
-import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:storage_info/storage_info.dart';
 
@@ -70,7 +69,6 @@ class EFileStorage {
       _fFStorage.put("usedSpace", _usedSpace);
       _fFStorage.put("totalSpace", _totalSpace);
       _fFStorage.put("currentStorage", _diskPaths[0]);
-      Get.put(EFileStorage());
     }
   }
 

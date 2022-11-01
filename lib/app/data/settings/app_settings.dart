@@ -68,7 +68,6 @@ class AppSettings {
         settings.get("showModifiedTime", defaultValue: showModifiedTime);
     showVideosThumbnail =
         settings.get("showVideosThumbnail", defaultValue: showVideosThumbnail);
-    Get.put(AppSettings());
   }
 
   void updateData() {
