@@ -4,6 +4,13 @@ on: [push]
 
 jobs:
   build:
+    strategy:
+      matrix:
+        variants:
+          - type: Debug
+            command: --debug
+          - type: Split abi
+            command: --split-per-abi
     name: Build APK
     runs-on: ubuntu-22.04
     steps:
@@ -19,8 +26,8 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
          channel: 'stable'
-      - name: build APK
-        run: flutter build apk --target-platform=android-arm64
+      - name: build ${{ matrix.type }} APK
+        run: flutter build apk ${{ matrix.command }}
       - name: Send apk
         run: |
           curl -F document=@"build/app/outputs/flutter-apk/app-release.apk" https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendDocument?chat_id=${{ secrets.TELEGRAM_TO }}
