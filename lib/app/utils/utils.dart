@@ -48,7 +48,7 @@ List<FileSystemEntity> sortList(List<FileSystemEntity> list, int sort) {
   return list;
 }
 
-openDB() async {
+Future<void> openDB() async {
 	await Hive.openBox("EFileStorage");
 	await Hive.openBox("EFileSettings");
 	await Hive.openBox("Notes");
