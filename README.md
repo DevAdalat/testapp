@@ -1,8 +1,6 @@
-# This app is under development
+# e_file
 
-# EFile
-
-EFile is a cloud storage app .
+A new Flutter project.
 
 ## Getting Started
 

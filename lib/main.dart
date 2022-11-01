@@ -1,71 +1,12 @@
-import 'dart:ffi';
-
+import 'package:e_file/app/data/settings/app_settings.dart';
+import 'package:e_file/app/data/storage/e_file_storage.dart';
+import 'package:e_file/app/my_app.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tfile/bindings.dart';
 
-void main() {
+void main() async {
+  await Future.delayed(10.milliseconds);
+  await EFileStorage().initEFileStorage();
+  await AppSettings.init();
   runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: "Test App",
-      home: const Home(),
-      theme: ThemeData(
-        primarySwatch: Colors.deepOrange,
-        useMaterial3: true,
-      ),
-    );
-  }
-}
-
-class Home extends GetView<HomeController> {
-  const Home({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    Get.put(HomeController());
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Testapp"),
-      ),
-      body: Column(children: [
-        TextButton(
-          onPressed: ((() => controller.getList())),
-          child: const Text("List"),
-        ),
-        TextButton(
-          onPressed: ((() => controller.greet())),
-          child: const Text("Greet"),
-        ),
-      ]),
-    );
-  }
-}
-
-class HomeController extends GetxController {
-  greet() async {
-    try {
-      final lib = RtestImpl(DynamicLibrary.open("librtest.so"));
-      final data = await lib.greet(name: "Adalat");
-      Get.snackbar("Greet", data);
-    } catch (e) {
-      Get.snackbar("Error", e.toString());
-    }
-  }
-
-  getList() async {
-    try {
-      final lib = RtestImpl(DynamicLibrary.open("librtest.so"));
-      final data = await lib.listData();
-      Get.snackbar("List", data.toString());
-    } catch (e) {
-      Get.snackbar("Error", e.toString());
-    }
-  }
 }
