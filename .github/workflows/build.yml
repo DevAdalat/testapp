@@ -11,7 +11,7 @@ jobs:
             command: --debug
           - type: Split abi
             command: --split-per-abi
-    name: Build APK
+    name: Build ${{matrix.type}} APK
     runs-on: ubuntu-22.04
     steps:
       - name: clone repo
