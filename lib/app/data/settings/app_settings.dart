@@ -1,5 +1,4 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:get/get.dart';
 
 class AppSettings {
   static bool showApkIcon = true;
@@ -53,7 +52,6 @@ class AppSettings {
   }
 
   static Future<void> init() async {
-    await Hive.openBox("EFileSettings");
     showApkIcon = settings.get("showApkIcon", defaultValue: showApkIcon);
     showFileSize = settings.get("showFileSize", defaultValue: showFileSize);
     showModifiedDate =

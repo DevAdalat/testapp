@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   var scaffoldKey = GlobalKey<ScaffoldState>();
   FlipCardController cardController = FlipCardController();
-  final eStorage = Get.find<EFileStorage>();
+  final eStorage = EFileStorage();
   int drawerItemsIndex = 0;
   RxInt currentStorage = 0.obs;
   RxString totalSizeVideos = "".obs;

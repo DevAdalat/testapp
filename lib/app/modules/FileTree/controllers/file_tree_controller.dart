@@ -12,7 +12,7 @@ class FileTreeController extends GetxController {
   TextEditingController dialogTextController = TextEditingController();
   List<String> fileTime = [];
   List<String> fileSize = [];
-  final eStorage = Get.find<EFileStorage>();
+  final eStorage = EFileStorage();
   String currnetPath = "";
   late Animation<double> animation;
   late AnimationController animationController;

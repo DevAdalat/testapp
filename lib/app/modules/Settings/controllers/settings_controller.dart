@@ -10,7 +10,7 @@ class SettingsController extends GetxController {
   RxBool showVideoThumbnail = AppSettings.showVideosThumbnail.obs;
   RxBool showMusicThumbnail = AppSettings.showMusicThumbnail.obs;
   RxBool showPhotoPThumbnail = AppSettings.showPhotoPThumbnail.obs;
-  final appSettings = Get.find<AppSettings>();
+  final appSettings = AppSettings();
 
   void showHiddenFoldersSet(bool value) {
 		appSettings.setShowHiddenFolders = value;

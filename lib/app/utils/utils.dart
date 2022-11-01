@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path/path.dart';
 
 List<FileSystemEntity> sortList(List<FileSystemEntity> list, int sort) {
@@ -45,4 +46,12 @@ List<FileSystemEntity> sortList(List<FileSystemEntity> list, int sort) {
   }
 
   return list;
+}
+
+openDB() async {
+	await Hive.openBox("EFileStorage");
+	await Hive.openBox("EFileSettings");
+	await Hive.openBox("Notes");
+	await Hive.openBox("SNotes");
+	await Hive.openBox("ENotes");
 }

@@ -8,7 +8,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:storage_info/storage_info.dart';
 
 class EFileStorage {
-  String storageDatabaseName = "EFileStorage";
   final _fFStorage = Hive.box("EFileStorage");
   List<String> _storageRootPath = [];
 
@@ -55,7 +54,6 @@ class EFileStorage {
   }
 
   Future<void> initEFileStorage() async {
-   Hive.openBox(storageDatabaseName);
     if (!kIsWeb) {
       final _diskPaths = await ExternalPath.getExternalStorageDirectories();
       final _freeDiskSpace = await StorageInfo.getStorageFreeSpace;
