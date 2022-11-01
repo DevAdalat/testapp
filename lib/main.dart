@@ -14,5 +14,5 @@ void main() async {
 
 //await EFileStorage().initEFileStorage();
 //await AppSettings.init();
-  runApp(const MyApp());
+  runApp( MyApp());
 }
