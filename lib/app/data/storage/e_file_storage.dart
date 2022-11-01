@@ -55,7 +55,7 @@ class EFileStorage {
   }
 
   Future<void> initEFileStorage() async {
-    Hive.openBox(storageDatabaseName);
+   Hive.openBox(storageDatabaseName);
     if (!kIsWeb) {
       final _diskPaths = await ExternalPath.getExternalStorageDirectories();
       final _freeDiskSpace = await StorageInfo.getStorageFreeSpace;
