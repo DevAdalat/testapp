@@ -11,7 +11,7 @@ jobs:
             command: --debug
           - type: Split abi
             command: --split-per-abi
-    name: Build ${{matrix.type}} APK
+    name: Build ${{ matrix.type }} APK
     runs-on: ubuntu-22.04
     steps:
       - name: clone repo
@@ -30,4 +30,4 @@ jobs:
         run: flutter build apk ${{ matrix.command }}
       - name: Send apk
         run: |
-          curl -F document=@"build/app/outputs/flutter-apk/app-arm64-v8a-release.apk" https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendDocument?chat_id=${{ secrets.TELEGRAM_TO }}
+          curl -F document=@"build/app/outputs/flutter-apk/app-release.apk" https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendDocument?chat_id=${{ secrets.TELEGRAM_TO }}
