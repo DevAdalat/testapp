@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'app/routes/app_pages.dart';
 
 void main() {
-	  ErrorWidget.builder = (FlutterErrorDetails details) {
+  ErrorWidget.builder = (FlutterErrorDetails details) {
     bool inDebug = kDebugMode;
     assert(() {
       inDebug = true;

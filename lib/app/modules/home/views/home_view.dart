@@ -14,7 +14,7 @@ class HomeView extends GetView<HomeController> {
           centerTitle: true,
         ),
         body: ListView.builder(
-					controller: controller.scrollController,
+          controller: controller.scrollController,
           itemBuilder: ((context, index) => ListTile(
                 title: Text("Count No: $index"),
               )),
