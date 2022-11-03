@@ -22,7 +22,7 @@ void main() {
   };
   runApp(
     GetMaterialApp(
-      title: "Application",
+      title: "EFile",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
     ),

@@ -1,23 +1,26 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
+	final  scrollController = ScrollController();
 
-  final count = 0.obs;
-  @override
-  void onInit() {
+	void scrollListener(){
+		if (scrollController.position.axisDirection == AxisDirection.up) {
+			Get.snackbar("Info", "Up");
+		} else if (scrollController.position.axisDirection == AxisDirection.down) {
+			Get.snackbar("Info", "Down");
+		}
+	}
+	@override
+  onInit(){
     super.onInit();
+		scrollController.addListener(scrollListener);
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+	@override
+  dispose(){
+    super.dispose();
+		scrollController.dispose();
   }
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }
