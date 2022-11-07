@@ -11,8 +11,9 @@ class DynamicFileTreeView extends GetView<DynamicFileTreeController> {
     return GetBuilder<DynamicFileTreeController>(
       builder: (((controller) => Scaffold(
             body: ListView.builder(
+							controller: controller.scontroller,
               itemBuilder: (((context, index) {
-                if (index > controller.pairedItem.length - 1) {
+                if (index > controller.pairedItem.length) {
                   return const Center(
                     child: CircularProgressIndicator(),
                   );

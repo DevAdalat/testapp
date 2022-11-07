@@ -7,7 +7,8 @@ class DynamicFileTreeController extends GetxController {
   List<String> pairedItem = [];
   final scontroller = ScrollController();
 
-  void addDataToList() {
+  void addDataToList() async {
+		await Future.delayed(1.seconds);
     pairedItem
         .addAll(files.getRange(pairedItem.length, pairedItem.length + 15));
     update();
