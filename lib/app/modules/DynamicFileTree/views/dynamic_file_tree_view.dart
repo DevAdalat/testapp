@@ -8,17 +8,16 @@ class DynamicFileTreeView extends GetView<DynamicFileTreeController> {
   const DynamicFileTreeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('DynamicFileTreeView'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          'DynamicFileTreeView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
-    );
+    return GetBuilder<DynamicFileTreeController>(
+        builder: (((controller) =>
+            Scaffold(body: ListView.builder(itemBuilder: (((context, index) {
+              if (index > controller.pairedItem.length - 1) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else {
+                return ListTile(title: Text(controller.pairedItem[index]));
+              }
+            })),),))),);
   }
 }

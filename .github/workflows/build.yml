@@ -16,8 +16,13 @@ jobs:
      name: Build ${{ matrix.variants.type }} APK
      runs-on: ubuntu-latest
      steps:
-        - name: Checkout
-          uses: actions/checkout@v1
+        - uses: Checkout
+          with:
+           owner: 'DevAdalat'
+           repository: 'EFile-New'
+           access-token: ${{ secrets.GITHUB_TOKEN }}
+#       - name: Checkout
+#         uses: actions/checkout@v1
         - name: Setup Java
           uses: actions/setup-java@v3
           with:
