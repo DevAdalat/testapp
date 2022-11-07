@@ -9,15 +9,20 @@ class DynamicFileTreeView extends GetView<DynamicFileTreeController> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<DynamicFileTreeController>(
-        builder: (((controller) =>
-            Scaffold(body: ListView.builder(itemBuilder: (((context, index) {
-              if (index > controller.pairedItem.length - 1) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else {
-                return ListTile(title: Text(controller.pairedItem[index]));
-              }
-            })),),))),);
+      builder: (((controller) => Scaffold(
+            body: ListView.builder(
+              itemBuilder: (((context, index) {
+                if (index > controller.pairedItem.length - 1) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  return ListTile(title: Text(controller.pairedItem[index]));
+                }
+              })),
+							itemCount: controller.pairedItem.length +1
+            ),
+          ))),
+    );
   }
 }
