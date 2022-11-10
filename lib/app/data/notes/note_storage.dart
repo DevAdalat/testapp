@@ -2,31 +2,31 @@ import 'package:e_file/app/data/notes/note_model.dart';
 import 'package:isar/isar.dart';
 
 class NoteStorage {
-  late Isar note;
+  static late Isar _note;
   static List<NoteModel> notes = [];
 
   static NoteStorage get instance => NoteStorage();
 
-  Future<void> init() async {
-    note = await Isar.open([NoteModelSchema]);
+  static Future<void> init() async {
+    _note = await Isar.open([NoteModelSchema]);
   }
 
-  void getNotes() async {
-    notes = await note.txn((() {
-      return note.noteModels.where().findAll();
+  static void getNotes() async {
+    notes = await _note.txn((() {
+      return _note.noteModels.where().findAll();
     }));
   }
 
-  Future<void> setNotes(NoteModel model) async {
-    note.writeTxn((() {
-      return note.noteModels.put(model);
-    }));
+  static Future<int> setNotes(NoteModel model) async {
     notes.add(model);
+    return _note.writeTxn((() {
+      return _note.noteModels.put(model);
+    }));
   }
 
-  void deleteModel(NoteModel model) async {
-    final isDeleted = await note.writeTxn((() {
-      return note.noteModels.delete(model.id);
+  static void deleteModel(NoteModel model) async {
+    final isDeleted = await _note.writeTxn((() {
+      return _note.noteModels.delete(model.id);
     }));
     if (isDeleted) notes.remove(model);
   }

@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'app/routes/app_pages.dart';
 
 void main() async {
-  await NoteStorage.instance.init();
+  await NoteStorage.init();
   runApp(
     GetMaterialApp(
       title: "Application",

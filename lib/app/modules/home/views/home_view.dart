@@ -46,8 +46,8 @@ class HomeView extends StatelessWidget {
                               title: controller.titleController.text,
                               description:
                                   controller.descriptionController.text);
-                          await NoteStorage.instance.setNotes(note);
-													NoteStorage.instance.getNotes();
+                          await NoteStorage.setNotes(note);
+													NoteStorage.getNotes();
                           controller.update();
                         })),
                         child: const Text("Save"),
