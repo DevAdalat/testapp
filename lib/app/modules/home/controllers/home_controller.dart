@@ -7,6 +7,11 @@ class HomeController extends GetxController {
   final descriptionController = TextEditingController();
 
 	@override
+  onReady(){
+		update();
+	}
+
+	@override
   onInit(){
     super.onInit();
 		NoteStorage.getNotes();

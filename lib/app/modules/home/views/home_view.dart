@@ -42,6 +42,7 @@ class HomeView extends StatelessWidget {
                     actions: [
                       TextButton(
                         onPressed: ((() async {
+													Get.back();
                           final note = NoteModel(
                               title: controller.titleController.text,
                               description:
@@ -50,7 +51,6 @@ class HomeView extends StatelessWidget {
                           NoteStorage.getNotes();
                           Get.snackbar("Info", "Note Added");
                           controller.update();
-													Get.back();
 													controller.titleController.clear();
 													controller.descriptionController.clear();
                         })),
