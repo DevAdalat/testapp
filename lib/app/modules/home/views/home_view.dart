@@ -1,5 +1,3 @@
-import 'package:e_file/app/data/notes/note_model.dart';
-import 'package:e_file/app/data/notes/note_storage.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -12,55 +10,25 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
       builder: (((controller) => Scaffold(
-          body: ListView.builder(
+            appBar: AppBar(
+              title: const Text("Lazy loading example"),
+            ),
+            body: ListView.builder(
+              controller: controller.scrollController,
               itemBuilder: (((context, index) {
-                return ListTile(
-                    title: Text(NoteStorage.notes[index].title),
-                    subtitle: Text(NoteStorage.notes[index].description));
+                if (index > controller.pairedItems.length - 1) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  return ListTile(
+                    title: Text(controller.pairedItems[index]),
+                  );
+                }
               })),
-              itemCount: NoteStorage.notes.length),
-          floatingActionButton: FloatingActionButton(
-              onPressed: ((() {
-                Get.dialog(
-                  AlertDialog(
-                    title: const Text("Add Note"),
-                    content: SingleChildScrollView(
-                      child: Column(children: [
-                        TextField(
-                          controller: controller.titleController,
-                          decoration: const InputDecoration(
-                            hintText: "Note Title",
-                          ),
-                        ),
-                        TextField(
-                            controller: controller.descriptionController,
-                            decoration: const InputDecoration(
-                              hintText: "Note Description",
-                            )),
-                      ]),
-                    ),
-                    actions: [
-                      TextButton(
-                        onPressed: ((() async {
-													Get.back();
-                          final note = NoteModel(
-                              title: controller.titleController.text,
-                              description:
-                                  controller.descriptionController.text);
-                          await NoteStorage.setNotes(note);
-                          NoteStorage.getNotes();
-                          Get.snackbar("Info", "Note Added");
-                          controller.update();
-													controller.titleController.clear();
-													controller.descriptionController.clear();
-                        })),
-                        child: const Text("Save"),
-                      ),
-                    ],
-                  ),
-                );
-              })),
-              child: const Icon(Icons.add_rounded))))),
+              itemCount: controller.pairedItems.length + 1,
+            ),
+          ))),
     );
   }
 }
