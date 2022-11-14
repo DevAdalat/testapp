@@ -4,8 +4,13 @@ import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   List<String> allCounts = [];
-  List<String> pairedItems = [];
+  RxList pairedItems = [].obs;
   final scrollController = ScrollController();
+
+	Future<bool> getFutureData() async {
+		await 2.seconds.delay();
+		return true;
+	}
 
   void scrollListener() async {
     if (scrollController.position.userScrollDirection ==
@@ -15,7 +20,6 @@ class HomeController extends GetxController {
         await Future.delayed(1.seconds);
         pairedItems.addAll(
             allCounts.getRange(pairedItems.length, pairedItems.length + 15));
-        update();
       }
     }
   }
