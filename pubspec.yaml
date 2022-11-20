@@ -2,22 +2,19 @@ name: e_file
 version: 1.0.0+1
 publish_to: none
 description: A new Flutter project.
-isar_version: 3.0.2
 environment: 
   sdk: '>=2.18.0 <3.0.0'
 
 dependencies: 
   cupertino_icons: ^1.0.2
-  isar: 3.0.2
-  isar_flutter_libs: 3.0.2
   flutter_staggered_grid_view: ^0.6.2
+  xterm: ^3.4.0
   get: 4.6.5
   flutter: 
     sdk: flutter
 
 dev_dependencies: 
   flutter_lints: 2.0.1
-  isar_generator: 3.0.2
   build_runner: ^2.3.2
   flutter_test: 
     sdk: flutter

@@ -1,72 +1,56 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';
 
-class HomeView extends MyView<HomeController> {
+class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder(
-          future: controller.getFutureData(),
-          builder: ((context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-            return Obx(
-              (() => SingleChildScrollView(
-								physics: const BouncingScrollPhysics(),
-                    controller: controller.scrollController,
-                    child: StaggeredGrid.count(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 12,
-                        children: List.generate(
-                            controller.pairedItems.length + 1, ((index) {
-                          if (index > controller.pairedItems.length - 1) {
-                            return const StaggeredGridTile.count(
-                              crossAxisCellCount: 2,
-                              mainAxisCellCount: 0.3,
-                              child: Center(
-                                child: CircularProgressIndicator(),
-                              ),
-                            );
-                          } else {
-                            return StaggeredGridTile.count(
-                              crossAxisCellCount: 1,
-                              mainAxisCellCount: index.isEven ? 1.2 : 1.8,
-                              child: Card(
-                                child: Center(
-                                  child: Text(index.toString(),
-                                      style: const TextStyle(
-                                          fontWeight: FontWeight.bold)),
-                                ),
-                              ),
-                            );
-                          }
-                        }))
-//						children: List.generate(controller.pairedItems.length, ((index) => StaggeredGridTile.count(
-//									crossAxisCellCount: 1,
-//									mainAxisCellCount: index.isEven ? 1.2 : 1.8,
-//									child: const Card(),
-//									)),)
-                        ),
-                  )),
-            );
-          })),
-    );
+			body: Stack(
+				children: [
+				Obx(() => 	ListView.builder(itemBuilder: ((context, index) {
+					  return  Text(
+							controller.results[index].toString(),
+							);
+					}),
+						itemCount: controller.results.length,
+						),),
+					Align(
+						alignment: Alignment.bottomCenter,
+						child: Padding(
+						  padding: const EdgeInsets.all(8.0),
+						  child: TextField(
+								controller: controller.textController,
+						  	decoration: InputDecoration(
+						  		hintText: "Enter Command",
+						  		suffixIcon: IconButton(
+						  			onPressed: (() {
+											final commands = controller.textController.text.split(" ");
+											final exec = commands.first;
+											commands.removeAt(0);
+						  			  try {
+						  			  	final result = Process.runSync(exec, commands);
+												if (result.exitCode != 0) {
+													throw result.stderr;
+												}
+												controller.results.add(result.stdout.toString());
+						  			  } catch(e) {
+						  			  	Get.snackbar("Error", e.toString());
+						  			  }
+						  			}),
+						  			icon: const Icon(Icons.play_circle_rounded),
+						  			),
+						  		),
+						  	),
+						),
+						)
+				],
+				),
+			);
   }
-}
-
-abstract class MyView<T> extends StatelessWidget {
-  const MyView({super.key});
-  T get controller => Get.find<T>();
-
-  @override
-  Widget build(context);
 }
