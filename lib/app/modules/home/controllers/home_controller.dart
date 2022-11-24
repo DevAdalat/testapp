@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tfile/app/data/model/user_model.dart';
 
 class HomeController extends GetxController {
-	final results = <String>[].obs;
-	final textController = TextEditingController();
 }

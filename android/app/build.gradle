@@ -40,11 +40,12 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+				main.jniLibs.srcDirs += 'src/main/jniLibs'
     }
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.encrypted.secure.file.e_file"
+        applicationId "com.tfile.telegram.unlimited.storage"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion flutter.minSdkVersion

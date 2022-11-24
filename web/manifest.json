@@ -1,6 +1,6 @@
 {
-    "name": "e_file",
-    "short_name": "e_file",
+    "name": "tfile",
+    "short_name": "tfile",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
