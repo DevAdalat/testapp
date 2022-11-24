@@ -5,9 +5,9 @@ import 'package:tfile/app/tdLibJson/tdlib_core.dart';
 import 'package:tfile/my_app.dart';
 
 
-void main() {
-	GetStorage.init();
-	Config.init();
+void main() async {
+	await GetStorage.init();
+	await Config.init();
 	TDLibCore.initialize();
   runApp(
 		const MyApp()
