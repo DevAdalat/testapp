@@ -90,14 +90,21 @@ class _MyHomePageState extends State<MyHomePage> {
                   Center(
                       child: TextButton(
                           onPressed: () async {
-                            String symbol = symController.text;
-                            String data = dataController.text;
-                            String path = _libPath;
-                            final ext = ExtensionFfiImpl(
-                                DynamicLibrary.open("libextension.so"));
-                            _output = await ext.sendDataToExtention(
-                                libPath: path, symbolName: symbol, data: data);
-                            setState(() {});
+                            try {
+                              String symbol = symController.text;
+                              String data = dataController.text;
+                              String path = _libPath;
+                              final ext = ExtensionFfiImpl(
+                                  DynamicLibrary.open("libextension.so"));
+                              _output = await ext.sendDataToExtention(
+                                  libPath: path,
+                                  symbolName: symbol,
+                                  data: data);
+                              setState(() {});
+                            } catch (e) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text(e.toString())));
+                            }
                           },
                           child: const Text("Send Data")))
                 ],
