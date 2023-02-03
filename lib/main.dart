@@ -38,6 +38,13 @@ class _MyHomePageState extends State<MyHomePage> {
   String _libPath = "";
   final symController = TextEditingController();
   final dataController = TextEditingController();
+  final ext = ExtensionFfiImpl(DynamicLibrary.open("libextension.so"));
+
+  @override
+  initState() {
+    super.initState();
+    FilePicker.platform.clearTemporaryFiles();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,8 +101,6 @@ class _MyHomePageState extends State<MyHomePage> {
                               String symbol = symController.text;
                               String data = dataController.text;
                               String path = _libPath;
-                              final ext = ExtensionFfiImpl(
-                                  DynamicLibrary.open("libextension.so"));
                               _output = await ext.sendDataToExtention(
                                   libPath: path,
                                   symbolName: symbol,
