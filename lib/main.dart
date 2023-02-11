@@ -3,8 +3,10 @@ import 'dart:ffi';
 import 'package:extension_test/extention_utils.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:simple_audio/simple_audio.dart';
 
 void main() {
+	SimpleAudio.init();
   runApp(const MyApp());
 }
 
@@ -39,11 +41,14 @@ class _MyHomePageState extends State<MyHomePage> {
   final symController = TextEditingController();
   final dataController = TextEditingController();
   final ext = ExtensionFfiImpl(DynamicLibrary.open("libextension.so"));
+	late SimpleAudio audio;
 
   @override
   initState() {
     super.initState();
+		audio = SimpleAudio();
     FilePicker.platform.clearTemporaryFiles();
+		audio.stop();
   }
 
   @override
@@ -98,20 +103,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: TextButton(
                           onPressed: () async {
                             try {
-                              String symbol = symController.text;
-                              String data = dataController.text;
-                              String path = _libPath;
-                              _output = await ext.sendDataToExtention(
-                                  libPath: path,
-                                  symbolName: symbol,
-                                  data: data);
-                              setState(() {});
+															audio.open(_libPath);
+															audio.play();
                             } catch (e) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(content: Text(e.toString())));
                             }
                           },
-                          child: const Text("Send Data")))
+                          child: const Text("Play")))
                 ],
               ),
             )),
