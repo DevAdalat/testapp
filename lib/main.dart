@@ -1,9 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:convert';
-import 'dart:io';
-
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:json_dynamic_widget/json_dynamic_widget.dart';
 
@@ -22,40 +19,72 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.deepOrange,
         useMaterial3: true,
       ),
-      home: const Picker(),
+      home: Picker(),
     );
   }
 }
 
 class Picker extends StatelessWidget {
-  const Picker({super.key});
+  Picker({super.key});
+  final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: TextButton(
-          onPressed: () async {
-            try {
-              final result = await FilePicker.platform.pickFiles();
-              if (result != null) {
-                final registry = JsonWidgetRegistry.instance;
-                final data = json.decode(File(result.paths.first!).readAsStringSync());
-                final wid =
-                    JsonWidgetData.fromDynamic(data, registry: registry);
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => FullWidgetPage(data: wid!)));
-              } else {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Please pick a file')));
-              }
-            } catch (e) {
-              ScaffoldMessenger.of(context)
-                  .showSnackBar(SnackBar(content: Text(e.toString())));
-            }
-          },
-          child: const Text('Pick Json File'),
-        ),
+      body: ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              child: TextField(
+                controller: _controller,
+                maxLines: null,
+                // textInputAction: TextInputAction.done,
+                // onSubmitted: (text) async {
+                //   try {
+                //     if (text.isNotEmpty) {
+                //       final registry = JsonWidgetRegistry.instance;
+                //       final data = json.decode(text);
+                //       final wid =
+                //           JsonWidgetData.fromDynamic(data, registry: registry);
+                //       Navigator.of(context).push(MaterialPageRoute(
+                //           builder: (context) => FullWidgetPage(data: wid!)));
+                //     } else {
+                //       ScaffoldMessenger.of(context).showSnackBar(
+                //           const SnackBar(content: Text('Empty text')));
+                //     }
+                //   } catch (e) {
+                //     ScaffoldMessenger.of(context)
+                //         .showSnackBar(SnackBar(content: Text(e.toString())));
+                //   }
+                // }
+              ),
+            ),
+          ),
+          Center(
+            child: TextButton(
+              onPressed: () {
+                try {
+                  if (_controller.text.isNotEmpty) {
+                    final registry = JsonWidgetRegistry.instance;
+                    final data = json.decode(_controller.text);
+                    final wid =
+                        JsonWidgetData.fromDynamic(data, registry: registry);
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => FullWidgetPage(data: wid!)));
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Empty text')));
+                  }
+                } catch (e) {
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(SnackBar(content: Text(e.toString())));
+                }
+              },
+              child: const Text('Load'),
+            ),
+          )
+        ],
       ),
     );
   }
