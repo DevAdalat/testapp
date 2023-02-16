@@ -42,7 +42,7 @@ jobs:
         - name: Download pub dependencies
           run: flutter pub get
         - name: Build APK
-          run: flutter build apk ${{ matrix.variants.command }} --obfuscate --split-debug-info=build/
+          run: flutter build apk ${{ matrix.variants.command }} --obfuscate --split-debug-info=build/ --no-tree-shake-icons
         - name: Upload to Artifacts
           uses: actions/upload-artifact@v2
           with:
