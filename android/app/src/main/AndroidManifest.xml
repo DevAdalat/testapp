@@ -31,13 +31,5 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-				<service
-      android:name="com.erikas.simple_audio.SimpleAudioService">
-  </service>
-
-  <!-- This is required to interact with the notification buttons. -->
-  <receiver
-      android:name="com.erikas.simple_audio.SimpleAudioReceiver">
-  </receiver>
     </application>
 </manifest>
